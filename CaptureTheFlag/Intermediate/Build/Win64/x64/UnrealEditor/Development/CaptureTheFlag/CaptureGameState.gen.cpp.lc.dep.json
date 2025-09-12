@@ -1,0 +1,21 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\git\\capture-the-flag\\capturetheflag\\intermediate\\build\\win64\\unrealeditor\\inc\\capturetheflag\\uht\\capturegamestate.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\git\\capture-the-flag\\capturetheflag\\intermediate\\build\\win64\\x64\\capturetheflageditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.valexpapi.cpp20.h.pch",
+        "Includes": [
+            "d:\\git\\capture-the-flag\\capturetheflag\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\capturetheflag\\definitions.capturetheflag.h",
+            "d:\\git\\capture-the-flag\\capturetheflag\\source\\capturetheflag\\public\\capturegamestate.h",
+            "d:\\ue_5.6\\engine\\source\\runtime\\engine\\classes\\gameframework\\gamestatebase.h",
+            "d:\\ue_5.6\\engine\\source\\runtime\\engine\\classes\\gameframework\\gamemodebase.h",
+            "d:\\ue_5.6\\engine\\source\\runtime\\engine\\classes\\engine\\serverstatreplicator.h",
+            "d:\\ue_5.6\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\serverstatreplicator.generated.h",
+            "d:\\ue_5.6\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\gamemodebase.generated.h",
+            "d:\\ue_5.6\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\gamestatebase.generated.h",
+            "d:\\git\\capture-the-flag\\capturetheflag\\intermediate\\build\\win64\\unrealeditor\\inc\\capturetheflag\\uht\\capturegamestate.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

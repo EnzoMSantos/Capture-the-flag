@@ -1,4 +1,5 @@
 /I "."
+/I "D:/Git/Capture-the-flag/CaptureTheFlag/Source/CaptureTheFlag/Private"
 /I "../Intermediate/Build/Win64/UnrealEditor/Inc/Engine/UHT"
 /I "Runtime/Engine/Classes"
 /I "Runtime/Engine/Public"
@@ -294,6 +295,7 @@
 /I "D:/Git/Capture-the-flag/CaptureTheFlag/Source/CaptureTheFlag/Variant_Shooter/UI"
 /I "D:/Git/Capture-the-flag/CaptureTheFlag/Source/CaptureTheFlag/Variant_Shooter/Weapons"
 /I "D:/Git/Capture-the-flag/CaptureTheFlag/Source"
+/I "D:/Git/Capture-the-flag/CaptureTheFlag/Source/CaptureTheFlag/Public"
 /I "../Plugins/EnhancedInput/Intermediate/Build/Win64/UnrealEditor/Inc/EnhancedInput/UHT"
 /I "../Plugins/EnhancedInput/Source"
 /I "../Plugins/EnhancedInput/Source/EnhancedInput/Public"
