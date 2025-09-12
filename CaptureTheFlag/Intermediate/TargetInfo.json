@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "CaptureTheFlag",
+			"Path": "..\\Source\\CaptureTheFlag.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "CaptureTheFlagEditor",
+			"Path": "..\\Source\\CaptureTheFlagEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}

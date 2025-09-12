@@ -1,0 +1,16 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UnrealEditor-CaptureTheFlag.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"D:/Git/Capture-the-flag/CaptureTheFlag/Intermediate/Build/Win64/x64/CaptureTheFlagEditor/Development/UnrealEd/SharedPCH.UnrealEd.Project.ValApi.ValExpApi.Cpp20.InclOrderUnreal5_3.h.obj"
+"D:/Git/Capture-the-flag/CaptureTheFlag/Intermediate/Build/Win64/x64/UnrealEditor/Development/CaptureTheFlag/ACaptureGameMode.gen.cpp.obj"
+"D:/Git/Capture-the-flag/CaptureTheFlag/Intermediate/Build/Win64/x64/UnrealEditor/Development/CaptureTheFlag/CaptureTheFlag.init.gen.cpp.obj"
+"D:/Git/Capture-the-flag/CaptureTheFlag/Intermediate/Build/Win64/x64/UnrealEditor/Development/CaptureTheFlag/CaptureTheFlag.cpp.obj"
+"D:/Git/Capture-the-flag/CaptureTheFlag/Intermediate/Build/Win64/x64/UnrealEditor/Development/CaptureTheFlag/ACaptureGameMode.cpp.obj"
+"D:/Git/Capture-the-flag/CaptureTheFlag/Intermediate/Build/Win64/x64/UnrealEditor/Development/CaptureTheFlag/PerModuleInline.gen.cpp.obj"
+"D:/Git/Capture-the-flag/CaptureTheFlag/Intermediate/Build/Win64/x64/UnrealEditor/Development/CaptureTheFlag/Default.rc2.res"
+/OUT:"D:/Git/Capture-the-flag/CaptureTheFlag/Intermediate/Build/Win64/x64/UnrealEditor/Development/CaptureTheFlag/UnrealEditor-CaptureTheFlag.lib"
