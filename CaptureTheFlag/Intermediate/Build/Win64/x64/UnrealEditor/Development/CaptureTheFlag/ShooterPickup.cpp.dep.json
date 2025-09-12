@@ -1,0 +1,23 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\git\\capture-the-flag\\capturetheflag\\source\\capturetheflag\\variant_shooter\\weapons\\shooterpickup.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\git\\capture-the-flag\\capturetheflag\\intermediate\\build\\win64\\x64\\capturetheflageditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.valexpapi.cpp20.h.pch",
+        "Includes": [
+            "d:\\git\\capture-the-flag\\capturetheflag\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\capturetheflag\\definitions.capturetheflag.h",
+            "d:\\git\\capture-the-flag\\capturetheflag\\source\\capturetheflag\\variant_shooter\\weapons\\shooterpickup.h",
+            "d:\\git\\capture-the-flag\\capturetheflag\\intermediate\\build\\win64\\unrealeditor\\inc\\capturetheflag\\uht\\shooterpickup.generated.h",
+            "d:\\ue_5.6\\engine\\source\\runtime\\engine\\classes\\components\\spherecomponent.h",
+            "d:\\ue_5.6\\engine\\source\\runtime\\engine\\classes\\components\\shapecomponent.h",
+            "d:\\ue_5.6\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\shapecomponent.generated.h",
+            "d:\\ue_5.6\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\spherecomponent.generated.h",
+            "d:\\git\\capture-the-flag\\capturetheflag\\source\\capturetheflag\\variant_shooter\\weapons\\shooterweaponholder.h",
+            "d:\\git\\capture-the-flag\\capturetheflag\\intermediate\\build\\win64\\unrealeditor\\inc\\capturetheflag\\uht\\shooterweaponholder.generated.h",
+            "d:\\git\\capture-the-flag\\capturetheflag\\source\\capturetheflag\\variant_shooter\\weapons\\shooterweapon.h",
+            "d:\\git\\capture-the-flag\\capturetheflag\\intermediate\\build\\win64\\unrealeditor\\inc\\capturetheflag\\uht\\shooterweapon.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}
