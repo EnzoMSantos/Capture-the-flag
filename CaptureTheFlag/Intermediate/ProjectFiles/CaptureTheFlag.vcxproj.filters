@@ -69,6 +69,9 @@
     <Filter Include="Source\CaptureTheFlag\Private">
       <UniqueIdentifier>{BE9F30E9-3681-3498-AA6D-D379BF1EB722}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\CaptureTheFlag\Private\BP_BaseZone.cpp">
+      <Filter>Source\CaptureTheFlag\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\CaptureTheFlag\Private\CaptureCharacter.cpp">
       <Filter>Source\CaptureTheFlag\Private</Filter>
     </ClCompile>
@@ -87,6 +90,9 @@
     <Filter Include="Source\CaptureTheFlag\Public">
       <UniqueIdentifier>{C421AA17-C79F-311B-8450-B2301D08F007}</UniqueIdentifier>
     </Filter>
+    <ClInclude Include="..\..\Source\CaptureTheFlag\Public\BP_BaseZone.h">
+      <Filter>Source\CaptureTheFlag\Public</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\CaptureTheFlag\Public\CaptureCharacter.h">
       <Filter>Source\CaptureTheFlag\Public</Filter>
     </ClInclude>

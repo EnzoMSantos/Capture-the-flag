@@ -39,13 +39,11 @@ void ACapturePlayerState::ApplyTeamMaterial()
 
 	UE_LOG(LogTemp, Warning, TEXT("ApplyTeamMaterial - HasAuthority: %d"), HasAuthority());
 
-	for (TActorIterator<ACaptureCharacter> It(GetWorld()); It; ++It)
+	if (APawn* OwnerPawn = GetPawn())
 	{
-		ACaptureCharacter* Character = *It;
-		if (Character && Character->GetPlayerState() == this)
+		if (ACaptureCharacter* Character = Cast<ACaptureCharacter>(OwnerPawn))
 		{
 			ApplyMaterialToCharacter(Character);
-			break;
 		}
 	}
 }

@@ -279,6 +279,9 @@
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClInclude Include="..\..\Source\CaptureTheFlag\CaptureTheFlagPlayerController.h"/>
+    <ClCompile Include="..\..\Source\CaptureTheFlag\Private\BP_BaseZone.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
     <ClCompile Include="..\..\Source\CaptureTheFlag\Private\CaptureCharacter.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
@@ -294,6 +297,7 @@
     <ClCompile Include="..\..\Source\CaptureTheFlag\Private\FlagActor.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <ClInclude Include="..\..\Source\CaptureTheFlag\Public\BP_BaseZone.h"/>
     <ClInclude Include="..\..\Source\CaptureTheFlag\Public\CaptureCharacter.h"/>
     <ClInclude Include="..\..\Source\CaptureTheFlag\Public\CaptureGameMode.h"/>
     <ClInclude Include="..\..\Source\CaptureTheFlag\Public\CaptureGameState.h"/>

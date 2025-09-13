@@ -47,12 +47,9 @@ void ACaptureGameMode::PostLogin(APlayerController* NewPlayer)
 			ETeams NewTeam = NumPlayers % 2 == 0 ? ETeams::Red : ETeams::Blue;
 			PS->SetTeam(NewTeam);
 
-			for (APlayerState* PlayerState : GameState->PlayerArray)
+			if (ACaptureGameState* GS = GetGameState<ACaptureGameState>())
 			{
-				if (ACapturePlayerState* CapturePS = Cast<ACapturePlayerState>(PlayerState))
-				{
-					CapturePS->ApplyTeamMaterial();
-				}
+				GS->Multicast_ApplyAllTeamMaterials();
 			}
 		}
 	}
@@ -67,8 +64,14 @@ void ACaptureGameMode::PlayerScored(ACapturePlayerState* ScoringPlayer)
 
 	GS->AddScore(ScoringPlayer->GetTeam());
 
+	UE_LOG(LogTemp, Warning, TEXT("Team %d scored! New score: %d-%d"),
+		(int32)ScoringPlayer->GetTeam(), GS->GetRedScore(), GS->GetBlueScore());
+
 	if (GS->GetRedScore() >= 3 || GS->GetBlueScore() >= 3)
 	{
+		FString WinningTeam = GS->GetRedScore() >= 3 ? "RED" : "BLUE";
+		UE_LOG(LogTemp, Warning, TEXT("Team %s wins the game!"), *WinningTeam);
+
 		ResetGame();
 	}
 }

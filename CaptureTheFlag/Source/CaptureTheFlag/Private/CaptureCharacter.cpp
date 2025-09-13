@@ -15,7 +15,7 @@
 #include "FlagActor.h"
 #include "CapturePlayerState.h"
 #include "CaptureGameMode.h"
-
+#include "CaptureGameState.h"
 
 ACaptureCharacter::ACaptureCharacter()
 {
@@ -88,13 +88,13 @@ void ACaptureCharacter::BeginPlay()
 	}
 	
 	//Set Material
-	if (ACapturePlayerState* PS = GetPlayerState<ACapturePlayerState>())
+	if (ACaptureGameState* GS = GetWorld()->GetGameState<ACaptureGameState>())
 	{
 		FTimerHandle TimerHandle;
-		GetWorld()->GetTimerManager().SetTimer(TimerHandle, [PS]()
+		GetWorld()->GetTimerManager().SetTimer(TimerHandle, [GS]()
 			{
-				PS->ApplyTeamMaterial();
-			}, 0.5f, false);
+				GS->Multicast_ApplyAllTeamMaterials();
+			}, 1.0f, false);
 	}
 }
 
@@ -166,6 +166,7 @@ void ACaptureCharacter::TryScore()
 				CarriedFlag->ResetFlag();
 				CarriedFlag = nullptr;
 			}
+			UE_LOG(LogTemp, Warning, TEXT("Player scored for team %d!"), (int32)PS->GetTeam());
 		}
 	}
 }

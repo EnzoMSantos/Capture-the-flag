@@ -4,6 +4,9 @@
 #include "CaptureGameState.h"
 #include "Net/UnrealNetwork.h"
 #include "FlagActor.h"
+#include "CapturePlayerState.h"
+#include "CaptureCharacter.h"
+#include "EngineUtils.h"
 
 ACaptureGameState::ACaptureGameState()
 {
@@ -31,6 +34,17 @@ void ACaptureGameState::ResetScores()
 		RedScore = 0;
 		BlueScore = 0;
 		ForceNetUpdate();
+	}
+}
+
+void ACaptureGameState::Multicast_ApplyAllTeamMaterials_Implementation()
+{
+	for (APlayerState* PlayerState : PlayerArray)
+	{
+		if (ACapturePlayerState* CapturePS = Cast<ACapturePlayerState>(PlayerState))
+		{
+			CapturePS->ApplyTeamMaterial();
+		}
 	}
 }
 

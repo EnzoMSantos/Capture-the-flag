@@ -18,10 +18,13 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin Class ACaptureGameState ********************************************************
 #define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureGameState_h_17_RPC_WRAPPERS_NO_PURE_DECLS \
+	virtual void Multicast_ApplyAllTeamMaterials_Implementation(); \
+	DECLARE_FUNCTION(execMulticast_ApplyAllTeamMaterials); \
 	DECLARE_FUNCTION(execGetBlueScore); \
 	DECLARE_FUNCTION(execGetRedScore);
 
 
+#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureGameState_h_17_CALLBACK_WRAPPERS
 CAPTURETHEFLAG_API UClass* Z_Construct_UClass_ACaptureGameState_NoRegister();
 
 #define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureGameState_h_17_INCLASS_NO_PURE_DECLS \
@@ -57,6 +60,7 @@ public: \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
 	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureGameState_h_17_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureGameState_h_17_CALLBACK_WRAPPERS \
 	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureGameState_h_17_INCLASS_NO_PURE_DECLS \
 	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureGameState_h_17_ENHANCED_CONSTRUCTORS \
 private: \

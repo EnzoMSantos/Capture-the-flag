@@ -38,6 +38,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 	int32 GetBlueScore() const { return BlueScore; }
 
+	UFUNCTION(NetMulticast, Reliable)
+	void Multicast_ApplyAllTeamMaterials();
+
 protected:
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 };
