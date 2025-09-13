@@ -24,33 +24,16 @@ protected:
 
 	FVector InitialLocation;
 
-	UPROPERTY(ReplicatedUsing = OnRep_Carrier, BlueprintReadOnly)
-	ACaptureCharacter* Carrier;
-
 public:	
 	virtual void Tick(float DeltaTime) override;
 
-	UFUNCTION(Server, Reliable)
-	void Server_PickupFlag(ACaptureCharacter* NewCarrier);
-	
-	UFUNCTION(Server, Reliable)
-	void Server_DropFlag(FVector DropLocation);
-
-	UFUNCTION(Server, Reliable)
-	void Server_ResetFlag();
-
-	ACaptureCharacter* GetCarrier() const { return Carrier; }
 	void ResetFlag();
 
 	UFUNCTION()
 	void OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
-		UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, 
+		UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep,
 		const FHitResult& SweepResult);
-	
-protected:
 
-	UFUNCTION()
-	void OnRep_Carrier();
-
-	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+	void AttachToCharacter(ACaptureCharacter* Character);
+	void DetachFromCharacter();
 };

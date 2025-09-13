@@ -9,7 +9,6 @@ class UInputAction;
 class UCameraComponent;
 class UEnhancedInputLocalPlayerSubsystem;
 class UEnhancedInputComponent;
-class AFlagActor;
 
 
 UCLASS()
@@ -59,22 +58,14 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Flag")
 	bool HasFlag() const { return bHasFlag; }
 
-	void PickupFlag();
+	UFUNCTION(BlueprintCallable, Category = "Flag")
+	void SetHasFlag(bool bNewHasFlag);
 
 	UFUNCTION(Server, Reliable)
 	void Server_DropFlag();
 
 	UFUNCTION(Server, Reliable, WithValidation)
 	void ServerSetControlRotation(FRotator NewRotation);
-
-	UFUNCTION(BlueprintCallable, Category = "Flag")
-	void ForceDropFlag();
-
-	UFUNCTION(BlueprintCallable, Category = "Flag")
-	void SetHasFlag(bool bNewHasFlag);
-
-	UFUNCTION(BlueprintCallable, Category = "Flag")
-	void ClearCarriedFlag();
 
 	UFUNCTION(BlueprintCallable)
 	FRotator GetReplicatedControlRotation() const { return ReplicatedControlRotation; }
@@ -89,17 +80,10 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Team")
 	void UpdateOutlineColor(const FLinearColor& NewColor);
 
-	void SetCarriedFlag(AFlagActor* Flag) { CarriedFlag = Flag; }
-	AFlagActor* GetCarriedFlag() const { return CarriedFlag; }
-
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
 protected:
 
 	UFUNCTION()
 	void OnRep_HasFlag();
-
-
-	UPROPERTY()
-	AFlagActor* CarriedFlag;
 };

@@ -11,8 +11,8 @@ UCLASS()
 class CAPTURETHEFLAG_API ABP_BaseZone : public AActor
 {
 	GENERATED_BODY()
-	
-public:	
+
+public:
 	ABP_BaseZone();
 
 protected:
@@ -25,7 +25,7 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Team")
 	ETeams Team;
 
-public:	
+public:
 
 	UFUNCTION()
 	void OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,

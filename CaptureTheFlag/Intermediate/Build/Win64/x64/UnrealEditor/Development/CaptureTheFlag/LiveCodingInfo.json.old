@@ -3,17 +3,14 @@
 	{
 		"Module.CaptureTheFlag.cpp.obj": [
 			"BP_BaseZone.gen.cpp.obj",
-			"CaptureCharacter.gen.cpp.obj",
 			"CaptureGameMode.gen.cpp.obj",
 			"CaptureGameState.gen.cpp.obj",
 			"CapturePlayerState.gen.cpp.obj",
-			"CaptureTheFlag.init.gen.cpp.obj",
 			"CaptureTheFlagCameraManager.gen.cpp.obj",
 			"CaptureTheFlagCharacter.gen.cpp.obj",
 			"CaptureTheFlagGameMode.gen.cpp.obj",
 			"CaptureTheFlagPlayerController.gen.cpp.obj",
 			"EnvQueryContext_Target.gen.cpp.obj",
-			"FlagActor.gen.cpp.obj",
 			"HorrorCharacter.gen.cpp.obj",
 			"HorrorGameMode.gen.cpp.obj",
 			"HorrorPlayerController.gen.cpp.obj",
@@ -37,6 +34,7 @@
 			"CaptureTheFlagCharacter.cpp.obj",
 			"CaptureTheFlagGameMode.cpp.obj",
 			"CaptureTheFlagPlayerController.cpp.obj",
+			"BP_BaseZone.cpp.obj",
 			"CaptureGameMode.cpp.obj",
 			"CaptureGameState.cpp.obj",
 			"CapturePlayerState.cpp.obj",
@@ -57,7 +55,9 @@
 			"ShooterProjectile.cpp.obj",
 			"ShooterWeapon.cpp.obj",
 			"ShooterWeaponHolder.cpp.obj",
-			"BP_BaseZone.cpp.obj",
+			"CaptureCharacter.gen.cpp.obj",
+			"CaptureTheFlag.init.gen.cpp.obj",
+			"FlagActor.gen.cpp.obj",
 			"CaptureCharacter.cpp.obj",
 			"FlagActor.cpp.obj"
 		]

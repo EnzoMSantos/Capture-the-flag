@@ -19,7 +19,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 struct FLinearColor;
 
 // ********** Begin Class ACaptureCharacter ********************************************************
-#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h_18_RPC_WRAPPERS_NO_PURE_DECLS \
+#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h_17_RPC_WRAPPERS_NO_PURE_DECLS \
 	virtual bool ServerSetControlRotation_Validate(FRotator ); \
 	virtual void ServerSetControlRotation_Implementation(FRotator NewRotation); \
 	virtual void Server_DropFlag_Implementation(); \
@@ -28,18 +28,16 @@ struct FLinearColor;
 	DECLARE_FUNCTION(execSetOutlineEnabled); \
 	DECLARE_FUNCTION(execTryScore); \
 	DECLARE_FUNCTION(execGetReplicatedControlRotation); \
-	DECLARE_FUNCTION(execClearCarriedFlag); \
-	DECLARE_FUNCTION(execSetHasFlag); \
-	DECLARE_FUNCTION(execForceDropFlag); \
 	DECLARE_FUNCTION(execServerSetControlRotation); \
 	DECLARE_FUNCTION(execServer_DropFlag); \
+	DECLARE_FUNCTION(execSetHasFlag); \
 	DECLARE_FUNCTION(execHasFlag);
 
 
-#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h_18_CALLBACK_WRAPPERS
+#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h_17_CALLBACK_WRAPPERS
 CAPTURETHEFLAG_API UClass* Z_Construct_UClass_ACaptureCharacter_NoRegister();
 
-#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h_18_INCLASS_NO_PURE_DECLS \
+#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h_17_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesACaptureCharacter(); \
 	friend struct Z_Construct_UClass_ACaptureCharacter_Statics; \
@@ -57,7 +55,7 @@ public: \
 	DECLARE_VALIDATE_GENERATED_REP_ENUMS(NO_API)
 
 
-#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h_18_ENHANCED_CONSTRUCTORS \
+#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h_17_ENHANCED_CONSTRUCTORS \
 	/** Deleted move- and copy-constructors, should never be used */ \
 	ACaptureCharacter(ACaptureCharacter&&) = delete; \
 	ACaptureCharacter(const ACaptureCharacter&) = delete; \
@@ -67,14 +65,14 @@ public: \
 	NO_API virtual ~ACaptureCharacter();
 
 
-#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h_15_PROLOG
-#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h_18_GENERATED_BODY \
+#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h_14_PROLOG
+#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h_17_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h_18_RPC_WRAPPERS_NO_PURE_DECLS \
-	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h_18_CALLBACK_WRAPPERS \
-	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h_18_INCLASS_NO_PURE_DECLS \
-	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h_18_ENHANCED_CONSTRUCTORS \
+	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h_17_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h_17_CALLBACK_WRAPPERS \
+	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h_17_INCLASS_NO_PURE_DECLS \
+	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h_17_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

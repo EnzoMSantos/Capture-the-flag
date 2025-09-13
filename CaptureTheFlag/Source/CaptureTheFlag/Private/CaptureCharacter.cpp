@@ -16,16 +16,16 @@
 #include "CapturePlayerState.h"
 #include "CaptureGameMode.h"
 #include "CaptureGameState.h"
+#include "EngineUtils.h"
+
 
 ACaptureCharacter::ACaptureCharacter()
 {
 	PrimaryActorTick.bCanEverTick = true;
 
-	//Capsule Component
 	GetCapsuleComponent()->InitCapsuleSize(55.5f, 96.f);
 	GetCapsuleComponent()->SetCollisionResponseToChannel(ECC_Camera, ECR_Ignore);
 
-	//Camera configurations
 	FirstPersonCameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("FirstPersonCamera"));
 	FirstPersonCameraComponent->SetupAttachment(GetCapsuleComponent());
 	FirstPersonCameraComponent->bUsePawnControlRotation = true;
@@ -33,23 +33,7 @@ ACaptureCharacter::ACaptureCharacter()
 	GetMesh()->SetupAttachment(GetCapsuleComponent());
 	GetMesh()->SetRelativeLocation(FVector(0.f, 0.f, 0.f));
 	GetMesh()->SetRelativeRotation(FRotator(0.f, 0.f, 0.f));
-	GetMesh()->bUseAttachParentBound = true;
-	GetMesh()->bReceivesDecals = false;
-	GetMesh()->SetCollisionObjectType(ECC_Pawn);
-	GetMesh()->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
-	GetMesh()->SetCollisionResponseToAllChannels(ECR_Block);
-	GetMesh()->SetCollisionResponseToChannel(ECC_Camera, ECR_Ignore);
-	GetMesh()->SetCollisionResponseToChannel(ECC_Visibility, ECR_Ignore);
-	GetMesh()->SetUsingAbsoluteRotation(false);
-	GetMesh()->SetOnlyOwnerSee(false);
-	GetMesh()->SetOwnerNoSee(true);
-	GetMesh()->bCastDynamicShadow = false;
-	GetMesh()->CastShadow = false;
-	GetCharacterMovement()->bOrientRotationToMovement = true;
-	GetCharacterMovement()->bUseControllerDesiredRotation = true;
-	GetCharacterMovement()->RotationRate = FRotator(0.0f, 500.0f, 0.0f);
 
-	//Moviment Config
 	GetCharacterMovement()->JumpZVelocity = 600.f;
 	GetCharacterMovement()->AirControl = 0.2f;
 	GetCharacterMovement()->MaxWalkSpeed = 600.0f;
@@ -57,9 +41,14 @@ ACaptureCharacter::ACaptureCharacter()
 	bReplicates = true;
 	bHasFlag = false;
 
-	bUseControllerRotationYaw = false;
-	bUseControllerRotationPitch = false;
-	bUseControllerRotationRoll = false;
+	if (ACaptureGameState* GS = GetWorld()->GetGameState<ACaptureGameState>())
+	{
+		FTimerHandle TimerHandle;
+		GetWorld()->GetTimerManager().SetTimer(TimerHandle, [GS]()
+			{
+				GS->Multicast_ApplyAllTeamMaterials();
+			}, 1.0f, false);
+	}
 }
 
 void ACaptureCharacter::BeginPlay()
@@ -86,42 +75,6 @@ void ACaptureCharacter::BeginPlay()
 			Subsystem->AddMappingContext(DefaultMappingContext, 0);
 		}
 	}
-	
-	//Set Material
-	if (ACaptureGameState* GS = GetWorld()->GetGameState<ACaptureGameState>())
-	{
-		FTimerHandle TimerHandle;
-		GetWorld()->GetTimerManager().SetTimer(TimerHandle, [GS]()
-			{
-				GS->Multicast_ApplyAllTeamMaterials();
-			}, 1.0f, false);
-	}
-}
-
-void ACaptureCharacter::PickupFlag()
-{
-	if (HasAuthority())
-	{
-		bHasFlag = true;
-		OnRep_HasFlag();
-
-		UE_LOG(LogTemp, Warning, TEXT("PickupFlag - bHasFlag: %d, CarriedFlag: %s"),
-			bHasFlag, *GetNameSafe(CarriedFlag));
-	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("PickupFlag called on client - waiting for replication"));
-	}
-}
-
-void ACaptureCharacter::ForceDropFlag()
-{
-	if (HasAuthority())
-	{
-		bHasFlag = false;
-		OnRep_HasFlag();
-		CarriedFlag = nullptr;
-	}
 }
 
 void ACaptureCharacter::SetHasFlag(bool bNewHasFlag)
@@ -133,22 +86,36 @@ void ACaptureCharacter::SetHasFlag(bool bNewHasFlag)
 	}
 }
 
-void ACaptureCharacter::ClearCarriedFlag()
-{
-	CarriedFlag = nullptr;
-}
+
 
 void ACaptureCharacter::Server_DropFlag_Implementation()
 {
-	UE_LOG(LogTemp, Warning, TEXT("Server_DropFlag called - HasFlag: %d"), bHasFlag);
-
 	if (!bHasFlag) return;
 
 	bHasFlag = false;
 	OnRep_HasFlag();
-	CarriedFlag = nullptr;
+}
 
-	UE_LOG(LogTemp, Warning, TEXT("Player flag state reset"));
+void ACaptureCharacter::TryScore()
+{
+	if (!HasAuthority() || !bHasFlag) return;
+
+	UE_LOG(LogTemp, Warning, TEXT("TryScore called - Resetting flag"));
+
+	for (TActorIterator<AFlagActor> It(GetWorld()); It; ++It)
+	{
+		It->ResetFlag();
+		break;
+	}
+
+	if (ACapturePlayerState* PS = GetPlayerState<ACapturePlayerState>())
+	{
+		if (ACaptureGameMode* GM = GetWorld()->GetAuthGameMode<ACaptureGameMode>())
+		{
+			GM->PlayerScored(PS);
+			SetHasFlag(false);
+		}
+	}
 }
 
 void ACaptureCharacter::ServerSetControlRotation_Implementation(FRotator NewRotation)
@@ -179,46 +146,7 @@ bool ACaptureCharacter::ServerSetControlRotation_Validate(FRotator NewRotation)
 	return true;
 }
 
-void ACaptureCharacter::TryScore()
-{
-	UE_LOG(LogTemp, Warning, TEXT("=== TRY SCORE START ==="));
-	UE_LOG(LogTemp, Warning, TEXT("HasAuthority: %d, HasFlag: %d"), HasAuthority(), bHasFlag);
-	UE_LOG(LogTemp, Warning, TEXT("CarriedFlag: %s"), *GetNameSafe(CarriedFlag));
 
-	if (!HasAuthority() || !bHasFlag || !CarriedFlag)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("TryScore failed - Conditions not met"));
-		return;
-	}
-
-	if (ACapturePlayerState* PS = GetPlayerState<ACapturePlayerState>())
-	{
-		if (ACaptureGameMode* GM = GetWorld()->GetAuthGameMode<ACaptureGameMode>())
-		{
-			UE_LOG(LogTemp, Warning, TEXT("Calling PlayerScored..."));
-			GM->PlayerScored(PS);
-
-			UE_LOG(LogTemp, Warning, TEXT("Resetting flag..."));
-			if (CarriedFlag)
-			{
-				UE_LOG(LogTemp, Warning, TEXT("Calling ResetFlag on: %s"), *CarriedFlag->GetName());
-				CarriedFlag->ResetFlag();
-				CarriedFlag = nullptr;
-			}
-			else
-			{
-				UE_LOG(LogTemp, Warning, TEXT("No CarriedFlag reference!"));
-			}
-
-			UE_LOG(LogTemp, Warning, TEXT("Resetting player flag state..."));
-			bHasFlag = false;
-			OnRep_HasFlag();
-
-			UE_LOG(LogTemp, Warning, TEXT("Player scored for team %d!"), (int32)PS->GetTeam());
-		}
-	}
-	UE_LOG(LogTemp, Warning, TEXT("=== TRY SCORE COMPLETE ==="));
-}
 
 void ACaptureCharacter::SetOutlineEnabled(bool bEnabled)
 {
@@ -253,19 +181,18 @@ void ACaptureCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+
 	if (IsLocallyControlled())
 	{
 		FRotator ControlRot = GetControlRotation();
 		ControlRot.Pitch = FMath::Clamp(ControlRot.Pitch, -89.0f, 89.0f);
 		ControlRot.Roll = 0.0f;
-
 		ServerSetControlRotation(ControlRot);
 	}
 	else
 	{
 		FRotator Current = GetActorRotation();
 		FRotator Target(0.f, ReplicatedControlRotation.Yaw, 0.f);
-
 		FRotator NewRotation = FMath::RInterpTo(Current, Target, DeltaTime, 10.f);
 		SetActorRotation(NewRotation);
 	}
@@ -336,12 +263,6 @@ void ACaptureCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Ou
 
 void ACaptureCharacter::OnRep_HasFlag()
 {
-	if (bHasFlag)
-	{
-	}
-	else
-	{
-	}
 }
 
 

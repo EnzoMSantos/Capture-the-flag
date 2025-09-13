@@ -15,7 +15,6 @@ void EmptyLinkFunctionForGeneratedCodeCaptureCharacter() {}
 // ********** Begin Cross Module References ********************************************************
 CAPTURETHEFLAG_API UClass* Z_Construct_UClass_ACaptureCharacter();
 CAPTURETHEFLAG_API UClass* Z_Construct_UClass_ACaptureCharacter_NoRegister();
-CAPTURETHEFLAG_API UClass* Z_Construct_UClass_AFlagActor_NoRegister();
 COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FLinearColor();
 COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FRotator();
 ENGINE_API UClass* Z_Construct_UClass_ACharacter();
@@ -24,66 +23,6 @@ ENHANCEDINPUT_API UClass* Z_Construct_UClass_UInputAction_NoRegister();
 ENHANCEDINPUT_API UClass* Z_Construct_UClass_UInputMappingContext_NoRegister();
 UPackage* Z_Construct_UPackage__Script_CaptureTheFlag();
 // ********** End Cross Module References **********************************************************
-
-// ********** Begin Class ACaptureCharacter Function ClearCarriedFlag ******************************
-struct Z_Construct_UFunction_ACaptureCharacter_ClearCarriedFlag_Statics
-{
-#if WITH_METADATA
-	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-		{ "Category", "Flag" },
-		{ "ModuleRelativePath", "Public/CaptureCharacter.h" },
-	};
-#endif // WITH_METADATA
-	static const UECodeGen_Private::FFunctionParams FuncParams;
-};
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ACaptureCharacter_ClearCarriedFlag_Statics::FuncParams = { { (UObject*(*)())Z_Construct_UClass_ACaptureCharacter, nullptr, "ClearCarriedFlag", nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ACaptureCharacter_ClearCarriedFlag_Statics::Function_MetaDataParams), Z_Construct_UFunction_ACaptureCharacter_ClearCarriedFlag_Statics::Function_MetaDataParams)},  };
-UFunction* Z_Construct_UFunction_ACaptureCharacter_ClearCarriedFlag()
-{
-	static UFunction* ReturnFunction = nullptr;
-	if (!ReturnFunction)
-	{
-		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ACaptureCharacter_ClearCarriedFlag_Statics::FuncParams);
-	}
-	return ReturnFunction;
-}
-DEFINE_FUNCTION(ACaptureCharacter::execClearCarriedFlag)
-{
-	P_FINISH;
-	P_NATIVE_BEGIN;
-	P_THIS->ClearCarriedFlag();
-	P_NATIVE_END;
-}
-// ********** End Class ACaptureCharacter Function ClearCarriedFlag ********************************
-
-// ********** Begin Class ACaptureCharacter Function ForceDropFlag *********************************
-struct Z_Construct_UFunction_ACaptureCharacter_ForceDropFlag_Statics
-{
-#if WITH_METADATA
-	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-		{ "Category", "Flag" },
-		{ "ModuleRelativePath", "Public/CaptureCharacter.h" },
-	};
-#endif // WITH_METADATA
-	static const UECodeGen_Private::FFunctionParams FuncParams;
-};
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ACaptureCharacter_ForceDropFlag_Statics::FuncParams = { { (UObject*(*)())Z_Construct_UClass_ACaptureCharacter, nullptr, "ForceDropFlag", nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ACaptureCharacter_ForceDropFlag_Statics::Function_MetaDataParams), Z_Construct_UFunction_ACaptureCharacter_ForceDropFlag_Statics::Function_MetaDataParams)},  };
-UFunction* Z_Construct_UFunction_ACaptureCharacter_ForceDropFlag()
-{
-	static UFunction* ReturnFunction = nullptr;
-	if (!ReturnFunction)
-	{
-		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ACaptureCharacter_ForceDropFlag_Statics::FuncParams);
-	}
-	return ReturnFunction;
-}
-DEFINE_FUNCTION(ACaptureCharacter::execForceDropFlag)
-{
-	P_FINISH;
-	P_NATIVE_BEGIN;
-	P_THIS->ForceDropFlag();
-	P_NATIVE_END;
-}
-// ********** End Class ACaptureCharacter Function ForceDropFlag ***********************************
 
 // ********** Begin Class ACaptureCharacter Function GetReplicatedControlRotation ******************
 struct Z_Construct_UFunction_ACaptureCharacter_GetReplicatedControlRotation_Statics
@@ -475,8 +414,6 @@ void ACaptureCharacter::StaticRegisterNativesACaptureCharacter()
 {
 	UClass* Class = ACaptureCharacter::StaticClass();
 	static const FNameNativePtrPair Funcs[] = {
-		{ "ClearCarriedFlag", &ACaptureCharacter::execClearCarriedFlag },
-		{ "ForceDropFlag", &ACaptureCharacter::execForceDropFlag },
 		{ "GetReplicatedControlRotation", &ACaptureCharacter::execGetReplicatedControlRotation },
 		{ "HasFlag", &ACaptureCharacter::execHasFlag },
 		{ "OnRep_HasFlag", &ACaptureCharacter::execOnRep_HasFlag },
@@ -560,9 +497,6 @@ struct Z_Construct_UClass_ACaptureCharacter_Statics
 		{ "Category", "Flag" },
 		{ "ModuleRelativePath", "Public/CaptureCharacter.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_CarriedFlag_MetaData[] = {
-		{ "ModuleRelativePath", "Public/CaptureCharacter.h" },
-	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_FirstPersonCameraComponent;
 	static const UECodeGen_Private::FStructPropertyParams NewProp_ReplicatedControlRotation;
@@ -572,12 +506,9 @@ struct Z_Construct_UClass_ACaptureCharacter_Statics
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_JumpAction;
 	static void NewProp_bHasFlag_SetBit(void* Obj);
 	static const UECodeGen_Private::FBoolPropertyParams NewProp_bHasFlag;
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_CarriedFlag;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
-		{ &Z_Construct_UFunction_ACaptureCharacter_ClearCarriedFlag, "ClearCarriedFlag" }, // 25085730
-		{ &Z_Construct_UFunction_ACaptureCharacter_ForceDropFlag, "ForceDropFlag" }, // 81500614
 		{ &Z_Construct_UFunction_ACaptureCharacter_GetReplicatedControlRotation, "GetReplicatedControlRotation" }, // 978726557
 		{ &Z_Construct_UFunction_ACaptureCharacter_HasFlag, "HasFlag" }, // 407710074
 		{ &Z_Construct_UFunction_ACaptureCharacter_OnRep_HasFlag, "OnRep_HasFlag" }, // 2032714823
@@ -605,7 +536,6 @@ void Z_Construct_UClass_ACaptureCharacter_Statics::NewProp_bHasFlag_SetBit(void*
 	((ACaptureCharacter*)Obj)->bHasFlag = 1;
 }
 const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_ACaptureCharacter_Statics::NewProp_bHasFlag = { "bHasFlag", "OnRep_HasFlag", (EPropertyFlags)0x0010000100000034, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(ACaptureCharacter), &Z_Construct_UClass_ACaptureCharacter_Statics::NewProp_bHasFlag_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_bHasFlag_MetaData), NewProp_bHasFlag_MetaData) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ACaptureCharacter_Statics::NewProp_CarriedFlag = { "CarriedFlag", nullptr, (EPropertyFlags)0x0020080000000000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ACaptureCharacter, CarriedFlag), Z_Construct_UClass_AFlagActor_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CarriedFlag_MetaData), NewProp_CarriedFlag_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ACaptureCharacter_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACaptureCharacter_Statics::NewProp_FirstPersonCameraComponent,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACaptureCharacter_Statics::NewProp_ReplicatedControlRotation,
@@ -614,7 +544,6 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ACaptureC
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACaptureCharacter_Statics::NewProp_LookAction,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACaptureCharacter_Statics::NewProp_JumpAction,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACaptureCharacter_Statics::NewProp_bHasFlag,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACaptureCharacter_Statics::NewProp_CarriedFlag,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_ACaptureCharacter_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_ACaptureCharacter_Statics::DependentSingletons[])() = {
@@ -664,10 +593,10 @@ ACaptureCharacter::~ACaptureCharacter() {}
 struct Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h__Script_CaptureTheFlag_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ACaptureCharacter, ACaptureCharacter::StaticClass, TEXT("ACaptureCharacter"), &Z_Registration_Info_UClass_ACaptureCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ACaptureCharacter), 3735764971U) },
+		{ Z_Construct_UClass_ACaptureCharacter, ACaptureCharacter::StaticClass, TEXT("ACaptureCharacter"), &Z_Registration_Info_UClass_ACaptureCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ACaptureCharacter), 1340405517U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h__Script_CaptureTheFlag_4020661711(TEXT("/Script/CaptureTheFlag"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h__Script_CaptureTheFlag_552498221(TEXT("/Script/CaptureTheFlag"),
 	Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h__Script_CaptureTheFlag_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h__Script_CaptureTheFlag_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

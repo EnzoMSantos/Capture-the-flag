@@ -92,7 +92,8 @@
             "d:\\git\\capture-the-flag\\capturetheflag\\source\\capturetheflag\\public\\capturegamestate.h",
             "d:\\ue_5.6\\engine\\source\\runtime\\engine\\classes\\gameframework\\gamestatebase.h",
             "d:\\ue_5.6\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\gamestatebase.generated.h",
-            "d:\\git\\capture-the-flag\\capturetheflag\\intermediate\\build\\win64\\unrealeditor\\inc\\capturetheflag\\uht\\capturegamestate.generated.h"
+            "d:\\git\\capture-the-flag\\capturetheflag\\intermediate\\build\\win64\\unrealeditor\\inc\\capturetheflag\\uht\\capturegamestate.generated.h",
+            "d:\\ue_5.6\\engine\\source\\runtime\\engine\\public\\engineutils.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []
