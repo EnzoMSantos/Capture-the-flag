@@ -3,11 +3,13 @@
 	{
 		"Module.CaptureTheFlag.cpp.obj": [
 			"CaptureCharacter.gen.cpp.obj",
+			"CaptureGameMode.gen.cpp.obj",
 			"CaptureTheFlagCameraManager.gen.cpp.obj",
 			"CaptureTheFlagCharacter.gen.cpp.obj",
 			"CaptureTheFlagGameMode.gen.cpp.obj",
 			"CaptureTheFlagPlayerController.gen.cpp.obj",
 			"EnvQueryContext_Target.gen.cpp.obj",
+			"FlagActor.gen.cpp.obj",
 			"HorrorCharacter.gen.cpp.obj",
 			"HorrorGameMode.gen.cpp.obj",
 			"HorrorPlayerController.gen.cpp.obj",
@@ -24,7 +26,7 @@
 			"ShooterUI.gen.cpp.obj",
 			"ShooterWeapon.gen.cpp.obj",
 			"ShooterWeaponHolder.gen.cpp.obj",
-			"PerModuleInline.gen.cpp.obj",
+			"TeamsEnum.gen.cpp.obj",
 			"CaptureTheFlag.cpp.obj",
 			"CaptureTheFlagCameraManager.cpp.obj",
 			"CaptureTheFlagCharacter.cpp.obj",
@@ -47,14 +49,15 @@
 			"ShooterProjectile.cpp.obj",
 			"ShooterWeapon.cpp.obj",
 			"ShooterWeaponHolder.cpp.obj",
-			"CaptureGameMode.gen.cpp.obj",
 			"CaptureGameState.gen.cpp.obj",
 			"CapturePlayerState.gen.cpp.obj",
 			"CaptureTheFlag.init.gen.cpp.obj",
+			"PerModuleInline.gen.cpp.obj",
 			"CaptureCharacter.cpp.obj",
 			"CaptureGameMode.cpp.obj",
 			"CaptureGameState.cpp.obj",
-			"CapturePlayerState.cpp.obj"
+			"CapturePlayerState.cpp.obj",
+			"FlagActor.cpp.obj"
 		]
 	}
 }

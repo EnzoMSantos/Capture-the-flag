@@ -27,7 +27,13 @@ private: \
 	friend CAPTURETHEFLAG_API UClass* Z_Construct_UClass_ACaptureCharacter_NoRegister(); \
 public: \
 	DECLARE_CLASS2(ACaptureCharacter, ACharacter, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/CaptureTheFlag"), Z_Construct_UClass_ACaptureCharacter_NoRegister) \
-	DECLARE_SERIALIZER(ACaptureCharacter)
+	DECLARE_SERIALIZER(ACaptureCharacter) \
+	enum class ENetFields_Private : uint16 \
+	{ \
+		NETFIELD_REP_START=(uint16)((int32)Super::ENetFields_Private::NETFIELD_REP_END + (int32)1), \
+		bHasFlag=NETFIELD_REP_START, \
+		NETFIELD_REP_END=bHasFlag	}; \
+	DECLARE_VALIDATE_GENERATED_REP_ENUMS(NO_API)
 
 
 #define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h_12_ENHANCED_CONSTRUCTORS \

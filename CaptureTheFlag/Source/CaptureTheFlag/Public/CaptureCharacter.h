@@ -12,18 +12,22 @@ class CAPTURETHEFLAG_API ACaptureCharacter : public ACharacter
 	GENERATED_BODY()
 
 public:
-	// Sets default values for this character's properties
 	ACaptureCharacter();
 
 protected:
-	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	UPROPERTY(Replicated, BlueprintReadOnly, Category="Flag")
+	bool bHasFlag;
+
 public:	
-	// Called every frame
+
+	void PickupFlag();
+	void DropFlag();
+	bool HasFlag() const { return bHasFlag; }
 	virtual void Tick(float DeltaTime) override;
 
-	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 };

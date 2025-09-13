@@ -14,4 +14,11 @@ class CAPTURETHEFLAG_API ACaptureGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
 	
+public:
+	ACaptureGameMode();
+
+	virtual void PostLogin(APlayerController* NewPlayer) override;
+
+	void PlayerScored(class ACapturePlayerState* ScoringPlayer);
+	void ResetGame();
 };

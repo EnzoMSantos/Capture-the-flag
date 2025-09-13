@@ -12,15 +12,18 @@ class CAPTURETHEFLAG_API AFlagActor : public AActor
 	GENERATED_BODY()
 	
 public:	
-	// Sets default values for this actor's properties
 	AFlagActor();
 
 protected:
-	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
+	UStaticMeshComponent* MeshComp;
+
+	FVector InitialLocation;
+
 public:	
-	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	void ResetFlag();
 };

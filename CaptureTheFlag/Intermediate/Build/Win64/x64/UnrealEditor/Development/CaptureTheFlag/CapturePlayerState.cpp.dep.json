@@ -1,0 +1,21 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\git\\capture-the-flag\\capturetheflag\\source\\capturetheflag\\private\\captureplayerstate.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\git\\capture-the-flag\\capturetheflag\\intermediate\\build\\win64\\x64\\capturetheflageditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.valexpapi.cpp20.h.pch",
+        "Includes": [
+            "d:\\git\\capture-the-flag\\capturetheflag\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\capturetheflag\\definitions.capturetheflag.h",
+            "d:\\git\\capture-the-flag\\capturetheflag\\source\\capturetheflag\\public\\captureplayerstate.h",
+            "d:\\ue_5.6\\engine\\source\\runtime\\engine\\classes\\gameframework\\playerstate.h",
+            "d:\\ue_5.6\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\playerstate.generated.h",
+            "d:\\git\\capture-the-flag\\capturetheflag\\source\\capturetheflag\\types\\teamsenum.h",
+            "d:\\git\\capture-the-flag\\capturetheflag\\intermediate\\build\\win64\\unrealeditor\\inc\\capturetheflag\\uht\\teamsenum.generated.h",
+            "d:\\git\\capture-the-flag\\capturetheflag\\intermediate\\build\\win64\\unrealeditor\\inc\\capturetheflag\\uht\\captureplayerstate.generated.h",
+            "d:\\ue_5.6\\engine\\source\\runtime\\engine\\public\\net\\unrealnetwork.h",
+            "d:\\ue_5.6\\engine\\source\\runtime\\net\\core\\public\\net\\core\\propertyconditions\\propertyconditions.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

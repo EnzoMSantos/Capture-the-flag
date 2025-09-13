@@ -2,4 +2,30 @@
 
 
 #include "CaptureGameState.h"
+#include "Net/UnrealNetwork.h"
+#include "FlagActor.h"
 
+ACaptureGameState::ACaptureGameState()
+{
+	RedScore = 0;
+	BlueScore = 0;
+}
+
+void ACaptureGameState::AddScore(ETeams Team)
+{
+	if (HasAuthority())
+	{
+		if (Team == ETeams::Red)
+			RedScore++;
+		else if (Team == ETeams::Blue)
+			BlueScore++;
+	}
+}
+
+void ACaptureGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(ACaptureGameState, RedScore);
+	DOREPLIFETIME(ACaptureGameState, BlueScore);
+}

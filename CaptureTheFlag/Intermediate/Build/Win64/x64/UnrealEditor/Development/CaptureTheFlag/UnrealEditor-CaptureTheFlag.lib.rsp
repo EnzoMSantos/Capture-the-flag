@@ -18,5 +18,7 @@
 "D:/Git/Capture-the-flag/CaptureTheFlag/Intermediate/Build/Win64/x64/UnrealEditor/Development/CaptureTheFlag/CaptureGameState.gen.cpp.obj"
 "D:/Git/Capture-the-flag/CaptureTheFlag/Intermediate/Build/Win64/x64/UnrealEditor/Development/CaptureTheFlag/CapturePlayerState.gen.cpp.obj"
 "D:/Git/Capture-the-flag/CaptureTheFlag/Intermediate/Build/Win64/x64/UnrealEditor/Development/CaptureTheFlag/CaptureTheFlag.init.gen.cpp.obj"
+"D:/Git/Capture-the-flag/CaptureTheFlag/Intermediate/Build/Win64/x64/UnrealEditor/Development/CaptureTheFlag/FlagActor.gen.cpp.obj"
+"D:/Git/Capture-the-flag/CaptureTheFlag/Intermediate/Build/Win64/x64/UnrealEditor/Development/CaptureTheFlag/TeamsEnum.gen.cpp.obj"
 "D:/Git/Capture-the-flag/CaptureTheFlag/Intermediate/Build/Win64/x64/UnrealEditor/Development/CaptureTheFlag/Default.rc2.res"
 /OUT:"D:/Git/Capture-the-flag/CaptureTheFlag/Intermediate/Build/Win64/x64/UnrealEditor/Development/CaptureTheFlag/UnrealEditor-CaptureTheFlag.lib"

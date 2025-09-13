@@ -98,7 +98,6 @@ UClass* Z_Construct_UClass_ACaptureGameMode()
 	}
 	return Z_Registration_Info_UClass_ACaptureGameMode.OuterSingleton;
 }
-ACaptureGameMode::ACaptureGameMode(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {}
 DEFINE_VTABLE_PTR_HELPER_CTOR(ACaptureGameMode);
 ACaptureGameMode::~ACaptureGameMode() {}
 // ********** End Class ACaptureGameMode ***********************************************************

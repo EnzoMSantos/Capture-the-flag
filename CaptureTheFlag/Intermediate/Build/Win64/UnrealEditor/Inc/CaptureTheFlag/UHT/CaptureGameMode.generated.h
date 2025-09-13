@@ -31,14 +31,12 @@ public: \
 
 
 #define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureGameMode_h_15_ENHANCED_CONSTRUCTORS \
-	/** Standard constructor, called after all reflected properties have been initialized */ \
-	NO_API ACaptureGameMode(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	/** Deleted move- and copy-constructors, should never be used */ \
 	ACaptureGameMode(ACaptureGameMode&&) = delete; \
 	ACaptureGameMode(const ACaptureGameMode&) = delete; \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, ACaptureGameMode); \
 	DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(ACaptureGameMode); \
-	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(ACaptureGameMode) \
+	DEFINE_DEFAULT_CONSTRUCTOR_CALL(ACaptureGameMode) \
 	NO_API virtual ~ACaptureGameMode();
 
 

@@ -2,26 +2,32 @@
 
 
 #include "FlagActor.h"
+#include "Components/StaticMeshComponent.h"
 
-// Sets default values
 AFlagActor::AFlagActor()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	MeshComp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MeshComp"));
+	RootComponent = MeshComp;
+	MeshComp->SetCollisionProfileName("OverlapAllDynamic");
 }
 
-// Called when the game starts or when spawned
 void AFlagActor::BeginPlay()
 {
 	Super::BeginPlay();
+	InitialLocation = GetActorLocation();
 	
 }
 
-// Called every frame
 void AFlagActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+}
+
+void AFlagActor::ResetFlag()
+{
+	SetActorLocation(InitialLocation);
 }
 

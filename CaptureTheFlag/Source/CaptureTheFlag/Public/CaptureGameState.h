@@ -4,7 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameStateBase.h"
+#include "Types/TeamsEnum.h"
 #include "CaptureGameState.generated.h"
+
 
 /**
  * 
@@ -13,5 +15,25 @@ UCLASS()
 class CAPTURETHEFLAG_API ACaptureGameState : public AGameStateBase
 {
 	GENERATED_BODY()
-	
+
+public:
+
+	ACaptureGameState();
+
+protected:
+
+	UPROPERTY(Replicated, BlueprintReadOnly)
+	int32 RedScore;
+
+	UPROPERTY(Replicated, BlueprintReadOnly)
+	int32 BlueScore;
+
+public:
+	void AddScore(ETeams Team);
+
+	int32 GetRedScore() const { return RedScore; }
+	int32 GetBlueScore() const { return BlueScore; }
+
+protected:
+	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 };

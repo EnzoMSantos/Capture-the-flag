@@ -2,33 +2,52 @@
 
 
 #include "CaptureCharacter.h"
+#include <Net/UnrealNetwork.h>
 
-// Sets default values
 ACaptureCharacter::ACaptureCharacter()
 {
- 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
 }
 
-// Called when the game starts or when spawned
 void ACaptureCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 	
 }
 
-// Called every frame
+void ACaptureCharacter::PickupFlag()
+{
+	if (HasAuthority())
+	{
+		bHasFlag = true;
+	}
+}
+
+void ACaptureCharacter::DropFlag()
+{
+	if (HasAuthority())
+	{
+		bHasFlag = false;
+	}
+}
+
 void ACaptureCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
 }
 
-// Called to bind functionality to input
 void ACaptureCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+}
+
+void ACaptureCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+	
+	DOREPLIFETIME(ACaptureCharacter, bHasFlag);
 }
 
