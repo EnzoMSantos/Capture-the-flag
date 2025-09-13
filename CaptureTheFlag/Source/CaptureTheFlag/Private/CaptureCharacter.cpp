@@ -104,21 +104,51 @@ void ACaptureCharacter::PickupFlag()
 	{
 		bHasFlag = true;
 		OnRep_HasFlag();
+
+		UE_LOG(LogTemp, Warning, TEXT("PickupFlag - bHasFlag: %d, CarriedFlag: %s"),
+			bHasFlag, *GetNameSafe(CarriedFlag));
 	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("PickupFlag called on client - waiting for replication"));
+	}
+}
+
+void ACaptureCharacter::ForceDropFlag()
+{
+	if (HasAuthority())
+	{
+		bHasFlag = false;
+		OnRep_HasFlag();
+		CarriedFlag = nullptr;
+	}
+}
+
+void ACaptureCharacter::SetHasFlag(bool bNewHasFlag)
+{
+	if (HasAuthority())
+	{
+		bHasFlag = bNewHasFlag;
+		OnRep_HasFlag();
+	}
+}
+
+void ACaptureCharacter::ClearCarriedFlag()
+{
+	CarriedFlag = nullptr;
 }
 
 void ACaptureCharacter::Server_DropFlag_Implementation()
 {
+	UE_LOG(LogTemp, Warning, TEXT("Server_DropFlag called - HasFlag: %d"), bHasFlag);
+
 	if (!bHasFlag) return;
 
 	bHasFlag = false;
 	OnRep_HasFlag();
+	CarriedFlag = nullptr;
 
-	if (CarriedFlag)
-	{
-		CarriedFlag->Server_DropFlag(GetActorLocation());
-		CarriedFlag = nullptr;
-	}
+	UE_LOG(LogTemp, Warning, TEXT("Player flag state reset"));
 }
 
 void ACaptureCharacter::ServerSetControlRotation_Implementation(FRotator NewRotation)
@@ -151,24 +181,43 @@ bool ACaptureCharacter::ServerSetControlRotation_Validate(FRotator NewRotation)
 
 void ACaptureCharacter::TryScore()
 {
-	if (!HasAuthority() || !bHasFlag) return;
+	UE_LOG(LogTemp, Warning, TEXT("=== TRY SCORE START ==="));
+	UE_LOG(LogTemp, Warning, TEXT("HasAuthority: %d, HasFlag: %d"), HasAuthority(), bHasFlag);
+	UE_LOG(LogTemp, Warning, TEXT("CarriedFlag: %s"), *GetNameSafe(CarriedFlag));
+
+	if (!HasAuthority() || !bHasFlag || !CarriedFlag)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("TryScore failed - Conditions not met"));
+		return;
+	}
 
 	if (ACapturePlayerState* PS = GetPlayerState<ACapturePlayerState>())
 	{
 		if (ACaptureGameMode* GM = GetWorld()->GetAuthGameMode<ACaptureGameMode>())
 		{
+			UE_LOG(LogTemp, Warning, TEXT("Calling PlayerScored..."));
 			GM->PlayerScored(PS);
-			bHasFlag = false;
-			OnRep_HasFlag();
 
+			UE_LOG(LogTemp, Warning, TEXT("Resetting flag..."));
 			if (CarriedFlag)
 			{
+				UE_LOG(LogTemp, Warning, TEXT("Calling ResetFlag on: %s"), *CarriedFlag->GetName());
 				CarriedFlag->ResetFlag();
 				CarriedFlag = nullptr;
 			}
+			else
+			{
+				UE_LOG(LogTemp, Warning, TEXT("No CarriedFlag reference!"));
+			}
+
+			UE_LOG(LogTemp, Warning, TEXT("Resetting player flag state..."));
+			bHasFlag = false;
+			OnRep_HasFlag();
+
 			UE_LOG(LogTemp, Warning, TEXT("Player scored for team %d!"), (int32)PS->GetTeam());
 		}
 	}
+	UE_LOG(LogTemp, Warning, TEXT("=== TRY SCORE COMPLETE ==="));
 }
 
 void ACaptureCharacter::SetOutlineEnabled(bool bEnabled)

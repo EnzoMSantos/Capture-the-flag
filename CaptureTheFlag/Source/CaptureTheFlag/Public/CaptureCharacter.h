@@ -67,6 +67,15 @@ public:
 	UFUNCTION(Server, Reliable, WithValidation)
 	void ServerSetControlRotation(FRotator NewRotation);
 
+	UFUNCTION(BlueprintCallable, Category = "Flag")
+	void ForceDropFlag();
+
+	UFUNCTION(BlueprintCallable, Category = "Flag")
+	void SetHasFlag(bool bNewHasFlag);
+
+	UFUNCTION(BlueprintCallable, Category = "Flag")
+	void ClearCarriedFlag();
+
 	UFUNCTION(BlueprintCallable)
 	FRotator GetReplicatedControlRotation() const { return ReplicatedControlRotation; }
 

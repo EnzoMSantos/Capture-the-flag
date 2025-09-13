@@ -28,6 +28,9 @@ struct FLinearColor;
 	DECLARE_FUNCTION(execSetOutlineEnabled); \
 	DECLARE_FUNCTION(execTryScore); \
 	DECLARE_FUNCTION(execGetReplicatedControlRotation); \
+	DECLARE_FUNCTION(execClearCarriedFlag); \
+	DECLARE_FUNCTION(execSetHasFlag); \
+	DECLARE_FUNCTION(execForceDropFlag); \
 	DECLARE_FUNCTION(execServerSetControlRotation); \
 	DECLARE_FUNCTION(execServer_DropFlag); \
 	DECLARE_FUNCTION(execHasFlag);

@@ -2,8 +2,9 @@
 	"RemapUnityFiles": 
 	{
 		"Module.CaptureTheFlag.cpp.obj": [
-			"CaptureCharacter.gen.cpp.obj",
+			"BP_BaseZone.gen.cpp.obj",
 			"CaptureGameMode.gen.cpp.obj",
+			"CaptureGameState.gen.cpp.obj",
 			"CapturePlayerState.gen.cpp.obj",
 			"CaptureTheFlagCameraManager.gen.cpp.obj",
 			"CaptureTheFlagCharacter.gen.cpp.obj",
@@ -34,7 +35,9 @@
 			"CaptureTheFlagCharacter.cpp.obj",
 			"CaptureTheFlagGameMode.cpp.obj",
 			"CaptureTheFlagPlayerController.cpp.obj",
-			"FlagActor.cpp.obj",
+			"CaptureGameMode.cpp.obj",
+			"CaptureGameState.cpp.obj",
+			"CapturePlayerState.cpp.obj",
 			"HorrorCharacter.cpp.obj",
 			"HorrorGameMode.cpp.obj",
 			"HorrorPlayerController.cpp.obj",
@@ -52,14 +55,11 @@
 			"ShooterProjectile.cpp.obj",
 			"ShooterWeapon.cpp.obj",
 			"ShooterWeaponHolder.cpp.obj",
-			"BP_BaseZone.gen.cpp.obj",
-			"CaptureGameState.gen.cpp.obj",
+			"CaptureCharacter.gen.cpp.obj",
 			"CaptureTheFlag.init.gen.cpp.obj",
 			"BP_BaseZone.cpp.obj",
 			"CaptureCharacter.cpp.obj",
-			"CaptureGameMode.cpp.obj",
-			"CaptureGameState.cpp.obj",
-			"CapturePlayerState.cpp.obj"
+			"FlagActor.cpp.obj"
 		]
 	}
 }

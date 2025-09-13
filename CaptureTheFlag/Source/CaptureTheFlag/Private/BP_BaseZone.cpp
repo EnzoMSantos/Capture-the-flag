@@ -29,18 +29,29 @@ void ABP_BaseZone::BeginPlay()
 
 void ABP_BaseZone::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	if (!HasAuthority()) return;
+    if (!HasAuthority()) return;
 
-	ACaptureCharacter* Character = Cast<ACaptureCharacter>(OtherActor);
-	if (Character && Character->HasFlag())
-	{
-		if (ACapturePlayerState* PS = Character->GetPlayerState<ACapturePlayerState>())
-		{
-			if (PS->GetTeam() == Team)
-			{
-				Character->TryScore();
-			}
-		}
-	}
+    UE_LOG(LogTemp, Warning, TEXT("BaseZone overlap with: %s"), *OtherActor->GetName());
+
+    ACaptureCharacter* Character = Cast<ACaptureCharacter>(OtherActor);
+    if (Character)
+    {
+        UE_LOG(LogTemp, Warning, TEXT("Character has flag: %d"), Character->HasFlag());
+
+        if (Character->HasFlag())
+        {
+            if (ACapturePlayerState* PS = Character->GetPlayerState<ACapturePlayerState>())
+            {
+                UE_LOG(LogTemp, Warning, TEXT("Character team: %d, Base team: %d"),
+                    (int32)PS->GetTeam(), (int32)Team);
+
+                if (PS->GetTeam() == Team)
+                {
+                    UE_LOG(LogTemp, Warning, TEXT("TRYING TO SCORE!"));
+                    Character->TryScore();
+                }
+            }
+        }
+    }
 }
 
