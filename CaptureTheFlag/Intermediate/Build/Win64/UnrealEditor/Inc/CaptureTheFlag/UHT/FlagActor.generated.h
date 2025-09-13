@@ -16,10 +16,27 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
+class AActor;
+class ACaptureCharacter;
+class UPrimitiveComponent;
+struct FHitResult;
+
 // ********** Begin Class AFlagActor ***************************************************************
+#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_FlagActor_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
+	virtual void Server_ResetFlag_Implementation(); \
+	virtual void Server_DropFlag_Implementation(FVector DropLocation); \
+	virtual void Server_PickupFlag_Implementation(ACaptureCharacter* NewCarrier); \
+	DECLARE_FUNCTION(execOnRep_Carrier); \
+	DECLARE_FUNCTION(execOnOverlapBegin); \
+	DECLARE_FUNCTION(execServer_ResetFlag); \
+	DECLARE_FUNCTION(execServer_DropFlag); \
+	DECLARE_FUNCTION(execServer_PickupFlag);
+
+
+#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_FlagActor_h_14_CALLBACK_WRAPPERS
 CAPTURETHEFLAG_API UClass* Z_Construct_UClass_AFlagActor_NoRegister();
 
-#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_FlagActor_h_12_INCLASS_NO_PURE_DECLS \
+#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_FlagActor_h_14_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAFlagActor(); \
 	friend struct Z_Construct_UClass_AFlagActor_Statics; \
@@ -27,10 +44,16 @@ private: \
 	friend CAPTURETHEFLAG_API UClass* Z_Construct_UClass_AFlagActor_NoRegister(); \
 public: \
 	DECLARE_CLASS2(AFlagActor, AActor, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/CaptureTheFlag"), Z_Construct_UClass_AFlagActor_NoRegister) \
-	DECLARE_SERIALIZER(AFlagActor)
+	DECLARE_SERIALIZER(AFlagActor) \
+	enum class ENetFields_Private : uint16 \
+	{ \
+		NETFIELD_REP_START=(uint16)((int32)Super::ENetFields_Private::NETFIELD_REP_END + (int32)1), \
+		Carrier=NETFIELD_REP_START, \
+		NETFIELD_REP_END=Carrier	}; \
+	DECLARE_VALIDATE_GENERATED_REP_ENUMS(NO_API)
 
 
-#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_FlagActor_h_12_ENHANCED_CONSTRUCTORS \
+#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_FlagActor_h_14_ENHANCED_CONSTRUCTORS \
 	/** Deleted move- and copy-constructors, should never be used */ \
 	AFlagActor(AFlagActor&&) = delete; \
 	AFlagActor(const AFlagActor&) = delete; \
@@ -40,12 +63,14 @@ public: \
 	NO_API virtual ~AFlagActor();
 
 
-#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_FlagActor_h_9_PROLOG
-#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_FlagActor_h_12_GENERATED_BODY \
+#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_FlagActor_h_11_PROLOG
+#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_FlagActor_h_14_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_FlagActor_h_12_INCLASS_NO_PURE_DECLS \
-	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_FlagActor_h_12_ENHANCED_CONSTRUCTORS \
+	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_FlagActor_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_FlagActor_h_14_CALLBACK_WRAPPERS \
+	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_FlagActor_h_14_INCLASS_NO_PURE_DECLS \
+	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_FlagActor_h_14_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

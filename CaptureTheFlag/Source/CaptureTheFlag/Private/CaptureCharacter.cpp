@@ -12,6 +12,9 @@
 #include "InputActionValue.h" 
 #include "InputMappingContext.h"
 #include "InputAction.h"
+#include "FlagActor.h"
+#include "CapturePlayerState.h"
+#include "CaptureGameMode.h"
 
 
 ACaptureCharacter::ACaptureCharacter()
@@ -28,12 +31,23 @@ ACaptureCharacter::ACaptureCharacter()
 	FirstPersonCameraComponent->bUsePawnControlRotation = true;
 
 	GetMesh()->SetupAttachment(GetCapsuleComponent());
-	GetMesh()->SetRelativeLocation(FVector(0.f, 0.f, -90.f));
-	GetMesh()->SetRelativeRotation(FRotator(0.f, -90.f, 0.f));
+	GetMesh()->SetRelativeLocation(FVector(0.f, 0.f, 0.f));
+	GetMesh()->SetRelativeRotation(FRotator(0.f, 0.f, 0.f));
+	GetMesh()->bUseAttachParentBound = true;
+	GetMesh()->bReceivesDecals = false;
+	GetMesh()->SetCollisionObjectType(ECC_Pawn);
+	GetMesh()->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+	GetMesh()->SetCollisionResponseToAllChannels(ECR_Block);
+	GetMesh()->SetCollisionResponseToChannel(ECC_Camera, ECR_Ignore);
+	GetMesh()->SetCollisionResponseToChannel(ECC_Visibility, ECR_Ignore);
+	GetMesh()->SetUsingAbsoluteRotation(false);
 	GetMesh()->SetOnlyOwnerSee(false);
 	GetMesh()->SetOwnerNoSee(true);
 	GetMesh()->bCastDynamicShadow = false;
 	GetMesh()->CastShadow = false;
+	GetCharacterMovement()->bOrientRotationToMovement = false;
+	GetCharacterMovement()->bUseControllerDesiredRotation = true;
+	GetCharacterMovement()->RotationRate = FRotator(0.0f, 500.0f, 0.0f);
 
 	//Moviment Config
 	GetCharacterMovement()->JumpZVelocity = 600.f;
@@ -43,8 +57,8 @@ ACaptureCharacter::ACaptureCharacter()
 	bReplicates = true;
 	bHasFlag = false;
 
-	bUseControllerRotationPitch = true;
 	bUseControllerRotationYaw = true;
+	bUseControllerRotationPitch = false;
 	bUseControllerRotationRoll = false;
 }
 
@@ -80,20 +94,56 @@ void ACaptureCharacter::PickupFlag()
 	if (HasAuthority())
 	{
 		bHasFlag = true;
+		OnRep_HasFlag();
 	}
 }
 
-void ACaptureCharacter::DropFlag()
+void ACaptureCharacter::Server_DropFlag_Implementation()
 {
-	if (HasAuthority())
+	if (!bHasFlag) return;
+
+	bHasFlag = false;
+	OnRep_HasFlag();
+
+	if (CarriedFlag)
 	{
-		bHasFlag = false;
+		CarriedFlag->Server_DropFlag(GetActorLocation());
+		CarriedFlag = nullptr;
+	}
+}
+
+void ACaptureCharacter::TryScore()
+{
+	if (!HasAuthority() || !bHasFlag) return;
+
+	if (ACapturePlayerState* PS = GetPlayerState<ACapturePlayerState>())
+	{
+		if (ACaptureGameMode* GM = GetWorld()->GetAuthGameMode<ACaptureGameMode>())
+		{
+			GM->PlayerScored(PS);
+			bHasFlag = false;
+			OnRep_HasFlag();
+
+			if (CarriedFlag)
+			{
+				CarriedFlag->ResetFlag();
+				CarriedFlag = nullptr;
+			}
+		}
 	}
 }
 
 void ACaptureCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	if (!IsLocallyControlled())
+	{
+		FRotator NewRotation = GetActorRotation();
+		NewRotation.Pitch = 0;
+		NewRotation.Roll = 0;
+		GetMesh()->SetWorldRotation(NewRotation);
+	}
 
 }
 
@@ -156,4 +206,15 @@ void ACaptureCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Ou
 	
 	DOREPLIFETIME(ACaptureCharacter, bHasFlag);
 }
+
+void ACaptureCharacter::OnRep_HasFlag()
+{
+	if (bHasFlag)
+	{
+	}
+	else
+	{
+	}
+}
+
 

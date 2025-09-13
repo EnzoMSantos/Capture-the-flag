@@ -14,6 +14,7 @@ void EmptyLinkFunctionForGeneratedCodeCaptureCharacter() {}
 // ********** Begin Cross Module References ********************************************************
 CAPTURETHEFLAG_API UClass* Z_Construct_UClass_ACaptureCharacter();
 CAPTURETHEFLAG_API UClass* Z_Construct_UClass_ACaptureCharacter_NoRegister();
+CAPTURETHEFLAG_API UClass* Z_Construct_UClass_AFlagActor_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_ACharacter();
 ENGINE_API UClass* Z_Construct_UClass_UCameraComponent_NoRegister();
 ENHANCEDINPUT_API UClass* Z_Construct_UClass_UInputAction_NoRegister();
@@ -21,9 +22,158 @@ ENHANCEDINPUT_API UClass* Z_Construct_UClass_UInputMappingContext_NoRegister();
 UPackage* Z_Construct_UPackage__Script_CaptureTheFlag();
 // ********** End Cross Module References **********************************************************
 
+// ********** Begin Class ACaptureCharacter Function HasFlag ***************************************
+struct Z_Construct_UFunction_ACaptureCharacter_HasFlag_Statics
+{
+	struct CaptureCharacter_eventHasFlag_Parms
+	{
+		bool ReturnValue;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "Category", "Flag" },
+		{ "ModuleRelativePath", "Public/CaptureCharacter.h" },
+	};
+#endif // WITH_METADATA
+	static void NewProp_ReturnValue_SetBit(void* Obj);
+	static const UECodeGen_Private::FBoolPropertyParams NewProp_ReturnValue;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+void Z_Construct_UFunction_ACaptureCharacter_HasFlag_Statics::NewProp_ReturnValue_SetBit(void* Obj)
+{
+	((CaptureCharacter_eventHasFlag_Parms*)Obj)->ReturnValue = 1;
+}
+const UECodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_ACaptureCharacter_HasFlag_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(CaptureCharacter_eventHasFlag_Parms), &Z_Construct_UFunction_ACaptureCharacter_HasFlag_Statics::NewProp_ReturnValue_SetBit, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ACaptureCharacter_HasFlag_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ACaptureCharacter_HasFlag_Statics::NewProp_ReturnValue,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_ACaptureCharacter_HasFlag_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ACaptureCharacter_HasFlag_Statics::FuncParams = { { (UObject*(*)())Z_Construct_UClass_ACaptureCharacter, nullptr, "HasFlag", Z_Construct_UFunction_ACaptureCharacter_HasFlag_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_ACaptureCharacter_HasFlag_Statics::PropPointers), sizeof(Z_Construct_UFunction_ACaptureCharacter_HasFlag_Statics::CaptureCharacter_eventHasFlag_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ACaptureCharacter_HasFlag_Statics::Function_MetaDataParams), Z_Construct_UFunction_ACaptureCharacter_HasFlag_Statics::Function_MetaDataParams)},  };
+static_assert(sizeof(Z_Construct_UFunction_ACaptureCharacter_HasFlag_Statics::CaptureCharacter_eventHasFlag_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_ACaptureCharacter_HasFlag()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ACaptureCharacter_HasFlag_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(ACaptureCharacter::execHasFlag)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	*(bool*)Z_Param__Result=P_THIS->HasFlag();
+	P_NATIVE_END;
+}
+// ********** End Class ACaptureCharacter Function HasFlag *****************************************
+
+// ********** Begin Class ACaptureCharacter Function OnRep_HasFlag *********************************
+struct Z_Construct_UFunction_ACaptureCharacter_OnRep_HasFlag_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/CaptureCharacter.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ACaptureCharacter_OnRep_HasFlag_Statics::FuncParams = { { (UObject*(*)())Z_Construct_UClass_ACaptureCharacter, nullptr, "OnRep_HasFlag", nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00080401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ACaptureCharacter_OnRep_HasFlag_Statics::Function_MetaDataParams), Z_Construct_UFunction_ACaptureCharacter_OnRep_HasFlag_Statics::Function_MetaDataParams)},  };
+UFunction* Z_Construct_UFunction_ACaptureCharacter_OnRep_HasFlag()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ACaptureCharacter_OnRep_HasFlag_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(ACaptureCharacter::execOnRep_HasFlag)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->OnRep_HasFlag();
+	P_NATIVE_END;
+}
+// ********** End Class ACaptureCharacter Function OnRep_HasFlag ***********************************
+
+// ********** Begin Class ACaptureCharacter Function Server_DropFlag *******************************
+static FName NAME_ACaptureCharacter_Server_DropFlag = FName(TEXT("Server_DropFlag"));
+void ACaptureCharacter::Server_DropFlag()
+{
+	UFunction* Func = FindFunctionChecked(NAME_ACaptureCharacter_Server_DropFlag);
+	ProcessEvent(Func,NULL);
+}
+struct Z_Construct_UFunction_ACaptureCharacter_Server_DropFlag_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/CaptureCharacter.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ACaptureCharacter_Server_DropFlag_Statics::FuncParams = { { (UObject*(*)())Z_Construct_UClass_ACaptureCharacter, nullptr, "Server_DropFlag", nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00220CC0, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ACaptureCharacter_Server_DropFlag_Statics::Function_MetaDataParams), Z_Construct_UFunction_ACaptureCharacter_Server_DropFlag_Statics::Function_MetaDataParams)},  };
+UFunction* Z_Construct_UFunction_ACaptureCharacter_Server_DropFlag()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ACaptureCharacter_Server_DropFlag_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(ACaptureCharacter::execServer_DropFlag)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->Server_DropFlag_Implementation();
+	P_NATIVE_END;
+}
+// ********** End Class ACaptureCharacter Function Server_DropFlag *********************************
+
+// ********** Begin Class ACaptureCharacter Function TryScore **************************************
+struct Z_Construct_UFunction_ACaptureCharacter_TryScore_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "Category", "Flag" },
+		{ "ModuleRelativePath", "Public/CaptureCharacter.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ACaptureCharacter_TryScore_Statics::FuncParams = { { (UObject*(*)())Z_Construct_UClass_ACaptureCharacter, nullptr, "TryScore", nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ACaptureCharacter_TryScore_Statics::Function_MetaDataParams), Z_Construct_UFunction_ACaptureCharacter_TryScore_Statics::Function_MetaDataParams)},  };
+UFunction* Z_Construct_UFunction_ACaptureCharacter_TryScore()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ACaptureCharacter_TryScore_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(ACaptureCharacter::execTryScore)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->TryScore();
+	P_NATIVE_END;
+}
+// ********** End Class ACaptureCharacter Function TryScore ****************************************
+
 // ********** Begin Class ACaptureCharacter ********************************************************
 void ACaptureCharacter::StaticRegisterNativesACaptureCharacter()
 {
+	UClass* Class = ACaptureCharacter::StaticClass();
+	static const FNameNativePtrPair Funcs[] = {
+		{ "HasFlag", &ACaptureCharacter::execHasFlag },
+		{ "OnRep_HasFlag", &ACaptureCharacter::execOnRep_HasFlag },
+		{ "Server_DropFlag", &ACaptureCharacter::execServer_DropFlag },
+		{ "TryScore", &ACaptureCharacter::execTryScore },
+	};
+	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 }
 FClassRegistrationInfo Z_Registration_Info_UClass_ACaptureCharacter;
 UClass* ACaptureCharacter::GetPrivateStaticClass()
@@ -93,6 +243,9 @@ struct Z_Construct_UClass_ACaptureCharacter_Statics
 		{ "Category", "Flag" },
 		{ "ModuleRelativePath", "Public/CaptureCharacter.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_CarriedFlag_MetaData[] = {
+		{ "ModuleRelativePath", "Public/CaptureCharacter.h" },
+	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_FirstPersonCameraComponent;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_DefaultMappingContext;
@@ -101,8 +254,16 @@ struct Z_Construct_UClass_ACaptureCharacter_Statics
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_JumpAction;
 	static void NewProp_bHasFlag_SetBit(void* Obj);
 	static const UECodeGen_Private::FBoolPropertyParams NewProp_bHasFlag;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_CarriedFlag;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
+	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
+		{ &Z_Construct_UFunction_ACaptureCharacter_HasFlag, "HasFlag" }, // 407710074
+		{ &Z_Construct_UFunction_ACaptureCharacter_OnRep_HasFlag, "OnRep_HasFlag" }, // 2032714823
+		{ &Z_Construct_UFunction_ACaptureCharacter_Server_DropFlag, "Server_DropFlag" }, // 987774577
+		{ &Z_Construct_UFunction_ACaptureCharacter_TryScore, "TryScore" }, // 1261385107
+	};
+	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<ACaptureCharacter>::IsAbstract,
 	};
@@ -117,7 +278,8 @@ void Z_Construct_UClass_ACaptureCharacter_Statics::NewProp_bHasFlag_SetBit(void*
 {
 	((ACaptureCharacter*)Obj)->bHasFlag = 1;
 }
-const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_ACaptureCharacter_Statics::NewProp_bHasFlag = { "bHasFlag", nullptr, (EPropertyFlags)0x0010000000000034, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(ACaptureCharacter), &Z_Construct_UClass_ACaptureCharacter_Statics::NewProp_bHasFlag_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_bHasFlag_MetaData), NewProp_bHasFlag_MetaData) };
+const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_ACaptureCharacter_Statics::NewProp_bHasFlag = { "bHasFlag", "OnRep_HasFlag", (EPropertyFlags)0x0010000100000034, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(ACaptureCharacter), &Z_Construct_UClass_ACaptureCharacter_Statics::NewProp_bHasFlag_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_bHasFlag_MetaData), NewProp_bHasFlag_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ACaptureCharacter_Statics::NewProp_CarriedFlag = { "CarriedFlag", nullptr, (EPropertyFlags)0x0020080000000000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ACaptureCharacter, CarriedFlag), Z_Construct_UClass_AFlagActor_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CarriedFlag_MetaData), NewProp_CarriedFlag_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ACaptureCharacter_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACaptureCharacter_Statics::NewProp_FirstPersonCameraComponent,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACaptureCharacter_Statics::NewProp_DefaultMappingContext,
@@ -125,6 +287,7 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ACaptureC
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACaptureCharacter_Statics::NewProp_LookAction,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACaptureCharacter_Statics::NewProp_JumpAction,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACaptureCharacter_Statics::NewProp_bHasFlag,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACaptureCharacter_Statics::NewProp_CarriedFlag,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_ACaptureCharacter_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_ACaptureCharacter_Statics::DependentSingletons[])() = {
@@ -137,11 +300,11 @@ const UECodeGen_Private::FClassParams Z_Construct_UClass_ACaptureCharacter_Stati
 	"Game",
 	&StaticCppClassTypeInfo,
 	DependentSingletons,
-	nullptr,
+	FuncInfo,
 	Z_Construct_UClass_ACaptureCharacter_Statics::PropPointers,
 	nullptr,
 	UE_ARRAY_COUNT(DependentSingletons),
-	0,
+	UE_ARRAY_COUNT(FuncInfo),
 	UE_ARRAY_COUNT(Z_Construct_UClass_ACaptureCharacter_Statics::PropPointers),
 	0,
 	0x009001A4u,
@@ -172,10 +335,10 @@ ACaptureCharacter::~ACaptureCharacter() {}
 struct Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h__Script_CaptureTheFlag_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ACaptureCharacter, ACaptureCharacter::StaticClass, TEXT("ACaptureCharacter"), &Z_Registration_Info_UClass_ACaptureCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ACaptureCharacter), 3636256427U) },
+		{ Z_Construct_UClass_ACaptureCharacter, ACaptureCharacter::StaticClass, TEXT("ACaptureCharacter"), &Z_Registration_Info_UClass_ACaptureCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ACaptureCharacter), 29314953U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h__Script_CaptureTheFlag_1440353549(TEXT("/Script/CaptureTheFlag"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h__Script_CaptureTheFlag_2732070624(TEXT("/Script/CaptureTheFlag"),
 	Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h__Script_CaptureTheFlag_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h__Script_CaptureTheFlag_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

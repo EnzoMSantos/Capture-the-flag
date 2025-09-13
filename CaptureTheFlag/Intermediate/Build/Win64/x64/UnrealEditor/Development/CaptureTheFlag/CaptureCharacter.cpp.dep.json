@@ -74,7 +74,21 @@
             "d:\\ue_5.6\\engine\\plugins\\enhancedinput\\source\\enhancedinput\\public\\inputmappingcontext.h",
             "d:\\ue_5.6\\engine\\plugins\\enhancedinput\\source\\enhancedinput\\public\\enhancedactionkeymapping.h",
             "d:\\ue_5.6\\engine\\plugins\\enhancedinput\\intermediate\\build\\win64\\unrealeditor\\inc\\enhancedinput\\uht\\enhancedactionkeymapping.generated.h",
-            "d:\\ue_5.6\\engine\\plugins\\enhancedinput\\intermediate\\build\\win64\\unrealeditor\\inc\\enhancedinput\\uht\\inputmappingcontext.generated.h"
+            "d:\\ue_5.6\\engine\\plugins\\enhancedinput\\intermediate\\build\\win64\\unrealeditor\\inc\\enhancedinput\\uht\\inputmappingcontext.generated.h",
+            "d:\\git\\capture-the-flag\\capturetheflag\\source\\capturetheflag\\public\\flagactor.h",
+            "d:\\git\\capture-the-flag\\capturetheflag\\intermediate\\build\\win64\\unrealeditor\\inc\\capturetheflag\\uht\\flagactor.generated.h",
+            "d:\\git\\capture-the-flag\\capturetheflag\\source\\capturetheflag\\public\\captureplayerstate.h",
+            "d:\\ue_5.6\\engine\\source\\runtime\\engine\\classes\\gameframework\\playerstate.h",
+            "d:\\ue_5.6\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\playerstate.generated.h",
+            "d:\\git\\capture-the-flag\\capturetheflag\\source\\capturetheflag\\types\\teamsenum.h",
+            "d:\\git\\capture-the-flag\\capturetheflag\\intermediate\\build\\win64\\unrealeditor\\inc\\capturetheflag\\uht\\teamsenum.generated.h",
+            "d:\\git\\capture-the-flag\\capturetheflag\\intermediate\\build\\win64\\unrealeditor\\inc\\capturetheflag\\uht\\captureplayerstate.generated.h",
+            "d:\\git\\capture-the-flag\\capturetheflag\\source\\capturetheflag\\public\\capturegamemode.h",
+            "d:\\ue_5.6\\engine\\source\\runtime\\engine\\classes\\gameframework\\gamemodebase.h",
+            "d:\\ue_5.6\\engine\\source\\runtime\\engine\\classes\\engine\\serverstatreplicator.h",
+            "d:\\ue_5.6\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\serverstatreplicator.generated.h",
+            "d:\\ue_5.6\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\gamemodebase.generated.h",
+            "d:\\git\\capture-the-flag\\capturetheflag\\intermediate\\build\\win64\\unrealeditor\\inc\\capturetheflag\\uht\\capturegamemode.generated.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

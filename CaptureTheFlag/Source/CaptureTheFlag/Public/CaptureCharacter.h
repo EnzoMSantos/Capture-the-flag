@@ -7,9 +7,10 @@
 class UInputMappingContext;
 class UInputAction;
 class UCameraComponent;
-class USkeletalMeshComponent;
 class UEnhancedInputLocalPlayerSubsystem;
 class UEnhancedInputComponent;
+class AFlagActor;
+
 
 UCLASS()
 class CAPTURETHEFLAG_API ACaptureCharacter : public ACharacter
@@ -49,12 +50,30 @@ public:
 	void StartJump();
 	void StopJump();
 
-	UPROPERTY(Replicated, BlueprintReadOnly, Category="Flag")
+	UPROPERTY(ReplicatedUsing = OnRep_HasFlag, BlueprintReadOnly, Category="Flag")
 	bool bHasFlag;
 
-	void PickupFlag();
-	void DropFlag();
+	UFUNCTION(BlueprintCallable, Category = "Flag")
 	bool HasFlag() const { return bHasFlag; }
 
+	void PickupFlag();
+
+	UFUNCTION(Server, Reliable)
+	void Server_DropFlag();
+
+	UFUNCTION(BlueprintCallable, Category = "Flag")
+	void TryScore();
+
+	void SetCarriedFlag(AFlagActor* Flag) { CarriedFlag = Flag; }
+	AFlagActor* GetCarriedFlag() const { return CarriedFlag; }
+
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+
+protected:
+
+	UFUNCTION()
+	void OnRep_HasFlag();
+
+	UPROPERTY()
+	AFlagActor* CarriedFlag;
 };
