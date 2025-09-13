@@ -19,7 +19,6 @@ public:
 
 	UPROPERTY(ReplicatedUsing = OnRep_Team, BlueprintReadOnly, Category = "Team")
 	ETeams Team;
-	
 
 	void SetTeam(ETeams NewTeam);
 	ETeams GetTeam() const { return Team; }
@@ -27,9 +26,17 @@ public:
 	UFUNCTION(BlueprintCallable)
 	FLinearColor GetTeamColor() const;
 
+
+	UFUNCTION(BlueprintCallable, Category = "Team")
+	void ApplyTeamMaterial();
+
 protected:
+
 	UFUNCTION()
 	void OnRep_Team();
+
+	void ApplyMaterialToCharacter(class ACaptureCharacter* Character);
+
 
 public:
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;

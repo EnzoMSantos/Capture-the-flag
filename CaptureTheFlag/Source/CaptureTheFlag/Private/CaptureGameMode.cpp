@@ -12,7 +12,6 @@ ACaptureGameMode::ACaptureGameMode()
 {
 	GameStateClass = ACaptureGameState::StaticClass();
 	PlayerStateClass = ACapturePlayerState::StaticClass();
-	//DefaultPawnClass = ACaptureCharacter::StaticClass();
 	
 	static ConstructorHelpers::FClassFinder<APawn> PlayerPawnBPClass
 	(TEXT("/Game/Blueprints/BP_CaptureCharacter"));
@@ -45,7 +44,16 @@ void ACaptureGameMode::PostLogin(APlayerController* NewPlayer)
 		if (PS && PS->GetTeam() == ETeams::None)
 		{
 			int32 NumPlayers = GameState->PlayerArray.Num();
-			PS->SetTeam(NumPlayers % 2 == 0 ? ETeams::Red : ETeams::Blue);
+			ETeams NewTeam = NumPlayers % 2 == 0 ? ETeams::Red : ETeams::Blue;
+			PS->SetTeam(NewTeam);
+
+			for (APlayerState* PlayerState : GameState->PlayerArray)
+			{
+				if (ACapturePlayerState* CapturePS = Cast<ACapturePlayerState>(PlayerState))
+				{
+					CapturePS->ApplyTeamMaterial();
+				}
+			}
 		}
 	}
 }

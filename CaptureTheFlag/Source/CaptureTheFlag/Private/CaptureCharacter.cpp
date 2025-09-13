@@ -45,7 +45,7 @@ ACaptureCharacter::ACaptureCharacter()
 	GetMesh()->SetOwnerNoSee(true);
 	GetMesh()->bCastDynamicShadow = false;
 	GetMesh()->CastShadow = false;
-	GetCharacterMovement()->bOrientRotationToMovement = false;
+	GetCharacterMovement()->bOrientRotationToMovement = true;
 	GetCharacterMovement()->bUseControllerDesiredRotation = true;
 	GetCharacterMovement()->RotationRate = FRotator(0.0f, 500.0f, 0.0f);
 
@@ -57,7 +57,7 @@ ACaptureCharacter::ACaptureCharacter()
 	bReplicates = true;
 	bHasFlag = false;
 
-	bUseControllerRotationYaw = true;
+	bUseControllerRotationYaw = false;
 	bUseControllerRotationPitch = false;
 	bUseControllerRotationRoll = false;
 }
@@ -68,16 +68,16 @@ void ACaptureCharacter::BeginPlay()
 	
 	if (IsLocallyControlled())
 	{
-		GetMesh()->SetVisibility(false);
-		GetMesh()->SetHiddenInGame(true);
+		GetMesh()->SetOwnerNoSee(true);
+		FirstPersonCameraComponent->SetActive(true);
 	}
 	else
 	{
-		GetMesh()->SetVisibility(true);
-		GetMesh()->SetHiddenInGame(false);
-	}	
+		GetMesh()->SetOwnerNoSee(false);
+		FirstPersonCameraComponent->SetActive(false);
+	}
 
-	//Setup Enhanced Input
+	// Setup Enhanced Input
 	if (APlayerController* PlayerController = Cast<APlayerController>(GetController()))
 	{
 		if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem
@@ -86,7 +86,16 @@ void ACaptureCharacter::BeginPlay()
 			Subsystem->AddMappingContext(DefaultMappingContext, 0);
 		}
 	}
-
+	
+	//Set Material
+	if (ACapturePlayerState* PS = GetPlayerState<ACapturePlayerState>())
+	{
+		FTimerHandle TimerHandle;
+		GetWorld()->GetTimerManager().SetTimer(TimerHandle, [PS]()
+			{
+				PS->ApplyTeamMaterial();
+			}, 0.5f, false);
+	}
 }
 
 void ACaptureCharacter::PickupFlag()
@@ -112,6 +121,34 @@ void ACaptureCharacter::Server_DropFlag_Implementation()
 	}
 }
 
+void ACaptureCharacter::ServerSetControlRotation_Implementation(FRotator NewRotation)
+{
+	ReplicatedControlRotation = NewRotation;
+
+	FRotator YawRotation(0.f, NewRotation.Yaw, 0.f);
+	SetActorRotation(YawRotation);
+}
+
+bool ACaptureCharacter::ServerSetControlRotation_Validate(FRotator NewRotation)
+{
+	if (NewRotation.ContainsNaN())
+	{
+		UE_LOG(LogTemp, Error, TEXT("Rotation contains NaN values"));
+		return false;
+	}
+
+	const bool bValid =
+		(NewRotation.Pitch >= -180.0f && NewRotation.Pitch <= 180.0f) &&
+		(NewRotation.Yaw >= -360.0f && NewRotation.Yaw <= 360.0f) &&
+		(NewRotation.Roll >= -180.0f && NewRotation.Roll <= 180.0f);
+
+	if (!bValid)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Rotation out of expected range: %s"), *NewRotation.ToString());
+	}
+	return true;
+}
+
 void ACaptureCharacter::TryScore()
 {
 	if (!HasAuthority() || !bHasFlag) return;
@@ -133,16 +170,54 @@ void ACaptureCharacter::TryScore()
 	}
 }
 
+void ACaptureCharacter::SetOutlineEnabled(bool bEnabled)
+{
+	if (GetMesh())
+	{
+		if (bEnabled)
+		{
+			if (ACapturePlayerState* PS = GetPlayerState<ACapturePlayerState>())
+			{
+				PS->ApplyTeamMaterial();
+			}
+		}
+		else
+		{
+			GetMesh()->SetOverlayMaterial(nullptr);
+		}
+	}
+}
+
+void ACaptureCharacter::UpdateOutlineColor(const FLinearColor& NewColor)
+{
+	if (GetMesh() && GetMesh()->GetOverlayMaterial())
+	{
+		if (UMaterialInstanceDynamic* DynamicMaterial = Cast<UMaterialInstanceDynamic>(GetMesh()->GetOverlayMaterial()))
+		{
+			DynamicMaterial->SetVectorParameterValue(FName("TeamColor"), NewColor);
+		}
+	}
+}
+
 void ACaptureCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if (!IsLocallyControlled())
+	if (IsLocallyControlled())
 	{
-		FRotator NewRotation = GetActorRotation();
-		NewRotation.Pitch = 0;
-		NewRotation.Roll = 0;
-		GetMesh()->SetWorldRotation(NewRotation);
+		FRotator ControlRot = GetControlRotation();
+		ControlRot.Pitch = FMath::Clamp(ControlRot.Pitch, -89.0f, 89.0f);
+		ControlRot.Roll = 0.0f;
+
+		ServerSetControlRotation(ControlRot);
+	}
+	else
+	{
+		FRotator Current = GetActorRotation();
+		FRotator Target(0.f, ReplicatedControlRotation.Yaw, 0.f);
+
+		FRotator NewRotation = FMath::RInterpTo(Current, Target, DeltaTime, 10.f);
+		SetActorRotation(NewRotation);
 	}
 
 }
@@ -205,6 +280,8 @@ void ACaptureCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Ou
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 	
 	DOREPLIFETIME(ACaptureCharacter, bHasFlag);
+	DOREPLIFETIME(ACaptureCharacter, ReplicatedControlRotation);
+
 }
 
 void ACaptureCharacter::OnRep_HasFlag()
@@ -216,5 +293,6 @@ void ACaptureCharacter::OnRep_HasFlag()
 	{
 	}
 }
+
 
 

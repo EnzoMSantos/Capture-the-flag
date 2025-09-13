@@ -26,6 +26,9 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Code|Camera")
 	class UCameraComponent* FirstPersonCameraComponent;
 
+	UPROPERTY(Replicated)
+	FRotator ReplicatedControlRotation;
+
 	// Enhanced Input System
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Code|Input")
 	UInputMappingContext* DefaultMappingContext;
@@ -61,8 +64,21 @@ public:
 	UFUNCTION(Server, Reliable)
 	void Server_DropFlag();
 
+	UFUNCTION(Server, Reliable, WithValidation)
+	void ServerSetControlRotation(FRotator NewRotation);
+
+	UFUNCTION(BlueprintCallable)
+	FRotator GetReplicatedControlRotation() const { return ReplicatedControlRotation; }
+
 	UFUNCTION(BlueprintCallable, Category = "Flag")
 	void TryScore();
+
+	//Outline
+	UFUNCTION(BlueprintCallable, Category = "Team")
+	void SetOutlineEnabled(bool bEnabled);
+
+	UFUNCTION(BlueprintCallable, Category = "Team")
+	void UpdateOutlineColor(const FLinearColor& NewColor);
 
 	void SetCarriedFlag(AFlagActor* Flag) { CarriedFlag = Flag; }
 	AFlagActor* GetCarriedFlag() const { return CarriedFlag; }
@@ -73,6 +89,7 @@ protected:
 
 	UFUNCTION()
 	void OnRep_HasFlag();
+
 
 	UPROPERTY()
 	AFlagActor* CarriedFlag;

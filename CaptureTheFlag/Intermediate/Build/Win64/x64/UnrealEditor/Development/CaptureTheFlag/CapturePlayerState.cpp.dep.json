@@ -13,7 +13,19 @@
             "d:\\git\\capture-the-flag\\capturetheflag\\intermediate\\build\\win64\\unrealeditor\\inc\\capturetheflag\\uht\\teamsenum.generated.h",
             "d:\\git\\capture-the-flag\\capturetheflag\\intermediate\\build\\win64\\unrealeditor\\inc\\capturetheflag\\uht\\captureplayerstate.generated.h",
             "d:\\ue_5.6\\engine\\source\\runtime\\engine\\public\\net\\unrealnetwork.h",
-            "d:\\ue_5.6\\engine\\source\\runtime\\net\\core\\public\\net\\core\\propertyconditions\\propertyconditions.h"
+            "d:\\ue_5.6\\engine\\source\\runtime\\net\\core\\public\\net\\core\\propertyconditions\\propertyconditions.h",
+            "d:\\git\\capture-the-flag\\capturetheflag\\source\\capturetheflag\\public\\capturecharacter.h",
+            "d:\\ue_5.6\\engine\\source\\runtime\\engine\\classes\\gameframework\\character.h",
+            "d:\\ue_5.6\\engine\\source\\runtime\\engine\\classes\\gameframework\\charactermovementreplication.h",
+            "d:\\ue_5.6\\engine\\source\\runtime\\net\\core\\public\\net\\core\\nettoken\\nettokenexportcontext.h",
+            "d:\\ue_5.6\\engine\\source\\runtime\\experimental\\iris\\core\\public\\iris\\serialization\\irisobjectreferencepackagemap.h",
+            "d:\\ue_5.6\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\iriscore\\uht\\irisobjectreferencepackagemap.generated.h",
+            "d:\\ue_5.6\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\charactermovementreplication.generated.h",
+            "d:\\ue_5.6\\engine\\source\\runtime\\engine\\classes\\gameframework\\rootmotionsource.h",
+            "d:\\ue_5.6\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\rootmotionsource.generated.h",
+            "d:\\ue_5.6\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\character.generated.h",
+            "d:\\git\\capture-the-flag\\capturetheflag\\intermediate\\build\\win64\\unrealeditor\\inc\\capturetheflag\\uht\\capturecharacter.generated.h",
+            "d:\\ue_5.6\\engine\\source\\runtime\\engine\\public\\engineutils.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

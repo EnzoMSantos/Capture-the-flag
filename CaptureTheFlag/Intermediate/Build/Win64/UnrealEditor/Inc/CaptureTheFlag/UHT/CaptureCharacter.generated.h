@@ -16,11 +16,19 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
+struct FLinearColor;
+
 // ********** Begin Class ACaptureCharacter ********************************************************
 #define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h_18_RPC_WRAPPERS_NO_PURE_DECLS \
+	virtual bool ServerSetControlRotation_Validate(FRotator ); \
+	virtual void ServerSetControlRotation_Implementation(FRotator NewRotation); \
 	virtual void Server_DropFlag_Implementation(); \
 	DECLARE_FUNCTION(execOnRep_HasFlag); \
+	DECLARE_FUNCTION(execUpdateOutlineColor); \
+	DECLARE_FUNCTION(execSetOutlineEnabled); \
 	DECLARE_FUNCTION(execTryScore); \
+	DECLARE_FUNCTION(execGetReplicatedControlRotation); \
+	DECLARE_FUNCTION(execServerSetControlRotation); \
 	DECLARE_FUNCTION(execServer_DropFlag); \
 	DECLARE_FUNCTION(execHasFlag);
 
@@ -40,7 +48,8 @@ public: \
 	enum class ENetFields_Private : uint16 \
 	{ \
 		NETFIELD_REP_START=(uint16)((int32)Super::ENetFields_Private::NETFIELD_REP_END + (int32)1), \
-		bHasFlag=NETFIELD_REP_START, \
+		ReplicatedControlRotation=NETFIELD_REP_START, \
+		bHasFlag, \
 		NETFIELD_REP_END=bHasFlag	}; \
 	DECLARE_VALIDATE_GENERATED_REP_ENUMS(NO_API)
 
