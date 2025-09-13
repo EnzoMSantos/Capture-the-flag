@@ -17,6 +17,11 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin Class ACaptureGameState ********************************************************
+#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureGameState_h_17_RPC_WRAPPERS_NO_PURE_DECLS \
+	DECLARE_FUNCTION(execGetBlueScore); \
+	DECLARE_FUNCTION(execGetRedScore);
+
+
 CAPTURETHEFLAG_API UClass* Z_Construct_UClass_ACaptureGameState_NoRegister();
 
 #define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureGameState_h_17_INCLASS_NO_PURE_DECLS \
@@ -51,6 +56,7 @@ public: \
 #define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureGameState_h_17_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
+	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureGameState_h_17_RPC_WRAPPERS_NO_PURE_DECLS \
 	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureGameState_h_17_INCLASS_NO_PURE_DECLS \
 	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureGameState_h_17_ENHANCED_CONSTRUCTORS \
 private: \

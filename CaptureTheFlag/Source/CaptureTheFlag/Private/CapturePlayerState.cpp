@@ -18,8 +18,19 @@ void ACapturePlayerState::SetTeam(ETeams NewTeam)
 	}
 }
 
+FLinearColor ACapturePlayerState::GetTeamColor() const
+{
+	switch (Team)
+	{
+	case ETeams::Red: return FLinearColor::Red;
+	case ETeams::Blue: return FLinearColor::Blue;
+	default: return FLinearColor::White;
+	}
+}
+
 void ACapturePlayerState::OnRep_Team()
 {
+	
 }
 
 void ACapturePlayerState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const

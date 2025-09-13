@@ -15,9 +15,51 @@ void EmptyLinkFunctionForGeneratedCodeCapturePlayerState() {}
 CAPTURETHEFLAG_API UClass* Z_Construct_UClass_ACapturePlayerState();
 CAPTURETHEFLAG_API UClass* Z_Construct_UClass_ACapturePlayerState_NoRegister();
 CAPTURETHEFLAG_API UEnum* Z_Construct_UEnum_CaptureTheFlag_ETeams();
+COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FLinearColor();
 ENGINE_API UClass* Z_Construct_UClass_APlayerState();
 UPackage* Z_Construct_UPackage__Script_CaptureTheFlag();
 // ********** End Cross Module References **********************************************************
+
+// ********** Begin Class ACapturePlayerState Function GetTeamColor ********************************
+struct Z_Construct_UFunction_ACapturePlayerState_GetTeamColor_Statics
+{
+	struct CapturePlayerState_eventGetTeamColor_Parms
+	{
+		FLinearColor ReturnValue;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/CapturePlayerState.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FStructPropertyParams NewProp_ReturnValue;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_ACapturePlayerState_GetTeamColor_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(CapturePlayerState_eventGetTeamColor_Parms, ReturnValue), Z_Construct_UScriptStruct_FLinearColor, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ACapturePlayerState_GetTeamColor_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ACapturePlayerState_GetTeamColor_Statics::NewProp_ReturnValue,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_ACapturePlayerState_GetTeamColor_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ACapturePlayerState_GetTeamColor_Statics::FuncParams = { { (UObject*(*)())Z_Construct_UClass_ACapturePlayerState, nullptr, "GetTeamColor", Z_Construct_UFunction_ACapturePlayerState_GetTeamColor_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_ACapturePlayerState_GetTeamColor_Statics::PropPointers), sizeof(Z_Construct_UFunction_ACapturePlayerState_GetTeamColor_Statics::CapturePlayerState_eventGetTeamColor_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54820401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ACapturePlayerState_GetTeamColor_Statics::Function_MetaDataParams), Z_Construct_UFunction_ACapturePlayerState_GetTeamColor_Statics::Function_MetaDataParams)},  };
+static_assert(sizeof(Z_Construct_UFunction_ACapturePlayerState_GetTeamColor_Statics::CapturePlayerState_eventGetTeamColor_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_ACapturePlayerState_GetTeamColor()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ACapturePlayerState_GetTeamColor_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(ACapturePlayerState::execGetTeamColor)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	*(FLinearColor*)Z_Param__Result=P_THIS->GetTeamColor();
+	P_NATIVE_END;
+}
+// ********** End Class ACapturePlayerState Function GetTeamColor **********************************
 
 // ********** Begin Class ACapturePlayerState Function OnRep_Team **********************************
 struct Z_Construct_UFunction_ACapturePlayerState_OnRep_Team_Statics
@@ -53,6 +95,7 @@ void ACapturePlayerState::StaticRegisterNativesACapturePlayerState()
 {
 	UClass* Class = ACapturePlayerState::StaticClass();
 	static const FNameNativePtrPair Funcs[] = {
+		{ "GetTeamColor", &ACapturePlayerState::execGetTeamColor },
 		{ "OnRep_Team", &ACapturePlayerState::execOnRep_Team },
 	};
 	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
@@ -105,6 +148,7 @@ struct Z_Construct_UClass_ACapturePlayerState_Statics
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
+		{ &Z_Construct_UFunction_ACapturePlayerState_GetTeamColor, "GetTeamColor" }, // 3666960077
 		{ &Z_Construct_UFunction_ACapturePlayerState_OnRep_Team, "OnRep_Team" }, // 3730540282
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
@@ -165,10 +209,10 @@ ACapturePlayerState::~ACapturePlayerState() {}
 struct Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CapturePlayerState_h__Script_CaptureTheFlag_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ACapturePlayerState, ACapturePlayerState::StaticClass, TEXT("ACapturePlayerState"), &Z_Registration_Info_UClass_ACapturePlayerState, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ACapturePlayerState), 4194467487U) },
+		{ Z_Construct_UClass_ACapturePlayerState, ACapturePlayerState::StaticClass, TEXT("ACapturePlayerState"), &Z_Registration_Info_UClass_ACapturePlayerState, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ACapturePlayerState), 3797962718U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CapturePlayerState_h__Script_CaptureTheFlag_2688501701(TEXT("/Script/CaptureTheFlag"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CapturePlayerState_h__Script_CaptureTheFlag_2625450088(TEXT("/Script/CaptureTheFlag"),
 	Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CapturePlayerState_h__Script_CaptureTheFlag_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CapturePlayerState_h__Script_CaptureTheFlag_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

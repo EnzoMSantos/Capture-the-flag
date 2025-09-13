@@ -21,4 +21,7 @@ public:
 
 	void PlayerScored(class ACapturePlayerState* ScoringPlayer);
 	void ResetGame();
+
+protected:
+	virtual void BeginPlay() override;
 };

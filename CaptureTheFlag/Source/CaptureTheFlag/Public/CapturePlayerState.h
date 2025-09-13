@@ -24,6 +24,9 @@ public:
 	void SetTeam(ETeams NewTeam);
 	ETeams GetTeam() const { return Team; }
 
+	UFUNCTION(BlueprintCallable)
+	FLinearColor GetTeamColor() const;
+
 protected:
 	UFUNCTION()
 	void OnRep_Team();

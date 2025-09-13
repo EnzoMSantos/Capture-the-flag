@@ -19,6 +19,18 @@ void ACaptureGameState::AddScore(ETeams Team)
 			RedScore++;
 		else if (Team == ETeams::Blue)
 			BlueScore++;
+
+		ForceNetUpdate();
+	}
+}
+
+void ACaptureGameState::ResetScores()
+{
+	if (HasAuthority())
+	{
+		RedScore = 0;
+		BlueScore = 0;
+		ForceNetUpdate();
 	}
 }
 

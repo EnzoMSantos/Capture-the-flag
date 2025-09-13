@@ -18,9 +18,97 @@ ENGINE_API UClass* Z_Construct_UClass_AGameStateBase();
 UPackage* Z_Construct_UPackage__Script_CaptureTheFlag();
 // ********** End Cross Module References **********************************************************
 
+// ********** Begin Class ACaptureGameState Function GetBlueScore **********************************
+struct Z_Construct_UFunction_ACaptureGameState_GetBlueScore_Statics
+{
+	struct CaptureGameState_eventGetBlueScore_Parms
+	{
+		int32 ReturnValue;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/CaptureGameState.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FIntPropertyParams NewProp_ReturnValue;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FIntPropertyParams Z_Construct_UFunction_ACaptureGameState_GetBlueScore_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(CaptureGameState_eventGetBlueScore_Parms, ReturnValue), METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ACaptureGameState_GetBlueScore_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ACaptureGameState_GetBlueScore_Statics::NewProp_ReturnValue,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_ACaptureGameState_GetBlueScore_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ACaptureGameState_GetBlueScore_Statics::FuncParams = { { (UObject*(*)())Z_Construct_UClass_ACaptureGameState, nullptr, "GetBlueScore", Z_Construct_UFunction_ACaptureGameState_GetBlueScore_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_ACaptureGameState_GetBlueScore_Statics::PropPointers), sizeof(Z_Construct_UFunction_ACaptureGameState_GetBlueScore_Statics::CaptureGameState_eventGetBlueScore_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ACaptureGameState_GetBlueScore_Statics::Function_MetaDataParams), Z_Construct_UFunction_ACaptureGameState_GetBlueScore_Statics::Function_MetaDataParams)},  };
+static_assert(sizeof(Z_Construct_UFunction_ACaptureGameState_GetBlueScore_Statics::CaptureGameState_eventGetBlueScore_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_ACaptureGameState_GetBlueScore()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ACaptureGameState_GetBlueScore_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(ACaptureGameState::execGetBlueScore)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	*(int32*)Z_Param__Result=P_THIS->GetBlueScore();
+	P_NATIVE_END;
+}
+// ********** End Class ACaptureGameState Function GetBlueScore ************************************
+
+// ********** Begin Class ACaptureGameState Function GetRedScore ***********************************
+struct Z_Construct_UFunction_ACaptureGameState_GetRedScore_Statics
+{
+	struct CaptureGameState_eventGetRedScore_Parms
+	{
+		int32 ReturnValue;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/CaptureGameState.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FIntPropertyParams NewProp_ReturnValue;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FIntPropertyParams Z_Construct_UFunction_ACaptureGameState_GetRedScore_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(CaptureGameState_eventGetRedScore_Parms, ReturnValue), METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ACaptureGameState_GetRedScore_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ACaptureGameState_GetRedScore_Statics::NewProp_ReturnValue,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_ACaptureGameState_GetRedScore_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ACaptureGameState_GetRedScore_Statics::FuncParams = { { (UObject*(*)())Z_Construct_UClass_ACaptureGameState, nullptr, "GetRedScore", Z_Construct_UFunction_ACaptureGameState_GetRedScore_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_ACaptureGameState_GetRedScore_Statics::PropPointers), sizeof(Z_Construct_UFunction_ACaptureGameState_GetRedScore_Statics::CaptureGameState_eventGetRedScore_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ACaptureGameState_GetRedScore_Statics::Function_MetaDataParams), Z_Construct_UFunction_ACaptureGameState_GetRedScore_Statics::Function_MetaDataParams)},  };
+static_assert(sizeof(Z_Construct_UFunction_ACaptureGameState_GetRedScore_Statics::CaptureGameState_eventGetRedScore_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_ACaptureGameState_GetRedScore()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ACaptureGameState_GetRedScore_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(ACaptureGameState::execGetRedScore)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	*(int32*)Z_Param__Result=P_THIS->GetRedScore();
+	P_NATIVE_END;
+}
+// ********** End Class ACaptureGameState Function GetRedScore *************************************
+
 // ********** Begin Class ACaptureGameState ********************************************************
 void ACaptureGameState::StaticRegisterNativesACaptureGameState()
 {
+	UClass* Class = ACaptureGameState::StaticClass();
+	static const FNameNativePtrPair Funcs[] = {
+		{ "GetBlueScore", &ACaptureGameState::execGetBlueScore },
+		{ "GetRedScore", &ACaptureGameState::execGetRedScore },
+	};
+	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 }
 FClassRegistrationInfo Z_Registration_Info_UClass_ACaptureGameState;
 UClass* ACaptureGameState::GetPrivateStaticClass()
@@ -76,6 +164,11 @@ struct Z_Construct_UClass_ACaptureGameState_Statics
 	static const UECodeGen_Private::FIntPropertyParams NewProp_BlueScore;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
+	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
+		{ &Z_Construct_UFunction_ACaptureGameState_GetBlueScore, "GetBlueScore" }, // 2151375290
+		{ &Z_Construct_UFunction_ACaptureGameState_GetRedScore, "GetRedScore" }, // 3550932732
+	};
+	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<ACaptureGameState>::IsAbstract,
 	};
@@ -98,11 +191,11 @@ const UECodeGen_Private::FClassParams Z_Construct_UClass_ACaptureGameState_Stati
 	"Game",
 	&StaticCppClassTypeInfo,
 	DependentSingletons,
-	nullptr,
+	FuncInfo,
 	Z_Construct_UClass_ACaptureGameState_Statics::PropPointers,
 	nullptr,
 	UE_ARRAY_COUNT(DependentSingletons),
-	0,
+	UE_ARRAY_COUNT(FuncInfo),
 	UE_ARRAY_COUNT(Z_Construct_UClass_ACaptureGameState_Statics::PropPointers),
 	0,
 	0x009003A4u,
@@ -135,10 +228,10 @@ ACaptureGameState::~ACaptureGameState() {}
 struct Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureGameState_h__Script_CaptureTheFlag_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ACaptureGameState, ACaptureGameState::StaticClass, TEXT("ACaptureGameState"), &Z_Registration_Info_UClass_ACaptureGameState, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ACaptureGameState), 2209968370U) },
+		{ Z_Construct_UClass_ACaptureGameState, ACaptureGameState::StaticClass, TEXT("ACaptureGameState"), &Z_Registration_Info_UClass_ACaptureGameState, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ACaptureGameState), 3489333175U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureGameState_h__Script_CaptureTheFlag_3091189821(TEXT("/Script/CaptureTheFlag"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureGameState_h__Script_CaptureTheFlag_1558796814(TEXT("/Script/CaptureTheFlag"),
 	Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureGameState_h__Script_CaptureTheFlag_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureGameState_h__Script_CaptureTheFlag_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

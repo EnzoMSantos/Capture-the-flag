@@ -30,8 +30,12 @@ protected:
 
 public:
 	void AddScore(ETeams Team);
+	void ResetScores();
 
+	UFUNCTION(BlueprintCallable)
 	int32 GetRedScore() const { return RedScore; }
+
+	UFUNCTION(BlueprintCallable)
 	int32 GetBlueScore() const { return BlueScore; }
 
 protected:

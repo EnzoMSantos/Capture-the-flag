@@ -16,9 +16,12 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
+struct FLinearColor;
+
 // ********** Begin Class ACapturePlayerState ******************************************************
 #define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CapturePlayerState_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
-	DECLARE_FUNCTION(execOnRep_Team);
+	DECLARE_FUNCTION(execOnRep_Team); \
+	DECLARE_FUNCTION(execGetTeamColor);
 
 
 CAPTURETHEFLAG_API UClass* Z_Construct_UClass_ACapturePlayerState_NoRegister();
