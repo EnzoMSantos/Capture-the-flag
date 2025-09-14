@@ -6,6 +6,7 @@
 #include "CaptureCharacter.h"
 #include "CapturePlayerState.h"
 #include "CaptureGameMode.h"
+#include "GameFramework/PlayerStart.h"
 
 ABP_BaseZone::ABP_BaseZone()
 {
@@ -24,7 +25,10 @@ void ABP_BaseZone::BeginPlay()
 	{
 		TriggerBox->OnComponentBeginOverlap.AddDynamic(this, &ABP_BaseZone::OnOverlapBegin);
 	}
-	
+
+	UE_LOG(LogTemp, Warning, TEXT("Base %s has %d spawn points"),
+		(GetTeam() == ETeams::Red) ? TEXT("RED") : TEXT("BLUE"),
+		TeamSpawnPoints.Num());
 }
 
 void ABP_BaseZone::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
@@ -37,12 +41,43 @@ void ABP_BaseZone::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AAct
 		{
 			if (ACapturePlayerState* PS = Character->GetPlayerState<ACapturePlayerState>())
 			{
-				if (PS->GetTeam() == Team)
+				if (PS->GetTeam() == GetTeam())
 				{
 					Character->TryScore();
 				}
 			}
 		}
 	}
+
+}
+
+APlayerStart* ABP_BaseZone::GetSpawnPointForPlayer(ACapturePlayerState* PlayerState)
+{
+	if (!PlayerState)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("PlayerState is null"));
+		return nullptr;
+	}
+
+	if (GetTeam() != PlayerState->GetTeam())
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Team mismatch: Base=%d, Player=%d"),
+			(int32)GetTeam(), (int32)PlayerState->GetTeam());
+		return nullptr;
+	}
+
+	if (TeamSpawnPoints.Num() == 0)
+	{
+		UE_LOG(LogTemp, Error, TEXT("No spawn points configured in base!"));
+		return nullptr;
+	}
+
+	int32 RandomIndex = FMath::RandRange(0, TeamSpawnPoints.Num() - 1);
+	APlayerStart* SpawnPoint = TeamSpawnPoints[RandomIndex];
+
+	UE_LOG(LogTemp, Warning, TEXT("Selected spawn point: %s"),
+		SpawnPoint ? *SpawnPoint->GetName() : TEXT("INVALID"));
+
+	return SpawnPoint;
 }
 

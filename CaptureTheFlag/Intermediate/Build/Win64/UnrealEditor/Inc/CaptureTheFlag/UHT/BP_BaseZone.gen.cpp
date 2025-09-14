@@ -15,14 +15,108 @@ void EmptyLinkFunctionForGeneratedCodeBP_BaseZone() {}
 // ********** Begin Cross Module References ********************************************************
 CAPTURETHEFLAG_API UClass* Z_Construct_UClass_ABP_BaseZone();
 CAPTURETHEFLAG_API UClass* Z_Construct_UClass_ABP_BaseZone_NoRegister();
+CAPTURETHEFLAG_API UClass* Z_Construct_UClass_ACapturePlayerState_NoRegister();
 CAPTURETHEFLAG_API UEnum* Z_Construct_UEnum_CaptureTheFlag_ETeams();
 ENGINE_API UClass* Z_Construct_UClass_AActor();
 ENGINE_API UClass* Z_Construct_UClass_AActor_NoRegister();
+ENGINE_API UClass* Z_Construct_UClass_APlayerStart_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_UBoxComponent_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_UPrimitiveComponent_NoRegister();
 ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FHitResult();
 UPackage* Z_Construct_UPackage__Script_CaptureTheFlag();
 // ********** End Cross Module References **********************************************************
+
+// ********** Begin Class ABP_BaseZone Function GetSpawnPointForPlayer *****************************
+struct Z_Construct_UFunction_ABP_BaseZone_GetSpawnPointForPlayer_Statics
+{
+	struct BP_BaseZone_eventGetSpawnPointForPlayer_Parms
+	{
+		ACapturePlayerState* PlayerState;
+		APlayerStart* ReturnValue;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "Category", "Spawn" },
+		{ "ModuleRelativePath", "Public/BP_BaseZone.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_PlayerState;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_ReturnValue;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_ABP_BaseZone_GetSpawnPointForPlayer_Statics::NewProp_PlayerState = { "PlayerState", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(BP_BaseZone_eventGetSpawnPointForPlayer_Parms, PlayerState), Z_Construct_UClass_ACapturePlayerState_NoRegister, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_ABP_BaseZone_GetSpawnPointForPlayer_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(BP_BaseZone_eventGetSpawnPointForPlayer_Parms, ReturnValue), Z_Construct_UClass_APlayerStart_NoRegister, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ABP_BaseZone_GetSpawnPointForPlayer_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ABP_BaseZone_GetSpawnPointForPlayer_Statics::NewProp_PlayerState,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ABP_BaseZone_GetSpawnPointForPlayer_Statics::NewProp_ReturnValue,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_ABP_BaseZone_GetSpawnPointForPlayer_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ABP_BaseZone_GetSpawnPointForPlayer_Statics::FuncParams = { { (UObject*(*)())Z_Construct_UClass_ABP_BaseZone, nullptr, "GetSpawnPointForPlayer", Z_Construct_UFunction_ABP_BaseZone_GetSpawnPointForPlayer_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_ABP_BaseZone_GetSpawnPointForPlayer_Statics::PropPointers), sizeof(Z_Construct_UFunction_ABP_BaseZone_GetSpawnPointForPlayer_Statics::BP_BaseZone_eventGetSpawnPointForPlayer_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ABP_BaseZone_GetSpawnPointForPlayer_Statics::Function_MetaDataParams), Z_Construct_UFunction_ABP_BaseZone_GetSpawnPointForPlayer_Statics::Function_MetaDataParams)},  };
+static_assert(sizeof(Z_Construct_UFunction_ABP_BaseZone_GetSpawnPointForPlayer_Statics::BP_BaseZone_eventGetSpawnPointForPlayer_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_ABP_BaseZone_GetSpawnPointForPlayer()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ABP_BaseZone_GetSpawnPointForPlayer_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(ABP_BaseZone::execGetSpawnPointForPlayer)
+{
+	P_GET_OBJECT(ACapturePlayerState,Z_Param_PlayerState);
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	*(APlayerStart**)Z_Param__Result=P_THIS->GetSpawnPointForPlayer(Z_Param_PlayerState);
+	P_NATIVE_END;
+}
+// ********** End Class ABP_BaseZone Function GetSpawnPointForPlayer *******************************
+
+// ********** Begin Class ABP_BaseZone Function GetTeam ********************************************
+struct Z_Construct_UFunction_ABP_BaseZone_GetTeam_Statics
+{
+	struct BP_BaseZone_eventGetTeam_Parms
+	{
+		ETeams ReturnValue;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "Category", "Team" },
+		{ "ModuleRelativePath", "Public/BP_BaseZone.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FBytePropertyParams NewProp_ReturnValue_Underlying;
+	static const UECodeGen_Private::FEnumPropertyParams NewProp_ReturnValue;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FBytePropertyParams Z_Construct_UFunction_ABP_BaseZone_GetTeam_Statics::NewProp_ReturnValue_Underlying = { "UnderlyingType", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, nullptr, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FEnumPropertyParams Z_Construct_UFunction_ABP_BaseZone_GetTeam_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(BP_BaseZone_eventGetTeam_Parms, ReturnValue), Z_Construct_UEnum_CaptureTheFlag_ETeams, METADATA_PARAMS(0, nullptr) }; // 2928491561
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ABP_BaseZone_GetTeam_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ABP_BaseZone_GetTeam_Statics::NewProp_ReturnValue_Underlying,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ABP_BaseZone_GetTeam_Statics::NewProp_ReturnValue,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_ABP_BaseZone_GetTeam_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ABP_BaseZone_GetTeam_Statics::FuncParams = { { (UObject*(*)())Z_Construct_UClass_ABP_BaseZone, nullptr, "GetTeam", Z_Construct_UFunction_ABP_BaseZone_GetTeam_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_ABP_BaseZone_GetTeam_Statics::PropPointers), sizeof(Z_Construct_UFunction_ABP_BaseZone_GetTeam_Statics::BP_BaseZone_eventGetTeam_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ABP_BaseZone_GetTeam_Statics::Function_MetaDataParams), Z_Construct_UFunction_ABP_BaseZone_GetTeam_Statics::Function_MetaDataParams)},  };
+static_assert(sizeof(Z_Construct_UFunction_ABP_BaseZone_GetTeam_Statics::BP_BaseZone_eventGetTeam_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_ABP_BaseZone_GetTeam()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ABP_BaseZone_GetTeam_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(ABP_BaseZone::execGetTeam)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	*(ETeams*)Z_Param__Result=P_THIS->GetTeam();
+	P_NATIVE_END;
+}
+// ********** End Class ABP_BaseZone Function GetTeam **********************************************
 
 // ********** Begin Class ABP_BaseZone Function OnOverlapBegin *************************************
 struct Z_Construct_UFunction_ABP_BaseZone_OnOverlapBegin_Statics
@@ -110,6 +204,8 @@ void ABP_BaseZone::StaticRegisterNativesABP_BaseZone()
 {
 	UClass* Class = ABP_BaseZone::StaticClass();
 	static const FNameNativePtrPair Funcs[] = {
+		{ "GetSpawnPointForPlayer", &ABP_BaseZone::execGetSpawnPointForPlayer },
+		{ "GetTeam", &ABP_BaseZone::execGetTeam },
 		{ "OnOverlapBegin", &ABP_BaseZone::execOnOverlapBegin },
 	};
 	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
@@ -159,13 +255,21 @@ struct Z_Construct_UClass_ABP_BaseZone_Statics
 		{ "Category", "Team" },
 		{ "ModuleRelativePath", "Public/BP_BaseZone.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_TeamSpawnPoints_MetaData[] = {
+		{ "Category", "Spawn" },
+		{ "ModuleRelativePath", "Public/BP_BaseZone.h" },
+	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_TriggerBox;
 	static const UECodeGen_Private::FBytePropertyParams NewProp_Team_Underlying;
 	static const UECodeGen_Private::FEnumPropertyParams NewProp_Team;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_TeamSpawnPoints_Inner;
+	static const UECodeGen_Private::FArrayPropertyParams NewProp_TeamSpawnPoints;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
+		{ &Z_Construct_UFunction_ABP_BaseZone_GetSpawnPointForPlayer, "GetSpawnPointForPlayer" }, // 270515299
+		{ &Z_Construct_UFunction_ABP_BaseZone_GetTeam, "GetTeam" }, // 2969299834
 		{ &Z_Construct_UFunction_ABP_BaseZone_OnOverlapBegin, "OnOverlapBegin" }, // 2164819665
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
@@ -177,10 +281,14 @@ struct Z_Construct_UClass_ABP_BaseZone_Statics
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ABP_BaseZone_Statics::NewProp_TriggerBox = { "TriggerBox", nullptr, (EPropertyFlags)0x00200800000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABP_BaseZone, TriggerBox), Z_Construct_UClass_UBoxComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_TriggerBox_MetaData), NewProp_TriggerBox_MetaData) };
 const UECodeGen_Private::FBytePropertyParams Z_Construct_UClass_ABP_BaseZone_Statics::NewProp_Team_Underlying = { "UnderlyingType", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, nullptr, METADATA_PARAMS(0, nullptr) };
 const UECodeGen_Private::FEnumPropertyParams Z_Construct_UClass_ABP_BaseZone_Statics::NewProp_Team = { "Team", nullptr, (EPropertyFlags)0x0020080000000015, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABP_BaseZone, Team), Z_Construct_UEnum_CaptureTheFlag_ETeams, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Team_MetaData), NewProp_Team_MetaData) }; // 2928491561
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ABP_BaseZone_Statics::NewProp_TeamSpawnPoints_Inner = { "TeamSpawnPoints", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UClass_APlayerStart_NoRegister, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_ABP_BaseZone_Statics::NewProp_TeamSpawnPoints = { "TeamSpawnPoints", nullptr, (EPropertyFlags)0x0020080000000015, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABP_BaseZone, TeamSpawnPoints), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_TeamSpawnPoints_MetaData), NewProp_TeamSpawnPoints_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ABP_BaseZone_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABP_BaseZone_Statics::NewProp_TriggerBox,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABP_BaseZone_Statics::NewProp_Team_Underlying,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABP_BaseZone_Statics::NewProp_Team,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABP_BaseZone_Statics::NewProp_TeamSpawnPoints_Inner,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABP_BaseZone_Statics::NewProp_TeamSpawnPoints,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_ABP_BaseZone_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_ABP_BaseZone_Statics::DependentSingletons[])() = {
@@ -219,10 +327,10 @@ ABP_BaseZone::~ABP_BaseZone() {}
 struct Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_BP_BaseZone_h__Script_CaptureTheFlag_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ABP_BaseZone, ABP_BaseZone::StaticClass, TEXT("ABP_BaseZone"), &Z_Registration_Info_UClass_ABP_BaseZone, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ABP_BaseZone), 2629491057U) },
+		{ Z_Construct_UClass_ABP_BaseZone, ABP_BaseZone::StaticClass, TEXT("ABP_BaseZone"), &Z_Registration_Info_UClass_ABP_BaseZone, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ABP_BaseZone), 270214030U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_BP_BaseZone_h__Script_CaptureTheFlag_3692593955(TEXT("/Script/CaptureTheFlag"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_BP_BaseZone_h__Script_CaptureTheFlag_4156316346(TEXT("/Script/CaptureTheFlag"),
 	Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_BP_BaseZone_h__Script_CaptureTheFlag_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_BP_BaseZone_h__Script_CaptureTheFlag_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

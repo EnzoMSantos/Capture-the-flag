@@ -40,15 +40,6 @@ ACaptureCharacter::ACaptureCharacter()
 
 	bReplicates = true;
 	bHasFlag = false;
-
-	if (ACaptureGameState* GS = GetWorld()->GetGameState<ACaptureGameState>())
-	{
-		FTimerHandle TimerHandle;
-		GetWorld()->GetTimerManager().SetTimer(TimerHandle, [GS]()
-			{
-				GS->Multicast_ApplyAllTeamMaterials();
-			}, 1.0f, false);
-	}
 }
 
 void ACaptureCharacter::BeginPlay()
@@ -74,6 +65,15 @@ void ACaptureCharacter::BeginPlay()
 		{
 			Subsystem->AddMappingContext(DefaultMappingContext, 0);
 		}
+	}
+
+	if (ACaptureGameState* GS = GetWorld()->GetGameState<ACaptureGameState>())
+	{
+		FTimerHandle TimerHandle;
+		GetWorld()->GetTimerManager().SetTimer(TimerHandle, [GS]()
+			{
+				GS->Multicast_ApplyAllTeamMaterials();
+			}, 1.0f, false);
 	}
 }
 

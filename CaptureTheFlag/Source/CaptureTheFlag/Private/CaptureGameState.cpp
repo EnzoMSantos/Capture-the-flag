@@ -39,10 +39,16 @@ void ACaptureGameState::ResetScores()
 
 void ACaptureGameState::Multicast_ApplyAllTeamMaterials_Implementation()
 {
+	UE_LOG(LogTemp, Warning, TEXT("Multicast_ApplyAllTeamMaterials called - PlayerCount: %d"),
+		PlayerArray.Num());
+
 	for (APlayerState* PlayerState : PlayerArray)
 	{
 		if (ACapturePlayerState* CapturePS = Cast<ACapturePlayerState>(PlayerState))
 		{
+			UE_LOG(LogTemp, Warning, TEXT("Applying material for player: %s, Team: %d"),
+				*CapturePS->GetPlayerName(), (int32)CapturePS->GetTeam());
+
 			CapturePS->ApplyTeamMaterial();
 		}
 	}

@@ -17,12 +17,17 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 class AActor;
+class ACapturePlayerState;
+class APlayerStart;
 class UPrimitiveComponent;
+enum class ETeams : uint8;
 struct FHitResult;
 
 // ********** Begin Class ABP_BaseZone *************************************************************
 #define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_BP_BaseZone_h_13_RPC_WRAPPERS_NO_PURE_DECLS \
-	DECLARE_FUNCTION(execOnOverlapBegin);
+	DECLARE_FUNCTION(execGetSpawnPointForPlayer); \
+	DECLARE_FUNCTION(execOnOverlapBegin); \
+	DECLARE_FUNCTION(execGetTeam);
 
 
 CAPTURETHEFLAG_API UClass* Z_Construct_UClass_ABP_BaseZone_NoRegister();

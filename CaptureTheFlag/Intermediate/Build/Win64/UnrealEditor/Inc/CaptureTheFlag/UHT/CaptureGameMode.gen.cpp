@@ -12,6 +12,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeCaptureGameMode() {}
 
 // ********** Begin Cross Module References ********************************************************
+CAPTURETHEFLAG_API UClass* Z_Construct_UClass_ABP_BaseZone_NoRegister();
 CAPTURETHEFLAG_API UClass* Z_Construct_UClass_ACaptureGameMode();
 CAPTURETHEFLAG_API UClass* Z_Construct_UClass_ACaptureGameMode_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_AGameModeBase();
@@ -63,13 +64,29 @@ struct Z_Construct_UClass_ACaptureGameMode_Statics
 		{ "ModuleRelativePath", "Public/CaptureGameMode.h" },
 		{ "ShowCategories", "Input|MouseInput Input|TouchInput" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_RedBase_MetaData[] = {
+		{ "ModuleRelativePath", "Public/CaptureGameMode.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_BlueBase_MetaData[] = {
+		{ "ModuleRelativePath", "Public/CaptureGameMode.h" },
+	};
 #endif // WITH_METADATA
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_RedBase;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_BlueBase;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<ACaptureGameMode>::IsAbstract,
 	};
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ACaptureGameMode_Statics::NewProp_RedBase = { "RedBase", nullptr, (EPropertyFlags)0x0040000000000000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ACaptureGameMode, RedBase), Z_Construct_UClass_ABP_BaseZone_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_RedBase_MetaData), NewProp_RedBase_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ACaptureGameMode_Statics::NewProp_BlueBase = { "BlueBase", nullptr, (EPropertyFlags)0x0040000000000000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ACaptureGameMode, BlueBase), Z_Construct_UClass_ABP_BaseZone_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_BlueBase_MetaData), NewProp_BlueBase_MetaData) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ACaptureGameMode_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACaptureGameMode_Statics::NewProp_RedBase,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACaptureGameMode_Statics::NewProp_BlueBase,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_ACaptureGameMode_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_ACaptureGameMode_Statics::DependentSingletons[])() = {
 	(UObject* (*)())Z_Construct_UClass_AGameModeBase,
 	(UObject* (*)())Z_Construct_UPackage__Script_CaptureTheFlag,
@@ -81,11 +98,11 @@ const UECodeGen_Private::FClassParams Z_Construct_UClass_ACaptureGameMode_Static
 	&StaticCppClassTypeInfo,
 	DependentSingletons,
 	nullptr,
-	nullptr,
+	Z_Construct_UClass_ACaptureGameMode_Statics::PropPointers,
 	nullptr,
 	UE_ARRAY_COUNT(DependentSingletons),
 	0,
-	0,
+	UE_ARRAY_COUNT(Z_Construct_UClass_ACaptureGameMode_Statics::PropPointers),
 	0,
 	0x009003ACu,
 	METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ACaptureGameMode_Statics::Class_MetaDataParams), Z_Construct_UClass_ACaptureGameMode_Statics::Class_MetaDataParams)
@@ -106,10 +123,10 @@ ACaptureGameMode::~ACaptureGameMode() {}
 struct Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureGameMode_h__Script_CaptureTheFlag_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ACaptureGameMode, ACaptureGameMode::StaticClass, TEXT("ACaptureGameMode"), &Z_Registration_Info_UClass_ACaptureGameMode, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ACaptureGameMode), 1478629362U) },
+		{ Z_Construct_UClass_ACaptureGameMode, ACaptureGameMode::StaticClass, TEXT("ACaptureGameMode"), &Z_Registration_Info_UClass_ACaptureGameMode, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ACaptureGameMode), 2389547249U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureGameMode_h__Script_CaptureTheFlag_2968498493(TEXT("/Script/CaptureTheFlag"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureGameMode_h__Script_CaptureTheFlag_3990413436(TEXT("/Script/CaptureTheFlag"),
 	Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureGameMode_h__Script_CaptureTheFlag_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureGameMode_h__Script_CaptureTheFlag_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

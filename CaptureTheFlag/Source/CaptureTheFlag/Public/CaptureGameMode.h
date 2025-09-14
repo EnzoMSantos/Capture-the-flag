@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
+#include "Types/TeamsEnum.h"
 #include "CaptureGameMode.generated.h"
 
 /**
@@ -18,10 +19,23 @@ public:
 	ACaptureGameMode();
 
 	virtual void PostLogin(APlayerController* NewPlayer) override;
+	virtual AActor* ChoosePlayerStart_Implementation(AController* Player) override;
 
 	void PlayerScored(class ACapturePlayerState* ScoringPlayer);
 	void ResetGame();
 
+
 protected:
+
 	virtual void BeginPlay() override;
+
+	void FindTeamBases();
+
+private:
+
+	UPROPERTY()
+	class ABP_BaseZone* RedBase;
+
+	UPROPERTY()
+	class ABP_BaseZone* BlueBase;
 };
