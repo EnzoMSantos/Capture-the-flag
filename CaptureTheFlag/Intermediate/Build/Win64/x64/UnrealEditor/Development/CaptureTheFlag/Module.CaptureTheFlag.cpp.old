@@ -31,8 +31,6 @@
 #include "D:/Git/Capture-the-flag/CaptureTheFlag/Source/CaptureTheFlag/CaptureTheFlagCharacter.cpp"
 #include "D:/Git/Capture-the-flag/CaptureTheFlag/Source/CaptureTheFlag/CaptureTheFlagGameMode.cpp"
 #include "D:/Git/Capture-the-flag/CaptureTheFlag/Source/CaptureTheFlag/CaptureTheFlagPlayerController.cpp"
-#include "D:/Git/Capture-the-flag/CaptureTheFlag/Source/CaptureTheFlag/Private/CaptureGameState.cpp"
-#include "D:/Git/Capture-the-flag/CaptureTheFlag/Source/CaptureTheFlag/Private/CapturePlayerState.cpp"
 #include "D:/Git/Capture-the-flag/CaptureTheFlag/Source/CaptureTheFlag/Private/FlagActor.cpp"
 #include "D:/Git/Capture-the-flag/CaptureTheFlag/Source/CaptureTheFlag/Variant_Horror/HorrorCharacter.cpp"
 #include "D:/Git/Capture-the-flag/CaptureTheFlag/Source/CaptureTheFlag/Variant_Horror/HorrorGameMode.cpp"

@@ -18,7 +18,7 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Types_TeamsEnum_h
+#define CURRENT_FILE_ID FID_CaptureTheFlag_Source_CaptureTheFlag_Types_TeamsEnum_h
 
 // ********** Begin Enum ETeams ********************************************************************
 #define FOREACH_ENUM_ETEAMS(op) \

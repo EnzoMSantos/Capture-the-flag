@@ -157,14 +157,14 @@ ACaptureTheFlagPlayerController::~ACaptureTheFlagPlayerController() {}
 // ********** End Class ACaptureTheFlagPlayerController ********************************************
 
 // ********** Begin Registration *******************************************************************
-struct Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_CaptureTheFlagPlayerController_h__Script_CaptureTheFlag_Statics
+struct Z_CompiledInDeferFile_FID_CaptureTheFlag_Source_CaptureTheFlag_CaptureTheFlagPlayerController_h__Script_CaptureTheFlag_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
 		{ Z_Construct_UClass_ACaptureTheFlagPlayerController, ACaptureTheFlagPlayerController::StaticClass, TEXT("ACaptureTheFlagPlayerController"), &Z_Registration_Info_UClass_ACaptureTheFlagPlayerController, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ACaptureTheFlagPlayerController), 144807979U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_CaptureTheFlagPlayerController_h__Script_CaptureTheFlag_3912071743(TEXT("/Script/CaptureTheFlag"),
-	Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_CaptureTheFlagPlayerController_h__Script_CaptureTheFlag_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_CaptureTheFlagPlayerController_h__Script_CaptureTheFlag_Statics::ClassInfo),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_CaptureTheFlag_Source_CaptureTheFlag_CaptureTheFlagPlayerController_h__Script_CaptureTheFlag_3912071743(TEXT("/Script/CaptureTheFlag"),
+	Z_CompiledInDeferFile_FID_CaptureTheFlag_Source_CaptureTheFlag_CaptureTheFlagPlayerController_h__Script_CaptureTheFlag_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_CaptureTheFlag_Source_CaptureTheFlag_CaptureTheFlagPlayerController_h__Script_CaptureTheFlag_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
 // ********** End Registration *********************************************************************

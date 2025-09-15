@@ -19,7 +19,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 // ********** Begin Class ACaptureTheFlagGameMode **************************************************
 CAPTURETHEFLAG_API UClass* Z_Construct_UClass_ACaptureTheFlagGameMode_NoRegister();
 
-#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_CaptureTheFlagGameMode_h_15_INCLASS_NO_PURE_DECLS \
+#define FID_CaptureTheFlag_Source_CaptureTheFlag_CaptureTheFlagGameMode_h_15_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesACaptureTheFlagGameMode(); \
 	friend struct Z_Construct_UClass_ACaptureTheFlagGameMode_Statics; \
@@ -30,7 +30,7 @@ public: \
 	DECLARE_SERIALIZER(ACaptureTheFlagGameMode)
 
 
-#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_CaptureTheFlagGameMode_h_15_ENHANCED_CONSTRUCTORS \
+#define FID_CaptureTheFlag_Source_CaptureTheFlag_CaptureTheFlagGameMode_h_15_ENHANCED_CONSTRUCTORS \
 	/** Deleted move- and copy-constructors, should never be used */ \
 	ACaptureTheFlagGameMode(ACaptureTheFlagGameMode&&) = delete; \
 	ACaptureTheFlagGameMode(const ACaptureTheFlagGameMode&) = delete; \
@@ -40,12 +40,12 @@ public: \
 	NO_API virtual ~ACaptureTheFlagGameMode();
 
 
-#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_CaptureTheFlagGameMode_h_12_PROLOG
-#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_CaptureTheFlagGameMode_h_15_GENERATED_BODY \
+#define FID_CaptureTheFlag_Source_CaptureTheFlag_CaptureTheFlagGameMode_h_12_PROLOG
+#define FID_CaptureTheFlag_Source_CaptureTheFlag_CaptureTheFlagGameMode_h_15_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_CaptureTheFlagGameMode_h_15_INCLASS_NO_PURE_DECLS \
-	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_CaptureTheFlagGameMode_h_15_ENHANCED_CONSTRUCTORS \
+	FID_CaptureTheFlag_Source_CaptureTheFlag_CaptureTheFlagGameMode_h_15_INCLASS_NO_PURE_DECLS \
+	FID_CaptureTheFlag_Source_CaptureTheFlag_CaptureTheFlagGameMode_h_15_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
@@ -55,6 +55,6 @@ class ACaptureTheFlagGameMode;
 // ********** End Class ACaptureTheFlagGameMode ****************************************************
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_CaptureTheFlagGameMode_h
+#define CURRENT_FILE_ID FID_CaptureTheFlag_Source_CaptureTheFlag_CaptureTheFlagGameMode_h
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

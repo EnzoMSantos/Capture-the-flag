@@ -24,7 +24,7 @@ enum class ETeams : uint8;
 struct FHitResult;
 
 // ********** Begin Class ABP_BaseZone *************************************************************
-#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_BP_BaseZone_h_13_RPC_WRAPPERS_NO_PURE_DECLS \
+#define FID_CaptureTheFlag_Source_CaptureTheFlag_Public_BP_BaseZone_h_13_RPC_WRAPPERS_NO_PURE_DECLS \
 	DECLARE_FUNCTION(execGetSpawnPointForPlayer); \
 	DECLARE_FUNCTION(execOnOverlapBegin); \
 	DECLARE_FUNCTION(execGetTeam);
@@ -32,7 +32,7 @@ struct FHitResult;
 
 CAPTURETHEFLAG_API UClass* Z_Construct_UClass_ABP_BaseZone_NoRegister();
 
-#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_BP_BaseZone_h_13_INCLASS_NO_PURE_DECLS \
+#define FID_CaptureTheFlag_Source_CaptureTheFlag_Public_BP_BaseZone_h_13_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesABP_BaseZone(); \
 	friend struct Z_Construct_UClass_ABP_BaseZone_Statics; \
@@ -43,7 +43,7 @@ public: \
 	DECLARE_SERIALIZER(ABP_BaseZone)
 
 
-#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_BP_BaseZone_h_13_ENHANCED_CONSTRUCTORS \
+#define FID_CaptureTheFlag_Source_CaptureTheFlag_Public_BP_BaseZone_h_13_ENHANCED_CONSTRUCTORS \
 	/** Deleted move- and copy-constructors, should never be used */ \
 	ABP_BaseZone(ABP_BaseZone&&) = delete; \
 	ABP_BaseZone(const ABP_BaseZone&) = delete; \
@@ -53,13 +53,13 @@ public: \
 	NO_API virtual ~ABP_BaseZone();
 
 
-#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_BP_BaseZone_h_10_PROLOG
-#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_BP_BaseZone_h_13_GENERATED_BODY \
+#define FID_CaptureTheFlag_Source_CaptureTheFlag_Public_BP_BaseZone_h_10_PROLOG
+#define FID_CaptureTheFlag_Source_CaptureTheFlag_Public_BP_BaseZone_h_13_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_BP_BaseZone_h_13_RPC_WRAPPERS_NO_PURE_DECLS \
-	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_BP_BaseZone_h_13_INCLASS_NO_PURE_DECLS \
-	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_BP_BaseZone_h_13_ENHANCED_CONSTRUCTORS \
+	FID_CaptureTheFlag_Source_CaptureTheFlag_Public_BP_BaseZone_h_13_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_CaptureTheFlag_Source_CaptureTheFlag_Public_BP_BaseZone_h_13_INCLASS_NO_PURE_DECLS \
+	FID_CaptureTheFlag_Source_CaptureTheFlag_Public_BP_BaseZone_h_13_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
@@ -69,6 +69,6 @@ class ABP_BaseZone;
 // ********** End Class ABP_BaseZone ***************************************************************
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_BP_BaseZone_h
+#define CURRENT_FILE_ID FID_CaptureTheFlag_Source_CaptureTheFlag_Public_BP_BaseZone_h
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

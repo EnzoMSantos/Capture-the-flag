@@ -19,7 +19,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 // ********** Begin Class ACaptureTheFlagPlayerController ******************************************
 CAPTURETHEFLAG_API UClass* Z_Construct_UClass_ACaptureTheFlagPlayerController_NoRegister();
 
-#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_CaptureTheFlagPlayerController_h_20_INCLASS_NO_PURE_DECLS \
+#define FID_CaptureTheFlag_Source_CaptureTheFlag_CaptureTheFlagPlayerController_h_20_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesACaptureTheFlagPlayerController(); \
 	friend struct Z_Construct_UClass_ACaptureTheFlagPlayerController_Statics; \
@@ -30,7 +30,7 @@ public: \
 	DECLARE_SERIALIZER(ACaptureTheFlagPlayerController)
 
 
-#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_CaptureTheFlagPlayerController_h_20_ENHANCED_CONSTRUCTORS \
+#define FID_CaptureTheFlag_Source_CaptureTheFlag_CaptureTheFlagPlayerController_h_20_ENHANCED_CONSTRUCTORS \
 	/** Deleted move- and copy-constructors, should never be used */ \
 	ACaptureTheFlagPlayerController(ACaptureTheFlagPlayerController&&) = delete; \
 	ACaptureTheFlagPlayerController(const ACaptureTheFlagPlayerController&) = delete; \
@@ -40,12 +40,12 @@ public: \
 	NO_API virtual ~ACaptureTheFlagPlayerController();
 
 
-#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_CaptureTheFlagPlayerController_h_17_PROLOG
-#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_CaptureTheFlagPlayerController_h_20_GENERATED_BODY \
+#define FID_CaptureTheFlag_Source_CaptureTheFlag_CaptureTheFlagPlayerController_h_17_PROLOG
+#define FID_CaptureTheFlag_Source_CaptureTheFlag_CaptureTheFlagPlayerController_h_20_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_CaptureTheFlagPlayerController_h_20_INCLASS_NO_PURE_DECLS \
-	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_CaptureTheFlagPlayerController_h_20_ENHANCED_CONSTRUCTORS \
+	FID_CaptureTheFlag_Source_CaptureTheFlag_CaptureTheFlagPlayerController_h_20_INCLASS_NO_PURE_DECLS \
+	FID_CaptureTheFlag_Source_CaptureTheFlag_CaptureTheFlagPlayerController_h_20_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
@@ -55,6 +55,6 @@ class ACaptureTheFlagPlayerController;
 // ********** End Class ACaptureTheFlagPlayerController ********************************************
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_CaptureTheFlagPlayerController_h
+#define CURRENT_FILE_ID FID_CaptureTheFlag_Source_CaptureTheFlag_CaptureTheFlagPlayerController_h
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
