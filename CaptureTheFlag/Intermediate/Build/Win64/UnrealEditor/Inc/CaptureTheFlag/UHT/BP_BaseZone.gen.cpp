@@ -324,14 +324,14 @@ ABP_BaseZone::~ABP_BaseZone() {}
 // ********** End Class ABP_BaseZone ***************************************************************
 
 // ********** Begin Registration *******************************************************************
-struct Z_CompiledInDeferFile_FID_CaptureTheFlag_Source_CaptureTheFlag_Public_BP_BaseZone_h__Script_CaptureTheFlag_Statics
+struct Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_BP_BaseZone_h__Script_CaptureTheFlag_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
 		{ Z_Construct_UClass_ABP_BaseZone, ABP_BaseZone::StaticClass, TEXT("ABP_BaseZone"), &Z_Registration_Info_UClass_ABP_BaseZone, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ABP_BaseZone), 270214030U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_CaptureTheFlag_Source_CaptureTheFlag_Public_BP_BaseZone_h__Script_CaptureTheFlag_4156316346(TEXT("/Script/CaptureTheFlag"),
-	Z_CompiledInDeferFile_FID_CaptureTheFlag_Source_CaptureTheFlag_Public_BP_BaseZone_h__Script_CaptureTheFlag_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_CaptureTheFlag_Source_CaptureTheFlag_Public_BP_BaseZone_h__Script_CaptureTheFlag_Statics::ClassInfo),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_BP_BaseZone_h__Script_CaptureTheFlag_4156316346(TEXT("/Script/CaptureTheFlag"),
+	Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_BP_BaseZone_h__Script_CaptureTheFlag_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_BP_BaseZone_h__Script_CaptureTheFlag_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
 // ********** End Registration *********************************************************************

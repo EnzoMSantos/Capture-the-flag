@@ -19,7 +19,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 struct FLinearColor;
 
 // ********** Begin Class ACapturePlayerState ******************************************************
-#define FID_CaptureTheFlag_Source_CaptureTheFlag_Public_CapturePlayerState_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
+#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CapturePlayerState_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
 	DECLARE_FUNCTION(execOnRep_Team); \
 	DECLARE_FUNCTION(execApplyTeamMaterial); \
 	DECLARE_FUNCTION(execGetTeamColor);
@@ -27,7 +27,7 @@ struct FLinearColor;
 
 CAPTURETHEFLAG_API UClass* Z_Construct_UClass_ACapturePlayerState_NoRegister();
 
-#define FID_CaptureTheFlag_Source_CaptureTheFlag_Public_CapturePlayerState_h_14_INCLASS_NO_PURE_DECLS \
+#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CapturePlayerState_h_14_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesACapturePlayerState(); \
 	friend struct Z_Construct_UClass_ACapturePlayerState_Statics; \
@@ -44,7 +44,7 @@ public: \
 	DECLARE_VALIDATE_GENERATED_REP_ENUMS(NO_API)
 
 
-#define FID_CaptureTheFlag_Source_CaptureTheFlag_Public_CapturePlayerState_h_14_ENHANCED_CONSTRUCTORS \
+#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CapturePlayerState_h_14_ENHANCED_CONSTRUCTORS \
 	/** Deleted move- and copy-constructors, should never be used */ \
 	ACapturePlayerState(ACapturePlayerState&&) = delete; \
 	ACapturePlayerState(const ACapturePlayerState&) = delete; \
@@ -54,13 +54,13 @@ public: \
 	NO_API virtual ~ACapturePlayerState();
 
 
-#define FID_CaptureTheFlag_Source_CaptureTheFlag_Public_CapturePlayerState_h_11_PROLOG
-#define FID_CaptureTheFlag_Source_CaptureTheFlag_Public_CapturePlayerState_h_14_GENERATED_BODY \
+#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CapturePlayerState_h_11_PROLOG
+#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CapturePlayerState_h_14_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_CaptureTheFlag_Source_CaptureTheFlag_Public_CapturePlayerState_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
-	FID_CaptureTheFlag_Source_CaptureTheFlag_Public_CapturePlayerState_h_14_INCLASS_NO_PURE_DECLS \
-	FID_CaptureTheFlag_Source_CaptureTheFlag_Public_CapturePlayerState_h_14_ENHANCED_CONSTRUCTORS \
+	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CapturePlayerState_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CapturePlayerState_h_14_INCLASS_NO_PURE_DECLS \
+	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CapturePlayerState_h_14_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
@@ -70,6 +70,6 @@ class ACapturePlayerState;
 // ********** End Class ACapturePlayerState ********************************************************
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID FID_CaptureTheFlag_Source_CaptureTheFlag_Public_CapturePlayerState_h
+#define CURRENT_FILE_ID FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CapturePlayerState_h
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

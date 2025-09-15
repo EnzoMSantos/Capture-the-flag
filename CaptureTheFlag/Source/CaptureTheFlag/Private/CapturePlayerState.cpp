@@ -35,60 +35,35 @@ FLinearColor ACapturePlayerState::GetTeamColor() const
 
 void ACapturePlayerState::ApplyTeamMaterial()
 {
-    if (!GetWorld())
-    {
-        UE_LOG(LogTemp, Warning, TEXT("ApplyTeamMaterial: No World"));
-        return;
-    }
+	if (!GetWorld() || !GetPawn()) return;
 
-    UE_LOG(LogTemp, Warning, TEXT("ApplyTeamMaterial - Player: %s, Team: %d, HasAuthority: %d"),
-        *GetPlayerName(), (int32)Team, HasAuthority());
+	UE_LOG(LogTemp, Warning, TEXT("ApplyTeamMaterial - Player: %s, Team: %d"),
+		*GetPlayerName(), (int32)Team);
 
-    APawn* OwnerPawn = GetPawn();
-    if (!OwnerPawn)
-    {
-        UE_LOG(LogTemp, Warning, TEXT("ApplyTeamMaterial: No Pawn"));
-        return;
-    }
+	TArray<USkeletalMeshComponent*> SkeletalMeshes;
+	GetPawn()->GetComponents<USkeletalMeshComponent>(SkeletalMeshes);
 
-    if (ACaptureCharacter* Character = Cast<ACaptureCharacter>(OwnerPawn))
-    {
-        UE_LOG(LogTemp, Warning, TEXT("ApplyTeamMaterial: Found Character %s"), *Character->GetName());
+	UMaterialInterface* OutlineMaterial = LoadObject<UMaterialInterface>(
+		nullptr, TEXT("/Game/Materials/M_TeamOutline.M_TeamOutline"));
 
-        USkeletalMeshComponent* Mesh = Character->GetMesh();
-        if (!Mesh)
-        {
-            UE_LOG(LogTemp, Warning, TEXT("ApplyTeamMaterial: No Mesh"));
-            return;
-        }
+	if (!OutlineMaterial) return;
 
-        UMaterialInterface* OutlineMaterial = LoadObject<UMaterialInterface>(
-            nullptr, TEXT("/Game/Materials/M_TeamOutline.M_TeamOutline"));
+	FLinearColor Color = GetTeamColor();
 
-        if (OutlineMaterial)
-        {
-            UMaterialInstanceDynamic* DynamicMaterial =
-                UMaterialInstanceDynamic::Create(OutlineMaterial, this);
+	for (USkeletalMeshComponent* SkeletalMesh : SkeletalMeshes)
+	{
+		if (!SkeletalMesh->bHiddenInGame)
+		{
+			UMaterialInstanceDynamic* DynamicMaterial = UMaterialInstanceDynamic::Create(OutlineMaterial, this);
+			DynamicMaterial->SetVectorParameterValue(FName("TeamColor"), Color);
+			DynamicMaterial->SetScalarParameterValue(FName("EmissiveIntensity"), 3.0f);
+			DynamicMaterial->SetScalarParameterValue(FName("Outline Width"), 1.0f);
 
-            FLinearColor Color = GetTeamColor();
-            DynamicMaterial->SetVectorParameterValue(FName("TeamColor"), Color);
-            DynamicMaterial->SetScalarParameterValue(FName("EmissiveIntensity"), 3.0f);
-            DynamicMaterial->SetScalarParameterValue(FName("Outline Width"), 1.0f);
+			SkeletalMesh->SetOverlayMaterial(DynamicMaterial);
+		}
+	}
 
-            Mesh->SetOverlayMaterial(DynamicMaterial);
-
-            UE_LOG(LogTemp, Warning, TEXT("Material applied for team %d on: %s (Color: %s)"),
-                (int32)Team, *Character->GetName(), *Color.ToString());
-        }
-        else
-        {
-            UE_LOG(LogTemp, Error, TEXT("Outline material not found!"));
-        }
-    }
-    else
-    {
-        UE_LOG(LogTemp, Warning, TEXT("ApplyTeamMaterial: Pawn is not CaptureCharacter"));
-    }
+	UE_LOG(LogTemp, Warning, TEXT("Materials applied to all visible meshes"));
 }
 
 

@@ -97,14 +97,14 @@ DEFINE_VTABLE_PTR_HELPER_CTOR(UShooterWeaponHolder);
 // ********** End Interface UShooterWeaponHolder ***************************************************
 
 // ********** Begin Registration *******************************************************************
-struct Z_CompiledInDeferFile_FID_CaptureTheFlag_Source_CaptureTheFlag_Variant_Shooter_Weapons_ShooterWeaponHolder_h__Script_CaptureTheFlag_Statics
+struct Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Variant_Shooter_Weapons_ShooterWeaponHolder_h__Script_CaptureTheFlag_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
 		{ Z_Construct_UClass_UShooterWeaponHolder, UShooterWeaponHolder::StaticClass, TEXT("UShooterWeaponHolder"), &Z_Registration_Info_UClass_UShooterWeaponHolder, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UShooterWeaponHolder), 2255707887U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_CaptureTheFlag_Source_CaptureTheFlag_Variant_Shooter_Weapons_ShooterWeaponHolder_h__Script_CaptureTheFlag_1435758266(TEXT("/Script/CaptureTheFlag"),
-	Z_CompiledInDeferFile_FID_CaptureTheFlag_Source_CaptureTheFlag_Variant_Shooter_Weapons_ShooterWeaponHolder_h__Script_CaptureTheFlag_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_CaptureTheFlag_Source_CaptureTheFlag_Variant_Shooter_Weapons_ShooterWeaponHolder_h__Script_CaptureTheFlag_Statics::ClassInfo),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Variant_Shooter_Weapons_ShooterWeaponHolder_h__Script_CaptureTheFlag_1435758266(TEXT("/Script/CaptureTheFlag"),
+	Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Variant_Shooter_Weapons_ShooterWeaponHolder_h__Script_CaptureTheFlag_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Variant_Shooter_Weapons_ShooterWeaponHolder_h__Script_CaptureTheFlag_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
 // ********** End Registration *********************************************************************

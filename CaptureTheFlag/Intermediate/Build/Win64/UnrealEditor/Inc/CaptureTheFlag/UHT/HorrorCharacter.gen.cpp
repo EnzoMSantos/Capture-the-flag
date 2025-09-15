@@ -410,14 +410,14 @@ AHorrorCharacter::~AHorrorCharacter() {}
 // ********** End Class AHorrorCharacter ***********************************************************
 
 // ********** Begin Registration *******************************************************************
-struct Z_CompiledInDeferFile_FID_CaptureTheFlag_Source_CaptureTheFlag_Variant_Horror_HorrorCharacter_h__Script_CaptureTheFlag_Statics
+struct Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Variant_Horror_HorrorCharacter_h__Script_CaptureTheFlag_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
 		{ Z_Construct_UClass_AHorrorCharacter, AHorrorCharacter::StaticClass, TEXT("AHorrorCharacter"), &Z_Registration_Info_UClass_AHorrorCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AHorrorCharacter), 2520819630U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_CaptureTheFlag_Source_CaptureTheFlag_Variant_Horror_HorrorCharacter_h__Script_CaptureTheFlag_1465016587(TEXT("/Script/CaptureTheFlag"),
-	Z_CompiledInDeferFile_FID_CaptureTheFlag_Source_CaptureTheFlag_Variant_Horror_HorrorCharacter_h__Script_CaptureTheFlag_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_CaptureTheFlag_Source_CaptureTheFlag_Variant_Horror_HorrorCharacter_h__Script_CaptureTheFlag_Statics::ClassInfo),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Variant_Horror_HorrorCharacter_h__Script_CaptureTheFlag_1465016587(TEXT("/Script/CaptureTheFlag"),
+	Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Variant_Horror_HorrorCharacter_h__Script_CaptureTheFlag_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Variant_Horror_HorrorCharacter_h__Script_CaptureTheFlag_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
 // ********** End Registration *********************************************************************

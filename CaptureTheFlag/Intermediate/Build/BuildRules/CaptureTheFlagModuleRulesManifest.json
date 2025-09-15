@@ -1,8 +1,8 @@
 {
 	"SourceFiles": [
-		"C:\\Users\\takyi\\Documents\\GitHub\\Capture-the-flag\\CaptureTheFlag\\Source\\CaptureTheFlag\\CaptureTheFlag.Build.cs",
-		"C:\\Users\\takyi\\Documents\\GitHub\\Capture-the-flag\\CaptureTheFlag\\Source\\CaptureTheFlag.Target.cs",
-		"C:\\Users\\takyi\\Documents\\GitHub\\Capture-the-flag\\CaptureTheFlag\\Source\\CaptureTheFlagEditor.Target.cs"
+		"D:\\Git\\Capture-the-flag\\CaptureTheFlag\\Source\\CaptureTheFlag\\CaptureTheFlag.Build.cs",
+		"D:\\Git\\Capture-the-flag\\CaptureTheFlag\\Source\\CaptureTheFlag.Target.cs",
+		"D:\\Git\\Capture-the-flag\\CaptureTheFlag\\Source\\CaptureTheFlagEditor.Target.cs"
 	],
 	"EngineVersion": "5.6.1"
 }

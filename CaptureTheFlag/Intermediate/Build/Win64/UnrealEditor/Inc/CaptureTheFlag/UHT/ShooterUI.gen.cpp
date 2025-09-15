@@ -164,14 +164,14 @@ UShooterUI::~UShooterUI() {}
 // ********** End Class UShooterUI *****************************************************************
 
 // ********** Begin Registration *******************************************************************
-struct Z_CompiledInDeferFile_FID_CaptureTheFlag_Source_CaptureTheFlag_Variant_Shooter_UI_ShooterUI_h__Script_CaptureTheFlag_Statics
+struct Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Variant_Shooter_UI_ShooterUI_h__Script_CaptureTheFlag_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
 		{ Z_Construct_UClass_UShooterUI, UShooterUI::StaticClass, TEXT("UShooterUI"), &Z_Registration_Info_UClass_UShooterUI, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UShooterUI), 1204339335U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_CaptureTheFlag_Source_CaptureTheFlag_Variant_Shooter_UI_ShooterUI_h__Script_CaptureTheFlag_2123510768(TEXT("/Script/CaptureTheFlag"),
-	Z_CompiledInDeferFile_FID_CaptureTheFlag_Source_CaptureTheFlag_Variant_Shooter_UI_ShooterUI_h__Script_CaptureTheFlag_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_CaptureTheFlag_Source_CaptureTheFlag_Variant_Shooter_UI_ShooterUI_h__Script_CaptureTheFlag_Statics::ClassInfo),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Variant_Shooter_UI_ShooterUI_h__Script_CaptureTheFlag_2123510768(TEXT("/Script/CaptureTheFlag"),
+	Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Variant_Shooter_UI_ShooterUI_h__Script_CaptureTheFlag_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Variant_Shooter_UI_ShooterUI_h__Script_CaptureTheFlag_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
 // ********** End Registration *********************************************************************

@@ -435,7 +435,7 @@ AShooterPickup::~AShooterPickup() {}
 // ********** End Class AShooterPickup *************************************************************
 
 // ********** Begin Registration *******************************************************************
-struct Z_CompiledInDeferFile_FID_CaptureTheFlag_Source_CaptureTheFlag_Variant_Shooter_Weapons_ShooterPickup_h__Script_CaptureTheFlag_Statics
+struct Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Variant_Shooter_Weapons_ShooterPickup_h__Script_CaptureTheFlag_Statics
 {
 	static constexpr FStructRegisterCompiledInInfo ScriptStructInfo[] = {
 		{ FWeaponTableRow::StaticStruct, Z_Construct_UScriptStruct_FWeaponTableRow_Statics::NewStructOps, TEXT("WeaponTableRow"), &Z_Registration_Info_UScriptStruct_FWeaponTableRow, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FWeaponTableRow), 1380785704U) },
@@ -444,9 +444,9 @@ struct Z_CompiledInDeferFile_FID_CaptureTheFlag_Source_CaptureTheFlag_Variant_Sh
 		{ Z_Construct_UClass_AShooterPickup, AShooterPickup::StaticClass, TEXT("AShooterPickup"), &Z_Registration_Info_UClass_AShooterPickup, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AShooterPickup), 615983253U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_CaptureTheFlag_Source_CaptureTheFlag_Variant_Shooter_Weapons_ShooterPickup_h__Script_CaptureTheFlag_3989256196(TEXT("/Script/CaptureTheFlag"),
-	Z_CompiledInDeferFile_FID_CaptureTheFlag_Source_CaptureTheFlag_Variant_Shooter_Weapons_ShooterPickup_h__Script_CaptureTheFlag_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_CaptureTheFlag_Source_CaptureTheFlag_Variant_Shooter_Weapons_ShooterPickup_h__Script_CaptureTheFlag_Statics::ClassInfo),
-	Z_CompiledInDeferFile_FID_CaptureTheFlag_Source_CaptureTheFlag_Variant_Shooter_Weapons_ShooterPickup_h__Script_CaptureTheFlag_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_CaptureTheFlag_Source_CaptureTheFlag_Variant_Shooter_Weapons_ShooterPickup_h__Script_CaptureTheFlag_Statics::ScriptStructInfo),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Variant_Shooter_Weapons_ShooterPickup_h__Script_CaptureTheFlag_3989256196(TEXT("/Script/CaptureTheFlag"),
+	Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Variant_Shooter_Weapons_ShooterPickup_h__Script_CaptureTheFlag_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Variant_Shooter_Weapons_ShooterPickup_h__Script_CaptureTheFlag_Statics::ClassInfo),
+	Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Variant_Shooter_Weapons_ShooterPickup_h__Script_CaptureTheFlag_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Variant_Shooter_Weapons_ShooterPickup_h__Script_CaptureTheFlag_Statics::ScriptStructInfo),
 	nullptr, 0);
 // ********** End Registration *********************************************************************
 
