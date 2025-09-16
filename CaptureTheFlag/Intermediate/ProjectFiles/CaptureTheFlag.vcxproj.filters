@@ -69,7 +69,13 @@
     <Filter Include="Source\CaptureTheFlag\Private">
       <UniqueIdentifier>{BE9F30E9-3681-3498-AA6D-D379BF1EB722}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\CaptureTheFlag\Private\BaseGranadeAbility.cpp">
+      <Filter>Source\CaptureTheFlag\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\CaptureTheFlag\Private\BP_BaseZone.cpp">
+      <Filter>Source\CaptureTheFlag\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\CaptureTheFlag\Private\CaptureAbilitySet.cpp">
       <Filter>Source\CaptureTheFlag\Private</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\CaptureTheFlag\Private\CaptureCharacter.cpp">
@@ -87,10 +93,22 @@
     <ClCompile Include="..\..\Source\CaptureTheFlag\Private\FlagActor.cpp">
       <Filter>Source\CaptureTheFlag\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\CaptureTheFlag\Private\GranadeInventoryComponent.cpp">
+      <Filter>Source\CaptureTheFlag\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\CaptureTheFlag\Private\GranadeProjectile.cpp">
+      <Filter>Source\CaptureTheFlag\Private</Filter>
+    </ClCompile>
     <Filter Include="Source\CaptureTheFlag\Public">
       <UniqueIdentifier>{C421AA17-C79F-311B-8450-B2301D08F007}</UniqueIdentifier>
     </Filter>
+    <ClInclude Include="..\..\Source\CaptureTheFlag\Public\BaseGranadeAbility.h">
+      <Filter>Source\CaptureTheFlag\Public</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\CaptureTheFlag\Public\BP_BaseZone.h">
+      <Filter>Source\CaptureTheFlag\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\CaptureTheFlag\Public\CaptureAbilitySet.h">
       <Filter>Source\CaptureTheFlag\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\CaptureTheFlag\Public\CaptureCharacter.h">
@@ -108,9 +126,18 @@
     <ClInclude Include="..\..\Source\CaptureTheFlag\Public\FlagActor.h">
       <Filter>Source\CaptureTheFlag\Public</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\CaptureTheFlag\Public\GranadeInventoryComponent.h">
+      <Filter>Source\CaptureTheFlag\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\CaptureTheFlag\Public\GranadeProjectile.h">
+      <Filter>Source\CaptureTheFlag\Public</Filter>
+    </ClInclude>
     <Filter Include="Source\CaptureTheFlag\Types">
       <UniqueIdentifier>{D2FD4C68-5353-3E9A-878C-1A0D579951D7}</UniqueIdentifier>
     </Filter>
+    <ClInclude Include="..\..\Source\CaptureTheFlag\Types\GranadeType.h">
+      <Filter>Source\CaptureTheFlag\Types</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\CaptureTheFlag\Types\TeamEnum.h">
       <Filter>Source\CaptureTheFlag\Types</Filter>
     </ClInclude>
