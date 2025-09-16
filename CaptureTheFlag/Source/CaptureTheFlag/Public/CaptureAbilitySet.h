@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Engine/DataAsset.h"
-#include "Abilities/GameplayAbility.h"
+#include "GameplayAbilitySpec.h"
 #include "CaptureAbilitySet.generated.h"
 
 class UGameplayAbility;
@@ -20,7 +20,7 @@ public:
 	UCaptureAbilitySet();
 
 	UPROPERTY(EditDefaultsOnly, Category = "Abilities")
-	TMap<TSubclassOf<UGameplayAbility>, int32> GrantedAbilities;
+	TArray<TSubclassOf<UGameplayAbility>> GrantedAbilities;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Effects")
 	TArray<TSubclassOf<UGameplayEffect>> GrantedEffects;

@@ -12,15 +12,31 @@ class CAPTURETHEFLAG_API AGranadeProjectile : public AActor
 	GENERATED_BODY()
 	
 public:	
-	// Sets default values for this actor's properties
 	AGranadeProjectile();
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
+	UStaticMeshComponent* MeshComponent;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
+	class UProjectileMovementComponent* ProjectileMovement;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Grenade")
+	float FuseTime = 3.0f;
+
+	UFUNCTION(BlueprintCallable)
+	void Throw(const FVector& Force);
+
+	UFUNCTION(NetMulticast, Reliable)
+	void Multicast_Explode();
+
 protected:
-	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+	UFUNCTION()
+	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
+
+	virtual void Explode();
+
+	FTimerHandle FuseTimerHandle;
 
 };

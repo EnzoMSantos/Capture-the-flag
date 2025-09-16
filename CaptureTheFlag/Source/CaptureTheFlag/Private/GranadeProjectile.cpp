@@ -2,26 +2,61 @@
 
 
 #include "GranadeProjectile.h"
+#include "Components/StaticMeshComponent.h"
+#include "GameFramework/ProjectileMovementComponent.h"
+#include "Kismet/GameplayStatics.h"
+#include "Net/UnrealNetwork.h"
 
-// Sets default values
 AGranadeProjectile::AGranadeProjectile()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
+	PrimaryActorTick.bCanEverTick = false;
+	bReplicates = true;
+
+	MeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
+	RootComponent = MeshComponent;
+	MeshComponent->SetCollisionProfileName("Projectile");
+
+	ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("Projectile Movement"));
+	ProjectileMovement->InitialSpeed = 0.0f;
+	ProjectileMovement->MaxSpeed = 0.0f;
+	ProjectileMovement->bRotationFollowsVelocity = true;
+	ProjectileMovement->bShouldBounce = true;
 
 }
 
-// Called when the game starts or when spawned
-void AGranadeProjectile::BeginPlay()
+void AGranadeProjectile::Throw(const FVector& Force)
 {
-	Super::BeginPlay();
+	if (ProjectileMovement)
+	{
+		ProjectileMovement->Velocity = Force;
+	}
+}
+
+void AGranadeProjectile::Multicast_Explode_Implementation()
+{
+	//Efeitos visuais, sonoros e UGameplayStatics::
+	// SpawnEmitterAtLocation(GetWorld(), ExplosionEffect, GetActorLocation());
 	
 }
 
-// Called every frame
-void AGranadeProjectile::Tick(float DeltaTime)
+void AGranadeProjectile::BeginPlay()
 {
-	Super::Tick(DeltaTime);
+	Super::BeginPlay();
 
+	MeshComponent->OnComponentHit.AddDynamic(this, &AGranadeProjectile::OnHit);
+	GetWorld()->GetTimerManager().SetTimer(FuseTimerHandle, 
+		this, &AGranadeProjectile::Explode, FuseTime, false);
+	
 }
+
+void AGranadeProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
+{
+}
+
+void AGranadeProjectile::Explode()
+{
+	Multicast_Explode();
+	Destroy();
+}
+
 

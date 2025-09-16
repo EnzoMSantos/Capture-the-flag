@@ -6,6 +6,8 @@
 
 #include "UObject/GeneratedCppIncludes.h"
 #include "CaptureAbilitySet.h"
+#include "ActiveGameplayEffectHandle.h"
+#include "GameplayAbilitySpecHandle.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
@@ -19,6 +21,8 @@ ENGINE_API UClass* Z_Construct_UClass_UDataAsset();
 GAMEPLAYABILITIES_API UClass* Z_Construct_UClass_UAbilitySystemComponent_NoRegister();
 GAMEPLAYABILITIES_API UClass* Z_Construct_UClass_UGameplayAbility_NoRegister();
 GAMEPLAYABILITIES_API UClass* Z_Construct_UClass_UGameplayEffect_NoRegister();
+GAMEPLAYABILITIES_API UScriptStruct* Z_Construct_UScriptStruct_FActiveGameplayEffectHandle();
+GAMEPLAYABILITIES_API UScriptStruct* Z_Construct_UScriptStruct_FGameplayAbilitySpecHandle();
 UPackage* Z_Construct_UPackage__Script_CaptureTheFlag();
 // ********** End Cross Module References **********************************************************
 
@@ -168,12 +172,21 @@ struct Z_Construct_UClass_UCaptureAbilitySet_Statics
 		{ "Category", "Effects" },
 		{ "ModuleRelativePath", "Public/CaptureAbilitySet.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_GrantedAbilityHandles_MetaData[] = {
+		{ "ModuleRelativePath", "Public/CaptureAbilitySet.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_GrantedEffectHandles_MetaData[] = {
+		{ "ModuleRelativePath", "Public/CaptureAbilitySet.h" },
+	};
 #endif // WITH_METADATA
-	static const UECodeGen_Private::FIntPropertyParams NewProp_GrantedAbilities_ValueProp;
-	static const UECodeGen_Private::FClassPropertyParams NewProp_GrantedAbilities_Key_KeyProp;
-	static const UECodeGen_Private::FMapPropertyParams NewProp_GrantedAbilities;
+	static const UECodeGen_Private::FClassPropertyParams NewProp_GrantedAbilities_Inner;
+	static const UECodeGen_Private::FArrayPropertyParams NewProp_GrantedAbilities;
 	static const UECodeGen_Private::FClassPropertyParams NewProp_GrantedEffects_Inner;
 	static const UECodeGen_Private::FArrayPropertyParams NewProp_GrantedEffects;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_GrantedAbilityHandles_Inner;
+	static const UECodeGen_Private::FArrayPropertyParams NewProp_GrantedAbilityHandles;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_GrantedEffectHandles_Inner;
+	static const UECodeGen_Private::FArrayPropertyParams NewProp_GrantedEffectHandles;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
@@ -186,17 +199,23 @@ struct Z_Construct_UClass_UCaptureAbilitySet_Statics
 	};
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
-const UECodeGen_Private::FIntPropertyParams Z_Construct_UClass_UCaptureAbilitySet_Statics::NewProp_GrantedAbilities_ValueProp = { "GrantedAbilities", nullptr, (EPropertyFlags)0x0000000000000001, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 1, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_UCaptureAbilitySet_Statics::NewProp_GrantedAbilities_Key_KeyProp = { "GrantedAbilities_Key", nullptr, (EPropertyFlags)0x0004000000000001, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UClass_UClass, Z_Construct_UClass_UGameplayAbility_NoRegister, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FMapPropertyParams Z_Construct_UClass_UCaptureAbilitySet_Statics::NewProp_GrantedAbilities = { "GrantedAbilities", nullptr, (EPropertyFlags)0x0010000000010001, UECodeGen_Private::EPropertyGenFlags::Map, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UCaptureAbilitySet, GrantedAbilities), EMapPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_GrantedAbilities_MetaData), NewProp_GrantedAbilities_MetaData) };
+const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_UCaptureAbilitySet_Statics::NewProp_GrantedAbilities_Inner = { "GrantedAbilities", nullptr, (EPropertyFlags)0x0004000000000000, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UClass_UClass, Z_Construct_UClass_UGameplayAbility_NoRegister, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_UCaptureAbilitySet_Statics::NewProp_GrantedAbilities = { "GrantedAbilities", nullptr, (EPropertyFlags)0x0014000000010001, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UCaptureAbilitySet, GrantedAbilities), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_GrantedAbilities_MetaData), NewProp_GrantedAbilities_MetaData) };
 const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_UCaptureAbilitySet_Statics::NewProp_GrantedEffects_Inner = { "GrantedEffects", nullptr, (EPropertyFlags)0x0004000000000000, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UClass_UClass, Z_Construct_UClass_UGameplayEffect_NoRegister, METADATA_PARAMS(0, nullptr) };
 const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_UCaptureAbilitySet_Statics::NewProp_GrantedEffects = { "GrantedEffects", nullptr, (EPropertyFlags)0x0014000000010001, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UCaptureAbilitySet, GrantedEffects), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_GrantedEffects_MetaData), NewProp_GrantedEffects_MetaData) };
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_UCaptureAbilitySet_Statics::NewProp_GrantedAbilityHandles_Inner = { "GrantedAbilityHandles", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UScriptStruct_FGameplayAbilitySpecHandle, METADATA_PARAMS(0, nullptr) }; // 417001783
+const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_UCaptureAbilitySet_Statics::NewProp_GrantedAbilityHandles = { "GrantedAbilityHandles", nullptr, (EPropertyFlags)0x0020080000002000, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UCaptureAbilitySet, GrantedAbilityHandles), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_GrantedAbilityHandles_MetaData), NewProp_GrantedAbilityHandles_MetaData) }; // 417001783
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_UCaptureAbilitySet_Statics::NewProp_GrantedEffectHandles_Inner = { "GrantedEffectHandles", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UScriptStruct_FActiveGameplayEffectHandle, METADATA_PARAMS(0, nullptr) }; // 386907876
+const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_UCaptureAbilitySet_Statics::NewProp_GrantedEffectHandles = { "GrantedEffectHandles", nullptr, (EPropertyFlags)0x0020080000002000, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UCaptureAbilitySet, GrantedEffectHandles), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_GrantedEffectHandles_MetaData), NewProp_GrantedEffectHandles_MetaData) }; // 386907876
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UCaptureAbilitySet_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UCaptureAbilitySet_Statics::NewProp_GrantedAbilities_ValueProp,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UCaptureAbilitySet_Statics::NewProp_GrantedAbilities_Key_KeyProp,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UCaptureAbilitySet_Statics::NewProp_GrantedAbilities_Inner,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UCaptureAbilitySet_Statics::NewProp_GrantedAbilities,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UCaptureAbilitySet_Statics::NewProp_GrantedEffects_Inner,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UCaptureAbilitySet_Statics::NewProp_GrantedEffects,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UCaptureAbilitySet_Statics::NewProp_GrantedAbilityHandles_Inner,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UCaptureAbilitySet_Statics::NewProp_GrantedAbilityHandles,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UCaptureAbilitySet_Statics::NewProp_GrantedEffectHandles_Inner,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UCaptureAbilitySet_Statics::NewProp_GrantedEffectHandles,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_UCaptureAbilitySet_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_UCaptureAbilitySet_Statics::DependentSingletons[])() = {
@@ -235,10 +254,10 @@ UCaptureAbilitySet::~UCaptureAbilitySet() {}
 struct Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureAbilitySet_h__Script_CaptureTheFlag_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UCaptureAbilitySet, UCaptureAbilitySet::StaticClass, TEXT("UCaptureAbilitySet"), &Z_Registration_Info_UClass_UCaptureAbilitySet, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UCaptureAbilitySet), 4294663428U) },
+		{ Z_Construct_UClass_UCaptureAbilitySet, UCaptureAbilitySet::StaticClass, TEXT("UCaptureAbilitySet"), &Z_Registration_Info_UClass_UCaptureAbilitySet, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UCaptureAbilitySet), 1438823343U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureAbilitySet_h__Script_CaptureTheFlag_4053281371(TEXT("/Script/CaptureTheFlag"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureAbilitySet_h__Script_CaptureTheFlag_1791553960(TEXT("/Script/CaptureTheFlag"),
 	Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureAbilitySet_h__Script_CaptureTheFlag_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureAbilitySet_h__Script_CaptureTheFlag_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
