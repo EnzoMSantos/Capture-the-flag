@@ -90,6 +90,12 @@
     <ClCompile Include="..\..\Source\CaptureTheFlag\Private\CapturePlayerState.cpp">
       <Filter>Source\CaptureTheFlag\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\CaptureTheFlag\Private\DamageGranadeAbility.cpp">
+      <Filter>Source\CaptureTheFlag\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\CaptureTheFlag\Private\DamageGranadeProjectile.cpp">
+      <Filter>Source\CaptureTheFlag\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\CaptureTheFlag\Private\FlagActor.cpp">
       <Filter>Source\CaptureTheFlag\Private</Filter>
     </ClCompile>
@@ -97,6 +103,15 @@
       <Filter>Source\CaptureTheFlag\Private</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\CaptureTheFlag\Private\GranadeProjectile.cpp">
+      <Filter>Source\CaptureTheFlag\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\CaptureTheFlag\Private\HealGranadeAbility.cpp">
+      <Filter>Source\CaptureTheFlag\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\CaptureTheFlag\Private\SlowGranadeAbility.cpp">
+      <Filter>Source\CaptureTheFlag\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\CaptureTheFlag\Private\SlowGranadeProjectile.cpp">
       <Filter>Source\CaptureTheFlag\Private</Filter>
     </ClCompile>
     <Filter Include="Source\CaptureTheFlag\Public">
@@ -123,6 +138,12 @@
     <ClInclude Include="..\..\Source\CaptureTheFlag\Public\CapturePlayerState.h">
       <Filter>Source\CaptureTheFlag\Public</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\CaptureTheFlag\Public\DamageGranadeAbility.h">
+      <Filter>Source\CaptureTheFlag\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\CaptureTheFlag\Public\DamageGranadeProjectile.h">
+      <Filter>Source\CaptureTheFlag\Public</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\CaptureTheFlag\Public\FlagActor.h">
       <Filter>Source\CaptureTheFlag\Public</Filter>
     </ClInclude>
@@ -130,6 +151,15 @@
       <Filter>Source\CaptureTheFlag\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\CaptureTheFlag\Public\GranadeProjectile.h">
+      <Filter>Source\CaptureTheFlag\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\CaptureTheFlag\Public\HealGranadeAbility.h">
+      <Filter>Source\CaptureTheFlag\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\CaptureTheFlag\Public\SlowGranadeAbility.h">
+      <Filter>Source\CaptureTheFlag\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\CaptureTheFlag\Public\SlowGranadeProjectile.h">
       <Filter>Source\CaptureTheFlag\Public</Filter>
     </ClInclude>
     <Filter Include="Source\CaptureTheFlag\Types">

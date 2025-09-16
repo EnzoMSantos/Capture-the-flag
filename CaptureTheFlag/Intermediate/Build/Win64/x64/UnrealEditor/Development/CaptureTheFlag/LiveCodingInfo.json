@@ -1,8 +1,9 @@
 {
 	"RemapUnityFiles": 
 	{
-		"Module.CaptureTheFlag.cpp.obj": [
+		"Module.CaptureTheFlag.1.cpp.obj": [
 			"BP_BaseZone.gen.cpp.obj",
+			"CaptureAbilitySet.gen.cpp.obj",
 			"CaptureCharacter.gen.cpp.obj",
 			"CaptureGameMode.gen.cpp.obj",
 			"CaptureGameState.gen.cpp.obj",
@@ -14,12 +15,20 @@
 			"EnvQueryContext_Target.gen.cpp.obj",
 			"FlagActor.gen.cpp.obj",
 			"GranadeInventoryComponent.gen.cpp.obj",
+			"GranadeProjectile.gen.cpp.obj",
 			"GranadeType.gen.cpp.obj",
 			"HorrorCharacter.gen.cpp.obj",
 			"HorrorGameMode.gen.cpp.obj",
 			"HorrorPlayerController.gen.cpp.obj",
 			"HorrorUI.gen.cpp.obj",
 			"ShooterAIController.gen.cpp.obj",
+			"BaseGranadeAbility.gen.cpp.obj",
+			"CaptureTheFlag.init.gen.cpp.obj",
+			"DamageGranadeAbility.gen.cpp.obj",
+			"DamageGranadeProjectile.gen.cpp.obj",
+			"HealGranadeAbility.gen.cpp.obj"
+		],
+		"Module.CaptureTheFlag.2.cpp.obj": [
 			"ShooterBulletCounterUI.gen.cpp.obj",
 			"ShooterCharacter.gen.cpp.obj",
 			"ShooterGameMode.gen.cpp.obj",
@@ -39,12 +48,13 @@
 			"CaptureTheFlagGameMode.cpp.obj",
 			"CaptureTheFlagPlayerController.cpp.obj",
 			"BP_BaseZone.cpp.obj",
+			"CaptureAbilitySet.cpp.obj",
 			"CaptureCharacter.cpp.obj",
 			"CaptureGameMode.cpp.obj",
 			"CaptureGameState.cpp.obj",
-			"CapturePlayerState.cpp.obj",
 			"FlagActor.cpp.obj",
 			"GranadeInventoryComponent.cpp.obj",
+			"GranadeProjectile.cpp.obj",
 			"HorrorCharacter.cpp.obj",
 			"HorrorGameMode.cpp.obj",
 			"HorrorPlayerController.cpp.obj",
@@ -59,16 +69,21 @@
 			"ShooterBulletCounterUI.cpp.obj",
 			"ShooterUI.cpp.obj",
 			"ShooterPickup.cpp.obj",
+			"SlowGranadeAbility.gen.cpp.obj",
+			"SlowGranadeProjectile.gen.cpp.obj",
+			"BaseGranadeAbility.cpp.obj",
+			"CapturePlayerState.cpp.obj",
+			"DamageGranadeAbility.cpp.obj",
+			"DamageGranadeProjectile.cpp.obj",
+			"HealGranadeAbility.cpp.obj",
+			"SlowGranadeAbility.cpp.obj",
+			"SlowGranadeProjectile.cpp.obj",
+			"UDamageGranadeAbility.cpp.obj"
+		],
+		"Module.CaptureTheFlag.3.cpp.obj": [
 			"ShooterProjectile.cpp.obj",
 			"ShooterWeapon.cpp.obj",
-			"ShooterWeaponHolder.cpp.obj",
-			"BaseGranadeAbility.gen.cpp.obj",
-			"CaptureAbilitySet.gen.cpp.obj",
-			"CaptureTheFlag.init.gen.cpp.obj",
-			"GranadeProjectile.gen.cpp.obj",
-			"BaseGranadeAbility.cpp.obj",
-			"CaptureAbilitySet.cpp.obj",
-			"GranadeProjectile.cpp.obj"
+			"ShooterWeaponHolder.cpp.obj"
 		]
 	}
 }

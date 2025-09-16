@@ -37,6 +37,4 @@ protected:
 	UFUNCTION(BlueprintCallable)
 	void ThrowGranade();
 
-	UFUNCTION(BlueprintCallable)
-	void ApplyCooldown();
 };

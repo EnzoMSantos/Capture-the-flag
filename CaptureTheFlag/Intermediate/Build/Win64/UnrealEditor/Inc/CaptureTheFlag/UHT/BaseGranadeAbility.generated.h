@@ -18,7 +18,6 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin Class UBaseGranadeAbility ******************************************************
 #define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_BaseGranadeAbility_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
-	DECLARE_FUNCTION(execApplyCooldown); \
 	DECLARE_FUNCTION(execThrowGranade);
 
 

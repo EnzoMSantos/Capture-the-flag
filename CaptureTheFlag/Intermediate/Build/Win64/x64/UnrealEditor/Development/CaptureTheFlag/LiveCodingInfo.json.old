@@ -1,8 +1,9 @@
 {
 	"RemapUnityFiles": 
 	{
-		"Module.CaptureTheFlag.cpp.obj": [
+		"Module.CaptureTheFlag.1.cpp.obj": [
 			"BP_BaseZone.gen.cpp.obj",
+			"CaptureAbilitySet.gen.cpp.obj",
 			"CaptureCharacter.gen.cpp.obj",
 			"CaptureGameMode.gen.cpp.obj",
 			"CaptureGameState.gen.cpp.obj",
@@ -21,6 +22,13 @@
 			"HorrorPlayerController.gen.cpp.obj",
 			"HorrorUI.gen.cpp.obj",
 			"ShooterAIController.gen.cpp.obj",
+			"BaseGranadeAbility.gen.cpp.obj",
+			"CaptureTheFlag.init.gen.cpp.obj",
+			"DamageGranadeAbility.gen.cpp.obj",
+			"DamageGranadeProjectile.gen.cpp.obj",
+			"HealGranadeAbility.gen.cpp.obj"
+		],
+		"Module.CaptureTheFlag.2.cpp.obj": [
 			"ShooterBulletCounterUI.gen.cpp.obj",
 			"ShooterCharacter.gen.cpp.obj",
 			"ShooterGameMode.gen.cpp.obj",
@@ -40,6 +48,7 @@
 			"CaptureTheFlagGameMode.cpp.obj",
 			"CaptureTheFlagPlayerController.cpp.obj",
 			"BP_BaseZone.cpp.obj",
+			"CaptureAbilitySet.cpp.obj",
 			"CaptureCharacter.cpp.obj",
 			"CaptureGameMode.cpp.obj",
 			"CaptureGameState.cpp.obj",
@@ -61,14 +70,20 @@
 			"ShooterBulletCounterUI.cpp.obj",
 			"ShooterUI.cpp.obj",
 			"ShooterPickup.cpp.obj",
+			"SlowGranadeAbility.gen.cpp.obj",
+			"SlowGranadeProjectile.gen.cpp.obj",
+			"BaseGranadeAbility.cpp.obj",
+			"DamageGranadeAbility.cpp.obj",
+			"DamageGranadeProjectile.cpp.obj",
+			"HealGranadeAbility.cpp.obj",
+			"SlowGranadeAbility.cpp.obj",
+			"SlowGranadeProjectile.cpp.obj",
+			"UDamageGranadeAbility.cpp.obj"
+		],
+		"Module.CaptureTheFlag.3.cpp.obj": [
 			"ShooterProjectile.cpp.obj",
 			"ShooterWeapon.cpp.obj",
-			"ShooterWeaponHolder.cpp.obj",
-			"BaseGranadeAbility.gen.cpp.obj",
-			"CaptureAbilitySet.gen.cpp.obj",
-			"CaptureTheFlag.init.gen.cpp.obj",
-			"BaseGranadeAbility.cpp.obj",
-			"CaptureAbilitySet.cpp.obj"
+			"ShooterWeaponHolder.cpp.obj"
 		]
 	}
 }

@@ -21,14 +21,27 @@ void UBaseGranadeAbility::ActivateAbility(const FGameplayAbilitySpecHandle Handl
 	}
 
 	ThrowGranade();
-	ApplyCooldown();
 	EndAbility(Handle, ActorInfo, ActivationInfo, true, false);
 }
 
 void UBaseGranadeAbility::ThrowGranade()
 {
+    if (!GetAvatarActorFromActorInfo() || !GranadeProjectileClass) return;
+
+    ACaptureCharacter* Character = Cast<ACaptureCharacter>(GetAvatarActorFromActorInfo());
+    if (!Character) return;
+
+    FVector SpawnLocation = Character->GetActorLocation() + Character->GetActorForwardVector() * 100.0f + FVector(0, 0, 50.0f);
+    FRotator SpawnRotation = Character->GetControlRotation();
+
+    FActorSpawnParameters SpawnParams;
+    SpawnParams.Owner = Character;
+    SpawnParams.Instigator = Character;
+
+    if (AGranadeProjectile* Granade = GetWorld()->SpawnActor<AGranadeProjectile>(GranadeProjectileClass, SpawnLocation, SpawnRotation, SpawnParams))
+    {
+        FVector ThrowDirection = Character->GetControlRotation().Vector();
+        Granade->Throw(ThrowDirection * ThrowForce);
+    }
 }
 
-void UBaseGranadeAbility::ApplyCooldown()
-{
-}

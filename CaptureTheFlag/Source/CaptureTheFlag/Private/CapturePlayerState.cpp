@@ -71,7 +71,8 @@ void ACapturePlayerState::OnRep_Team()
 {
     UE_LOG(LogTemp, Warning, TEXT("OnRep_Team called - Player: %s, New Team: %d, IsLocallyControlled: %d"),
         *GetPlayerName(), (int32)Team, GetPawn() ? GetPawn()->IsLocallyControlled()
-        : false);	ApplyTeamMaterial();
+        : false);	
+	ApplyTeamMaterial();
 }
 
 void ACapturePlayerState::ApplyMaterialToCharacter(ACaptureCharacter* Character)

@@ -3,7 +3,31 @@
     "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
     "runs": [
         {
-            "results": [],
+            "results": [
+                {
+                    "ruleId": "C1060",
+                    "level": "error",
+                    "message": {
+                        "text": "espaço de heap do compilador insuficiente"
+                    },
+                    "analysisTarget": {
+                        "uri": "file:///D:/Git/Capture-the-flag/CaptureTheFlag/Intermediate/Build/Win64/UnrealEditor/Inc/CaptureTheFlag/UHT/HorrorCharacter.gen.cpp"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "file:///D:/Git/Capture-the-flag/CaptureTheFlag/Intermediate/Build/Win64/UnrealEditor/Inc/CaptureTheFlag/UHT/HorrorCharacter.gen.cpp"
+                                },
+                                "region": {
+                                    "startLine": 426,
+                                    "startColumn": 1
+                                }
+                            }
+                        }
+                    ]
+                }
+            ],
             "tool": {
                 "driver": {
                     "name": "MSVC",

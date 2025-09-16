@@ -1,0 +1,143 @@
+// Copyright Epic Games, Inc. All Rights Reserved.
+/*===========================================================================
+	Generated code exported from UnrealHeaderTool.
+	DO NOT modify this manually! Edit the corresponding .h files instead!
+===========================================================================*/
+
+#include "UObject/GeneratedCppIncludes.h"
+#include "HealGranadeAbility.h"
+
+PRAGMA_DISABLE_DEPRECATION_WARNINGS
+
+void EmptyLinkFunctionForGeneratedCodeHealGranadeAbility() {}
+
+// ********** Begin Cross Module References ********************************************************
+CAPTURETHEFLAG_API UClass* Z_Construct_UClass_UBaseGranadeAbility();
+CAPTURETHEFLAG_API UClass* Z_Construct_UClass_UHealGranadeAbility();
+CAPTURETHEFLAG_API UClass* Z_Construct_UClass_UHealGranadeAbility_NoRegister();
+COREUOBJECT_API UClass* Z_Construct_UClass_UClass();
+GAMEPLAYABILITIES_API UClass* Z_Construct_UClass_UGameplayEffect_NoRegister();
+UPackage* Z_Construct_UPackage__Script_CaptureTheFlag();
+// ********** End Cross Module References **********************************************************
+
+// ********** Begin Class UHealGranadeAbility ******************************************************
+void UHealGranadeAbility::StaticRegisterNativesUHealGranadeAbility()
+{
+}
+FClassRegistrationInfo Z_Registration_Info_UClass_UHealGranadeAbility;
+UClass* UHealGranadeAbility::GetPrivateStaticClass()
+{
+	using TClass = UHealGranadeAbility;
+	if (!Z_Registration_Info_UClass_UHealGranadeAbility.InnerSingleton)
+	{
+		GetPrivateStaticClassBody(
+			StaticPackage(),
+			TEXT("HealGranadeAbility"),
+			Z_Registration_Info_UClass_UHealGranadeAbility.InnerSingleton,
+			StaticRegisterNativesUHealGranadeAbility,
+			sizeof(TClass),
+			alignof(TClass),
+			TClass::StaticClassFlags,
+			TClass::StaticClassCastFlags(),
+			TClass::StaticConfigName(),
+			(UClass::ClassConstructorType)InternalConstructor<TClass>,
+			(UClass::ClassVTableHelperCtorCallerType)InternalVTableHelperCtorCaller<TClass>,
+			UOBJECT_CPPCLASS_STATICFUNCTIONS_FORCLASS(TClass),
+			&TClass::Super::StaticClass,
+			&TClass::WithinClass::StaticClass
+		);
+	}
+	return Z_Registration_Info_UClass_UHealGranadeAbility.InnerSingleton;
+}
+UClass* Z_Construct_UClass_UHealGranadeAbility_NoRegister()
+{
+	return UHealGranadeAbility::GetPrivateStaticClass();
+}
+struct Z_Construct_UClass_UHealGranadeAbility_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "/**\n * \n */" },
+#endif
+		{ "IncludePath", "HealGranadeAbility.h" },
+		{ "ModuleRelativePath", "Public/HealGranadeAbility.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_HealAmount_MetaData[] = {
+		{ "Category", "Heal" },
+		{ "ModuleRelativePath", "Public/HealGranadeAbility.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_HealRadius_MetaData[] = {
+		{ "Category", "Heal" },
+		{ "ModuleRelativePath", "Public/HealGranadeAbility.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_HealEffectClass_MetaData[] = {
+		{ "Category", "Heal" },
+		{ "ModuleRelativePath", "Public/HealGranadeAbility.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_HealAmount;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_HealRadius;
+	static const UECodeGen_Private::FClassPropertyParams NewProp_HealEffectClass;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static UObject* (*const DependentSingletons[])();
+	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
+		TCppClassTypeTraits<UHealGranadeAbility>::IsAbstract,
+	};
+	static const UECodeGen_Private::FClassParams ClassParams;
+};
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_UHealGranadeAbility_Statics::NewProp_HealAmount = { "HealAmount", nullptr, (EPropertyFlags)0x0010000000010001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UHealGranadeAbility, HealAmount), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_HealAmount_MetaData), NewProp_HealAmount_MetaData) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_UHealGranadeAbility_Statics::NewProp_HealRadius = { "HealRadius", nullptr, (EPropertyFlags)0x0010000000010001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UHealGranadeAbility, HealRadius), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_HealRadius_MetaData), NewProp_HealRadius_MetaData) };
+const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_UHealGranadeAbility_Statics::NewProp_HealEffectClass = { "HealEffectClass", nullptr, (EPropertyFlags)0x0014000000010001, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UHealGranadeAbility, HealEffectClass), Z_Construct_UClass_UClass, Z_Construct_UClass_UGameplayEffect_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_HealEffectClass_MetaData), NewProp_HealEffectClass_MetaData) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UHealGranadeAbility_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UHealGranadeAbility_Statics::NewProp_HealAmount,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UHealGranadeAbility_Statics::NewProp_HealRadius,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UHealGranadeAbility_Statics::NewProp_HealEffectClass,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_UHealGranadeAbility_Statics::PropPointers) < 2048);
+UObject* (*const Z_Construct_UClass_UHealGranadeAbility_Statics::DependentSingletons[])() = {
+	(UObject* (*)())Z_Construct_UClass_UBaseGranadeAbility,
+	(UObject* (*)())Z_Construct_UPackage__Script_CaptureTheFlag,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_UHealGranadeAbility_Statics::DependentSingletons) < 16);
+const UECodeGen_Private::FClassParams Z_Construct_UClass_UHealGranadeAbility_Statics::ClassParams = {
+	&UHealGranadeAbility::StaticClass,
+	nullptr,
+	&StaticCppClassTypeInfo,
+	DependentSingletons,
+	nullptr,
+	Z_Construct_UClass_UHealGranadeAbility_Statics::PropPointers,
+	nullptr,
+	UE_ARRAY_COUNT(DependentSingletons),
+	0,
+	UE_ARRAY_COUNT(Z_Construct_UClass_UHealGranadeAbility_Statics::PropPointers),
+	0,
+	0x001000A0u,
+	METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UHealGranadeAbility_Statics::Class_MetaDataParams), Z_Construct_UClass_UHealGranadeAbility_Statics::Class_MetaDataParams)
+};
+UClass* Z_Construct_UClass_UHealGranadeAbility()
+{
+	if (!Z_Registration_Info_UClass_UHealGranadeAbility.OuterSingleton)
+	{
+		UECodeGen_Private::ConstructUClass(Z_Registration_Info_UClass_UHealGranadeAbility.OuterSingleton, Z_Construct_UClass_UHealGranadeAbility_Statics::ClassParams);
+	}
+	return Z_Registration_Info_UClass_UHealGranadeAbility.OuterSingleton;
+}
+DEFINE_VTABLE_PTR_HELPER_CTOR(UHealGranadeAbility);
+UHealGranadeAbility::~UHealGranadeAbility() {}
+// ********** End Class UHealGranadeAbility ********************************************************
+
+// ********** Begin Registration *******************************************************************
+struct Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_HealGranadeAbility_h__Script_CaptureTheFlag_Statics
+{
+	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
+		{ Z_Construct_UClass_UHealGranadeAbility, UHealGranadeAbility::StaticClass, TEXT("UHealGranadeAbility"), &Z_Registration_Info_UClass_UHealGranadeAbility, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UHealGranadeAbility), 4060221614U) },
+	};
+};
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_HealGranadeAbility_h__Script_CaptureTheFlag_841305090(TEXT("/Script/CaptureTheFlag"),
+	Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_HealGranadeAbility_h__Script_CaptureTheFlag_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_HealGranadeAbility_h__Script_CaptureTheFlag_Statics::ClassInfo),
+	nullptr, 0,
+	nullptr, 0);
+// ********** End Registration *********************************************************************
+
+PRAGMA_ENABLE_DEPRECATION_WARNINGS
