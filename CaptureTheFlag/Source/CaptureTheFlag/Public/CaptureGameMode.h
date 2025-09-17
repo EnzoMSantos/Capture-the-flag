@@ -18,12 +18,15 @@ class CAPTURETHEFLAG_API ACaptureGameMode : public AGameModeBase
 public:
 	ACaptureGameMode();
 
+	virtual void PreLogin(const FString& Options, const FString& Address, const FUniqueNetIdRepl& UniqueId, FString& ErrorMessage) override;
+
 	virtual void PostLogin(APlayerController* NewPlayer) override;
 	virtual AActor* ChoosePlayerStart_Implementation(AController* Player) override;
 
 	void PlayerScored(class ACapturePlayerState* ScoringPlayer);
 	void ResetGame();
 
+	virtual void RestartPlayer(AController* NewPlayer) override;
 
 protected:
 
@@ -38,4 +41,6 @@ private:
 
 	UPROPERTY()
 	class ABP_BaseZone* BlueBase;
+
+	int32 NextTeamToAssign = 1;
 };

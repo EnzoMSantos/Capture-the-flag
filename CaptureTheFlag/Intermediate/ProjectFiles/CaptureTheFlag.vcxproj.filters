@@ -27,6 +27,9 @@
     <None Include="..\..\Config\DefaultGame.ini">
       <Filter>Config</Filter>
     </None>
+    <None Include="..\..\Config\DefaultGameplayTags.ini">
+      <Filter>Config</Filter>
+    </None>
     <None Include="..\..\Config\DefaultInput.ini">
       <Filter>Config</Filter>
     </None>
@@ -162,6 +165,9 @@
     <ClInclude Include="..\..\Source\CaptureTheFlag\Public\SlowGranadeProjectile.h">
       <Filter>Source\CaptureTheFlag\Public</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\CaptureTheFlag\Public\UDamageGranadeAbility.cpp">
+      <Filter>Source\CaptureTheFlag\Public</Filter>
+    </ClCompile>
     <Filter Include="Source\CaptureTheFlag\Types">
       <UniqueIdentifier>{D2FD4C68-5353-3E9A-878C-1A0D579951D7}</UniqueIdentifier>
     </Filter>

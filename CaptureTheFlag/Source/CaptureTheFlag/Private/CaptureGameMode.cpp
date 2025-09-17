@@ -8,6 +8,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "UObject/ConstructorHelpers.h"
 #include "GameFramework/PlayerStart.h"
+#include "GameFramework/PlayerState.h"
 #include "BP_BaseZone.h"
 
 ACaptureGameMode::ACaptureGameMode()
@@ -26,6 +27,26 @@ ACaptureGameMode::ACaptureGameMode()
 	{
 		DefaultPawnClass = ACaptureCharacter::StaticClass();
 	}
+}
+
+void ACaptureGameMode::PreLogin(const FString& Options, const FString& Address, const FUniqueNetIdRepl& UniqueId, FString& ErrorMessage)
+{
+	UE_LOG(LogTemp, Warning, TEXT("=== PreLogin called ==="));
+
+	if (NextTeamToAssign == 1)
+	{
+		Options.Append(TEXT("?Team=1"));
+		NextTeamToAssign = 2;
+	}
+	else
+	{
+		Options.Append(TEXT("?Team=2"));
+		NextTeamToAssign = 1;
+	}
+
+	UE_LOG(LogTemp, Warning, TEXT("Assigned team in PreLogin: %s"), *Options);
+
+	Super::PreLogin(Options, Address, UniqueId, ErrorMessage);
 }
 
 void ACaptureGameMode::BeginPlay()
@@ -68,61 +89,71 @@ void ACaptureGameMode::FindTeamBases()
 
 void ACaptureGameMode::PostLogin(APlayerController* NewPlayer)
 {
-	if (HasAuthority())
+	Super::PostLogin(NewPlayer);
+
+	if (NewPlayer && NewPlayer->PlayerState)
 	{
-		ACapturePlayerState* PS = NewPlayer->GetPlayerState<ACapturePlayerState>();
-		if (PS && PS->GetTeam() == ETeams::None)
+		FString TeamString = UGameplayStatics::ParseOption(OptionsString, TEXT("Team"));
+		int32 Team = FCString::Atoi(*TeamString);
+
+		if (APlayerState* PS = Cast<APlayerState>(NewPlayer->PlayerState))
 		{
-			int32 RedCount = 0;
-			int32 BlueCount = 0;
-
-			for (APlayerState* PlayerState : GameState->PlayerArray)
-			{
-				if (ACapturePlayerState* CPS = Cast<ACapturePlayerState>(PlayerState))
-				{
-					if (CPS->GetTeam() == ETeams::Red) RedCount++;
-					else if (CPS->GetTeam() == ETeams::Blue) BlueCount++;
-				}
-			}
-
-			ETeams NewTeam = (RedCount <= BlueCount) ? ETeams::Red : ETeams::Blue;
-			PS->SetTeam(NewTeam);
-
-			if (NewPlayer->GetPawn())
-			{
-				NewPlayer->GetPawn()->Destroy();
-			}
-			RestartPlayer(NewPlayer);
-
-			UE_LOG(LogTemp, Warning, TEXT("Player assigned to team %d (Red: %d, Blue: %d)"),
-				(int32)NewTeam, RedCount, BlueCount);
+			PS->SetTeam(Team);
+			UE_LOG(LogTemp, Warning, TEXT("PostLogin - Player assigned to team %d"), Team);
 		}
 	}
 }
 
 AActor* ACaptureGameMode::ChoosePlayerStart_Implementation(AController* Player)
 {
+	UE_LOG(LogTemp, Warning, TEXT("=== ChoosePlayerStart called ==="));
+
 	if (ACapturePlayerState* PS = Player->GetPlayerState<ACapturePlayerState>())
 	{
+		UE_LOG(LogTemp, Warning, TEXT("PlayerState found - Team: %d, Player: %s"),
+			(int32)PS->GetTeam(), *PS->GetPlayerName());
+
 		if (PS->GetTeam() != ETeams::None)
 		{
 			ABP_BaseZone* TeamBase = (PS->GetTeam() == ETeams::Red) ? RedBase : BlueBase;
 
 			if (TeamBase)
 			{
+				UE_LOG(LogTemp, Warning, TEXT("Team base found: %s"), *TeamBase->GetName());
+
 				APlayerStart* SpawnPoint = TeamBase->GetSpawnPointForPlayer(PS);
 				if (SpawnPoint)
 				{
-					UE_LOG(LogTemp, Warning, TEXT("Spawning team %d player at: %s"),
+					UE_LOG(LogTemp, Warning, TEXT("SUCCESS: Spawning team %d at: %s"),
 						(int32)PS->GetTeam(), *SpawnPoint->GetName());
 					return SpawnPoint;
 				}
+				else
+				{
+					UE_LOG(LogTemp, Error, TEXT("Team base found but no spawn point returned!"));
+				}
+			}
+			else
+			{
+				UE_LOG(LogTemp, Error, TEXT("Team base not found for team %d!"), (int32)PS->GetTeam());
+				if (PS->GetTeam() == ETeams::Red) UE_LOG(LogTemp, Error, TEXT("RedBase is null: %d"), RedBase == nullptr);
+				if (PS->GetTeam() == ETeams::Blue) UE_LOG(LogTemp, Error, TEXT("BlueBase is null: %d"), BlueBase == nullptr);
 			}
 		}
+		else
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Player team is None - using fallback"));
+		}
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("PlayerState not found or not ACapturePlayerState"));
 	}
 
-	UE_LOG(LogTemp, Warning, TEXT("Using temporary spawn until team is assigned"));
-	return Super::ChoosePlayerStart_Implementation(Player);;
+	UE_LOG(LogTemp, Warning, TEXT("Using fallback spawn point"));
+	AActor* FallbackSpawn = Super::ChoosePlayerStart_Implementation(Player);
+	UE_LOG(LogTemp, Warning, TEXT("Fallback spawn: %s"), FallbackSpawn ? *FallbackSpawn->GetName() : TEXT("NULL"));
+	return FallbackSpawn;
 }
 
 void ACaptureGameMode::PlayerScored(ACapturePlayerState* ScoringPlayer)
@@ -154,5 +185,48 @@ void ACaptureGameMode::ResetGame()
 	}
 
 	UGameplayStatics::OpenLevel(this, FName(*GetWorld()->GetName()), true);
+}
+
+void ACaptureGameMode::RestartPlayer(AController* NewPlayer)
+{
+	UE_LOG(LogTemp, Warning, TEXT("RestartPlayer called"));
+
+	if (ACapturePlayerState* PS = NewPlayer->GetPlayerState<ACapturePlayerState>())
+	{
+		if (PS->GetTeam() == ETeams::None)
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Team is None, assigning team before spawn"));
+
+			int32 RedCount = 0;
+			int32 BlueCount = 0;
+
+			for (APlayerState* PlayerState : GameState->PlayerArray)
+			{
+				if (ACapturePlayerState* CPS = Cast<ACapturePlayerState>(PlayerState))
+				{
+					if (CPS != PS) 
+					{
+						if (CPS->GetTeam() == ETeams::Red) RedCount++;
+						else if (CPS->GetTeam() == ETeams::Blue) BlueCount++;
+					}
+				}
+			}
+
+			ETeams NewTeam = (RedCount <= BlueCount) ? ETeams::Red : ETeams::Blue;
+			PS->SetTeam(NewTeam);
+
+			UE_LOG(LogTemp, Warning, TEXT("Assigned team %d in RestartPlayer"), (int32)NewTeam);
+		}
+		else
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Player already has team: %d"), (int32)PS->GetTeam());
+		}
+	}
+	else
+	{
+		UE_LOG(LogTemp, Error, TEXT("PlayerState not found in RestartPlayer"));
+	}
+
+	Super::RestartPlayer(NewPlayer);
 }
 

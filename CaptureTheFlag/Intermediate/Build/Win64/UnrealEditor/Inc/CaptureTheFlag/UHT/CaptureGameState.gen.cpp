@@ -100,41 +100,6 @@ DEFINE_FUNCTION(ACaptureGameState::execGetRedScore)
 }
 // ********** End Class ACaptureGameState Function GetRedScore *************************************
 
-// ********** Begin Class ACaptureGameState Function Multicast_ApplyAllTeamMaterials ***************
-static FName NAME_ACaptureGameState_Multicast_ApplyAllTeamMaterials = FName(TEXT("Multicast_ApplyAllTeamMaterials"));
-void ACaptureGameState::Multicast_ApplyAllTeamMaterials()
-{
-	UFunction* Func = FindFunctionChecked(NAME_ACaptureGameState_Multicast_ApplyAllTeamMaterials);
-	ProcessEvent(Func,NULL);
-}
-struct Z_Construct_UFunction_ACaptureGameState_Multicast_ApplyAllTeamMaterials_Statics
-{
-#if WITH_METADATA
-	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-		{ "ModuleRelativePath", "Public/CaptureGameState.h" },
-	};
-#endif // WITH_METADATA
-	static const UECodeGen_Private::FFunctionParams FuncParams;
-};
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ACaptureGameState_Multicast_ApplyAllTeamMaterials_Statics::FuncParams = { { (UObject*(*)())Z_Construct_UClass_ACaptureGameState, nullptr, "Multicast_ApplyAllTeamMaterials", nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00024CC0, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ACaptureGameState_Multicast_ApplyAllTeamMaterials_Statics::Function_MetaDataParams), Z_Construct_UFunction_ACaptureGameState_Multicast_ApplyAllTeamMaterials_Statics::Function_MetaDataParams)},  };
-UFunction* Z_Construct_UFunction_ACaptureGameState_Multicast_ApplyAllTeamMaterials()
-{
-	static UFunction* ReturnFunction = nullptr;
-	if (!ReturnFunction)
-	{
-		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ACaptureGameState_Multicast_ApplyAllTeamMaterials_Statics::FuncParams);
-	}
-	return ReturnFunction;
-}
-DEFINE_FUNCTION(ACaptureGameState::execMulticast_ApplyAllTeamMaterials)
-{
-	P_FINISH;
-	P_NATIVE_BEGIN;
-	P_THIS->Multicast_ApplyAllTeamMaterials_Implementation();
-	P_NATIVE_END;
-}
-// ********** End Class ACaptureGameState Function Multicast_ApplyAllTeamMaterials *****************
-
 // ********** Begin Class ACaptureGameState ********************************************************
 void ACaptureGameState::StaticRegisterNativesACaptureGameState()
 {
@@ -142,7 +107,6 @@ void ACaptureGameState::StaticRegisterNativesACaptureGameState()
 	static const FNameNativePtrPair Funcs[] = {
 		{ "GetBlueScore", &ACaptureGameState::execGetBlueScore },
 		{ "GetRedScore", &ACaptureGameState::execGetRedScore },
-		{ "Multicast_ApplyAllTeamMaterials", &ACaptureGameState::execMulticast_ApplyAllTeamMaterials },
 	};
 	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 }
@@ -203,7 +167,6 @@ struct Z_Construct_UClass_ACaptureGameState_Statics
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
 		{ &Z_Construct_UFunction_ACaptureGameState_GetBlueScore, "GetBlueScore" }, // 2151375290
 		{ &Z_Construct_UFunction_ACaptureGameState_GetRedScore, "GetRedScore" }, // 3550932732
-		{ &Z_Construct_UFunction_ACaptureGameState_Multicast_ApplyAllTeamMaterials, "Multicast_ApplyAllTeamMaterials" }, // 3422492345
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -265,10 +228,10 @@ ACaptureGameState::~ACaptureGameState() {}
 struct Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureGameState_h__Script_CaptureTheFlag_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ACaptureGameState, ACaptureGameState::StaticClass, TEXT("ACaptureGameState"), &Z_Registration_Info_UClass_ACaptureGameState, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ACaptureGameState), 3942730275U) },
+		{ Z_Construct_UClass_ACaptureGameState, ACaptureGameState::StaticClass, TEXT("ACaptureGameState"), &Z_Registration_Info_UClass_ACaptureGameState, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ACaptureGameState), 3489333175U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureGameState_h__Script_CaptureTheFlag_4051827348(TEXT("/Script/CaptureTheFlag"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureGameState_h__Script_CaptureTheFlag_1558796814(TEXT("/Script/CaptureTheFlag"),
 	Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureGameState_h__Script_CaptureTheFlag_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureGameState_h__Script_CaptureTheFlag_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

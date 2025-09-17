@@ -27,16 +27,10 @@ public:
 	FLinearColor GetTeamColor() const;
 
 
-	UFUNCTION(BlueprintCallable, Category = "Team")
-	void ApplyTeamMaterial();
-
 protected:
 
 	UFUNCTION()
 	void OnRep_Team();
-
-	void ApplyMaterialToCharacter(class ACaptureCharacter* Character);
-
 
 public:
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;

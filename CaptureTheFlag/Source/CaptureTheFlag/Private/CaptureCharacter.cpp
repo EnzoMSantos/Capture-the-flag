@@ -67,14 +67,11 @@ void ACaptureCharacter::BeginPlay()
 		}
 	}
 
-	if (ACaptureGameState* GS = GetWorld()->GetGameState<ACaptureGameState>())
-	{
-		FTimerHandle TimerHandle;
-		GetWorld()->GetTimerManager().SetTimer(TimerHandle, [GS]()
-			{
-				GS->Multicast_ApplyAllTeamMaterials();
-			}, 1.0f, false);
-	}
+	FTimerHandle TimerHandle;
+	GetWorld()->GetTimerManager().SetTimer(TimerHandle, [this]()
+		{
+			ApplyTeamMaterialWithRetry();
+		}, 0.5f, false);
 }
 
 void ACaptureCharacter::SetHasFlag(bool bNewHasFlag)
@@ -154,10 +151,7 @@ void ACaptureCharacter::SetOutlineEnabled(bool bEnabled)
 	{
 		if (bEnabled)
 		{
-			if (ACapturePlayerState* PS = GetPlayerState<ACapturePlayerState>())
-			{
-				PS->ApplyTeamMaterial();
-			}
+			ApplyTeamMaterial();
 		}
 		else
 		{
@@ -174,6 +168,60 @@ void ACaptureCharacter::UpdateOutlineColor(const FLinearColor& NewColor)
 		{
 			DynamicMaterial->SetVectorParameterValue(FName("TeamColor"), NewColor);
 		}
+	}
+}
+
+void ACaptureCharacter::ApplyTeamMaterial()
+{
+	if (!GetPlayerState())
+	{
+		UE_LOG(LogTemp, Warning, TEXT("ApplyTeamMaterial: Invalid player state or character"));
+		return;
+	}
+
+	TArray<USkeletalMeshComponent*> SkeletalMeshes;
+	GetComponents<USkeletalMeshComponent>(SkeletalMeshes);
+
+	UE_LOG(LogTemp, Warning, TEXT("Found %d skeletal meshes"), SkeletalMeshes.Num());
+
+	UMaterialInterface* OutlineMaterial = LoadObject<UMaterialInterface>(
+		nullptr, TEXT("/Game/Materials/M_TeamOutline.M_TeamOutline"));
+
+	if (!OutlineMaterial)
+	{
+		UE_LOG(LogTemp, Error, TEXT("Outline material not found!"));
+		return;
+	}
+
+	if (ACapturePlayerState* CPS = Cast<ACapturePlayerState>(GetPlayerState()))
+	{
+		FLinearColor Color = CPS->GetTeamColor();
+		UE_LOG(LogTemp, Warning, TEXT("Applying team color: %s for team %d"),
+			*Color.ToString(), (int32)CPS->GetTeam());
+
+		for (USkeletalMeshComponent* SkeletalMesh : SkeletalMeshes)
+		{
+			if (SkeletalMesh && !SkeletalMesh->bHiddenInGame)
+			{
+				UE_LOG(LogTemp, Warning, TEXT("Applying to mesh: %s"), *SkeletalMesh->GetName());
+
+				UMaterialInstanceDynamic* DynamicMaterial = UMaterialInstanceDynamic::Create(OutlineMaterial, this);
+				if (DynamicMaterial)
+				{
+					DynamicMaterial->SetVectorParameterValue(FName("TeamColor"), Color);
+					DynamicMaterial->SetScalarParameterValue(FName("EmissiveIntensity"), 3.0f);
+					DynamicMaterial->SetScalarParameterValue(FName("Outline Width"), 1.0f);
+
+					SkeletalMesh->SetOverlayMaterial(DynamicMaterial);
+					UE_LOG(LogTemp, Warning, TEXT("Material applied successfully to %s"),
+						*SkeletalMesh->GetName());
+				}
+			}
+		}
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("PlayerState is not ACapturePlayerState"));
 	}
 }
 
@@ -263,6 +311,25 @@ void ACaptureCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Ou
 
 void ACaptureCharacter::OnRep_HasFlag()
 {
+}
+
+void ACaptureCharacter::ApplyTeamMaterialWithRetry()
+{
+	if (ACapturePlayerState* CPS = GetPlayerState<ACapturePlayerState>())
+	{
+		ApplyTeamMaterial();
+	}
+
+	else 
+	{
+		FTimerHandle RetryTimer;
+		GetWorld()->GetTimerManager().SetTimer(RetryTimer, [this]()
+			{
+				ApplyTeamMaterialWithRetry();
+			}, 0.3f, false);
+
+		UE_LOG(LogTemp, Warning, TEXT("PlayerState not ready, retrying..."));
+	}
 }
 
 

@@ -80,10 +80,17 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Team")
 	void UpdateOutlineColor(const FLinearColor& NewColor);
 
+	void ApplyTeamMaterial();
+
+
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
 protected:
 
 	UFUNCTION()
 	void OnRep_HasFlag();
+
+private:
+
+	void ApplyTeamMaterialWithRetry();
 };

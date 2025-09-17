@@ -53,31 +53,50 @@ void ABP_BaseZone::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AAct
 
 APlayerStart* ABP_BaseZone::GetSpawnPointForPlayer(ACapturePlayerState* PlayerState)
 {
-	if (!PlayerState)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("PlayerState is null"));
-		return nullptr;
-	}
+    UE_LOG(LogTemp, Warning, TEXT("GetSpawnPointForPlayer - BaseTeam: %d, PlayerTeam: %d, Player: %s"),
+        (int32)GetTeam(),
+        PlayerState ? (int32)PlayerState->GetTeam() : -1,
+        PlayerState ? *PlayerState->GetPlayerName() : TEXT("NULL"));
 
-	if (GetTeam() != PlayerState->GetTeam())
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Team mismatch: Base=%d, Player=%d"),
-			(int32)GetTeam(), (int32)PlayerState->GetTeam());
-		return nullptr;
-	}
+    if (!PlayerState)
+    {
+        UE_LOG(LogTemp, Error, TEXT("PlayerState is null"));
+        return nullptr;
+    }
 
-	if (TeamSpawnPoints.Num() == 0)
-	{
-		UE_LOG(LogTemp, Error, TEXT("No spawn points configured in base!"));
-		return nullptr;
-	}
+    if (GetTeam() != PlayerState->GetTeam())
+    {
+        UE_LOG(LogTemp, Error, TEXT("TEAM MISMATCH: Base=%d, Player=%d"),
+            (int32)GetTeam(), (int32)PlayerState->GetTeam());
+        return nullptr;
+    }
 
-	int32 RandomIndex = FMath::RandRange(0, TeamSpawnPoints.Num() - 1);
-	APlayerStart* SpawnPoint = TeamSpawnPoints[RandomIndex];
+    if (TeamSpawnPoints.Num() == 0)
+    {
+        UE_LOG(LogTemp, Error, TEXT("No spawn points configured in base!"));
+        return nullptr;
+    }
 
-	UE_LOG(LogTemp, Warning, TEXT("Selected spawn point: %s"),
-		SpawnPoint ? *SpawnPoint->GetName() : TEXT("INVALID"));
+    // Log todos os spawn points
+    UE_LOG(LogTemp, Warning, TEXT("Available spawn points:"));
+    for (int32 i = 0; i < TeamSpawnPoints.Num(); i++)
+    {
+        if (TeamSpawnPoints[i])
+        {
+            UE_LOG(LogTemp, Warning, TEXT("  %d: %s"), i, *TeamSpawnPoints[i]->GetName());
+        }
+        else
+        {
+            UE_LOG(LogTemp, Error, TEXT("  %d: INVALID"), i);
+        }
+    }
 
-	return SpawnPoint;
+    int32 RandomIndex = FMath::RandRange(0, TeamSpawnPoints.Num() - 1);
+    APlayerStart* SpawnPoint = TeamSpawnPoints[RandomIndex];
+
+    UE_LOG(LogTemp, Warning, TEXT("Selected spawn point: %s (index %d)"),
+        SpawnPoint ? *SpawnPoint->GetName() : TEXT("INVALID"), RandomIndex);
+
+    return SpawnPoint;
 }
 
