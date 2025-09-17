@@ -20,6 +20,16 @@ public:
 
 	ACaptureGameState();
 
+	UPROPERTY(Replicated, BlueprintReadOnly)
+	int32 RedTeamCount;
+
+	UPROPERTY(Replicated, BlueprintReadOnly)
+	int32 BlueTeamCount;
+
+	ETeams GetBalancedTeam();
+
+	void UpdateTeamCounts();
+
 protected:
 
 	UPROPERTY(Replicated, BlueprintReadOnly)
@@ -37,6 +47,8 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	int32 GetBlueScore() const { return BlueScore; }
+
+	
 
 
 protected:

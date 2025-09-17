@@ -21,12 +21,17 @@ public:
 	virtual void PreLogin(const FString& Options, const FString& Address, const FUniqueNetIdRepl& UniqueId, FString& ErrorMessage) override;
 
 	virtual void PostLogin(APlayerController* NewPlayer) override;
+
+	virtual APawn* SpawnDefaultPawnFor_Implementation(AController* NewController, AActor* StartSpot) override;
+
 	virtual AActor* ChoosePlayerStart_Implementation(AController* Player) override;
 
 	void PlayerScored(class ACapturePlayerState* ScoringPlayer);
 	void ResetGame();
 
 	virtual void RestartPlayer(AController* NewPlayer) override;
+
+	virtual void InitPlayerStateAndTeam(AController* NewController);
 
 protected:
 
@@ -41,6 +46,4 @@ private:
 
 	UPROPERTY()
 	class ABP_BaseZone* BlueBase;
-
-	int32 NextTeamToAssign = 1;
 };

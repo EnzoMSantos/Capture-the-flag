@@ -7,6 +7,7 @@
 #include "Components/SkeletalMeshComponent.h"
 #include "Materials/MaterialInstanceDynamic.h"
 #include "EngineUtils.h"
+#include "CaptureGameState.h"
 
 ACapturePlayerState::ACapturePlayerState()
 {
@@ -15,15 +16,21 @@ ACapturePlayerState::ACapturePlayerState()
 
 void ACapturePlayerState::SetTeam(ETeams NewTeam)
 {
-	if (HasAuthority())
-	{
-		Team = NewTeam;
+    if (HasAuthority())
+    {
+        if (GetWorld())
+        {
+            if (ACaptureGameState* GS = GetWorld()->GetGameState<ACaptureGameState>())
+            {
+                GS->UpdateTeamCounts();
+            }
+        }
 
-		ForceNetUpdate();
-
-		UE_LOG(LogTemp, Warning, TEXT("Team set to %d - ForceNetUpdate"), (int32)NewTeam);
-		OnRep_Team();
-	}
+        Team = NewTeam;
+        ForceNetUpdate();
+        UE_LOG(LogTemp, Warning, TEXT("Team set to %d"), (int32)NewTeam);
+        OnRep_Team();
+    }
 }
 
 FLinearColor ACapturePlayerState::GetTeamColor() const
@@ -35,11 +42,6 @@ FLinearColor ACapturePlayerState::GetTeamColor() const
 	default: return FLinearColor::White;
 	}
 }
-
-
-
-
-
 
 void ACapturePlayerState::OnRep_Team()
 {

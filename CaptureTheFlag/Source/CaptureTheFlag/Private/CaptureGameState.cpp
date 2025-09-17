@@ -12,6 +12,37 @@ ACaptureGameState::ACaptureGameState()
 {
 	RedScore = 0;
 	BlueScore = 0;
+	RedTeamCount = 0;
+	BlueTeamCount = 0;
+}
+
+ETeams ACaptureGameState::GetBalancedTeam()
+{
+	if (RedTeamCount <= BlueTeamCount)
+	{
+		RedTeamCount++;
+		return ETeams::Red;
+	}
+	else
+	{
+		BlueTeamCount++;
+		return ETeams::Blue;
+	}
+}
+
+void ACaptureGameState::UpdateTeamCounts()
+{
+	RedTeamCount = 0;
+	BlueTeamCount = 0;
+
+	for (APlayerState* PlayerState : PlayerArray)
+	{
+		if (ACapturePlayerState* CPS = Cast<ACapturePlayerState>(PlayerState))
+		{
+			if (CPS->GetTeam() == ETeams::Red) RedTeamCount++;
+			else if (CPS->GetTeam() == ETeams::Blue) BlueTeamCount++;
+		}
+	}
 }
 
 void ACaptureGameState::AddScore(ETeams Team)
@@ -37,27 +68,12 @@ void ACaptureGameState::ResetScores()
 	}
 }
 
-//void ACaptureGameState::Multicast_ApplyAllTeamMaterials_Implementation()
-//{
-//	UE_LOG(LogTemp, Warning, TEXT("Multicast_ApplyAllTeamMaterials called - PlayerCount: %d"),
-//		PlayerArray.Num());
-//
-//	for (APlayerState* PlayerState : PlayerArray)
-//	{
-//		if (ACapturePlayerState* CapturePS = Cast<ACapturePlayerState>(PlayerState))
-//		{
-//			UE_LOG(LogTemp, Warning, TEXT("Applying material for player: %s, Team: %d"),
-//				*CapturePS->GetPlayerName(), (int32)CapturePS->GetTeam());
-//
-//			CapturePS->TryApplyTeamMaterial();
-//		}
-//	}
-//}
-
 void ACaptureGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
 	DOREPLIFETIME(ACaptureGameState, RedScore);
 	DOREPLIFETIME(ACaptureGameState, BlueScore);
+	DOREPLIFETIME(ACaptureGameState, RedTeamCount);
+	DOREPLIFETIME(ACaptureGameState, BlueTeamCount);
 }

@@ -36,7 +36,9 @@ public: \
 	enum class ENetFields_Private : uint16 \
 	{ \
 		NETFIELD_REP_START=(uint16)((int32)Super::ENetFields_Private::NETFIELD_REP_END + (int32)1), \
-		RedScore=NETFIELD_REP_START, \
+		RedTeamCount=NETFIELD_REP_START, \
+		BlueTeamCount, \
+		RedScore, \
 		BlueScore, \
 		NETFIELD_REP_END=BlueScore	}; \
 	DECLARE_VALIDATE_GENERATED_REP_ENUMS(NO_API)
