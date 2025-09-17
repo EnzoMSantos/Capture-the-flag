@@ -22,10 +22,17 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Code|Components")
 	UStaticMeshComponent* MeshComp;
 
+	UPROPERTY(Replicated)
 	FVector InitialLocation;
 
 public:	
 	virtual void Tick(float DeltaTime) override;
+
+	UFUNCTION(Server, Reliable)
+	void Server_ResetFlag();
+
+	UFUNCTION(NetMulticast, Reliable)
+	void Multicast_ResetFlag();
 
 	void ResetFlag();
 
@@ -36,4 +43,6 @@ public:
 
 	void AttachToCharacter(ACaptureCharacter* Character);
 	void DetachFromCharacter();
+
+	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 };

@@ -15,6 +15,7 @@ void EmptyLinkFunctionForGeneratedCodeFlagActor() {}
 // ********** Begin Cross Module References ********************************************************
 CAPTURETHEFLAG_API UClass* Z_Construct_UClass_AFlagActor();
 CAPTURETHEFLAG_API UClass* Z_Construct_UClass_AFlagActor_NoRegister();
+COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
 ENGINE_API UClass* Z_Construct_UClass_AActor();
 ENGINE_API UClass* Z_Construct_UClass_AActor_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_UPrimitiveComponent_NoRegister();
@@ -22,6 +23,41 @@ ENGINE_API UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
 ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FHitResult();
 UPackage* Z_Construct_UPackage__Script_CaptureTheFlag();
 // ********** End Cross Module References **********************************************************
+
+// ********** Begin Class AFlagActor Function Multicast_ResetFlag **********************************
+static FName NAME_AFlagActor_Multicast_ResetFlag = FName(TEXT("Multicast_ResetFlag"));
+void AFlagActor::Multicast_ResetFlag()
+{
+	UFunction* Func = FindFunctionChecked(NAME_AFlagActor_Multicast_ResetFlag);
+	ProcessEvent(Func,NULL);
+}
+struct Z_Construct_UFunction_AFlagActor_Multicast_ResetFlag_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/FlagActor.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AFlagActor_Multicast_ResetFlag_Statics::FuncParams = { { (UObject*(*)())Z_Construct_UClass_AFlagActor, nullptr, "Multicast_ResetFlag", nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00024CC0, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AFlagActor_Multicast_ResetFlag_Statics::Function_MetaDataParams), Z_Construct_UFunction_AFlagActor_Multicast_ResetFlag_Statics::Function_MetaDataParams)},  };
+UFunction* Z_Construct_UFunction_AFlagActor_Multicast_ResetFlag()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AFlagActor_Multicast_ResetFlag_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(AFlagActor::execMulticast_ResetFlag)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->Multicast_ResetFlag_Implementation();
+	P_NATIVE_END;
+}
+// ********** End Class AFlagActor Function Multicast_ResetFlag ************************************
 
 // ********** Begin Class AFlagActor Function OnOverlapBegin ***************************************
 struct Z_Construct_UFunction_AFlagActor_OnOverlapBegin_Statics
@@ -104,12 +140,49 @@ DEFINE_FUNCTION(AFlagActor::execOnOverlapBegin)
 }
 // ********** End Class AFlagActor Function OnOverlapBegin *****************************************
 
+// ********** Begin Class AFlagActor Function Server_ResetFlag *************************************
+static FName NAME_AFlagActor_Server_ResetFlag = FName(TEXT("Server_ResetFlag"));
+void AFlagActor::Server_ResetFlag()
+{
+	UFunction* Func = FindFunctionChecked(NAME_AFlagActor_Server_ResetFlag);
+	ProcessEvent(Func,NULL);
+}
+struct Z_Construct_UFunction_AFlagActor_Server_ResetFlag_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/FlagActor.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AFlagActor_Server_ResetFlag_Statics::FuncParams = { { (UObject*(*)())Z_Construct_UClass_AFlagActor, nullptr, "Server_ResetFlag", nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00220CC0, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AFlagActor_Server_ResetFlag_Statics::Function_MetaDataParams), Z_Construct_UFunction_AFlagActor_Server_ResetFlag_Statics::Function_MetaDataParams)},  };
+UFunction* Z_Construct_UFunction_AFlagActor_Server_ResetFlag()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AFlagActor_Server_ResetFlag_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(AFlagActor::execServer_ResetFlag)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->Server_ResetFlag_Implementation();
+	P_NATIVE_END;
+}
+// ********** End Class AFlagActor Function Server_ResetFlag ***************************************
+
 // ********** Begin Class AFlagActor ***************************************************************
 void AFlagActor::StaticRegisterNativesAFlagActor()
 {
 	UClass* Class = AFlagActor::StaticClass();
 	static const FNameNativePtrPair Funcs[] = {
+		{ "Multicast_ResetFlag", &AFlagActor::execMulticast_ResetFlag },
 		{ "OnOverlapBegin", &AFlagActor::execOnOverlapBegin },
+		{ "Server_ResetFlag", &AFlagActor::execServer_ResetFlag },
 	};
 	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 }
@@ -154,12 +227,18 @@ struct Z_Construct_UClass_AFlagActor_Statics
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/FlagActor.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_InitialLocation_MetaData[] = {
+		{ "ModuleRelativePath", "Public/FlagActor.h" },
+	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_MeshComp;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_InitialLocation;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
+		{ &Z_Construct_UFunction_AFlagActor_Multicast_ResetFlag, "Multicast_ResetFlag" }, // 3995540571
 		{ &Z_Construct_UFunction_AFlagActor_OnOverlapBegin, "OnOverlapBegin" }, // 881440577
+		{ &Z_Construct_UFunction_AFlagActor_Server_ResetFlag, "Server_ResetFlag" }, // 2347320267
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -168,8 +247,10 @@ struct Z_Construct_UClass_AFlagActor_Statics
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AFlagActor_Statics::NewProp_MeshComp = { "MeshComp", nullptr, (EPropertyFlags)0x00200800000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AFlagActor, MeshComp), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MeshComp_MetaData), NewProp_MeshComp_MetaData) };
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_AFlagActor_Statics::NewProp_InitialLocation = { "InitialLocation", nullptr, (EPropertyFlags)0x0020080000000020, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AFlagActor, InitialLocation), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_InitialLocation_MetaData), NewProp_InitialLocation_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AFlagActor_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFlagActor_Statics::NewProp_MeshComp,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFlagActor_Statics::NewProp_InitialLocation,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AFlagActor_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_AFlagActor_Statics::DependentSingletons[])() = {
@@ -200,6 +281,15 @@ UClass* Z_Construct_UClass_AFlagActor()
 	}
 	return Z_Registration_Info_UClass_AFlagActor.OuterSingleton;
 }
+#if VALIDATE_CLASS_REPS
+void AFlagActor::ValidateGeneratedRepEnums(const TArray<struct FRepRecord>& ClassReps) const
+{
+	static FName Name_InitialLocation(TEXT("InitialLocation"));
+	const bool bIsValid = true
+		&& Name_InitialLocation == ClassReps[(int32)ENetFields_Private::InitialLocation].Property->GetFName();
+	checkf(bIsValid, TEXT("UHT Generated Rep Indices do not match runtime populated Rep Indices for properties in AFlagActor"));
+}
+#endif
 DEFINE_VTABLE_PTR_HELPER_CTOR(AFlagActor);
 AFlagActor::~AFlagActor() {}
 // ********** End Class AFlagActor *****************************************************************
@@ -208,10 +298,10 @@ AFlagActor::~AFlagActor() {}
 struct Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_FlagActor_h__Script_CaptureTheFlag_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AFlagActor, AFlagActor::StaticClass, TEXT("AFlagActor"), &Z_Registration_Info_UClass_AFlagActor, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFlagActor), 1707548832U) },
+		{ Z_Construct_UClass_AFlagActor, AFlagActor::StaticClass, TEXT("AFlagActor"), &Z_Registration_Info_UClass_AFlagActor, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFlagActor), 3894197175U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_FlagActor_h__Script_CaptureTheFlag_2000596765(TEXT("/Script/CaptureTheFlag"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_FlagActor_h__Script_CaptureTheFlag_2855847035(TEXT("/Script/CaptureTheFlag"),
 	Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_FlagActor_h__Script_CaptureTheFlag_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_FlagActor_h__Script_CaptureTheFlag_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

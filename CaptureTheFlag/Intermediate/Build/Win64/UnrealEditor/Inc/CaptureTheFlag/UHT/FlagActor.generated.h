@@ -22,9 +22,14 @@ struct FHitResult;
 
 // ********** Begin Class AFlagActor ***************************************************************
 #define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_FlagActor_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
-	DECLARE_FUNCTION(execOnOverlapBegin);
+	virtual void Multicast_ResetFlag_Implementation(); \
+	virtual void Server_ResetFlag_Implementation(); \
+	DECLARE_FUNCTION(execOnOverlapBegin); \
+	DECLARE_FUNCTION(execMulticast_ResetFlag); \
+	DECLARE_FUNCTION(execServer_ResetFlag);
 
 
+#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_FlagActor_h_14_CALLBACK_WRAPPERS
 CAPTURETHEFLAG_API UClass* Z_Construct_UClass_AFlagActor_NoRegister();
 
 #define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_FlagActor_h_14_INCLASS_NO_PURE_DECLS \
@@ -35,7 +40,13 @@ private: \
 	friend CAPTURETHEFLAG_API UClass* Z_Construct_UClass_AFlagActor_NoRegister(); \
 public: \
 	DECLARE_CLASS2(AFlagActor, AActor, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/CaptureTheFlag"), Z_Construct_UClass_AFlagActor_NoRegister) \
-	DECLARE_SERIALIZER(AFlagActor)
+	DECLARE_SERIALIZER(AFlagActor) \
+	enum class ENetFields_Private : uint16 \
+	{ \
+		NETFIELD_REP_START=(uint16)((int32)Super::ENetFields_Private::NETFIELD_REP_END + (int32)1), \
+		InitialLocation=NETFIELD_REP_START, \
+		NETFIELD_REP_END=InitialLocation	}; \
+	DECLARE_VALIDATE_GENERATED_REP_ENUMS(NO_API)
 
 
 #define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_FlagActor_h_14_ENHANCED_CONSTRUCTORS \
@@ -53,6 +64,7 @@ public: \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
 	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_FlagActor_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_FlagActor_h_14_CALLBACK_WRAPPERS \
 	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_FlagActor_h_14_INCLASS_NO_PURE_DECLS \
 	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_FlagActor_h_14_ENHANCED_CONSTRUCTORS \
 private: \

@@ -101,7 +101,7 @@ void ACaptureCharacter::TryScore()
 
 	for (TActorIterator<AFlagActor> It(GetWorld()); It; ++It)
 	{
-		It->ResetFlag();
+		It->ResetFlag(); 
 		break;
 	}
 

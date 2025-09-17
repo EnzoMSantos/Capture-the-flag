@@ -35,9 +35,15 @@ void AFlagActor::Tick(float DeltaTime)
 
 }
 
-void AFlagActor::ResetFlag()
+void AFlagActor::Server_ResetFlag_Implementation()
 {
-	UE_LOG(LogTemp, Warning, TEXT("ResetFlag called"));
+	UE_LOG(LogTemp, Warning, TEXT("Server_ResetFlag called"));
+	Multicast_ResetFlag();
+}
+
+void AFlagActor::Multicast_ResetFlag_Implementation()
+{
+	UE_LOG(LogTemp, Warning, TEXT("Multicast_ResetFlag called on all clients"));
 	DetachFromCharacter();
 }
 
@@ -59,13 +65,29 @@ void AFlagActor::DetachFromCharacter()
 	UE_LOG(LogTemp, Warning, TEXT("Detaching flag from character"));
 
 	DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
-
 	MeshComp->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 
 	SetActorLocation(InitialLocation, false, nullptr, ETeleportType::ResetPhysics);
 	SetActorRotation(FRotator::ZeroRotator, ETeleportType::ResetPhysics);
 
 	ForceNetUpdate();
+}
+
+void AFlagActor::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(AFlagActor, InitialLocation);
+}
+
+void AFlagActor::ResetFlag()
+{
+	UE_LOG(LogTemp, Warning, TEXT("ResetFlag called"));
+
+	if (HasAuthority())
+	{
+		Server_ResetFlag();
+	}
 }
 
 void AFlagActor::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
