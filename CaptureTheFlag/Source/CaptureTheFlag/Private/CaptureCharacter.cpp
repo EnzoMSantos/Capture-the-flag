@@ -374,7 +374,6 @@ void ACaptureCharacter::Server_ThrowGranade_Implementation()
 		return;
 	}
 
-
 	UGranadeInventoryComponent* Inventory = FindComponentByClass<UGranadeInventoryComponent>();
 	if (!Inventory)
 	{
@@ -400,6 +399,21 @@ void ACaptureCharacter::Server_ThrowGranade_Implementation()
 				Inventory->Server_UseGranade(i);
 				break;
 			}
+		}
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Ability failed to activate - likely on cooldown"));
+
+		FGameplayTagContainer CooldownTags;
+		CooldownTags.AddTag(FGameplayTag::RequestGameplayTag(FName("Cooldown.Granade.Damage")));
+
+		FGameplayEffectQuery Query;
+		Query = FGameplayEffectQuery::MakeQuery_MatchAnyEffectTags(CooldownTags);
+
+		if (AbilitySystemComponent->GetActiveEffects(Query).Num() > 0)
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Confirmed: Ability is on cooldown"));
 		}
 	}
 }

@@ -14,6 +14,7 @@ UDamageGranadeAbility::UDamageGranadeAbility()
 {
 	CooldownTag = FGameplayTag::RequestGameplayTag(FName("Cooldown.Granade.Damage"));
 
+    UE_LOG(LogTemp, Warning, TEXT("Cooldown Tag: %s"), *CooldownTag.ToString());
 
     CooldownGameplayEffectClass = LoadClass<UGameplayEffect>(
         nullptr,

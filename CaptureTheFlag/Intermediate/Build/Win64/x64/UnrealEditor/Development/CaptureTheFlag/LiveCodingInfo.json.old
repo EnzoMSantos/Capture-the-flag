@@ -3,16 +3,19 @@
 	{
 		"Module.CaptureTheFlag.1.cpp.obj": [
 			"BaseAttributeSet.gen.cpp.obj",
+			"BaseGranadeAbility.gen.cpp.obj",
 			"BP_BaseZone.gen.cpp.obj",
 			"CaptureAbilitySet.gen.cpp.obj",
 			"CaptureCharacter.gen.cpp.obj",
 			"CaptureGameMode.gen.cpp.obj",
 			"CaptureGameState.gen.cpp.obj",
 			"CapturePlayerState.gen.cpp.obj",
+			"CaptureTheFlag.init.gen.cpp.obj",
 			"CaptureTheFlagCameraManager.gen.cpp.obj",
 			"CaptureTheFlagCharacter.gen.cpp.obj",
 			"CaptureTheFlagGameMode.gen.cpp.obj",
 			"CaptureTheFlagPlayerController.gen.cpp.obj",
+			"DamageGranadeAbility.gen.cpp.obj",
 			"DamageGranadeProjectile.gen.cpp.obj",
 			"EnvQueryContext_Target.gen.cpp.obj",
 			"FlagActor.gen.cpp.obj",
@@ -20,13 +23,10 @@
 			"GranadeInventoryComponent.gen.cpp.obj",
 			"GranadeProjectile.gen.cpp.obj",
 			"GranadeType.gen.cpp.obj",
+			"HealGranadeAbility.gen.cpp.obj",
 			"HorrorCharacter.gen.cpp.obj",
 			"HorrorGameMode.gen.cpp.obj",
-			"HorrorPlayerController.gen.cpp.obj",
-			"BaseGranadeAbility.gen.cpp.obj",
-			"CaptureTheFlag.init.gen.cpp.obj",
-			"DamageGranadeAbility.gen.cpp.obj",
-			"HealGranadeAbility.gen.cpp.obj"
+			"HorrorPlayerController.gen.cpp.obj"
 		],
 		"Module.CaptureTheFlag.2.cpp.obj": [
 			"HorrorUI.gen.cpp.obj",
@@ -42,6 +42,7 @@
 			"ShooterUI.gen.cpp.obj",
 			"ShooterWeapon.gen.cpp.obj",
 			"ShooterWeaponHolder.gen.cpp.obj",
+			"SlowGranadeAbility.gen.cpp.obj",
 			"SlowGranadeProjectile.gen.cpp.obj",
 			"TeamsEnum.gen.cpp.obj",
 			"PerModuleInline.gen.cpp.obj",
@@ -53,16 +54,15 @@
 			"BaseAttributeSet.cpp.obj",
 			"BP_BaseZone.cpp.obj",
 			"CaptureAbilitySet.cpp.obj",
+			"CaptureCharacter.cpp.obj",
 			"CaptureGameMode.cpp.obj",
 			"CaptureGameState.cpp.obj",
 			"CapturePlayerState.cpp.obj",
 			"DamageGranadeProjectile.cpp.obj",
 			"FlagActor.cpp.obj",
-			"GranadeInventoryComponent.cpp.obj",
-			"SlowGranadeAbility.gen.cpp.obj",
 			"BaseGranadeAbility.cpp.obj",
-			"CaptureCharacter.cpp.obj",
-			"DamageGranadeAbility.cpp.obj"
+			"DamageGranadeAbility.cpp.obj",
+			"GranadeInventoryComponent.cpp.obj"
 		],
 		"Module.CaptureTheFlag.3.cpp.obj": [
 			"GranadeProjectile.cpp.obj",

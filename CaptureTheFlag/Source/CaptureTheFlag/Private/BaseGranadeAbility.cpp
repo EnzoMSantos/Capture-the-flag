@@ -10,12 +10,16 @@
 
 UBaseGranadeAbility::UBaseGranadeAbility()
 {
-	InstancingPolicy = EGameplayAbilityInstancingPolicy::InstancedPerActor;
-	NetExecutionPolicy = EGameplayAbilityNetExecutionPolicy::ServerOnly;
+    InstancingPolicy = EGameplayAbilityInstancingPolicy::InstancedPerActor;
+    NetExecutionPolicy = EGameplayAbilityNetExecutionPolicy::ServerOnly;
 
     GranadeData.Type = EGranadeType::Damage;
     GranadeData.Cooldown = 5.f;
     GranadeData.MaxStack = 3;
+
+    CooldownTag = FGameplayTag::RequestGameplayTag(FName("Cooldown.Granade.Damage"));
+    CooldownTags.AddTag(CooldownTag);
+    BlockAbilitiesWithTags.AddTag(CooldownTag);
 
     static ConstructorHelpers::FClassFinder<AGranadeProjectile> ProjectileBP(TEXT("/Game/GAS/BP_DamageGranade.BP_DamageGranade_C"));
     if (ProjectileBP.Succeeded())
@@ -26,39 +30,31 @@ UBaseGranadeAbility::UBaseGranadeAbility()
     else
     {
         UE_LOG(LogTemp, Error, TEXT("FAILED to load projectile class! Check the path."));
-        UE_LOG(LogTemp, Error, TEXT("Try these paths:"));
+    }
+
+    static ConstructorHelpers::FClassFinder<UGameplayEffect> CooldownGE(TEXT("/Game/GAS/GameplayEffects/GE_Cooldown"));
+    if (CooldownGE.Succeeded())
+    {
+        CooldownGameplayEffectClass = CooldownGE.Class;
+        UE_LOG(LogTemp, Warning, TEXT("Cooldown GE loaded successfully"));
+    }
+    else
+    {
+        UE_LOG(LogTemp, Error, TEXT("FAILED to load cooldown GE!"));
     }
 }
 
-void UBaseGranadeAbility::ActivateAbility(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo, const FGameplayEventData* TriggerEventData)
+const FGameplayTagContainer* UBaseGranadeAbility::GetCooldownTags() const
 {
-    UE_LOG(LogTemp, Warning, TEXT("ActivateAbility called - HasAuthority: %d"), ActorInfo->OwnerActor.IsValid() ? ActorInfo->OwnerActor->HasAuthority() : false);
+    return &CooldownTags;
+}
 
-    if (!CommitAbility(Handle, ActorInfo, ActivationInfo))
-    {
-        UE_LOG(LogTemp, Error, TEXT("CommitAbility FAILED - Possibly on cooldown or missing cost"));
-        EndAbility(Handle, ActorInfo, ActivationInfo, true, true);
-        return;
-    }
-
-    AActor* Avatar = GetAvatarActorFromActorInfo();
-    if (!Avatar)
-    {
-        UE_LOG(LogTemp, Error, TEXT("ActivateAbility - Avatar is null"));
-        EndAbility(Handle, ActorInfo, ActivationInfo, true, true);
-        return;
-    }
-
-    UE_LOG(LogTemp, Warning, TEXT("About to call ThrowGranade - HasAuthority: %d"), Avatar->HasAuthority());
-
-    if (Avatar->HasAuthority())
-    {
-        ThrowGranade();
-    }
-
+void UBaseGranadeAbility::ApplyCooldown(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo) const
+{
     if (CooldownGameplayEffectClass && ActorInfo->AbilitySystemComponent.IsValid())
     {
         UAbilitySystemComponent* ASC = ActorInfo->AbilitySystemComponent.Get();
+
         FGameplayEffectContextHandle Context = ASC->MakeEffectContext();
         Context.AddSourceObject(this);
 
@@ -70,10 +66,118 @@ void UBaseGranadeAbility::ActivateAbility(const FGameplayAbilitySpecHandle Handl
             UE_LOG(LogTemp, Warning, TEXT("Cooldown applied: %f seconds"), GranadeData.Cooldown);
         }
     }
+}
+
+void UBaseGranadeAbility::ActivateAbility(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo, const FGameplayEventData* TriggerEventData)
+{
+    if (ActorInfo->AbilitySystemComponent.IsValid())
+    {
+        FGameplayTagContainer CooldownTagsToCheck;
+        CooldownTagsToCheck.AddTag(FGameplayTag::RequestGameplayTag(FName("Cooldown.Granade.Damage")));
+
+        FGameplayEffectQuery Query = FGameplayEffectQuery::MakeQuery_MatchAnyEffectTags(CooldownTagsToCheck);
+
+        int32 ActiveCooldowns = ActorInfo->AbilitySystemComponent->GetActiveEffects(Query).Num();
+
+        if (ActiveCooldowns > 0)
+        {
+            UE_LOG(LogTemp, Warning, TEXT("BLOCKED: Ability on cooldown"));
+            EndAbility(Handle, ActorInfo, ActivationInfo, true, true);
+            return;
+        }
+    }
+
+    if (!CommitAbility(Handle, ActorInfo, ActivationInfo))
+    {
+        UE_LOG(LogTemp, Error, TEXT("CommitAbility FAILED"));
+        EndAbility(Handle, ActorInfo, ActivationInfo, true, true);
+        return;
+    }
+
+    ApplyCooldown(Handle, ActorInfo, ActivationInfo);
+
+    AActor* Avatar = GetAvatarActorFromActorInfo();
+    if (!Avatar)
+    {
+        UE_LOG(LogTemp, Error, TEXT("ActivateAbility - Avatar is null"));
+        EndAbility(Handle, ActorInfo, ActivationInfo, true, true);
+        return;
+    }
+
+    if (Avatar->HasAuthority())
+    {
+        ThrowGranade();
+    }
 
     EndAbility(Handle, ActorInfo, ActivationInfo, true, false);
-    UE_LOG(LogTemp, Warning, TEXT("ActivateAbility finished"));
 }
+
+bool UBaseGranadeAbility::CanActivateAbility(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayTagContainer* SourceTags, const FGameplayTagContainer* TargetTags, OUT FGameplayTagContainer* OptionalRelevantTags) const
+{
+    if (!Super::CanActivateAbility(Handle, ActorInfo, SourceTags, TargetTags, OptionalRelevantTags))
+    {
+        UE_LOG(LogTemp, Warning, TEXT("CanActivateAbility: 0 (Super blocked)"));
+        return false;
+    }
+
+    if (ActorInfo && ActorInfo->AbilitySystemComponent.IsValid())
+    {
+        UAbilitySystemComponent* ASC = ActorInfo->AbilitySystemComponent.Get();
+
+        FGameplayTagContainer CooldownTagsToCheck;
+        CooldownTagsToCheck.AddTag(FGameplayTag::RequestGameplayTag(FName("Cooldown.Granade.Damage")));
+
+        FGameplayEffectQuery Query = FGameplayEffectQuery::MakeQuery_MatchAnyEffectTags(CooldownTagsToCheck);
+
+        TArray<FActiveGameplayEffectHandle> CooldownEffects = ASC->GetActiveEffects(Query);
+
+        TArray<FActiveGameplayEffectHandle> AllEffects = ASC->GetActiveEffects(FGameplayEffectQuery());
+
+        UE_LOG(LogTemp, Warning, TEXT("Cooldown effects: %d, All effects: %d"), CooldownEffects.Num(), AllEffects.Num());
+
+        if (CooldownEffects.Num() > 0)
+        {
+            UE_LOG(LogTemp, Warning, TEXT("BLOCKED: Found %d cooldown effects"), CooldownEffects.Num());
+
+            for (const FActiveGameplayEffectHandle& EffectHandle : CooldownEffects)
+            {
+                if (const FActiveGameplayEffect* ActiveEffect = ASC->GetActiveGameplayEffect(EffectHandle))
+                {
+                    float RemainingTime = ActiveEffect->GetTimeRemaining(0.0f); 
+                    UE_LOG(LogTemp, Warning, TEXT("Cooldown: %s, Time remaining: %.2f"),
+                        *ActiveEffect->Spec.Def->GetName(), RemainingTime);
+                }
+            }
+
+            return false;
+        }
+
+        for (const FActiveGameplayEffectHandle& EffectHandle : AllEffects)
+        {
+            if (const FActiveGameplayEffect* ActiveEffect = ASC->GetActiveGameplayEffect(EffectHandle))
+            {
+                if (ActiveEffect->Spec.Def && ActiveEffect->Spec.Def->GetName().Contains(TEXT("Cooldown"), ESearchCase::IgnoreCase))
+                {
+                    float RemainingTime = ActiveEffect->GetTimeRemaining(0.0f); 
+                    UE_LOG(LogTemp, Warning, TEXT("Found cooldown by name: %s, Time remaining: %.2f"),
+                        *ActiveEffect->Spec.Def->GetName(), RemainingTime);
+
+                    if (RemainingTime > 0.1f) 
+                    {
+                        UE_LOG(LogTemp, Warning, TEXT("BLOCKED: Ability on cooldown (%.2fs remaining)"), RemainingTime);
+                        return false;
+                    }
+                }
+            }
+        }
+    }
+
+    UE_LOG(LogTemp, Warning, TEXT("CanActivateAbility: 1 (No cooldown found)"));
+    return true;
+
+}
+
+
 
 void UBaseGranadeAbility::ThrowGranade()
 {
@@ -83,8 +187,6 @@ void UBaseGranadeAbility::ThrowGranade()
         UE_LOG(LogTemp, Error, TEXT("ThrowGranade - Avatar is null"));
         return;
     }
-
-    UE_LOG(LogTemp, Warning, TEXT("ThrowGranade called - HasAuthority: %d"), Avatar->HasAuthority());
 
     if (!Avatar->HasAuthority())
     {
@@ -99,11 +201,7 @@ void UBaseGranadeAbility::ThrowGranade()
     }
 
     UWorld* World = Avatar->GetWorld();
-    if (!World)
-    {
-        UE_LOG(LogTemp, Error, TEXT("ThrowGranade - World is null!"));
-        return;
-    }
+    if (!World) return;
 
     FActorSpawnParameters SpawnParams;
     SpawnParams.Owner = Avatar;
@@ -112,8 +210,6 @@ void UBaseGranadeAbility::ThrowGranade()
 
     FVector SpawnLocation = Avatar->GetActorLocation() + Avatar->GetActorForwardVector() * 100.f + FVector(0, 0, 50.f);
     FRotator SpawnRotation = Avatar->GetActorRotation();
-
-    UE_LOG(LogTemp, Warning, TEXT("Spawning grenade at: %s"), *SpawnLocation.ToString());
 
     AGranadeProjectile* Grenade = World->SpawnActor<AGranadeProjectile>(
         GranadeData.ProjectileClass,
@@ -131,6 +227,6 @@ void UBaseGranadeAbility::ThrowGranade()
     FVector LaunchVelocity = Avatar->GetActorForwardVector() * ThrowForce;
     Grenade->Throw(LaunchVelocity);
 
-    UE_LOG(LogTemp, Warning, TEXT("Grenade spawned and thrown successfully: %s"), *Grenade->GetName());
+    UE_LOG(LogTemp, Warning, TEXT("Grenade spawned and thrown successfully!"));
 }
 

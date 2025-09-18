@@ -51,6 +51,7 @@ protected:
 	void InitializeDefaultGranades();
 	int32 FindExistingSlot(EGranadeType GranadeType) const;
 	int32 FindEmptySlot() const;
+	
 
 private:
 
