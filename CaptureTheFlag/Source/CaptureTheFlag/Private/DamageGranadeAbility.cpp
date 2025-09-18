@@ -14,9 +14,30 @@ UDamageGranadeAbility::UDamageGranadeAbility()
 {
 	CooldownTag = FGameplayTag::RequestGameplayTag(FName("Cooldown.Granade.Damage"));
 
-	GranadeProjectile = ADamageGranadeProjectile::StaticClass();
 
+    CooldownGameplayEffectClass = LoadClass<UGameplayEffect>(
+        nullptr,
+        TEXT("/Game/GAS/GameplayEffects/GE_Cooldown.GE_Cooldown_C")
+    );
 
+    if (!CooldownGameplayEffectClass)
+    {
+        UE_LOG(LogTemp, Warning, TEXT("Cooldown GE could not be loaded at runtime"));
+    }
+    else
+    {
+        UE_LOG(LogTemp, Warning, TEXT("COOLDOWN FIND"));
+    }
+
+    static ConstructorHelpers::FClassFinder<AGranadeProjectile> ProjectileBP(TEXT("/Game/Blueprints/GAS/BP_DamageGranade.BP_DamageGranade_C"));
+    if (ProjectileBP.Succeeded())
+    {
+        GranadeData.ProjectileClass = ProjectileBP.Class;
+    }
+    else
+    {
+        UE_LOG(LogTemp, Error, TEXT("BP_GranadeProjectile not found! Check path."));
+    }
 }
 
 

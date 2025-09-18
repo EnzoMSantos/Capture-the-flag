@@ -74,21 +74,8 @@ void UGranadeInventoryComponent::Server_UseGranade_Implementation(int32 SlotInde
 	if (InventorySlots[SlotIndex].GranadeType == EGranadeType::None) return;
 	if (InventorySlots[SlotIndex].Quantity <= 0) return;
 
-	if (InventorySlots[SlotIndex].CooldownRemaining > 0.0f)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Grenade on cooldown: %.1f seconds remaining"), InventorySlots[SlotIndex].CooldownRemaining);
-		return;
-	}
-
 	InventorySlots[SlotIndex].Quantity--;
 
-	// Aplicar cooldown
-	if (const FGranadeData* Data = GranadeDataMap.Find(InventorySlots[SlotIndex].GranadeType))
-	{
-		InventorySlots[SlotIndex].CooldownRemaining = Data->Cooldown;
-	}
-
-	// Se quantidade zerou, limpar slot
 	if (InventorySlots[SlotIndex].Quantity <= 0)
 	{
 		InventorySlots[SlotIndex] = FGranadeSlot();

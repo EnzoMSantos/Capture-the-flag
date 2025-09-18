@@ -55,6 +55,8 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Code|Input")
 	UInputAction* ThrowGrenadeAction;
 
+	void DebugFindAllGranadeBlueprints();
+
 public:	
 
 	virtual void Tick(float DeltaTime) override;

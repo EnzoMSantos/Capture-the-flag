@@ -8,7 +8,22 @@
 				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/GAS/BP_DamageGranadeAbility.uasset",
 				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/Blueprints/BP_CaptureCharacter.uasset",
 				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/Input/IMC_Default.uasset",
-				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/GAS/GameplayEffects/GE_DefaultAttributes.uasset"
+				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/GAS/GameplayEffects/GE_DefaultAttributes.uasset",
+				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/GAS/BP_DamageGranade.uasset",
+				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/GAS/GameplayEffects/GE_Cooldown.uasset",
+				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/Meshes/Source/BaseColor.uasset",
+				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/Meshes/Source/Granfbx.uasset",
+				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/Meshes/Source/hockey_stick_001.uasset",
+				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/Meshes/Source/Material.uasset",
+				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/Meshes/Source/SM_SciFi_Weapons_03.uasset",
+				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/Meshes/Source/SM_SciFi_Weapons_04.uasset",
+				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/Meshes/Source/SM_SciFi_Weapons_05.uasset",
+				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/Meshes/Source/TeamColor.uasset",
+				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/Meshes/Source/Weapons1.uasset",
+				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/Meshes/Source/Weapons_01.uasset",
+				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/Meshes/Source/Weapons_02.uasset",
+				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/Meshes/Source/BaseColor_Inst.uasset",
+				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/Meshes/Source/TeamColor_Inst.uasset"
 			]
 		}
 	]

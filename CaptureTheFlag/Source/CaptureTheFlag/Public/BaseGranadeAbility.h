@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Abilities/GameplayAbility.h"
+#include "Types/GranadeData.h"
 #include "BaseGranadeAbility.generated.h"
 
 /**
@@ -23,6 +24,9 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, Category = "Grenade")
 	float ThrowForce = 1500.f;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Data")
+	FGranadeData GranadeData;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Cooldown")
 	FGameplayTag CooldownTag;

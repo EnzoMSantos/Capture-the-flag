@@ -20,6 +20,7 @@
 #include "GranadeInventoryComponent.h"
 #include "DamageGranadeAbility.h"
 #include "BaseAttributeSet.h"
+#include "AssetRegistry/AssetRegistryModule.h"
 #include "AbilitySystemInterface.h" 
 #include "EngineUtils.h"
 
@@ -97,6 +98,8 @@ void ACaptureCharacter::BeginPlay()
 
 	UE_LOG(LogTemp, Warning, TEXT("BP_CaptureCharacter BeginPlay - HasAbilitySystem: %d"),
 		(AbilitySystemComponent != nullptr));
+
+	DebugFindAllGranadeBlueprints();
 }
 
 void ACaptureCharacter::SetHasFlag(bool bNewHasFlag)
@@ -250,6 +253,35 @@ void ACaptureCharacter::ApplyTeamMaterial()
 	}
 }
 
+void ACaptureCharacter::DebugFindAllGranadeBlueprints()
+{
+	UE_LOG(LogTemp, Warning, TEXT("=== SEARCHING FOR GRANADE BLUEPRINTS ==="));
+
+	FAssetRegistryModule& AssetRegistryModule = FModuleManager::LoadModuleChecked<FAssetRegistryModule>("AssetRegistry");
+	TArray<FAssetData> AssetData;
+
+	FARFilter Filter;
+	Filter.ClassPaths.Add(UBlueprint::StaticClass()->GetClassPathName());
+	Filter.bRecursivePaths = true;
+
+	AssetRegistryModule.Get().GetAssets(Filter, AssetData);
+
+	for (const FAssetData& Asset : AssetData)
+	{
+		FString AssetPath = Asset.GetObjectPathString();
+		FString AssetName = Asset.AssetName.ToString();
+
+		if (AssetName.Contains(TEXT("granade"), ESearchCase::IgnoreCase) ||
+			AssetName.Contains(TEXT("damage"), ESearchCase::IgnoreCase) ||
+			AssetName.Contains(TEXT("Grenade"), ESearchCase::IgnoreCase))
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Found: %s -> %s"), *AssetName, *AssetPath);
+		}
+	}
+
+	UE_LOG(LogTemp, Warning, TEXT("=== END SEARCH ==="));
+}
+
 void ACaptureCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
@@ -333,6 +365,7 @@ void ACaptureCharacter::ThrowGranade()
 
 void ACaptureCharacter::Server_ThrowGranade_Implementation()
 {
+
 	UE_LOG(LogTemp, Warning, TEXT("Server_ThrowGrenade_Implementation() called"));
 
 	if (!AbilitySystemComponent)
@@ -341,42 +374,33 @@ void ACaptureCharacter::Server_ThrowGranade_Implementation()
 		return;
 	}
 
-	if (UGranadeInventoryComponent* Inventory = FindComponentByClass<UGranadeInventoryComponent>())
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Inventory found - Damage grenade count: %d"),
-			Inventory->GetGranadeCount(EGranadeType::Damage));
 
-		if (Inventory->GetGranadeCount(EGranadeType::Damage) > 0)
-		{
-			FGameplayAbilitySpec* GrenadeAbilitySpec = AbilitySystemComponent->FindAbilitySpecFromClass(UDamageGranadeAbility::StaticClass());
-
-			if (GrenadeAbilitySpec)
-			{
-				UE_LOG(LogTemp, Warning, TEXT("Grenade ability spec found - IsActive: %d"),
-					GrenadeAbilitySpec->IsActive());
-
-				if (GrenadeAbilitySpec->IsActive())
-				{
-					UE_LOG(LogTemp, Warning, TEXT("Grenade ability is on cooldown"));
-					return;
-				}
-			}
-			else
-			{
-				UE_LOG(LogTemp, Warning, TEXT("Grenade ability spec NOT found"));
-			}
-
-			bool bActivated = AbilitySystemComponent->TryActivateAbilityByClass(UDamageGranadeAbility::StaticClass());
-			UE_LOG(LogTemp, Warning, TEXT("TryActivateAbilityByClass result: %d"), bActivated);
-		}
-		else
-		{
-			UE_LOG(LogTemp, Warning, TEXT("No grenades in inventory"));
-		}
-	}
-	else
+	UGranadeInventoryComponent* Inventory = FindComponentByClass<UGranadeInventoryComponent>();
+	if (!Inventory)
 	{
 		UE_LOG(LogTemp, Error, TEXT("Inventory component NOT found!"));
+		return;
+	}
+
+	if (Inventory->GetGranadeCount(EGranadeType::Damage) <= 0)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("No grenades in inventory"));
+		return;
+	}
+
+	bool bActivated = AbilitySystemComponent->TryActivateAbilityByClass(UDamageGranadeAbility::StaticClass());
+	UE_LOG(LogTemp, Warning, TEXT("TryActivateAbilityByClass result: %d"), bActivated);
+
+	if (bActivated)
+	{
+		for (int32 i = 0; i < Inventory->InventorySlots.Num(); i++)
+		{
+			if (Inventory->InventorySlots[i].GranadeType == EGranadeType::Damage)
+			{
+				Inventory->Server_UseGranade(i);
+				break;
+			}
+		}
 	}
 }
 
