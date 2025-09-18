@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "Types/GranadeType.h"
+#include "Types/GranadeData.h"
 #include "GranadeInventoryComponent.generated.h"
 
 

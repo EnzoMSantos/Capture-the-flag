@@ -19,7 +19,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 enum class EGranadeType : uint8;
 
 // ********** Begin Class UGranadeInventoryComponent ***********************************************
-#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_GranadeInventoryComponent_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
+#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_GranadeInventoryComponent_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
 	virtual void Server_UseGranade_Implementation(int32 SlotIndex); \
 	virtual void Server_AddGranade_Implementation(EGranadeType GranadeType, int32 Quantity); \
 	DECLARE_FUNCTION(execOnRep_Inventory); \
@@ -31,10 +31,10 @@ enum class EGranadeType : uint8;
 	DECLARE_FUNCTION(execCanAddGranade);
 
 
-#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_GranadeInventoryComponent_h_14_CALLBACK_WRAPPERS
+#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_GranadeInventoryComponent_h_15_CALLBACK_WRAPPERS
 CAPTURETHEFLAG_API UClass* Z_Construct_UClass_UGranadeInventoryComponent_NoRegister();
 
-#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_GranadeInventoryComponent_h_14_INCLASS_NO_PURE_DECLS \
+#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_GranadeInventoryComponent_h_15_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUGranadeInventoryComponent(); \
 	friend struct Z_Construct_UClass_UGranadeInventoryComponent_Statics; \
@@ -51,7 +51,7 @@ public: \
 	DECLARE_VALIDATE_GENERATED_REP_ENUMS(NO_API)
 
 
-#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_GranadeInventoryComponent_h_14_ENHANCED_CONSTRUCTORS \
+#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_GranadeInventoryComponent_h_15_ENHANCED_CONSTRUCTORS \
 	/** Deleted move- and copy-constructors, should never be used */ \
 	UGranadeInventoryComponent(UGranadeInventoryComponent&&) = delete; \
 	UGranadeInventoryComponent(const UGranadeInventoryComponent&) = delete; \
@@ -61,14 +61,14 @@ public: \
 	NO_API virtual ~UGranadeInventoryComponent();
 
 
-#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_GranadeInventoryComponent_h_11_PROLOG
-#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_GranadeInventoryComponent_h_14_GENERATED_BODY \
+#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_GranadeInventoryComponent_h_12_PROLOG
+#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_GranadeInventoryComponent_h_15_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_GranadeInventoryComponent_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
-	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_GranadeInventoryComponent_h_14_CALLBACK_WRAPPERS \
-	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_GranadeInventoryComponent_h_14_INCLASS_NO_PURE_DECLS \
-	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_GranadeInventoryComponent_h_14_ENHANCED_CONSTRUCTORS \
+	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_GranadeInventoryComponent_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_GranadeInventoryComponent_h_15_CALLBACK_WRAPPERS \
+	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_GranadeInventoryComponent_h_15_INCLASS_NO_PURE_DECLS \
+	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_GranadeInventoryComponent_h_15_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

@@ -1,14 +1,15 @@
-Log started at 09/16/2025 22:31:40 (2025-09-17T01:31:40Z)
+Log started at 09/17/2025 19:27:16 (2025-09-17T22:27:16Z)
 Resolved project argument D:/Git/Capture-the-flag/CaptureTheFlag/CaptureTheFlag.uproject to D:\Git\Capture-the-flag\CaptureTheFlag\CaptureTheFlag.uproject
 No config file at C:\ProgramData\Unreal Engine\UnrealBuildTool\BuildConfiguration.xml
 No config file at C:\Users\Usuario\AppData\Local\Unreal Engine\UnrealBuildTool\BuildConfiguration.xml
 No config file at C:\Users\Usuario\Documents\Unreal Engine\UnrealBuildTool\BuildConfiguration.xml
 Configuration will be read from:
   C:\Users\Usuario\AppData\Roaming\Unreal Engine\UnrealBuildTool\BuildConfiguration.xml
-Reading configuration file from cache (D:\Git\Capture-the-flag\CaptureTheFlag\Intermediate\Build\XmlConfigCache.bin): C:\Users\Usuario\AppData\Roaming\Unreal Engine\UnrealBuildTool\BuildConfiguration.xml
-Reading configuration file from cache (D:\Git\Capture-the-flag\CaptureTheFlag\Intermediate\Build\XmlConfigCache.bin): D:\Git\Capture-the-flag\CaptureTheFlag\Saved\UnrealBuildTool\BuildConfiguration.xml
-Reading configuration file from cache (D:\Git\Capture-the-flag\CaptureTheFlag\Intermediate\Build\XmlConfigCache.bin): C:\Users\Usuario\AppData\Local\UnrealEngine\Intermediate\Build\UnrealBuildTool.Env.BuildConfiguration.xml
-Log file: D:\Git\Capture-the-flag\CaptureTheFlag\Saved\Logs\UnrealVersionSelector-2025.09.16-22.31.39.log
+No project scope config file at D:\Git\Capture-the-flag\CaptureTheFlag\Saved\UnrealBuildTool\BuildConfiguration.xml. Creating default.
+Reading configuration file from: C:\Users\Usuario\AppData\Roaming\Unreal Engine\UnrealBuildTool\BuildConfiguration.xml
+Reading configuration file from: D:\Git\Capture-the-flag\CaptureTheFlag\Saved\UnrealBuildTool\BuildConfiguration.xml
+Reading configuration file from: C:\Users\Usuario\AppData\Local\UnrealEngine\Intermediate\Build\UnrealBuildTool.Env.BuildConfiguration.xml
+Log file: D:\Git\Capture-the-flag\CaptureTheFlag\Saved\Logs\UnrealVersionSelector-2025.09.17-19.27.15.log
 
 Setting temp directory to 'C:\Users\Usuario\AppData\Local\Temp\UnrealBuildTool\b9350b48'
     Registering build platform: UnrealBuildTool.AndroidPlatformFactory
@@ -58,6 +59,7 @@ Detected supported platforms: Win64
 Adding projects for all targets...
 Skipping D:\UE_5.6\Engine\Intermediate\Build\BuildRules\UE5Rules.dll: File is installed
 Skipping D:\UE_5.6\Engine\Intermediate\Build\BuildRules\UE5ProgramRules.dll: File is installed
+Compiling D:\Git\Capture-the-flag\CaptureTheFlag\Intermediate\Build\BuildRules\CaptureTheFlagModuleRules.dll: Assembly does not exist
 Available x64 toolchains (1):
  * C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207
     (Family=14.44.35207, FamilyRank=1, Version=14.44.35207, HostArchitecture=x64, ReleaseChannel=Latest, Architecture=x64)
@@ -66,7 +68,7 @@ Generating target Game for D:\Git\Capture-the-flag\CaptureTheFlag\Intermediate\P
 Generating target Editor for D:\Git\Capture-the-flag\CaptureTheFlag\Intermediate\ProjectFiles\CaptureTheFlag.vcxproj
 Generating target Editor for D:\Git\Capture-the-flag\CaptureTheFlag\Intermediate\ProjectFiles\UE5.vcxproj
 Generating target Game for D:\Git\Capture-the-flag\CaptureTheFlag\Intermediate\ProjectFiles\UE5.vcxproj
-Adding projects for all targets took 0.80s
+Adding projects for all targets took 2.15s
 Adding projects for all game projects took 0.00s
 Adding shader source code...
 AddProjectsForAllModules D:\UE_5.6\Engine\Source\Developer\AITestSuite\AITestSuite.Build.cs
@@ -2322,7 +2324,7 @@ AddProjectsForAllModules D:\UE_5.6\Engine\Platforms\VisionOS\Plugins\Runtime\Aud
 AddProjectsForAllModules D:\UE_5.6\Engine\Platforms\VisionOS\Plugins\Runtime\OpenXRVisionOS\Source\OXRVisionOSSettings\OXRVisionOSSettings.build.cs
 AddProjectsForAllModules D:\UE_5.6\Engine\Platforms\VisionOS\Plugins\Runtime\OpenXRVisionOS\Source\OXRVisionOS\OXRVisionOS.Build.cs
 AddProjectsForAllModules D:\Git\Capture-the-flag\CaptureTheFlag\Source\CaptureTheFlag\CaptureTheFlag.Build.cs
-Adding projects for all modules took 5.02s
+Adding projects for all modules took 0.52s
 Skipping any C# project files in "D:\UE_5.6\Engine\Platforms\VisionOS\Source\Programs" due to unsupported platform
 Compiling Rules Assemblies
 @progress 'Compiling Rules Assemblies' 0%
@@ -4066,8 +4068,14 @@ Excluding module LaunchDaemonMessages: Excluded folder name
 Excluding module VisualStudioDTE: Not under compatible directories
 Excluding module LiveLinkHubLauncher: Not under compatible directories
 Excluding module DotNetPerforceLib: Not under compatible directories
+Excluding module DistributedBuildInterface: Not precompiled for target 'Editor'
+Excluding module IoStoreOnDemandTests: Not precompiled for target 'Editor'
+Excluding module EventLoopUnitTests: Not precompiled for target 'Editor'
+Excluding module OodleDataCompression: Not precompiled for target 'Editor'
+Excluding module SymsLib: Not precompiled for target 'Editor'
 Allowed circular dependency for 'Source\Runtime\AIModule\AIModule.Build.cs' detected:
 * AIModule -> AITestSuite -> AIModule (allowed via AIModule -> AITestSuite)
+Excluding module UEJpegComp: Not precompiled for target 'Editor'
 * AIModule -> Engine -> Kismet -> BlueprintEditorLibrary -> BlueprintGraph -> AssetTools -> Landscape -> MeshBuilder -> MeshBoneReduction -> AnimationBlueprintLibrary -> AnimGraph -> GraphEditor -> Persona -> AudioEditor -> DetailCustomizations -> ComponentVisualizers -> AIModule (allowed via Engine -> Kismet, AssetTools -> Landscape, AnimGraph -> GraphEditor, GraphEditor -> Persona, AudioEditor -> DetailCustomizations)
 * AIModule -> GameplayDebuggerEditor -> PropertyEditor -> CQTest -> LevelEditor -> SubobjectEditor -> Kismet -> BlueprintEditorLibrary -> BlueprintGraph -> AssetTools -> Landscape -> MeshBuilder -> MeshBoneReduction -> AnimationBlueprintLibrary -> AnimGraph -> GraphEditor -> Persona -> AudioEditor -> DetailCustomizations -> ComponentVisualizers -> AIModule (allowed via Kismet -> SubobjectEditor, AssetTools -> Landscape, AnimGraph -> GraphEditor, GraphEditor -> Persona, AudioEditor -> DetailCustomizations)
 * AIModule -> UnrealEd -> UniversalObjectLocatorEditor -> Sequencer -> MovieSceneCaptureDialog -> MovieSceneTools -> KismetCompiler -> Kismet -> BlueprintEditorLibrary -> BlueprintGraph -> AssetTools -> Landscape -> MeshBuilder -> MeshBoneReduction -> AnimationBlueprintLibrary -> AnimGraph -> GraphEditor -> Persona -> AudioEditor -> DetailCustomizations -> ComponentVisualizers -> AIModule (allowed via UnrealEd -> UniversalObjectLocatorEditor, Sequencer -> UniversalObjectLocatorEditor, Kismet -> KismetCompiler, AssetTools -> Landscape, AnimGraph -> GraphEditor, GraphEditor -> Persona, AudioEditor -> DetailCustomizations)
@@ -4075,6 +4083,7 @@ Allowed circular dependency for 'Source\Runtime\AIModule\AIModule.Build.cs' dete
 * AIModule -> NavigationSystem -> GeometryCollectionEngine -> Renderer -> MaterialShaderQualitySettings -> PropertyEditor -> CQTest -> LevelEditor -> SubobjectEditor -> Kismet -> BlueprintEditorLibrary -> BlueprintGraph -> AssetTools -> Landscape -> MeshBuilder -> MeshBoneReduction -> AnimationBlueprintLibrary -> AnimGraph -> GraphEditor -> Persona -> AudioEditor -> DetailCustomizations -> ComponentVisualizers -> AIModule (allowed via Kismet -> SubobjectEditor, AssetTools -> Landscape, AnimGraph -> GraphEditor, GraphEditor -> Persona, AudioEditor -> DetailCustomizations)
 Allowed circular dependency for 'Source\Developer\AITestSuite\AITestSuite.Build.cs' detected:
 * AITestSuite -> AIModule -> AITestSuite (allowed via AIModule -> AITestSuite)
+Excluding module UEWavComp: Not precompiled for target 'Editor'
 Allowed circular dependency for 'Source\Runtime\AVEncoder\AVEncoder.Build.cs' detected:
 * AVEncoder -> Engine -> Kismet -> BlueprintEditorLibrary -> BlueprintGraph -> AssetTools -> Landscape -> MeshBuilder -> MeshBoneReduction -> AnimationBlueprintLibrary -> AnimGraph -> GraphEditor -> Persona -> AudioEditor -> DetailCustomizations -> ComponentVisualizers -> AIModule -> UnrealEd -> GameplayMediaEncoder -> AVEncoder (allowed via Engine -> Kismet, AssetTools -> Landscape, AnimGraph -> GraphEditor, GraphEditor -> Persona, AudioEditor -> DetailCustomizations)
 * AVEncoder -> D3D11RHI -> HeadMountedDisplay -> Renderer -> MaterialShaderQualitySettings -> PropertyEditor -> CQTest -> LevelEditor -> SubobjectEditor -> Kismet -> BlueprintEditorLibrary -> BlueprintGraph -> AssetTools -> Landscape -> MeshBuilder -> MeshBoneReduction -> AnimationBlueprintLibrary -> AnimGraph -> GraphEditor -> Persona -> AudioEditor -> DetailCustomizations -> ComponentVisualizers -> AIModule -> UnrealEd -> GameplayMediaEncoder -> AVEncoder (allowed via Kismet -> SubobjectEditor, AssetTools -> Landscape, AnimGraph -> GraphEditor, GraphEditor -> Persona, AudioEditor -> DetailCustomizations)
@@ -4100,6 +4109,7 @@ Allowed circular dependency for 'Source\Editor\AnimGraph\AnimGraph.Build.cs' det
 * AnimGraph -> GraphEditor -> Persona -> AnimationModifiers -> AnimationBlueprintLibrary -> AnimGraph (allowed via AnimGraph -> GraphEditor, GraphEditor -> Persona)
 * AnimGraph -> BlueprintGraph -> AssetTools -> Landscape -> MeshUtilities -> Persona -> AnimationModifiers -> AnimationBlueprintLibrary -> AnimGraph (allowed via AnimGraph -> BlueprintGraph, AssetTools -> Landscape, Landscape -> MeshUtilities)
 * AnimGraph -> ContentBrowser -> AssetTools -> Landscape -> MeshUtilities -> Persona -> AnimationModifiers -> AnimationBlueprintLibrary -> AnimGraph (allowed via AnimGraph -> ContentBrowser, AssetTools -> Landscape, Landscape -> MeshUtilities)
+Excluding module VulkanRHI: Not precompiled for target 'Editor'
 * AnimGraph -> Kismet -> UMGEditor -> Blutility -> AssetTools -> Landscape -> MeshUtilities -> Persona -> AnimationModifiers -> AnimationBlueprintLibrary -> AnimGraph (allowed via AnimGraph -> Kismet, Kismet -> UMGEditor, UMGEditor -> Blutility, AssetTools -> Landscape, Landscape -> MeshUtilities)
 * AnimGraph -> UnrealEd -> AudioEditor -> UMGEditor -> Blutility -> AssetTools -> Landscape -> MeshUtilities -> Persona -> AnimationModifiers -> AnimationBlueprintLibrary -> AnimGraph (allowed via AnimGraph -> UnrealEd, UnrealEd -> AudioEditor, UMGEditor -> Blutility, AssetTools -> Landscape, Landscape -> MeshUtilities)
 * AnimGraph -> PropertyEditor -> CQTest -> LevelEditor -> DataLayerEditor -> AssetTools -> Landscape -> MeshUtilities -> Persona -> AnimationModifiers -> AnimationBlueprintLibrary -> AnimGraph (allowed via AnimGraph -> PropertyEditor, AssetTools -> Landscape, Landscape -> MeshUtilities)
@@ -4143,6 +4153,7 @@ Allowed circular dependency for 'Source\Editor\AudioEditor\AudioEditor.Build.cs'
 * AudioEditor -> Landscape -> MeshUtilities -> Persona -> AudioEditor (allowed via Landscape -> MeshUtilities)
 * AudioEditor -> DetailCustomizations -> SkeletonEditor -> Persona -> AudioEditor (allowed via AudioEditor -> DetailCustomizations)
 * AudioEditor -> UnrealEd -> MeshBuilder -> MeshUtilities -> Persona -> AudioEditor (allowed via UnrealEd -> AudioEditor)
+Excluding module LowLevelTestsRunner: Not precompiled for target 'Editor'
 Allowed circular dependency for 'Source\Runtime\AudioLink\AudioLinkEngine\AudioLinkEngine.Build.cs' detected:
 * AudioLinkEngine -> Engine -> MaterialUtilities -> MaterialBaking -> MainFrame -> UATHelper -> GameProjectGeneration -> ClassViewer -> PropertyEditor -> CQTest -> LevelEditor -> ActionableMessage -> UnrealEd -> FoliageEdit -> DetailCustomizations -> Kismet -> BlueprintEditorLibrary -> BlueprintGraph -> AssetTools -> Landscape -> MeshBuilder -> MeshBoneReduction -> AnimationBlueprintLibrary -> AnimGraph -> GraphEditor -> Persona -> AudioEditor -> AudioLinkEngine (allowed via Engine -> MaterialUtilities, UnrealEd -> FoliageEdit, AssetTools -> Landscape, AnimGraph -> GraphEditor, GraphEditor -> Persona)
 Allowed circular dependency for 'Source\Runtime\AudioMixer\AudioMixer.Build.cs' detected:
@@ -4245,6 +4256,7 @@ Allowed circular dependency for 'Source\Runtime\D3D12RHI\D3D12RHI.Build.cs' dete
 * D3D12RHI -> Engine -> Kismet -> BlueprintEditorLibrary -> BlueprintGraph -> AssetTools -> Landscape -> MeshBuilder -> MeshBoneReduction -> AnimationBlueprintLibrary -> AnimGraph -> GraphEditor -> Persona -> AudioEditor -> DetailCustomizations -> ComponentVisualizers -> AIModule -> UnrealEd -> GameplayMediaEncoder -> AVEncoder -> D3D12RHI (allowed via Engine -> Kismet, AssetTools -> Landscape, AnimGraph -> GraphEditor, GraphEditor -> Persona, AudioEditor -> DetailCustomizations)
 * D3D12RHI -> HeadMountedDisplay -> Renderer -> MaterialShaderQualitySettings -> PropertyEditor -> CQTest -> LevelEditor -> SubobjectEditor -> Kismet -> BlueprintEditorLibrary -> BlueprintGraph -> AssetTools -> Landscape -> MeshBuilder -> MeshBoneReduction -> AnimationBlueprintLibrary -> AnimGraph -> GraphEditor -> Persona -> AudioEditor -> DetailCustomizations -> ComponentVisualizers -> AIModule -> UnrealEd -> GameplayMediaEncoder -> AVEncoder -> D3D12RHI (allowed via Kismet -> SubobjectEditor, AssetTools -> Landscape, AnimGraph -> GraphEditor, GraphEditor -> Persona, AudioEditor -> DetailCustomizations)
 Allowed circular dependency for 'Source\Editor\DataLayerEditor\DataLayerEditor.Build.cs' detected:
+Excluding module IrisStub: Not precompiled for target 'Editor'
 * DataLayerEditor -> UnrealEd -> FoliageEdit -> DataLayerEditor (allowed via UnrealEd -> DataLayerEditor)
 * DataLayerEditor -> PropertyEditor -> Documentation -> MainFrame -> TranslationEditor -> GraphEditor -> Persona -> AudioEditor -> LevelEditor -> DataLayerEditor (allowed via GraphEditor -> Persona)
 * DataLayerEditor -> AssetTools -> Landscape -> MeshBuilder -> MeshBoneReduction -> AnimationBlueprintLibrary -> AnimGraph -> GraphEditor -> Persona -> AudioEditor -> LevelEditor -> DataLayerEditor (allowed via AssetTools -> Landscape, AnimGraph -> GraphEditor, GraphEditor -> Persona)
@@ -4843,16 +4855,6 @@ Allowed circular dependency for 'Source\Editor\ZenEditor\ZenEditor.Build.cs' det
 * ZenEditor -> UnrealEd -> FoliageEdit -> DetailCustomizations -> Kismet -> BlueprintEditorLibrary -> BlueprintGraph -> AssetTools -> Landscape -> MeshBuilder -> MeshBoneReduction -> AnimationBlueprintLibrary -> AnimGraph -> GraphEditor -> Persona -> AudioEditor -> LevelEditor -> ZenEditor (allowed via UnrealEd -> FoliageEdit, AssetTools -> Landscape, AnimGraph -> GraphEditor, GraphEditor -> Persona)
 * ZenEditor -> UATHelper -> GameProjectGeneration -> ClassViewer -> PropertyEditor -> Documentation -> ContentBrowser -> AssetTools -> Landscape -> MeshBuilder -> MeshBoneReduction -> AnimationBlueprintLibrary -> AnimGraph -> GraphEditor -> Persona -> AudioEditor -> LevelEditor -> ZenEditor (allowed via Documentation -> ContentBrowser, AssetTools -> Landscape, AnimGraph -> GraphEditor, GraphEditor -> Persona)
 @progress 'Creating Build Targets' 50%
-Excluding module DistributedBuildInterface: Not precompiled for target 'Editor'
-Excluding module IoStoreOnDemandTests: Not precompiled for target 'Editor'
-Excluding module EventLoopUnitTests: Not precompiled for target 'Editor'
-Excluding module OodleDataCompression: Not precompiled for target 'Editor'
-Excluding module SymsLib: Not precompiled for target 'Editor'
-Excluding module UEJpegComp: Not precompiled for target 'Editor'
-Excluding module UEWavComp: Not precompiled for target 'Editor'
-Excluding module VulkanRHI: Not precompiled for target 'Editor'
-Excluding module LowLevelTestsRunner: Not precompiled for target 'Editor'
-Excluding module IrisStub: Not precompiled for target 'Editor'
 Excluding module OnlineSubsystemTencent: Not precompiled for target 'Editor'
 Excluding module VoiceChat: Not precompiled for target 'Editor'
 Excluding module ReplicationSystemTestPlugin: Not precompiled for target 'Editor'
@@ -5633,7 +5635,7 @@ Allowed circular dependency for 'Source\Editor\ZenEditor\ZenEditor.Build.cs' det
 * ZenEditor -> UnrealEd -> FoliageEdit -> DetailCustomizations -> Kismet -> BlueprintEditorLibrary -> BlueprintGraph -> AssetTools -> Landscape -> MeshBuilder -> MeshBoneReduction -> AnimationBlueprintLibrary -> AnimGraph -> GraphEditor -> Persona -> AudioEditor -> LevelEditor -> ZenEditor (allowed via UnrealEd -> FoliageEdit, AssetTools -> Landscape, AnimGraph -> GraphEditor, GraphEditor -> Persona)
 * ZenEditor -> UATHelper -> GameProjectGeneration -> ClassViewer -> PropertyEditor -> Documentation -> ContentBrowser -> AssetTools -> Landscape -> MeshBuilder -> MeshBoneReduction -> AnimationBlueprintLibrary -> AnimGraph -> GraphEditor -> Persona -> AudioEditor -> LevelEditor -> ZenEditor (allowed via Documentation -> ContentBrowser, AssetTools -> Landscape, AnimGraph -> GraphEditor, GraphEditor -> Persona)
 @progress 'Creating Build Targets' 100%
-Creating Build Targets took 2.67s
+Creating Build Targets took 2.23s
 Binding IntelliSense data...
 @progress 'Binding IntelliSense data...' 0%
 Compiler: C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\bin\Hostx64\x64\cl.exe
@@ -5756,19 +5758,21 @@ Found 5 shared PCH headers (listed in order of preference):
 @progress 'Binding IntelliSense data...' 98%
 @progress 'Binding IntelliSense data...' 99%
 @progress 'Binding IntelliSense data...' 100%
-Binding IntelliSense data took 34.41s
+Binding IntelliSense data took 24.91s
 Writing project files...
 @progress 'Writing project files...' 0%
-Skipped saving UE5.vcxproj because contents haven't changed.
-Skipped saving UE5.vcxproj.filters because contents haven't changed.
+Saved CaptureTheFlag.vcxproj
+Saved CaptureTheFlag.vcxproj.filters
+Saved CaptureTheFlag.vcxproj.user
 @progress 'Writing project files...' 33%
-Skipped saving CaptureTheFlag.vcxproj because contents haven't changed.
-Skipped saving CaptureTheFlag.vcxproj.filters because contents haven't changed.
+Saved UE5.vcxproj
+Saved UE5.vcxproj.filters
+Saved UE5.vcxproj.user
 @progress 'Writing project files...' 67%
 Skipped saving CaptureTheFlag.sln because contents haven't changed.
 Skipped saving .vsconfig because contents haven't changed.
 @progress 'Writing project files...' 100%
-Writing project files took 11.42s
+Writing project files took 2.07s
 Project generation complete (2 generated, 51 imported)
 
 Generating QueryTargets data for editor...
@@ -5780,31 +5784,31 @@ Writing Query Target Info
 @progress 'Writing Query Target Info' 0%
 @progress 'Writing Query Target Info' 50%
 @progress 'Writing Query Target Info' 100%
-Generating QueryTargets data for editor took 0.07s
-WriteFileIfChanged() wrote 0 changed files of 2045 requested writes.
+Generating QueryTargets data for editor took 0.03s
+WriteFileIfChanged() wrote 31 changed files of 2045 requested writes.
 
 Timeline:
-[  0.000]  +0.429 Main
-   0.092          [  0.091]  +0.132 Apply XmlConfig
-   0.275          [  0.274]  +0.130 RegisterPlatforms
-[  0.430] +57.885 GenerateProjectFilesMode
-   0.430          [  0.000]  +0.462 <unknown>
-   0.892          [  0.462] +57.349 Generating VisualStudio project files
-   1.022             0.591          [  0.129]  +0.084 DiscoverTargets
-   1.110             0.679          [  0.217]  +0.800 Adding projects for all targets
-   1.912             1.481          [  1.019]  +0.002 Adding projects for all game projects
-   1.914             1.484          [  1.021]  +0.020 Adding Engine Source
-   1.941             1.510          [  1.048]  +5.023 Adding projects for all modules
-   6.965             6.534          [  6.072]  +2.762 Adding DotNet Programs
-   9.732             9.301          [  8.839]  +0.002 Compiling Rules Assemblies
-   9.734             9.304          [  8.842]  +2.672 Creating Build Targets
-  12.407            11.977          [ 11.514] +34.412 Binding IntelliSense data
-  46.819            46.389          [ 45.927] +11.421 Writing project files
-  58.242          [ 57.812]  +0.072 Generating QueryTargets data for editor
-  58.243            57.812          [  0.000]  +0.001 Compiling Rules Assemblies
-  58.244            57.813          [  0.001]  +0.071 Writing Query Target Info
-[ 58.316]  +0.000 TelemetryService.FlushEvents
-[ 58.317]
+[  0.000]  +0.699 Main
+   0.109          [  0.109]  +0.263 Apply XmlConfig
+   0.441          [  0.441]  +0.257 RegisterPlatforms
+[  0.699] +33.245 GenerateProjectFilesMode
+   0.699          [  0.000]  +0.323 <unknown>
+   1.023          [  0.323] +32.895 Generating VisualStudio project files
+   1.058             0.358          [  0.034]  +0.058 DiscoverTargets
+   1.119             0.420          [  0.096]  +2.154 Adding projects for all targets
+   3.276             2.576          [  2.252]  +0.002 Adding projects for all game projects
+   3.278             2.578          [  2.255]  +0.020 Adding Engine Source
+   3.305             2.605          [  2.281]  +0.524 Adding projects for all modules
+   3.830             3.130          [  2.806]  +0.867 Adding DotNet Programs
+   4.700             4.001          [  3.677]  +0.002 Compiling Rules Assemblies
+   4.703             4.004          [  3.680]  +2.230 Creating Build Targets
+   6.934             6.235          [  5.911] +24.913 Binding IntelliSense data
+  31.848            31.148          [ 30.824]  +2.070 Writing project files
+  33.920          [ 33.220]  +0.025 Generating QueryTargets data for editor
+  33.920            33.220          [  0.000]  +0.001 Compiling Rules Assemblies
+  33.921            33.221          [  0.001]  +0.023 Writing Query Target Info
+[ 33.945]  +0.000 TelemetryService.FlushEvents
+[ 33.947]
 
 Result: Succeeded
-Total execution time: 58.32 seconds
+Total execution time: 33.95 seconds

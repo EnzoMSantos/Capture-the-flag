@@ -14,22 +14,64 @@ UBaseGranadeAbility::UBaseGranadeAbility()
 
 void UBaseGranadeAbility::ActivateAbility(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo, const FGameplayEventData* TriggerEventData)
 {
-	if (!CommitAbility(Handle, ActorInfo, ActivationInfo))
-	{
-		EndAbility(Handle, ActorInfo, ActivationInfo, true, true);
-		return;
-	}
+    if (!CommitAbility(Handle, ActorInfo, ActivationInfo))
+    {
+        UE_LOG(LogTemp, Error, TEXT("CommitAbility FAILED!"));
+        EndAbility(Handle, ActorInfo, ActivationInfo, true, true);
+        return;
+    }
 
-	ThrowGranade();
-	EndAbility(Handle, ActorInfo, ActivationInfo, true, false);
+    ThrowGranade();
+
+    if (UAbilitySystemComponent* ASC = GetAbilitySystemComponentFromActorInfo())
+    {
+        FGameplayEffectSpecHandle CooldownSpec = MakeOutgoingGameplayEffectSpec(
+            Handle,
+            ActorInfo,
+            ActivationInfo,
+            UGameplayEffect::StaticClass(), 
+            1.0f 
+        );
+
+        if (CooldownSpec.IsValid())
+        {
+            ApplyGameplayEffectSpecToOwner(Handle, ActorInfo, ActivationInfo, CooldownSpec);
+            UE_LOG(LogTemp, Warning, TEXT("Cooldown applied"));
+        }
+    }
+
+    EndAbility(Handle, ActorInfo, ActivationInfo, true, false);
 }
 
 void UBaseGranadeAbility::ThrowGranade()
 {
-    if (!GetAvatarActorFromActorInfo() || !GranadeProjectileClass) return;
+    UE_LOG(LogTemp, Warning, TEXT("BaseGranadeAbility::ThrowGrenade() called"));
+    UE_LOG(LogTemp, Warning, TEXT ("GranadeProjectileClass : % d"), (GranadeProjectile != nullptr));
+
+        if (!GetAvatarActorFromActorInfo())
+        {
+            UE_LOG(LogTemp, Error, TEXT("Missing avatar actor"));
+            return;
+        }
+
+    if (!GranadeProjectile)
+    {
+        UE_LOG(LogTemp, Error, TEXT("Missing grenade projectile class"));
+        return;
+    }
+
+    if (!GetAvatarActorFromActorInfo() || !GranadeProjectile)
+    {
+        UE_LOG(LogTemp, Error, TEXT("Missing avatar actor or grenade projectile class"));
+        return;
+    }
 
     ACaptureCharacter* Character = Cast<ACaptureCharacter>(GetAvatarActorFromActorInfo());
-    if (!Character) return;
+    if (!Character)
+    {
+        UE_LOG(LogTemp, Error, TEXT("Failed to cast to ACaptureCharacter"));
+        return;
+    }
 
     FVector SpawnLocation = Character->GetActorLocation() + Character->GetActorForwardVector() * 100.0f + FVector(0, 0, 50.0f);
     FRotator SpawnRotation = Character->GetControlRotation();
@@ -38,10 +80,15 @@ void UBaseGranadeAbility::ThrowGranade()
     SpawnParams.Owner = Character;
     SpawnParams.Instigator = Character;
 
-    if (AGranadeProjectile* Granade = GetWorld()->SpawnActor<AGranadeProjectile>(GranadeProjectileClass, SpawnLocation, SpawnRotation, SpawnParams))
+    if (AGranadeProjectile* Granade = GetWorld()->SpawnActor<AGranadeProjectile>(GranadeProjectile, SpawnLocation, SpawnRotation, SpawnParams))
     {
         FVector ThrowDirection = Character->GetControlRotation().Vector();
         Granade->Throw(ThrowDirection * ThrowForce);
+        UE_LOG(LogTemp, Warning, TEXT("Grenade spawned and thrown successfully!"));
+    }
+    else
+    {
+        UE_LOG(LogTemp, Error, TEXT("Failed to spawn grenade!"));
     }
 }
 

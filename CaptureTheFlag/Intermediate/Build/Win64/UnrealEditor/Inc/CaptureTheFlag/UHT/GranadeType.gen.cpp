@@ -13,11 +13,7 @@ void EmptyLinkFunctionForGeneratedCodeGranadeType() {}
 
 // ********** Begin Cross Module References ********************************************************
 CAPTURETHEFLAG_API UEnum* Z_Construct_UEnum_CaptureTheFlag_EGranadeType();
-CAPTURETHEFLAG_API UScriptStruct* Z_Construct_UScriptStruct_FGranadeData();
 CAPTURETHEFLAG_API UScriptStruct* Z_Construct_UScriptStruct_FGranadeSlot();
-COREUOBJECT_API UClass* Z_Construct_UClass_UClass();
-ENGINE_API UClass* Z_Construct_UClass_UTexture2D_NoRegister();
-GAMEPLAYABILITIES_API UClass* Z_Construct_UClass_UGameplayAbility_NoRegister();
 UPackage* Z_Construct_UPackage__Script_CaptureTheFlag();
 // ********** End Cross Module References **********************************************************
 
@@ -162,95 +158,6 @@ UScriptStruct* Z_Construct_UScriptStruct_FGranadeSlot()
 }
 // ********** End ScriptStruct FGranadeSlot ********************************************************
 
-// ********** Begin ScriptStruct FGranadeData ******************************************************
-static FStructRegistrationInfo Z_Registration_Info_UScriptStruct_FGranadeData;
-class UScriptStruct* FGranadeData::StaticStruct()
-{
-	if (!Z_Registration_Info_UScriptStruct_FGranadeData.OuterSingleton)
-	{
-		Z_Registration_Info_UScriptStruct_FGranadeData.OuterSingleton = GetStaticStruct(Z_Construct_UScriptStruct_FGranadeData, (UObject*)Z_Construct_UPackage__Script_CaptureTheFlag(), TEXT("GranadeData"));
-	}
-	return Z_Registration_Info_UScriptStruct_FGranadeData.OuterSingleton;
-}
-struct Z_Construct_UScriptStruct_FGranadeData_Statics
-{
-#if WITH_METADATA
-	static constexpr UECodeGen_Private::FMetaDataPairParam Struct_MetaDataParams[] = {
-		{ "BlueprintType", "true" },
-		{ "ModuleRelativePath", "Types/GranadeType.h" },
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Type_MetaData[] = {
-		{ "Category", "GranadeData" },
-		{ "ModuleRelativePath", "Types/GranadeType.h" },
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Icon_MetaData[] = {
-		{ "Category", "GranadeData" },
-		{ "ModuleRelativePath", "Types/GranadeType.h" },
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_GranadeAbility_MetaData[] = {
-		{ "Category", "GranadeData" },
-		{ "ModuleRelativePath", "Types/GranadeType.h" },
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Cooldown_MetaData[] = {
-		{ "Category", "GranadeData" },
-		{ "ModuleRelativePath", "Types/GranadeType.h" },
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_MaxStack_MetaData[] = {
-		{ "Category", "GranadeData" },
-		{ "ModuleRelativePath", "Types/GranadeType.h" },
-	};
-#endif // WITH_METADATA
-	static const UECodeGen_Private::FBytePropertyParams NewProp_Type_Underlying;
-	static const UECodeGen_Private::FEnumPropertyParams NewProp_Type;
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_Icon;
-	static const UECodeGen_Private::FClassPropertyParams NewProp_GranadeAbility;
-	static const UECodeGen_Private::FFloatPropertyParams NewProp_Cooldown;
-	static const UECodeGen_Private::FIntPropertyParams NewProp_MaxStack;
-	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
-	static void* NewStructOps()
-	{
-		return (UScriptStruct::ICppStructOps*)new UScriptStruct::TCppStructOps<FGranadeData>();
-	}
-	static const UECodeGen_Private::FStructParams StructParams;
-};
-const UECodeGen_Private::FBytePropertyParams Z_Construct_UScriptStruct_FGranadeData_Statics::NewProp_Type_Underlying = { "UnderlyingType", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, nullptr, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FEnumPropertyParams Z_Construct_UScriptStruct_FGranadeData_Statics::NewProp_Type = { "Type", nullptr, (EPropertyFlags)0x0010000000010015, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FGranadeData, Type), Z_Construct_UEnum_CaptureTheFlag_EGranadeType, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Type_MetaData), NewProp_Type_MetaData) }; // 1437698260
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UScriptStruct_FGranadeData_Statics::NewProp_Icon = { "Icon", nullptr, (EPropertyFlags)0x0010000000010015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FGranadeData, Icon), Z_Construct_UClass_UTexture2D_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Icon_MetaData), NewProp_Icon_MetaData) };
-const UECodeGen_Private::FClassPropertyParams Z_Construct_UScriptStruct_FGranadeData_Statics::NewProp_GranadeAbility = { "GranadeAbility", nullptr, (EPropertyFlags)0x0014000000010015, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FGranadeData, GranadeAbility), Z_Construct_UClass_UClass, Z_Construct_UClass_UGameplayAbility_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_GranadeAbility_MetaData), NewProp_GranadeAbility_MetaData) };
-const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FGranadeData_Statics::NewProp_Cooldown = { "Cooldown", nullptr, (EPropertyFlags)0x0010000000010015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FGranadeData, Cooldown), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Cooldown_MetaData), NewProp_Cooldown_MetaData) };
-const UECodeGen_Private::FIntPropertyParams Z_Construct_UScriptStruct_FGranadeData_Statics::NewProp_MaxStack = { "MaxStack", nullptr, (EPropertyFlags)0x0010000000010015, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FGranadeData, MaxStack), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MaxStack_MetaData), NewProp_MaxStack_MetaData) };
-const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UScriptStruct_FGranadeData_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FGranadeData_Statics::NewProp_Type_Underlying,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FGranadeData_Statics::NewProp_Type,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FGranadeData_Statics::NewProp_Icon,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FGranadeData_Statics::NewProp_GranadeAbility,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FGranadeData_Statics::NewProp_Cooldown,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FGranadeData_Statics::NewProp_MaxStack,
-};
-static_assert(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FGranadeData_Statics::PropPointers) < 2048);
-const UECodeGen_Private::FStructParams Z_Construct_UScriptStruct_FGranadeData_Statics::StructParams = {
-	(UObject* (*)())Z_Construct_UPackage__Script_CaptureTheFlag,
-	nullptr,
-	&NewStructOps,
-	"GranadeData",
-	Z_Construct_UScriptStruct_FGranadeData_Statics::PropPointers,
-	UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FGranadeData_Statics::PropPointers),
-	sizeof(FGranadeData),
-	alignof(FGranadeData),
-	RF_Public|RF_Transient|RF_MarkAsNative,
-	EStructFlags(0x00000001),
-	METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FGranadeData_Statics::Struct_MetaDataParams), Z_Construct_UScriptStruct_FGranadeData_Statics::Struct_MetaDataParams)
-};
-UScriptStruct* Z_Construct_UScriptStruct_FGranadeData()
-{
-	if (!Z_Registration_Info_UScriptStruct_FGranadeData.InnerSingleton)
-	{
-		UECodeGen_Private::ConstructUScriptStruct(Z_Registration_Info_UScriptStruct_FGranadeData.InnerSingleton, Z_Construct_UScriptStruct_FGranadeData_Statics::StructParams);
-	}
-	return Z_Registration_Info_UScriptStruct_FGranadeData.InnerSingleton;
-}
-// ********** End ScriptStruct FGranadeData ********************************************************
-
 // ********** Begin Registration *******************************************************************
 struct Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Types_GranadeType_h__Script_CaptureTheFlag_Statics
 {
@@ -259,10 +166,9 @@ struct Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_Capt
 	};
 	static constexpr FStructRegisterCompiledInInfo ScriptStructInfo[] = {
 		{ FGranadeSlot::StaticStruct, Z_Construct_UScriptStruct_FGranadeSlot_Statics::NewStructOps, TEXT("GranadeSlot"), &Z_Registration_Info_UScriptStruct_FGranadeSlot, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FGranadeSlot), 1021656899U) },
-		{ FGranadeData::StaticStruct, Z_Construct_UScriptStruct_FGranadeData_Statics::NewStructOps, TEXT("GranadeData"), &Z_Registration_Info_UScriptStruct_FGranadeData, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FGranadeData), 1368813443U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Types_GranadeType_h__Script_CaptureTheFlag_2889999595(TEXT("/Script/CaptureTheFlag"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Types_GranadeType_h__Script_CaptureTheFlag_1126404381(TEXT("/Script/CaptureTheFlag"),
 	nullptr, 0,
 	Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Types_GranadeType_h__Script_CaptureTheFlag_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Types_GranadeType_h__Script_CaptureTheFlag_Statics::ScriptStructInfo),
 	Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Types_GranadeType_h__Script_CaptureTheFlag_Statics::EnumInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Types_GranadeType_h__Script_CaptureTheFlag_Statics::EnumInfo));

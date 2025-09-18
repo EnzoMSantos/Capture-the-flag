@@ -9,6 +9,8 @@ class UInputAction;
 class UCameraComponent;
 class UEnhancedInputLocalPlayerSubsystem;
 class UEnhancedInputComponent;
+class UBaseAttributeSet;
+class UAbilitySystemComponent;
 
 
 UCLASS()
@@ -18,6 +20,15 @@ class CAPTURETHEFLAG_API ACaptureCharacter : public ACharacter
 
 public:
 	ACaptureCharacter();
+
+	UFUNCTION(BlueprintCallable, Category = "GAS")
+	UAbilitySystemComponent* GetAbilitySystemComponent() const { return AbilitySystemComponent; }
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "GAS")
+	UAbilitySystemComponent* AbilitySystemComponent;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "GAS")
+	UBaseAttributeSet* AttributeSet;
 
 protected:
 	virtual void BeginPlay() override;
@@ -41,6 +52,9 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Code|Input")
 	UInputAction* JumpAction;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Code|Input")
+	UInputAction* ThrowGrenadeAction;
+
 public:	
 
 	virtual void Tick(float DeltaTime) override;
@@ -51,6 +65,12 @@ public:
 	void Look(const struct FInputActionValue& Value);
 	void StartJump();
 	void StopJump();
+
+	UFUNCTION(BlueprintCallable, Category = "Input")
+	void ThrowGranade();
+
+	UFUNCTION(Server, Reliable)
+	void Server_ThrowGranade();
 
 	UPROPERTY(ReplicatedUsing = OnRep_HasFlag, BlueprintReadOnly, Category="Flag")
 	bool bHasFlag;
@@ -82,13 +102,19 @@ public:
 
 	void ApplyTeamMaterial();
 
-
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+
+	virtual void OnRep_PlayerState() override;
 
 protected:
 
 	UFUNCTION()
 	void OnRep_HasFlag();
+
+	virtual void PossessedBy(AController* NewController) override;
+
+	void InitializeGAS();
+
 
 private:
 

@@ -13,7 +13,7 @@ UGranadeInventoryComponent::UGranadeInventoryComponent()
 	InventorySlots.SetNum(4);
 
 	//Colocar add certo
-	GranadeDataMap.Add(EGranadeType::Damage, FGranadeData{ EGranadeType::Damage, nullptr, nullptr, 5.f, 999});
+	//GranadeDataMap.Add(EGranadeType::Damage, FGranadeData{ EGranadeType::Damage, nullptr, nullptr, 5.f, 999});
 }
 
 bool UGranadeInventoryComponent::CanAddGranade(EGranadeType GranadeType) const
@@ -74,21 +74,28 @@ void UGranadeInventoryComponent::Server_UseGranade_Implementation(int32 SlotInde
 	if (InventorySlots[SlotIndex].GranadeType == EGranadeType::None) return;
 	if (InventorySlots[SlotIndex].Quantity <= 0) return;
 
-	if (InventorySlots[SlotIndex].CooldownRemaining > 0.0f) return;
+	if (InventorySlots[SlotIndex].CooldownRemaining > 0.0f)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Grenade on cooldown: %.1f seconds remaining"), InventorySlots[SlotIndex].CooldownRemaining);
+		return;
+	}
 
 	InventorySlots[SlotIndex].Quantity--;
 
+	// Aplicar cooldown
 	if (const FGranadeData* Data = GranadeDataMap.Find(InventorySlots[SlotIndex].GranadeType))
 	{
 		InventorySlots[SlotIndex].CooldownRemaining = Data->Cooldown;
 	}
 
+	// Se quantidade zerou, limpar slot
 	if (InventorySlots[SlotIndex].Quantity <= 0)
 	{
 		InventorySlots[SlotIndex] = FGranadeSlot();
 	}
 
 	OnRep_Inventory();
+	UE_LOG(LogTemp, Warning, TEXT("Used grenade. Remaining: %d"), InventorySlots[SlotIndex].Quantity);
 }
 
 void UGranadeInventoryComponent::UseGranade(int32 SlotIndex)

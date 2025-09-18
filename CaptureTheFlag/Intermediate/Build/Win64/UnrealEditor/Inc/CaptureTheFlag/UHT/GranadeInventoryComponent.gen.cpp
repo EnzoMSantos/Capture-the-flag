@@ -6,6 +6,7 @@
 
 #include "UObject/GeneratedCppIncludes.h"
 #include "GranadeInventoryComponent.h"
+#include "Types/GranadeData.h"
 #include "Types/GranadeType.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
@@ -451,10 +452,10 @@ struct Z_Construct_UClass_UGranadeInventoryComponent_Statics
 };
 const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_UGranadeInventoryComponent_Statics::NewProp_InventorySlots_Inner = { "InventorySlots", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UScriptStruct_FGranadeSlot, METADATA_PARAMS(0, nullptr) }; // 1021656899
 const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_UGranadeInventoryComponent_Statics::NewProp_InventorySlots = { "InventorySlots", "OnRep_Inventory", (EPropertyFlags)0x0010000100000034, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UGranadeInventoryComponent, InventorySlots), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_InventorySlots_MetaData), NewProp_InventorySlots_MetaData) }; // 1021656899
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_UGranadeInventoryComponent_Statics::NewProp_GranadeDataMap_ValueProp = { "GranadeDataMap", nullptr, (EPropertyFlags)0x0000000000000001, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 1, Z_Construct_UScriptStruct_FGranadeData, METADATA_PARAMS(0, nullptr) }; // 1368813443
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_UGranadeInventoryComponent_Statics::NewProp_GranadeDataMap_ValueProp = { "GranadeDataMap", nullptr, (EPropertyFlags)0x0000000000000001, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 1, Z_Construct_UScriptStruct_FGranadeData, METADATA_PARAMS(0, nullptr) }; // 2518714807
 const UECodeGen_Private::FBytePropertyParams Z_Construct_UClass_UGranadeInventoryComponent_Statics::NewProp_GranadeDataMap_Key_KeyProp_Underlying = { "UnderlyingType", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, nullptr, METADATA_PARAMS(0, nullptr) };
 const UECodeGen_Private::FEnumPropertyParams Z_Construct_UClass_UGranadeInventoryComponent_Statics::NewProp_GranadeDataMap_Key_KeyProp = { "GranadeDataMap_Key", nullptr, (EPropertyFlags)0x0000000000000001, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UEnum_CaptureTheFlag_EGranadeType, METADATA_PARAMS(0, nullptr) }; // 1437698260
-const UECodeGen_Private::FMapPropertyParams Z_Construct_UClass_UGranadeInventoryComponent_Statics::NewProp_GranadeDataMap = { "GranadeDataMap", nullptr, (EPropertyFlags)0x0010000000010001, UECodeGen_Private::EPropertyGenFlags::Map, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UGranadeInventoryComponent, GranadeDataMap), EMapPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_GranadeDataMap_MetaData), NewProp_GranadeDataMap_MetaData) }; // 1437698260 1368813443
+const UECodeGen_Private::FMapPropertyParams Z_Construct_UClass_UGranadeInventoryComponent_Statics::NewProp_GranadeDataMap = { "GranadeDataMap", nullptr, (EPropertyFlags)0x0010000000010001, UECodeGen_Private::EPropertyGenFlags::Map, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UGranadeInventoryComponent, GranadeDataMap), EMapPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_GranadeDataMap_MetaData), NewProp_GranadeDataMap_MetaData) }; // 1437698260 2518714807
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UGranadeInventoryComponent_Statics::NewProp_AbilitySystemComponent = { "AbilitySystemComponent", nullptr, (EPropertyFlags)0x0040000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UGranadeInventoryComponent, AbilitySystemComponent), Z_Construct_UClass_UAbilitySystemComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_AbilitySystemComponent_MetaData), NewProp_AbilitySystemComponent_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UGranadeInventoryComponent_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UGranadeInventoryComponent_Statics::NewProp_InventorySlots_Inner,
@@ -511,10 +512,10 @@ UGranadeInventoryComponent::~UGranadeInventoryComponent() {}
 struct Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_GranadeInventoryComponent_h__Script_CaptureTheFlag_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UGranadeInventoryComponent, UGranadeInventoryComponent::StaticClass, TEXT("UGranadeInventoryComponent"), &Z_Registration_Info_UClass_UGranadeInventoryComponent, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UGranadeInventoryComponent), 904313944U) },
+		{ Z_Construct_UClass_UGranadeInventoryComponent, UGranadeInventoryComponent::StaticClass, TEXT("UGranadeInventoryComponent"), &Z_Registration_Info_UClass_UGranadeInventoryComponent, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UGranadeInventoryComponent), 2013095060U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_GranadeInventoryComponent_h__Script_CaptureTheFlag_2652429741(TEXT("/Script/CaptureTheFlag"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_GranadeInventoryComponent_h__Script_CaptureTheFlag_2762022924(TEXT("/Script/CaptureTheFlag"),
 	Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_GranadeInventoryComponent_h__Script_CaptureTheFlag_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_GranadeInventoryComponent_h__Script_CaptureTheFlag_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

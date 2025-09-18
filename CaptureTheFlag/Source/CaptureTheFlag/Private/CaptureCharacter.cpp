@@ -16,6 +16,11 @@
 #include "CapturePlayerState.h"
 #include "CaptureGameMode.h"
 #include "CaptureGameState.h"
+#include "AbilitySystemComponent.h"
+#include "GranadeInventoryComponent.h"
+#include "DamageGranadeAbility.h"
+#include "BaseAttributeSet.h"
+#include "AbilitySystemInterface.h" 
 #include "EngineUtils.h"
 
 
@@ -40,7 +45,19 @@ ACaptureCharacter::ACaptureCharacter()
 
 	bReplicates = true;
 	bHasFlag = false;
+
+	//GAS
+	AbilitySystemComponent = CreateDefaultSubobject<UAbilitySystemComponent>(TEXT("AbilitySystemComponent"));
+	AbilitySystemComponent->SetIsReplicated(true);
+	AbilitySystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Mixed);
+	
+	AttributeSet = CreateDefaultSubobject<UBaseAttributeSet>(TEXT("AttributeSet"));
 }
+
+//UAbilitySystemComponent* ACaptureCharacter::GetAbilitySystemComponent() const
+//{
+//	return AbilitySystemComponent;
+//}
 
 void ACaptureCharacter::BeginPlay()
 {
@@ -72,6 +89,14 @@ void ACaptureCharacter::BeginPlay()
 		{
 			ApplyTeamMaterialWithRetry();
 		}, 0.5f, false);
+
+	if (AbilitySystemComponent && HasAuthority())
+	{
+		InitializeGAS();
+	}
+
+	UE_LOG(LogTemp, Warning, TEXT("BP_CaptureCharacter BeginPlay - HasAbilitySystem: %d"),
+		(AbilitySystemComponent != nullptr));
 }
 
 void ACaptureCharacter::SetHasFlag(bool bNewHasFlag)
@@ -257,6 +282,7 @@ void ACaptureCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ACaptureCharacter::Look);
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Started, this, &ACaptureCharacter::StartJump);
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACaptureCharacter::StopJump);
+		EnhancedInputComponent->BindAction(ThrowGrenadeAction, ETriggerEvent::Started, this, &ACaptureCharacter::ThrowGranade);
 	}
 }
 
@@ -299,6 +325,61 @@ void ACaptureCharacter::StopJump()
 	StopJumping();
 }
 
+void ACaptureCharacter::ThrowGranade()
+{
+	UE_LOG(LogTemp, Warning, TEXT("ThrowGrenade() called - HasAuthority: %d"), HasAuthority());
+	Server_ThrowGranade();
+}
+
+void ACaptureCharacter::Server_ThrowGranade_Implementation()
+{
+	UE_LOG(LogTemp, Warning, TEXT("Server_ThrowGrenade_Implementation() called"));
+
+	if (!AbilitySystemComponent)
+	{
+		UE_LOG(LogTemp, Error, TEXT("AbilitySystemComponent is NULL!"));
+		return;
+	}
+
+	if (UGranadeInventoryComponent* Inventory = FindComponentByClass<UGranadeInventoryComponent>())
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Inventory found - Damage grenade count: %d"),
+			Inventory->GetGranadeCount(EGranadeType::Damage));
+
+		if (Inventory->GetGranadeCount(EGranadeType::Damage) > 0)
+		{
+			FGameplayAbilitySpec* GrenadeAbilitySpec = AbilitySystemComponent->FindAbilitySpecFromClass(UDamageGranadeAbility::StaticClass());
+
+			if (GrenadeAbilitySpec)
+			{
+				UE_LOG(LogTemp, Warning, TEXT("Grenade ability spec found - IsActive: %d"),
+					GrenadeAbilitySpec->IsActive());
+
+				if (GrenadeAbilitySpec->IsActive())
+				{
+					UE_LOG(LogTemp, Warning, TEXT("Grenade ability is on cooldown"));
+					return;
+				}
+			}
+			else
+			{
+				UE_LOG(LogTemp, Warning, TEXT("Grenade ability spec NOT found"));
+			}
+
+			bool bActivated = AbilitySystemComponent->TryActivateAbilityByClass(UDamageGranadeAbility::StaticClass());
+			UE_LOG(LogTemp, Warning, TEXT("TryActivateAbilityByClass result: %d"), bActivated);
+		}
+		else
+		{
+			UE_LOG(LogTemp, Warning, TEXT("No grenades in inventory"));
+		}
+	}
+	else
+	{
+		UE_LOG(LogTemp, Error, TEXT("Inventory component NOT found!"));
+	}
+}
+
 
 void ACaptureCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
@@ -309,8 +390,51 @@ void ACaptureCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Ou
 
 }
 
+void ACaptureCharacter::OnRep_PlayerState()
+{
+	Super::OnRep_PlayerState();
+
+	if (AbilitySystemComponent)
+	{
+		AbilitySystemComponent->InitAbilityActorInfo(this, this);
+		InitializeGAS();
+	}
+}
+
 void ACaptureCharacter::OnRep_HasFlag()
 {
+}
+
+void ACaptureCharacter::PossessedBy(AController* NewController)
+{
+	Super::PossessedBy(NewController);
+
+	if (AbilitySystemComponent)
+	{
+		AbilitySystemComponent->InitAbilityActorInfo(this, this);
+	}
+
+	UE_LOG(LogTemp, Warning, TEXT("PossessedBy - Controller: %s"),
+		*GetNameSafe(NewController));
+}
+
+void ACaptureCharacter::InitializeGAS()
+{
+	if (!AbilitySystemComponent) return;
+
+	if (!AbilitySystemComponent->AbilityActorInfo.IsValid())
+	{
+		AbilitySystemComponent->InitAbilityActorInfo(this, this);
+	}
+
+	if (HasAuthority())
+	{
+		FGameplayAbilitySpec GranadeAbilitySpec(UDamageGranadeAbility::StaticClass(), 1);
+		AbilitySystemComponent->GiveAbility(GranadeAbilitySpec);
+		UE_LOG(LogTemp, Warning, TEXT("DamageGranadeAbility granted to character"));
+	}
+
+	UE_LOG(LogTemp, Warning, TEXT("InitializeGAS - HasAuthority: %d"), HasAuthority());
 }
 
 void ACaptureCharacter::ApplyTeamMaterialWithRetry()

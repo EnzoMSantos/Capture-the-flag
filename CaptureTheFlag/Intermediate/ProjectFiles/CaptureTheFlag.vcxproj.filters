@@ -72,6 +72,9 @@
     <Filter Include="Source\CaptureTheFlag\Private">
       <UniqueIdentifier>{BE9F30E9-3681-3498-AA6D-D379BF1EB722}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\CaptureTheFlag\Private\BaseAttributeSet.cpp">
+      <Filter>Source\CaptureTheFlag\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\CaptureTheFlag\Private\BaseGranadeAbility.cpp">
       <Filter>Source\CaptureTheFlag\Private</Filter>
     </ClCompile>
@@ -120,6 +123,9 @@
     <Filter Include="Source\CaptureTheFlag\Public">
       <UniqueIdentifier>{C421AA17-C79F-311B-8450-B2301D08F007}</UniqueIdentifier>
     </Filter>
+    <ClInclude Include="..\..\Source\CaptureTheFlag\Public\BaseAttributeSet.h">
+      <Filter>Source\CaptureTheFlag\Public</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\CaptureTheFlag\Public\BaseGranadeAbility.h">
       <Filter>Source\CaptureTheFlag\Public</Filter>
     </ClInclude>
@@ -165,9 +171,15 @@
     <ClInclude Include="..\..\Source\CaptureTheFlag\Public\SlowGranadeProjectile.h">
       <Filter>Source\CaptureTheFlag\Public</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\CaptureTheFlag\Public\UDamageGranadeAbility.cpp">
+      <Filter>Source\CaptureTheFlag\Public</Filter>
+    </ClCompile>
     <Filter Include="Source\CaptureTheFlag\Types">
       <UniqueIdentifier>{D2FD4C68-5353-3E9A-878C-1A0D579951D7}</UniqueIdentifier>
     </Filter>
+    <ClInclude Include="..\..\Source\CaptureTheFlag\Types\GranadeData.h">
+      <Filter>Source\CaptureTheFlag\Types</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\CaptureTheFlag\Types\GranadeType.h">
       <Filter>Source\CaptureTheFlag\Types</Filter>
     </ClInclude>

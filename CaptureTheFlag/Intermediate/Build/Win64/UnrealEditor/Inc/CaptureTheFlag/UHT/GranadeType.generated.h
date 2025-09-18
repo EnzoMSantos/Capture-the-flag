@@ -25,15 +25,6 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 struct FGranadeSlot;
 // ********** End ScriptStruct FGranadeSlot ********************************************************
 
-// ********** Begin ScriptStruct FGranadeData ******************************************************
-#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Types_GranadeType_h_40_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FGranadeData_Statics; \
-	CAPTURETHEFLAG_API static class UScriptStruct* StaticStruct();
-
-
-struct FGranadeData;
-// ********** End ScriptStruct FGranadeData ********************************************************
-
 #undef CURRENT_FILE_ID
 #define CURRENT_FILE_ID FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Types_GranadeType_h
 

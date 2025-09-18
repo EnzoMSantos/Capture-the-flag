@@ -99,7 +99,7 @@ struct Z_Construct_UClass_UBaseGranadeAbility_Statics
 		{ "IncludePath", "BaseGranadeAbility.h" },
 		{ "ModuleRelativePath", "Public/BaseGranadeAbility.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_GranadeProjectileClass_MetaData[] = {
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_GranadeProjectile_MetaData[] = {
 		{ "Category", "Grenade" },
 		{ "ModuleRelativePath", "Public/BaseGranadeAbility.h" },
 	};
@@ -112,7 +112,7 @@ struct Z_Construct_UClass_UBaseGranadeAbility_Statics
 		{ "ModuleRelativePath", "Public/BaseGranadeAbility.h" },
 	};
 #endif // WITH_METADATA
-	static const UECodeGen_Private::FClassPropertyParams NewProp_GranadeProjectileClass;
+	static const UECodeGen_Private::FClassPropertyParams NewProp_GranadeProjectile;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_ThrowForce;
 	static const UECodeGen_Private::FStructPropertyParams NewProp_CooldownTag;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
@@ -126,11 +126,11 @@ struct Z_Construct_UClass_UBaseGranadeAbility_Statics
 	};
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
-const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_UBaseGranadeAbility_Statics::NewProp_GranadeProjectileClass = { "GranadeProjectileClass", nullptr, (EPropertyFlags)0x0014000000010001, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UBaseGranadeAbility, GranadeProjectileClass), Z_Construct_UClass_UClass, Z_Construct_UClass_AGranadeProjectile_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_GranadeProjectileClass_MetaData), NewProp_GranadeProjectileClass_MetaData) };
+const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_UBaseGranadeAbility_Statics::NewProp_GranadeProjectile = { "GranadeProjectile", nullptr, (EPropertyFlags)0x0014000000010001, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UBaseGranadeAbility, GranadeProjectile), Z_Construct_UClass_UClass, Z_Construct_UClass_AGranadeProjectile_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_GranadeProjectile_MetaData), NewProp_GranadeProjectile_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_UBaseGranadeAbility_Statics::NewProp_ThrowForce = { "ThrowForce", nullptr, (EPropertyFlags)0x0010000000010001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UBaseGranadeAbility, ThrowForce), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ThrowForce_MetaData), NewProp_ThrowForce_MetaData) };
 const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_UBaseGranadeAbility_Statics::NewProp_CooldownTag = { "CooldownTag", nullptr, (EPropertyFlags)0x0010000000010001, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UBaseGranadeAbility, CooldownTag), Z_Construct_UScriptStruct_FGameplayTag, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CooldownTag_MetaData), NewProp_CooldownTag_MetaData) }; // 133831994
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UBaseGranadeAbility_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UBaseGranadeAbility_Statics::NewProp_GranadeProjectileClass,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UBaseGranadeAbility_Statics::NewProp_GranadeProjectile,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UBaseGranadeAbility_Statics::NewProp_ThrowForce,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UBaseGranadeAbility_Statics::NewProp_CooldownTag,
 };
@@ -171,10 +171,10 @@ UBaseGranadeAbility::~UBaseGranadeAbility() {}
 struct Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_BaseGranadeAbility_h__Script_CaptureTheFlag_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UBaseGranadeAbility, UBaseGranadeAbility::StaticClass, TEXT("UBaseGranadeAbility"), &Z_Registration_Info_UClass_UBaseGranadeAbility, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UBaseGranadeAbility), 83411236U) },
+		{ Z_Construct_UClass_UBaseGranadeAbility, UBaseGranadeAbility::StaticClass, TEXT("UBaseGranadeAbility"), &Z_Registration_Info_UClass_UBaseGranadeAbility, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UBaseGranadeAbility), 170368774U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_BaseGranadeAbility_h__Script_CaptureTheFlag_1818203888(TEXT("/Script/CaptureTheFlag"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_BaseGranadeAbility_h__Script_CaptureTheFlag_890393425(TEXT("/Script/CaptureTheFlag"),
 	Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_BaseGranadeAbility_h__Script_CaptureTheFlag_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_BaseGranadeAbility_h__Script_CaptureTheFlag_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

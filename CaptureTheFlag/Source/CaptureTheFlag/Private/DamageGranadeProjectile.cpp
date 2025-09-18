@@ -49,7 +49,7 @@ void ADamageGranadeProjectile::ApplyDamageToActors()
                     float DamageMultiplier = 1.0f - (Distance / ExplosionRadius);
                     float FinalDamage = ExplosionDamage * DamageMultiplier;
 
-                    if (UAbilitySystemComponent* TargetASC = UAbilitySystemGlobals::GetAbilitySystemComponentFromActor(TargetCharacter))
+                    if (UAbilitySystemComponent* TargetASC = TargetCharacter->GetAbilitySystemComponent())
                     {
                         if (DamageEffectClass)
                         {
@@ -59,7 +59,11 @@ void ADamageGranadeProjectile::ApplyDamageToActors()
                             FGameplayEffectSpecHandle SpecHandle = TargetASC->MakeOutgoingSpec(DamageEffectClass, 1.0f, ContextHandle);
                             if (SpecHandle.IsValid())
                             {
-                                SpecHandle.Data->SetSetByCallerMagnitude(FGameplayTag::RequestGameplayTag(FName("Data.Damage")), FinalDamage);
+                                SpecHandle.Data->SetSetByCallerMagnitude(
+                                    FGameplayTag::RequestGameplayTag(FName("Data.Damage")),
+                                    FinalDamage
+                                );
+
                                 TargetASC->ApplyGameplayEffectSpecToSelf(*SpecHandle.Data.Get());
                             }
                         }

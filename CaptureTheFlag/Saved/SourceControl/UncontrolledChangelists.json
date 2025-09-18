@@ -5,7 +5,10 @@
 			"guid": "00000000000000000000000000000000",
 			"description": "Default Uncontrolled Changelist",
 			"files": [
-				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/Characters/Mannequins/Meshes/SKM_Quinn_Simple.uasset"
+				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/GAS/BP_DamageGranadeAbility.uasset",
+				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/Blueprints/BP_CaptureCharacter.uasset",
+				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/Input/IMC_Default.uasset",
+				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/GAS/GameplayEffects/GE_DefaultAttributes.uasset"
 			]
 		}
 	]

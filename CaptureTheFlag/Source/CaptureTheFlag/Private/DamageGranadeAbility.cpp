@@ -7,11 +7,16 @@
 #include "GameplayEffect.h"
 #include "DamageGranadeProjectile.h"
 #include "CaptureCharacter.h"
+#include "GranadeProjectile.h"
 #include "CapturePlayerState.h"
 
 UDamageGranadeAbility::UDamageGranadeAbility()
 {
 	CooldownTag = FGameplayTag::RequestGameplayTag(FName("Cooldown.Granade.Damage"));
+
+	GranadeProjectile = ADamageGranadeProjectile::StaticClass();
+
+
 }
 
 

@@ -19,7 +19,7 @@ public:
 	UBaseGranadeAbility();
 
 	UPROPERTY(EditDefaultsOnly, Category = "Grenade")
-	TSubclassOf<class AGranadeProjectile> GranadeProjectileClass;
+	TSubclassOf<class AGranadeProjectile> GranadeProjectile;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Grenade")
 	float ThrowForce = 1500.f;

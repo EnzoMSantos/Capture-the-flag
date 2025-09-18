@@ -53,8 +53,26 @@ void AFlagActor::AttachToCharacter(ACaptureCharacter* Character)
 
 	UE_LOG(LogTemp, Warning, TEXT("Attaching flag to character: %s"), *Character->GetName());
 
+	DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
+
 	FAttachmentTransformRules Rules(EAttachmentRule::SnapToTarget, EAttachmentRule::SnapToTarget, EAttachmentRule::KeepWorld, false);
-	AttachToComponent(Character->GetMesh(), Rules, TEXT("None")); 
+
+	if (Character->GetMesh()->DoesSocketExist(TEXT("FlagSocket")))
+	{
+		AttachToComponent(Character->GetMesh(), Rules, TEXT("FlagSocket"));
+		UE_LOG(LogTemp, Warning, TEXT("Attached to FlagSocket"));
+	}
+	else
+	{
+		FVector RelativeLocation(50.0f, 30.0f, 0.0f);
+		FRotator RelativeRotation(0.0f, 0.0f, 0.0f);
+
+		SetActorRelativeLocation(RelativeLocation);
+		SetActorRelativeRotation(RelativeRotation);
+
+		AttachToComponent(Character->GetMesh(), Rules);
+		UE_LOG(LogTemp, Warning, TEXT("Attached with relative position"));
+	}
 
 	MeshComp->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	Character->SetHasFlag(true);
