@@ -7,6 +7,8 @@
 #include "Types/TeamsEnum.h"
 #include "CaptureGameState.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnScoreUpdatedSignature, int32, NewRedScore, int32, NewBlueScore);
+
 
 /**
  * 
@@ -30,6 +32,9 @@ public:
 
 	void UpdateTeamCounts();
 
+	UPROPERTY(BlueprintAssignable, Category = "Game State")
+	FOnScoreUpdatedSignature OnScoreUpdated;
+
 protected:
 
 	UPROPERTY(Replicated, BlueprintReadOnly)
@@ -44,13 +49,19 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	int32 GetRedScore() const { return RedScore; }
-
+	
 	UFUNCTION(BlueprintCallable)
 	int32 GetBlueScore() const { return BlueScore; }
 
-	
 
 
 protected:
+
+	UFUNCTION()
+	virtual void OnRep_RedScore();
+
+	UFUNCTION()
+	virtual void OnRep_BlueScore();
+
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 };

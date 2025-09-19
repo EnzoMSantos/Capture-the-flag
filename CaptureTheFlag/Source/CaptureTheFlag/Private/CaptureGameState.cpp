@@ -6,6 +6,7 @@
 #include "FlagActor.h"
 #include "CapturePlayerState.h"
 #include "CaptureCharacter.h"
+#include "BaseHUDWidget.h"
 #include "EngineUtils.h"
 
 ACaptureGameState::ACaptureGameState()
@@ -54,7 +55,10 @@ void ACaptureGameState::AddScore(ETeams Team)
 		else if (Team == ETeams::Blue)
 			BlueScore++;
 
+		OnScoreUpdated.Broadcast(RedScore, BlueScore);
 		ForceNetUpdate();
+
+		UE_LOG(LogTemp, Warning, TEXT("Score updated to: %d-%d"), RedScore, BlueScore);
 	}
 }
 
@@ -66,6 +70,19 @@ void ACaptureGameState::ResetScores()
 		BlueScore = 0;
 		ForceNetUpdate();
 	}
+}
+
+void ACaptureGameState::OnRep_RedScore()
+{
+	OnScoreUpdated.Broadcast(RedScore, BlueScore);
+	UE_LOG(LogTemp, Warning, TEXT("OnRep_RedScore called: %d-%d"), RedScore, BlueScore);
+
+}
+
+void ACaptureGameState::OnRep_BlueScore()
+{
+	OnScoreUpdated.Broadcast(RedScore, BlueScore);
+	UE_LOG(LogTemp, Warning, TEXT("OnRep_BlueScore called: %d-%d"), RedScore, BlueScore);
 }
 
 void ACaptureGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const

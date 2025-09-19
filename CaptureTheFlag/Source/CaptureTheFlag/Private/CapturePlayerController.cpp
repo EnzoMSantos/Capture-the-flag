@@ -16,9 +16,12 @@ void ACapturePlayerController::BeginPlay()
 
 void ACapturePlayerController::UpdateScore_Implementation(int32 NewRedScore, int32 NewBlueScore)
 {
+	UE_LOG(LogTemp, Warning, TEXT("UpdateScore called: %d-%d"), NewRedScore, NewBlueScore);
+
 	if (HUDWidget && IsLocalController())
 	{
 		HUDWidget->UpdateScore(NewRedScore, NewBlueScore);
+		UE_LOG(LogTemp, Warning, TEXT("HUD UpdateScore called"));
 	}
 }
 
@@ -32,6 +35,7 @@ void ACapturePlayerController::UpdateHealth_Implementation(float NewCurrentHealt
 
 void ACapturePlayerController::OnScoreUpdate(int32 NewRedScore, int32 NewBlueScore)
 {
+	UE_LOG(LogTemp, Warning, TEXT("OnScoreUpdate received: %d-%d"), NewRedScore, NewBlueScore);
 	UpdateScore(NewRedScore, NewBlueScore);
 }
 
@@ -91,6 +95,15 @@ void ACapturePlayerController::SetupScoreBinding()
 {
 	if (ACaptureGameState* GameState = GetWorld()->GetGameState<ACaptureGameState>())
 	{
+		GameState->OnScoreUpdated.AddDynamic(this, &ACapturePlayerController::OnScoreUpdate);
+
 		UpdateScore(GameState->GetRedScore(), GameState->GetBlueScore());
+
+		UE_LOG(LogTemp, Warning, TEXT("Score binding successful - Initial: %d-%d"),
+			GameState->GetRedScore(), GameState->GetBlueScore());
+	}
+	else
+	{
+		UE_LOG(LogTemp, Error, TEXT("GameState not found for score binding"));
 	}
 }
