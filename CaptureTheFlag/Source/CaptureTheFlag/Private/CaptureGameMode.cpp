@@ -8,6 +8,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "UObject/ConstructorHelpers.h"
 #include "GameFramework/PlayerStart.h"
+#include "CapturePlayerController.h"
 #include "GameFramework/PlayerState.h"
 #include "BP_BaseZone.h"
 
@@ -15,7 +16,21 @@ ACaptureGameMode::ACaptureGameMode()
 {
 	GameStateClass = ACaptureGameState::StaticClass();
 	PlayerStateClass = ACapturePlayerState::StaticClass();
-	
+
+	static ConstructorHelpers::FClassFinder<APlayerController> PlayerControllerBPClass
+	(TEXT("/Game/Blueprints/BP_CapturePlayerController.BP_CapturePlayerController_C"));
+
+	if (PlayerControllerBPClass.Class != nullptr)
+	{
+		PlayerControllerClass = PlayerControllerBPClass.Class;
+		UE_LOG(LogTemp, Warning, TEXT("PlayerController FINDED"));
+	}
+	else
+	{
+		PlayerControllerClass = ACapturePlayerController::StaticClass(); 
+		UE_LOG(LogTemp, Error, TEXT("PlayerController NOT FOUND"));
+	}
+
 	static ConstructorHelpers::FClassFinder<APawn> PlayerPawnBPClass
 	(TEXT("/Game/Blueprints/BP_CaptureCharacter"));
 	
@@ -26,6 +41,18 @@ ACaptureGameMode::ACaptureGameMode()
 	else
 	{
 		DefaultPawnClass = ACaptureCharacter::StaticClass();
+	}
+
+	TArray<UObject*> Blueprints;
+	GetObjectsOfClass(UBlueprint::StaticClass(), Blueprints);
+
+	for (UObject* Blueprint : Blueprints)
+	{
+		FString Path = Blueprint->GetPathName();
+		if (Path.Contains(TEXT("PlayerController"), ESearchCase::IgnoreCase))
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Found PlayerController BP: %s"), *Path);
+		}
 	}
 }
 

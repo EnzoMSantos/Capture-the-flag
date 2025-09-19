@@ -16,6 +16,7 @@ void EmptyLinkFunctionForGeneratedCodeCaptureCharacter() {}
 CAPTURETHEFLAG_API UClass* Z_Construct_UClass_ACaptureCharacter();
 CAPTURETHEFLAG_API UClass* Z_Construct_UClass_ACaptureCharacter_NoRegister();
 CAPTURETHEFLAG_API UClass* Z_Construct_UClass_UBaseAttributeSet_NoRegister();
+CAPTURETHEFLAG_API UFunction* Z_Construct_UDelegateFunction_CaptureTheFlag_OnHealthChangedSignature__DelegateSignature();
 COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FLinearColor();
 COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FRotator();
 ENGINE_API UClass* Z_Construct_UClass_ACharacter();
@@ -25,6 +26,56 @@ ENHANCEDINPUT_API UClass* Z_Construct_UClass_UInputMappingContext_NoRegister();
 GAMEPLAYABILITIES_API UClass* Z_Construct_UClass_UAbilitySystemComponent_NoRegister();
 UPackage* Z_Construct_UPackage__Script_CaptureTheFlag();
 // ********** End Cross Module References **********************************************************
+
+// ********** Begin Delegate FOnHealthChangedSignature *********************************************
+struct Z_Construct_UDelegateFunction_CaptureTheFlag_OnHealthChangedSignature__DelegateSignature_Statics
+{
+	struct _Script_CaptureTheFlag_eventOnHealthChangedSignature_Parms
+	{
+		float NewHealth;
+		float MaxHealth;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/CaptureCharacter.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_NewHealth;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_MaxHealth;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FDelegateFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UDelegateFunction_CaptureTheFlag_OnHealthChangedSignature__DelegateSignature_Statics::NewProp_NewHealth = { "NewHealth", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(_Script_CaptureTheFlag_eventOnHealthChangedSignature_Parms, NewHealth), METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UDelegateFunction_CaptureTheFlag_OnHealthChangedSignature__DelegateSignature_Statics::NewProp_MaxHealth = { "MaxHealth", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(_Script_CaptureTheFlag_eventOnHealthChangedSignature_Parms, MaxHealth), METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UDelegateFunction_CaptureTheFlag_OnHealthChangedSignature__DelegateSignature_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UDelegateFunction_CaptureTheFlag_OnHealthChangedSignature__DelegateSignature_Statics::NewProp_NewHealth,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UDelegateFunction_CaptureTheFlag_OnHealthChangedSignature__DelegateSignature_Statics::NewProp_MaxHealth,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_CaptureTheFlag_OnHealthChangedSignature__DelegateSignature_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FDelegateFunctionParams Z_Construct_UDelegateFunction_CaptureTheFlag_OnHealthChangedSignature__DelegateSignature_Statics::FuncParams = { { (UObject*(*)())Z_Construct_UPackage__Script_CaptureTheFlag, nullptr, "OnHealthChangedSignature__DelegateSignature", Z_Construct_UDelegateFunction_CaptureTheFlag_OnHealthChangedSignature__DelegateSignature_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_CaptureTheFlag_OnHealthChangedSignature__DelegateSignature_Statics::PropPointers), sizeof(Z_Construct_UDelegateFunction_CaptureTheFlag_OnHealthChangedSignature__DelegateSignature_Statics::_Script_CaptureTheFlag_eventOnHealthChangedSignature_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00130000, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_CaptureTheFlag_OnHealthChangedSignature__DelegateSignature_Statics::Function_MetaDataParams), Z_Construct_UDelegateFunction_CaptureTheFlag_OnHealthChangedSignature__DelegateSignature_Statics::Function_MetaDataParams)},  };
+static_assert(sizeof(Z_Construct_UDelegateFunction_CaptureTheFlag_OnHealthChangedSignature__DelegateSignature_Statics::_Script_CaptureTheFlag_eventOnHealthChangedSignature_Parms) < MAX_uint16);
+UFunction* Z_Construct_UDelegateFunction_CaptureTheFlag_OnHealthChangedSignature__DelegateSignature()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUDelegateFunction(&ReturnFunction, Z_Construct_UDelegateFunction_CaptureTheFlag_OnHealthChangedSignature__DelegateSignature_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+void FOnHealthChangedSignature_DelegateWrapper(const FMulticastScriptDelegate& OnHealthChangedSignature, float NewHealth, float MaxHealth)
+{
+	struct _Script_CaptureTheFlag_eventOnHealthChangedSignature_Parms
+	{
+		float NewHealth;
+		float MaxHealth;
+	};
+	_Script_CaptureTheFlag_eventOnHealthChangedSignature_Parms Parms;
+	Parms.NewHealth=NewHealth;
+	Parms.MaxHealth=MaxHealth;
+	OnHealthChangedSignature.ProcessMulticastDelegate<UObject>(&Parms);
+}
+// ********** End Delegate FOnHealthChangedSignature ***********************************************
 
 // ********** Begin Class ACaptureCharacter Function GetAbilitySystemComponent *********************
 struct Z_Construct_UFunction_ACaptureCharacter_GetAbilitySystemComponent_Statics
@@ -111,6 +162,53 @@ DEFINE_FUNCTION(ACaptureCharacter::execGetReplicatedControlRotation)
 	P_NATIVE_END;
 }
 // ********** End Class ACaptureCharacter Function GetReplicatedControlRotation ********************
+
+// ********** Begin Class ACaptureCharacter Function HandleHealthChanged ***************************
+struct Z_Construct_UFunction_ACaptureCharacter_HandleHealthChanged_Statics
+{
+	struct CaptureCharacter_eventHandleHealthChanged_Parms
+	{
+		float NewHealth;
+		float MaxHealth;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/CaptureCharacter.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_NewHealth;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_MaxHealth;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_ACaptureCharacter_HandleHealthChanged_Statics::NewProp_NewHealth = { "NewHealth", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(CaptureCharacter_eventHandleHealthChanged_Parms, NewHealth), METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_ACaptureCharacter_HandleHealthChanged_Statics::NewProp_MaxHealth = { "MaxHealth", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(CaptureCharacter_eventHandleHealthChanged_Parms, MaxHealth), METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ACaptureCharacter_HandleHealthChanged_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ACaptureCharacter_HandleHealthChanged_Statics::NewProp_NewHealth,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ACaptureCharacter_HandleHealthChanged_Statics::NewProp_MaxHealth,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_ACaptureCharacter_HandleHealthChanged_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ACaptureCharacter_HandleHealthChanged_Statics::FuncParams = { { (UObject*(*)())Z_Construct_UClass_ACaptureCharacter, nullptr, "HandleHealthChanged", Z_Construct_UFunction_ACaptureCharacter_HandleHealthChanged_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_ACaptureCharacter_HandleHealthChanged_Statics::PropPointers), sizeof(Z_Construct_UFunction_ACaptureCharacter_HandleHealthChanged_Statics::CaptureCharacter_eventHandleHealthChanged_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ACaptureCharacter_HandleHealthChanged_Statics::Function_MetaDataParams), Z_Construct_UFunction_ACaptureCharacter_HandleHealthChanged_Statics::Function_MetaDataParams)},  };
+static_assert(sizeof(Z_Construct_UFunction_ACaptureCharacter_HandleHealthChanged_Statics::CaptureCharacter_eventHandleHealthChanged_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_ACaptureCharacter_HandleHealthChanged()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ACaptureCharacter_HandleHealthChanged_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(ACaptureCharacter::execHandleHealthChanged)
+{
+	P_GET_PROPERTY(FFloatProperty,Z_Param_NewHealth);
+	P_GET_PROPERTY(FFloatProperty,Z_Param_MaxHealth);
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->HandleHealthChanged(Z_Param_NewHealth,Z_Param_MaxHealth);
+	P_NATIVE_END;
+}
+// ********** End Class ACaptureCharacter Function HandleHealthChanged *****************************
 
 // ********** Begin Class ACaptureCharacter Function HasFlag ***************************************
 struct Z_Construct_UFunction_ACaptureCharacter_HasFlag_Statics
@@ -528,6 +626,7 @@ void ACaptureCharacter::StaticRegisterNativesACaptureCharacter()
 	static const FNameNativePtrPair Funcs[] = {
 		{ "GetAbilitySystemComponent", &ACaptureCharacter::execGetAbilitySystemComponent },
 		{ "GetReplicatedControlRotation", &ACaptureCharacter::execGetReplicatedControlRotation },
+		{ "HandleHealthChanged", &ACaptureCharacter::execHandleHealthChanged },
 		{ "HasFlag", &ACaptureCharacter::execHasFlag },
 		{ "OnRep_HasFlag", &ACaptureCharacter::execOnRep_HasFlag },
 		{ "Server_DropFlag", &ACaptureCharacter::execServer_DropFlag },
@@ -576,6 +675,10 @@ struct Z_Construct_UClass_ACaptureCharacter_Statics
 	static constexpr UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[] = {
 		{ "HideCategories", "Navigation" },
 		{ "IncludePath", "CaptureCharacter.h" },
+		{ "ModuleRelativePath", "Public/CaptureCharacter.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_OnHealthChanged_MetaData[] = {
+		{ "Category", "Health" },
 		{ "ModuleRelativePath", "Public/CaptureCharacter.h" },
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_AbilitySystemComponent_MetaData[] = {
@@ -627,6 +730,7 @@ struct Z_Construct_UClass_ACaptureCharacter_Statics
 		{ "ModuleRelativePath", "Public/CaptureCharacter.h" },
 	};
 #endif // WITH_METADATA
+	static const UECodeGen_Private::FMulticastDelegatePropertyParams NewProp_OnHealthChanged;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_AbilitySystemComponent;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_AttributeSet;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_FirstPersonCameraComponent;
@@ -643,6 +747,7 @@ struct Z_Construct_UClass_ACaptureCharacter_Statics
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
 		{ &Z_Construct_UFunction_ACaptureCharacter_GetAbilitySystemComponent, "GetAbilitySystemComponent" }, // 2427631840
 		{ &Z_Construct_UFunction_ACaptureCharacter_GetReplicatedControlRotation, "GetReplicatedControlRotation" }, // 978726557
+		{ &Z_Construct_UFunction_ACaptureCharacter_HandleHealthChanged, "HandleHealthChanged" }, // 2242990968
 		{ &Z_Construct_UFunction_ACaptureCharacter_HasFlag, "HasFlag" }, // 407710074
 		{ &Z_Construct_UFunction_ACaptureCharacter_OnRep_HasFlag, "OnRep_HasFlag" }, // 2032714823
 		{ &Z_Construct_UFunction_ACaptureCharacter_Server_DropFlag, "Server_DropFlag" }, // 987774577
@@ -660,6 +765,7 @@ struct Z_Construct_UClass_ACaptureCharacter_Statics
 	};
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
+const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_ACaptureCharacter_Statics::NewProp_OnHealthChanged = { "OnHealthChanged", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ACaptureCharacter, OnHealthChanged), Z_Construct_UDelegateFunction_CaptureTheFlag_OnHealthChangedSignature__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OnHealthChanged_MetaData), NewProp_OnHealthChanged_MetaData) }; // 4211084573
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ACaptureCharacter_Statics::NewProp_AbilitySystemComponent = { "AbilitySystemComponent", nullptr, (EPropertyFlags)0x00100000000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ACaptureCharacter, AbilitySystemComponent), Z_Construct_UClass_UAbilitySystemComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_AbilitySystemComponent_MetaData), NewProp_AbilitySystemComponent_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ACaptureCharacter_Statics::NewProp_AttributeSet = { "AttributeSet", nullptr, (EPropertyFlags)0x00100000000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ACaptureCharacter, AttributeSet), Z_Construct_UClass_UBaseAttributeSet_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_AttributeSet_MetaData), NewProp_AttributeSet_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ACaptureCharacter_Statics::NewProp_FirstPersonCameraComponent = { "FirstPersonCameraComponent", nullptr, (EPropertyFlags)0x00200800000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ACaptureCharacter, FirstPersonCameraComponent), Z_Construct_UClass_UCameraComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_FirstPersonCameraComponent_MetaData), NewProp_FirstPersonCameraComponent_MetaData) };
@@ -675,6 +781,7 @@ void Z_Construct_UClass_ACaptureCharacter_Statics::NewProp_bHasFlag_SetBit(void*
 }
 const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_ACaptureCharacter_Statics::NewProp_bHasFlag = { "bHasFlag", "OnRep_HasFlag", (EPropertyFlags)0x0010000100000034, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(ACaptureCharacter), &Z_Construct_UClass_ACaptureCharacter_Statics::NewProp_bHasFlag_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_bHasFlag_MetaData), NewProp_bHasFlag_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ACaptureCharacter_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACaptureCharacter_Statics::NewProp_OnHealthChanged,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACaptureCharacter_Statics::NewProp_AbilitySystemComponent,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACaptureCharacter_Statics::NewProp_AttributeSet,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACaptureCharacter_Statics::NewProp_FirstPersonCameraComponent,
@@ -734,10 +841,10 @@ ACaptureCharacter::~ACaptureCharacter() {}
 struct Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h__Script_CaptureTheFlag_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ACaptureCharacter, ACaptureCharacter::StaticClass, TEXT("ACaptureCharacter"), &Z_Registration_Info_UClass_ACaptureCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ACaptureCharacter), 3423480214U) },
+		{ Z_Construct_UClass_ACaptureCharacter, ACaptureCharacter::StaticClass, TEXT("ACaptureCharacter"), &Z_Registration_Info_UClass_ACaptureCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ACaptureCharacter), 988874116U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h__Script_CaptureTheFlag_140897124(TEXT("/Script/CaptureTheFlag"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h__Script_CaptureTheFlag_1916174482(TEXT("/Script/CaptureTheFlag"),
 	Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h__Script_CaptureTheFlag_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h__Script_CaptureTheFlag_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

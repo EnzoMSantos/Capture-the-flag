@@ -17,11 +17,13 @@
 #include "CaptureGameMode.h"
 #include "CaptureGameState.h"
 #include "AbilitySystemComponent.h"
+#include "GameplayEffectTypes.h"
 #include "GranadeInventoryComponent.h"
 #include "DamageGranadeAbility.h"
 #include "BaseAttributeSet.h"
 #include "AssetRegistry/AssetRegistryModule.h"
 #include "AbilitySystemInterface.h" 
+#include "Engine/Blueprint.h"
 #include "EngineUtils.h"
 
 
@@ -47,18 +49,32 @@ ACaptureCharacter::ACaptureCharacter()
 	bReplicates = true;
 	bHasFlag = false;
 
+	if (GetWorld())
+	{
+		GetWorld()->GetTimerManager().ClearTimer(HealthCheckTimerHandle);
+	}
+
 	//GAS
 	AbilitySystemComponent = CreateDefaultSubobject<UAbilitySystemComponent>(TEXT("AbilitySystemComponent"));
 	AbilitySystemComponent->SetIsReplicated(true);
 	AbilitySystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Mixed);
 	
 	AttributeSet = CreateDefaultSubobject<UBaseAttributeSet>(TEXT("AttributeSet"));
+
+	if (AbilitySystemComponent)
+	{
+		LastHealth = AbilitySystemComponent->GetNumericAttribute(UBaseAttributeSet::GetHealthAttribute());
+		LastMaxHealth = AbilitySystemComponent->GetNumericAttribute(UBaseAttributeSet::GetMaxHealthAttribute());
+	}
+	LastHealth = 100.0f;
+	LastMaxHealth = 100.0f;
 }
 
-//UAbilitySystemComponent* ACaptureCharacter::GetAbilitySystemComponent() const
-//{
-//	return AbilitySystemComponent;
-//}
+void ACaptureCharacter::HandleHealthChanged(float NewHealth, float MaxHealth)
+{
+	OnHealthChanged.Broadcast(NewHealth, MaxHealth);
+
+}
 
 void ACaptureCharacter::BeginPlay()
 {
@@ -99,7 +115,22 @@ void ACaptureCharacter::BeginPlay()
 	UE_LOG(LogTemp, Warning, TEXT("BP_CaptureCharacter BeginPlay - HasAbilitySystem: %d"),
 		(AbilitySystemComponent != nullptr));
 
-	DebugFindAllGranadeBlueprints();
+	if (AbilitySystemComponent)
+	{
+		LastHealth = AbilitySystemComponent->GetNumericAttribute(UBaseAttributeSet::GetHealthAttribute());
+		LastMaxHealth = AbilitySystemComponent->GetNumericAttribute(UBaseAttributeSet::GetMaxHealthAttribute());
+	}
+
+	if (GetWorld())
+	{
+		GetWorld()->GetTimerManager().SetTimer(HealthCheckTimerHandle, this, &ACaptureCharacter::CheckHealth, 0.1f, true);
+	}
+	else
+	{
+		UE_LOG(LogTemp, Error, TEXT("GetWorld() is null in BeginPlay"));
+	}
+
+	FindPlayerControllerBlueprints();
 }
 
 void ACaptureCharacter::SetHasFlag(bool bNewHasFlag)
@@ -251,35 +282,6 @@ void ACaptureCharacter::ApplyTeamMaterial()
 	{
 		UE_LOG(LogTemp, Warning, TEXT("PlayerState is not ACapturePlayerState"));
 	}
-}
-
-void ACaptureCharacter::DebugFindAllGranadeBlueprints()
-{
-	UE_LOG(LogTemp, Warning, TEXT("=== SEARCHING FOR GRANADE BLUEPRINTS ==="));
-
-	FAssetRegistryModule& AssetRegistryModule = FModuleManager::LoadModuleChecked<FAssetRegistryModule>("AssetRegistry");
-	TArray<FAssetData> AssetData;
-
-	FARFilter Filter;
-	Filter.ClassPaths.Add(UBlueprint::StaticClass()->GetClassPathName());
-	Filter.bRecursivePaths = true;
-
-	AssetRegistryModule.Get().GetAssets(Filter, AssetData);
-
-	for (const FAssetData& Asset : AssetData)
-	{
-		FString AssetPath = Asset.GetObjectPathString();
-		FString AssetName = Asset.AssetName.ToString();
-
-		if (AssetName.Contains(TEXT("granade"), ESearchCase::IgnoreCase) ||
-			AssetName.Contains(TEXT("damage"), ESearchCase::IgnoreCase) ||
-			AssetName.Contains(TEXT("Grenade"), ESearchCase::IgnoreCase))
-		{
-			UE_LOG(LogTemp, Warning, TEXT("Found: %s -> %s"), *AssetName, *AssetPath);
-		}
-	}
-
-	UE_LOG(LogTemp, Warning, TEXT("=== END SEARCH ==="));
 }
 
 void ACaptureCharacter::Tick(float DeltaTime)
@@ -493,6 +495,53 @@ void ACaptureCharacter::ApplyTeamMaterialWithRetry()
 		UE_LOG(LogTemp, Warning, TEXT("PlayerState not ready, retrying..."));
 	}
 }
+
+void ACaptureCharacter::CheckHealth()
+{
+	if (!AbilitySystemComponent || !IsValid(this))
+	{
+		return;
+	}
+
+	float CurrentHealth = AbilitySystemComponent->GetNumericAttribute(UBaseAttributeSet::GetHealthAttribute());
+	float MaxHealth = AbilitySystemComponent->GetNumericAttribute(UBaseAttributeSet::GetMaxHealthAttribute());
+
+	if (CurrentHealth != LastHealth || MaxHealth != LastMaxHealth)
+	{
+		HandleHealthChanged(CurrentHealth, MaxHealth);
+		LastHealth = CurrentHealth;
+		LastMaxHealth = MaxHealth;
+	}
+}
+
+void ACaptureCharacter::FindPlayerControllerBlueprints()
+{
+	UE_LOG(LogTemp, Warning, TEXT("=== PROCURANDO BLUEPRINTS DE PLAYERCONTROLLER ==="));
+
+	FAssetRegistryModule& AssetRegistryModule = FModuleManager::LoadModuleChecked<FAssetRegistryModule>("AssetRegistry");
+	TArray<FAssetData> AssetData;
+
+	FARFilter Filter;
+	Filter.ClassPaths.Add(UBlueprint::StaticClass()->GetClassPathName());
+	Filter.bRecursivePaths = true;
+
+	AssetRegistryModule.Get().GetAssets(Filter, AssetData);
+
+	for (const FAssetData& Asset : AssetData)
+	{
+		FString AssetName = Asset.AssetName.ToString();
+		FString AssetPath = Asset.GetObjectPathString();
+
+		if (AssetName.Contains(TEXT("PlayerController"), ESearchCase::IgnoreCase) ||
+			AssetPath.Contains(TEXT("PlayerController"), ESearchCase::IgnoreCase))
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Encontrado: %s -> %s"), *AssetName, *AssetPath);
+		}
+	}
+
+	UE_LOG(LogTemp, Warning, TEXT("=== FIM DA BUSCA ==="));
+}
+
 
 
 

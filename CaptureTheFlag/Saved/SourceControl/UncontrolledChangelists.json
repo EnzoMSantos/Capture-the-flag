@@ -15,15 +15,20 @@
 				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/Meshes/Source/Granfbx.uasset",
 				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/Meshes/Source/hockey_stick_001.uasset",
 				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/Meshes/Source/Material.uasset",
+				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/Meshes/Source/TeamColor.uasset",
+				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/Meshes/Source/BaseColor_Inst.uasset",
+				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/Meshes/Source/TeamColor_Inst.uasset",
+				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/WBPs/WBP_HUD.uasset",
+				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/Blueprints/BP_CapturePlayerController.uasset",
+				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/FirstPerson/Lvl_FirstPerson.umap",
+				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/__ExternalActors__/FirstPerson/Lvl_FirstPerson/5/UU/1ZY1QFVHRWZSP8YI4VZLMK.uasset",
+				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/FirstPerson/Blueprints/BP_FirstPersonGameMode.uasset",
 				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/Meshes/Source/SM_SciFi_Weapons_03.uasset",
 				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/Meshes/Source/SM_SciFi_Weapons_04.uasset",
 				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/Meshes/Source/SM_SciFi_Weapons_05.uasset",
-				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/Meshes/Source/TeamColor.uasset",
 				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/Meshes/Source/Weapons1.uasset",
 				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/Meshes/Source/Weapons_01.uasset",
-				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/Meshes/Source/Weapons_02.uasset",
-				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/Meshes/Source/BaseColor_Inst.uasset",
-				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/Meshes/Source/TeamColor_Inst.uasset"
+				"D:/Git/Capture-the-flag/CaptureTheFlag/Content/Meshes/Source/Weapons_02.uasset"
 			]
 		}
 	]

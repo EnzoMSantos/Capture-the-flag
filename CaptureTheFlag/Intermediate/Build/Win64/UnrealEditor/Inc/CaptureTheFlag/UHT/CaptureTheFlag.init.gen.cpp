@@ -9,6 +9,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeCaptureTheFlag_init() {}
 	CAPTURETHEFLAG_API UFunction* Z_Construct_UDelegateFunction_CaptureTheFlag_BulletCountUpdatedDelegate__DelegateSignature();
 	CAPTURETHEFLAG_API UFunction* Z_Construct_UDelegateFunction_CaptureTheFlag_DamagedDelegate__DelegateSignature();
+	CAPTURETHEFLAG_API UFunction* Z_Construct_UDelegateFunction_CaptureTheFlag_OnHealthChangedSignature__DelegateSignature();
 	CAPTURETHEFLAG_API UFunction* Z_Construct_UDelegateFunction_CaptureTheFlag_PawnDeathDelegate__DelegateSignature();
 	CAPTURETHEFLAG_API UFunction* Z_Construct_UDelegateFunction_CaptureTheFlag_SprintStateChangedDelegate__DelegateSignature();
 	CAPTURETHEFLAG_API UFunction* Z_Construct_UDelegateFunction_CaptureTheFlag_UpdateSprintMeterDelegate__DelegateSignature();
@@ -20,6 +21,7 @@ void EmptyLinkFunctionForGeneratedCodeCaptureTheFlag_init() {}
 			static UObject* (*const SingletonFuncArray[])() = {
 				(UObject* (*)())Z_Construct_UDelegateFunction_CaptureTheFlag_BulletCountUpdatedDelegate__DelegateSignature,
 				(UObject* (*)())Z_Construct_UDelegateFunction_CaptureTheFlag_DamagedDelegate__DelegateSignature,
+				(UObject* (*)())Z_Construct_UDelegateFunction_CaptureTheFlag_OnHealthChangedSignature__DelegateSignature,
 				(UObject* (*)())Z_Construct_UDelegateFunction_CaptureTheFlag_PawnDeathDelegate__DelegateSignature,
 				(UObject* (*)())Z_Construct_UDelegateFunction_CaptureTheFlag_SprintStateChangedDelegate__DelegateSignature,
 				(UObject* (*)())Z_Construct_UDelegateFunction_CaptureTheFlag_UpdateSprintMeterDelegate__DelegateSignature,
@@ -29,13 +31,13 @@ void EmptyLinkFunctionForGeneratedCodeCaptureTheFlag_init() {}
 				SingletonFuncArray,
 				UE_ARRAY_COUNT(SingletonFuncArray),
 				PKG_CompiledIn | 0x00000000,
-				0xE7F4BBFE,
-				0x2BDACC4C,
+				0xD84DFB09,
+				0xEE5E5FC4,
 				METADATA_PARAMS(0, nullptr)
 			};
 			UECodeGen_Private::ConstructUPackage(Z_Registration_Info_UPackage__Script_CaptureTheFlag.OuterSingleton, PackageParams);
 		}
 		return Z_Registration_Info_UPackage__Script_CaptureTheFlag.OuterSingleton;
 	}
-	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_CaptureTheFlag(Z_Construct_UPackage__Script_CaptureTheFlag, TEXT("/Script/CaptureTheFlag"), Z_Registration_Info_UPackage__Script_CaptureTheFlag, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0xE7F4BBFE, 0x2BDACC4C));
+	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_CaptureTheFlag(Z_Construct_UPackage__Script_CaptureTheFlag, TEXT("/Script/CaptureTheFlag"), Z_Registration_Info_UPackage__Script_CaptureTheFlag, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0xD84DFB09, 0xEE5E5FC4));
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

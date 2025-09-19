@@ -4,6 +4,8 @@
 #include "GameFramework/Character.h"
 #include "CaptureCharacter.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnHealthChangedSignature, float, NewHealth, float, MaxHealth);
+
 class UInputMappingContext;
 class UInputAction;
 class UCameraComponent;
@@ -11,6 +13,7 @@ class UEnhancedInputLocalPlayerSubsystem;
 class UEnhancedInputComponent;
 class UBaseAttributeSet;
 class UAbilitySystemComponent;
+
 
 
 UCLASS()
@@ -21,6 +24,9 @@ class CAPTURETHEFLAG_API ACaptureCharacter : public ACharacter
 public:
 	ACaptureCharacter();
 
+	UPROPERTY(BlueprintAssignable, Category = "Health")
+	FOnHealthChangedSignature OnHealthChanged;
+
 	UFUNCTION(BlueprintCallable, Category = "GAS")
 	UAbilitySystemComponent* GetAbilitySystemComponent() const { return AbilitySystemComponent; }
 
@@ -29,6 +35,9 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "GAS")
 	UBaseAttributeSet* AttributeSet;
+
+	UFUNCTION()
+	void HandleHealthChanged(float NewHealth, float MaxHealth);
 
 protected:
 	virtual void BeginPlay() override;
@@ -55,7 +64,6 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Code|Input")
 	UInputAction* ThrowGrenadeAction;
 
-	void DebugFindAllGranadeBlueprints();
 
 public:	
 
@@ -121,4 +129,12 @@ protected:
 private:
 
 	void ApplyTeamMaterialWithRetry();
+	
+	float LastHealth;
+	float LastMaxHealth;
+	FTimerHandle HealthCheckTimerHandle;
+
+	void CheckHealth();
+
+	void FindPlayerControllerBlueprints();
 };

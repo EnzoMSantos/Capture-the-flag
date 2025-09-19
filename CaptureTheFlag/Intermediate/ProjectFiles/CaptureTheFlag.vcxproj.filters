@@ -78,6 +78,9 @@
     <ClCompile Include="..\..\Source\CaptureTheFlag\Private\BaseGranadeAbility.cpp">
       <Filter>Source\CaptureTheFlag\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\CaptureTheFlag\Private\BaseHUDWidget.cpp">
+      <Filter>Source\CaptureTheFlag\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\CaptureTheFlag\Private\BP_BaseZone.cpp">
       <Filter>Source\CaptureTheFlag\Private</Filter>
     </ClCompile>
@@ -91,6 +94,9 @@
       <Filter>Source\CaptureTheFlag\Private</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\CaptureTheFlag\Private\CaptureGameState.cpp">
+      <Filter>Source\CaptureTheFlag\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\CaptureTheFlag\Private\CapturePlayerController.cpp">
       <Filter>Source\CaptureTheFlag\Private</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\CaptureTheFlag\Private\CapturePlayerState.cpp">
@@ -129,6 +135,9 @@
     <ClInclude Include="..\..\Source\CaptureTheFlag\Public\BaseGranadeAbility.h">
       <Filter>Source\CaptureTheFlag\Public</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\CaptureTheFlag\Public\BaseHUDWidget.h">
+      <Filter>Source\CaptureTheFlag\Public</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\CaptureTheFlag\Public\BP_BaseZone.h">
       <Filter>Source\CaptureTheFlag\Public</Filter>
     </ClInclude>
@@ -142,6 +151,9 @@
       <Filter>Source\CaptureTheFlag\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\CaptureTheFlag\Public\CaptureGameState.h">
+      <Filter>Source\CaptureTheFlag\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\CaptureTheFlag\Public\CapturePlayerController.h">
       <Filter>Source\CaptureTheFlag\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\CaptureTheFlag\Public\CapturePlayerState.h">
@@ -171,6 +183,9 @@
     <ClInclude Include="..\..\Source\CaptureTheFlag\Public\SlowGranadeProjectile.h">
       <Filter>Source\CaptureTheFlag\Public</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\CaptureTheFlag\Public\UDamageGranadeAbility.cpp">
+      <Filter>Source\CaptureTheFlag\Public</Filter>
+    </ClCompile>
     <Filter Include="Source\CaptureTheFlag\Types">
       <UniqueIdentifier>{D2FD4C68-5353-3E9A-878C-1A0D579951D7}</UniqueIdentifier>
     </Filter>

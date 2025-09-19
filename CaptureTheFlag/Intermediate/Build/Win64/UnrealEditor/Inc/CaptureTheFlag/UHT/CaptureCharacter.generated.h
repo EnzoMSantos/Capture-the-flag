@@ -19,8 +19,15 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 class UAbilitySystemComponent;
 struct FLinearColor;
 
+// ********** Begin Delegate FOnHealthChangedSignature *********************************************
+#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h_7_DELEGATE \
+CAPTURETHEFLAG_API void FOnHealthChangedSignature_DelegateWrapper(const FMulticastScriptDelegate& OnHealthChangedSignature, float NewHealth, float MaxHealth);
+
+
+// ********** End Delegate FOnHealthChangedSignature ***********************************************
+
 // ********** Begin Class ACaptureCharacter ********************************************************
-#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h_19_RPC_WRAPPERS_NO_PURE_DECLS \
+#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h_22_RPC_WRAPPERS_NO_PURE_DECLS \
 	virtual bool ServerSetControlRotation_Validate(FRotator ); \
 	virtual void ServerSetControlRotation_Implementation(FRotator NewRotation); \
 	virtual void Server_DropFlag_Implementation(); \
@@ -36,13 +43,14 @@ struct FLinearColor;
 	DECLARE_FUNCTION(execHasFlag); \
 	DECLARE_FUNCTION(execServer_ThrowGranade); \
 	DECLARE_FUNCTION(execThrowGranade); \
+	DECLARE_FUNCTION(execHandleHealthChanged); \
 	DECLARE_FUNCTION(execGetAbilitySystemComponent);
 
 
-#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h_19_CALLBACK_WRAPPERS
+#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h_22_CALLBACK_WRAPPERS
 CAPTURETHEFLAG_API UClass* Z_Construct_UClass_ACaptureCharacter_NoRegister();
 
-#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h_19_INCLASS_NO_PURE_DECLS \
+#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h_22_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesACaptureCharacter(); \
 	friend struct Z_Construct_UClass_ACaptureCharacter_Statics; \
@@ -60,7 +68,7 @@ public: \
 	DECLARE_VALIDATE_GENERATED_REP_ENUMS(NO_API)
 
 
-#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h_19_ENHANCED_CONSTRUCTORS \
+#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h_22_ENHANCED_CONSTRUCTORS \
 	/** Deleted move- and copy-constructors, should never be used */ \
 	ACaptureCharacter(ACaptureCharacter&&) = delete; \
 	ACaptureCharacter(const ACaptureCharacter&) = delete; \
@@ -70,14 +78,14 @@ public: \
 	NO_API virtual ~ACaptureCharacter();
 
 
-#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h_16_PROLOG
-#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h_19_GENERATED_BODY \
+#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h_19_PROLOG
+#define FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h_22_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h_19_RPC_WRAPPERS_NO_PURE_DECLS \
-	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h_19_CALLBACK_WRAPPERS \
-	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h_19_INCLASS_NO_PURE_DECLS \
-	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h_19_ENHANCED_CONSTRUCTORS \
+	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h_22_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h_22_CALLBACK_WRAPPERS \
+	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h_22_INCLASS_NO_PURE_DECLS \
+	FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h_22_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
