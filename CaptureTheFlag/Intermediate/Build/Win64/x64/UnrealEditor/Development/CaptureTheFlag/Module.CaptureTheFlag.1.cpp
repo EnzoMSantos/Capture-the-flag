@@ -4,6 +4,8 @@
 #include "D:/Git/Capture-the-flag/CaptureTheFlag/Intermediate/Build/Win64/UnrealEditor/Inc/CaptureTheFlag/UHT/BaseHUDWidget.gen.cpp"
 #include "D:/Git/Capture-the-flag/CaptureTheFlag/Intermediate/Build/Win64/UnrealEditor/Inc/CaptureTheFlag/UHT/BP_BaseZone.gen.cpp"
 #include "D:/Git/Capture-the-flag/CaptureTheFlag/Intermediate/Build/Win64/UnrealEditor/Inc/CaptureTheFlag/UHT/CaptureAbilitySet.gen.cpp"
+#include "D:/Git/Capture-the-flag/CaptureTheFlag/Intermediate/Build/Win64/UnrealEditor/Inc/CaptureTheFlag/UHT/CaptureCharacter.gen.cpp"
+#include "D:/Git/Capture-the-flag/CaptureTheFlag/Intermediate/Build/Win64/UnrealEditor/Inc/CaptureTheFlag/UHT/CaptureGameMode.gen.cpp"
 #include "D:/Git/Capture-the-flag/CaptureTheFlag/Intermediate/Build/Win64/UnrealEditor/Inc/CaptureTheFlag/UHT/CaptureGameState.gen.cpp"
 #include "D:/Git/Capture-the-flag/CaptureTheFlag/Intermediate/Build/Win64/UnrealEditor/Inc/CaptureTheFlag/UHT/CapturePlayerController.gen.cpp"
 #include "D:/Git/Capture-the-flag/CaptureTheFlag/Intermediate/Build/Win64/UnrealEditor/Inc/CaptureTheFlag/UHT/CapturePlayerState.gen.cpp"

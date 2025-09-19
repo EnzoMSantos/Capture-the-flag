@@ -9,7 +9,9 @@
 #include "UObject/ConstructorHelpers.h"
 #include "GameFramework/PlayerStart.h"
 #include "CapturePlayerController.h"
+#include "FlagActor.h"
 #include "GameFramework/PlayerState.h"
+#include "EngineUtils.h"
 #include "BP_BaseZone.h"
 
 ACaptureGameMode::ACaptureGameMode()
@@ -175,18 +177,52 @@ void ACaptureGameMode::PlayerScored(ACapturePlayerState* ScoringPlayer)
 		FString WinningTeam = GS->GetRedScore() >= 3 ? "RED" : "BLUE";
 		UE_LOG(LogTemp, Warning, TEXT("Team %s wins the game!"), *WinningTeam);
 
-		ResetGame();
+		GetWorld()->GetWorldSettings()->SetTimeDilation(0.3f);
+
+		FTimerHandle TimerHandle;
+		GetWorld()->GetTimerManager().SetTimer(TimerHandle, [this]()
+			{
+				GetWorld()->GetWorldSettings()->SetTimeDilation(1.0f);
+
+				ResetGame();
+
+			}, 1.0f, false); 
 	}
 }
 
 void ACaptureGameMode::ResetGame()
 {
+	if (!HasAuthority()) return;
+
+	UE_LOG(LogTemp, Warning, TEXT("Soft resetting game"));
+
 	if (ACaptureGameState* GS = GetGameState<ACaptureGameState>())
 	{
-		//GS->ResetScores();
+		GS->ResetScores();
 	}
 
-	UGameplayStatics::OpenLevel(this, FName(*GetWorld()->GetName()), true);
+	for (TActorIterator<AFlagActor> It(GetWorld()); It; ++It)
+	{
+		It->ResetFlag();
+	}
+
+	for (FConstPlayerControllerIterator It = GetWorld()->GetPlayerControllerIterator(); It; ++It)
+	{
+		if (APlayerController* PC = It->Get())
+		{
+			if (PC->GetPawn())
+			{
+				PC->GetPawn()->Destroy();
+			}
+
+			RestartPlayer(PC);
+		}
+	}
+
+	if (ACaptureGameState* GS = GetGameState<ACaptureGameState>())
+	{
+		GS->OnScoreUpdated.Broadcast(0, 0);
+	}
 }
 
 void ACaptureGameMode::RestartPlayer(AController* NewPlayer)

@@ -7,6 +7,8 @@
 			"BaseHUDWidget.gen.cpp.obj",
 			"BP_BaseZone.gen.cpp.obj",
 			"CaptureAbilitySet.gen.cpp.obj",
+			"CaptureCharacter.gen.cpp.obj",
+			"CaptureGameMode.gen.cpp.obj",
 			"CaptureGameState.gen.cpp.obj",
 			"CapturePlayerController.gen.cpp.obj",
 			"CapturePlayerState.gen.cpp.obj",
@@ -21,8 +23,6 @@
 			"GranadeData.gen.cpp.obj",
 			"GranadeInventoryComponent.gen.cpp.obj",
 			"GranadeProjectile.gen.cpp.obj",
-			"CaptureCharacter.gen.cpp.obj",
-			"CaptureGameMode.gen.cpp.obj",
 			"CaptureTheFlag.init.gen.cpp.obj"
 		],
 		"Module.CaptureTheFlag.2.cpp.obj": [
@@ -57,13 +57,15 @@
 			"CaptureTheFlagPlayerController.cpp.obj",
 			"BaseAttributeSet.cpp.obj",
 			"BaseGranadeAbility.cpp.obj",
-			"BaseHUDWidget.cpp.obj",
 			"BP_BaseZone.cpp.obj",
 			"CaptureAbilitySet.cpp.obj",
+			"CaptureCharacter.cpp.obj",
 			"CaptureGameState.cpp.obj",
+			"CapturePlayerController.cpp.obj",
 			"CapturePlayerState.cpp.obj",
 			"DamageGranadeAbility.cpp.obj",
 			"DamageGranadeProjectile.cpp.obj",
+			"FlagActor.cpp.obj",
 			"GranadeInventoryComponent.cpp.obj",
 			"GranadeProjectile.cpp.obj",
 			"HealGranadeAbility.cpp.obj",
@@ -87,10 +89,8 @@
 			"ShooterProjectile.cpp.obj",
 			"ShooterWeapon.cpp.obj",
 			"ShooterWeaponHolder.cpp.obj",
-			"CaptureCharacter.cpp.obj",
-			"CaptureGameMode.cpp.obj",
-			"CapturePlayerController.cpp.obj",
-			"FlagActor.cpp.obj"
+			"BaseHUDWidget.cpp.obj",
+			"CaptureGameMode.cpp.obj"
 		]
 	}
 }

@@ -21,5 +21,7 @@ public:
 
 	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
 	void UpdateHealth(float CurrentHealth, float MaxHealth);
-	
+
+	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+	void ShowWinMessage(const FString& WinningTeam);
 };
