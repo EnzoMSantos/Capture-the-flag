@@ -191,9 +191,12 @@ void ACaptureGameMode::ResetGame()
 
 void ACaptureGameMode::RestartPlayer(AController* NewPlayer)
 {
-	UE_LOG(LogTemp, Warning, TEXT("RestartPlayer called"));
-
 	Super::RestartPlayer(NewPlayer);
+
+	if (ACaptureCharacter* Character = Cast<ACaptureCharacter>(NewPlayer->GetPawn()))
+	{
+		UE_LOG(LogTemp, Warning, TEXT("New character spawned: %s"), *Character->GetName());
+	}
 }
 
 void ACaptureGameMode::InitPlayerStateAndTeam(AController* NewController)
@@ -243,5 +246,29 @@ void ACaptureGameMode::InitPlayerStateAndTeam(AController* NewController)
 		{
 			UE_LOG(LogTemp, Warning, TEXT("Team already set: %d"), (int32)PS->GetTeam());
 		}
+	}
+}
+
+void ACaptureGameMode::RequestRespawn(AController* Controller)
+{
+	if (!Controller || !HasAuthority()) return;
+
+	if (Controller->GetPawn())
+	{
+		Controller->GetPawn()->Destroy();
+	}
+
+	RestartPlayer(Controller);
+
+	if (ACapturePlayerController* PC = Cast<ACapturePlayerController>(Controller))
+	{
+		FTimerHandle TimerHandle;
+		GetWorld()->GetTimerManager().SetTimer(TimerHandle, [PC]()
+			{
+				if (PC && PC->GetPawn())
+				{
+					PC->SetupHealthBinding();
+				}
+			}, 0.5f, false);
 	}
 }

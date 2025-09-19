@@ -16,6 +16,8 @@ public:
 
 	virtual void BeginPlay() override;
 
+	virtual void OnPossess(APawn* InPawn) override;
+
 	UFUNCTION(Client, Reliable)
 	void UpdateScore(int32 NewRedScore, int32 NewBlueScore);
 
@@ -27,6 +29,10 @@ public:
 
 	UPROPERTY(BlueprintReadOnly, Category = "UI")
 	UBaseHUDWidget* HUDWidget;
+
+	void SetupHealthBinding();
+
+	void SetupScoreBinding();
 
 protected:
 
@@ -40,8 +46,9 @@ protected:
 	void InitializeHUD();
 
 	void DelayedInitialize();
-	void SetupHealthBinding();
-	void SetupScoreBinding();
+
+	UFUNCTION(Server, Reliable)
+	void RequestSpawn();
 
 private:
 

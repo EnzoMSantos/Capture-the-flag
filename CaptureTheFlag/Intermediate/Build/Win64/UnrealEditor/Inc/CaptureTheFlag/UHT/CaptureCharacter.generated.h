@@ -32,6 +32,8 @@ CAPTURETHEFLAG_API void FOnHealthChangedSignature_DelegateWrapper(const FMultica
 	virtual void ServerSetControlRotation_Implementation(FRotator NewRotation); \
 	virtual void Server_DropFlag_Implementation(); \
 	virtual void Server_ThrowGranade_Implementation(); \
+	virtual void Multicast_Respawn_Implementation(); \
+	virtual void Multicast_Die_Implementation(); \
 	DECLARE_FUNCTION(execOnRep_HasFlag); \
 	DECLARE_FUNCTION(execUpdateOutlineColor); \
 	DECLARE_FUNCTION(execSetOutlineEnabled); \
@@ -43,6 +45,10 @@ CAPTURETHEFLAG_API void FOnHealthChangedSignature_DelegateWrapper(const FMultica
 	DECLARE_FUNCTION(execHasFlag); \
 	DECLARE_FUNCTION(execServer_ThrowGranade); \
 	DECLARE_FUNCTION(execThrowGranade); \
+	DECLARE_FUNCTION(execIsDead); \
+	DECLARE_FUNCTION(execMulticast_Respawn); \
+	DECLARE_FUNCTION(execMulticast_Die); \
+	DECLARE_FUNCTION(execDie); \
 	DECLARE_FUNCTION(execHandleHealthChanged); \
 	DECLARE_FUNCTION(execGetAbilitySystemComponent);
 

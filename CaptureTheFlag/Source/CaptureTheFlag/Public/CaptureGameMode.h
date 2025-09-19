@@ -33,6 +33,9 @@ public:
 
 	virtual void InitPlayerStateAndTeam(AController* NewController);
 
+	UFUNCTION(BlueprintCallable)
+	void RequestRespawn(AController* Controller);
+
 protected:
 
 	virtual void BeginPlay() override;

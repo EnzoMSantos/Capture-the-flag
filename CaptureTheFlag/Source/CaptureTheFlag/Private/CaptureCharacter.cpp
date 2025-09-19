@@ -20,6 +20,7 @@
 #include "GameplayEffectTypes.h"
 #include "GranadeInventoryComponent.h"
 #include "DamageGranadeAbility.h"
+#include "CapturePlayerController.h"
 #include "BaseAttributeSet.h"
 #include "AssetRegistry/AssetRegistryModule.h"
 #include "AbilitySystemInterface.h" 
@@ -73,6 +74,53 @@ ACaptureCharacter::ACaptureCharacter()
 void ACaptureCharacter::HandleHealthChanged(float NewHealth, float MaxHealth)
 {
 	OnHealthChanged.Broadcast(NewHealth, MaxHealth);
+
+	if (NewHealth <= 0.0f && !bIsDead)
+	{
+		Die();
+	}
+}
+
+void ACaptureCharacter::Die()
+{
+	if (HasAuthority())
+	{
+		bIsDead = true;
+
+		if (bHasFlag)
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Dropping flag on death"));
+			Server_DropFlag(); 
+		}
+
+		Multicast_Die();
+
+		GetWorld()->GetTimerManager().SetTimer(RespawnTimerHandle, this, &ACaptureCharacter::Respawn, 5.0f, false);
+	}
+}
+
+void ACaptureCharacter::Multicast_Die_Implementation()
+{	
+	bIsDead = true;
+
+	SetActorHiddenInGame(true);
+
+	GetCapsuleComponent()->SetCollisionResponseToChannel(ECC_Pawn, ECR_Ignore);
+	GetCapsuleComponent()->SetCollisionResponseToChannel(ECC_WorldDynamic, ECR_Ignore);
+
+	GetCapsuleComponent()->SetCollisionResponseToChannel(ECC_WorldStatic, ECR_Block);
+
+	DisableInput(nullptr);
+	GetCharacterMovement()->DisableMovement();
+
+	UE_LOG(LogTemp, Warning, TEXT("Character died - collision adjusted"));
+}
+
+void ACaptureCharacter::Multicast_Respawn_Implementation()
+{
+	SetActorHiddenInGame(true);
+	SetActorEnableCollision(false);
+	DisableInput(nullptr);
 }
 
 void ACaptureCharacter::BeginPlay()
@@ -130,6 +178,22 @@ void ACaptureCharacter::BeginPlay()
 	}
 
 	FindPlayerControllerBlueprints();
+
+	if (HasAuthority())
+	{
+		FTimerHandle Timer;
+		GetWorld()->GetTimerManager().SetTimer(Timer, [this]()
+			{
+				if (AbilitySystemComponent)
+				{
+					float CurrentHealth = AbilitySystemComponent->GetNumericAttribute(UBaseAttributeSet::GetHealthAttribute());
+					float MaxHealth = AbilitySystemComponent->GetNumericAttribute(UBaseAttributeSet::GetMaxHealthAttribute());
+
+					HandleHealthChanged(CurrentHealth, MaxHealth);
+					UE_LOG(LogTemp, Warning, TEXT("Health UI updated after spawn: %.1f/%.1f"), CurrentHealth, MaxHealth);
+				}
+			}, 0.5f, false);
+	}
 }
 
 void ACaptureCharacter::SetHasFlag(bool bNewHasFlag)
@@ -147,8 +211,22 @@ void ACaptureCharacter::Server_DropFlag_Implementation()
 {
 	if (!bHasFlag) return;
 
+	UE_LOG(LogTemp, Warning, TEXT("Server_DropFlag called"));
+
 	bHasFlag = false;
-	OnRep_HasFlag();
+	OnRep_HasFlag(); 
+
+	for (TActorIterator<AFlagActor> It(GetWorld()); It; ++It)
+	{
+		AFlagActor* Flag = *It;
+		if (Flag)
+		{
+			//Flag->ResetFlag(); 
+			Flag->DetachFromCharacter();
+			UE_LOG(LogTemp, Warning, TEXT("Flag reset by Server_DropFlag"));
+			break;
+		}
+	}
 }
 
 void ACaptureCharacter::TryScore()
@@ -280,6 +358,27 @@ void ACaptureCharacter::ApplyTeamMaterial()
 	else
 	{
 		UE_LOG(LogTemp, Warning, TEXT("PlayerState is not ACapturePlayerState"));
+	}
+}
+
+void ACaptureCharacter::Respawn()
+{
+	if (HasAuthority())
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Respawn called for character: %s"), *GetName());
+
+		Multicast_Respawn();
+
+		if (ACapturePlayerController* PC = Cast<ACapturePlayerController>(GetController()))
+		{
+			if (ACaptureGameMode* GM = GetWorld()->GetAuthGameMode<ACaptureGameMode>())
+			{
+				GM->RequestRespawn(PC);
+			}
+		}
+
+		// Destroi este personagem após um tempo
+		SetLifeSpan(1.0f);
 	}
 }
 

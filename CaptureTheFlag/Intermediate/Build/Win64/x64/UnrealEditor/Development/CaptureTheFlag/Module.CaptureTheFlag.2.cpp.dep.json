@@ -6,6 +6,9 @@
         "PCH": "d:\\git\\capture-the-flag\\capturetheflag\\intermediate\\build\\win64\\x64\\capturetheflageditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.valexpapi.cpp20.h.pch",
         "Includes": [
             "d:\\git\\capture-the-flag\\capturetheflag\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\capturetheflag\\definitions.capturetheflag.h",
+            "d:\\git\\capture-the-flag\\capturetheflag\\intermediate\\build\\win64\\unrealeditor\\inc\\capturetheflag\\uht\\granadetype.gen.cpp",
+            "d:\\git\\capture-the-flag\\capturetheflag\\source\\capturetheflag\\types\\granadetype.h",
+            "d:\\git\\capture-the-flag\\capturetheflag\\intermediate\\build\\win64\\unrealeditor\\inc\\capturetheflag\\uht\\granadetype.generated.h",
             "d:\\git\\capture-the-flag\\capturetheflag\\intermediate\\build\\win64\\unrealeditor\\inc\\capturetheflag\\uht\\healgranadeability.gen.cpp",
             "d:\\git\\capture-the-flag\\capturetheflag\\source\\capturetheflag\\public\\healgranadeability.h",
             "d:\\git\\capture-the-flag\\capturetheflag\\source\\capturetheflag\\public\\basegranadeability.h",
@@ -50,8 +53,6 @@
             "d:\\ue_5.6\\engine\\plugins\\runtime\\gameplayabilities\\intermediate\\build\\win64\\unrealeditor\\inc\\gameplayabilities\\uht\\gameplayabilitytypes.generated.h",
             "d:\\ue_5.6\\engine\\plugins\\runtime\\gameplayabilities\\intermediate\\build\\win64\\unrealeditor\\inc\\gameplayabilities\\uht\\gameplayability.generated.h",
             "d:\\git\\capture-the-flag\\capturetheflag\\source\\capturetheflag\\types\\granadedata.h",
-            "d:\\git\\capture-the-flag\\capturetheflag\\source\\capturetheflag\\types\\granadetype.h",
-            "d:\\git\\capture-the-flag\\capturetheflag\\intermediate\\build\\win64\\unrealeditor\\inc\\capturetheflag\\uht\\granadetype.generated.h",
             "d:\\git\\capture-the-flag\\capturetheflag\\intermediate\\build\\win64\\unrealeditor\\inc\\capturetheflag\\uht\\granadedata.generated.h",
             "d:\\git\\capture-the-flag\\capturetheflag\\intermediate\\build\\win64\\unrealeditor\\inc\\capturetheflag\\uht\\basegranadeability.generated.h",
             "d:\\git\\capture-the-flag\\capturetheflag\\intermediate\\build\\win64\\unrealeditor\\inc\\capturetheflag\\uht\\healgranadeability.generated.h",
@@ -235,10 +236,7 @@
             "d:\\git\\capture-the-flag\\capturetheflag\\intermediate\\build\\win64\\unrealeditor\\inc\\capturetheflag\\uht\\shooterweaponholder.gen.cpp",
             "d:\\git\\capture-the-flag\\capturetheflag\\intermediate\\build\\win64\\unrealeditor\\inc\\capturetheflag\\uht\\slowgranadeability.gen.cpp",
             "d:\\git\\capture-the-flag\\capturetheflag\\source\\capturetheflag\\public\\slowgranadeability.h",
-            "d:\\git\\capture-the-flag\\capturetheflag\\intermediate\\build\\win64\\unrealeditor\\inc\\capturetheflag\\uht\\slowgranadeability.generated.h",
-            "d:\\git\\capture-the-flag\\capturetheflag\\intermediate\\build\\win64\\unrealeditor\\inc\\capturetheflag\\uht\\teamsenum.gen.cpp",
-            "d:\\git\\capture-the-flag\\capturetheflag\\source\\capturetheflag\\types\\teamsenum.h",
-            "d:\\git\\capture-the-flag\\capturetheflag\\intermediate\\build\\win64\\unrealeditor\\inc\\capturetheflag\\uht\\teamsenum.generated.h"
+            "d:\\git\\capture-the-flag\\capturetheflag\\intermediate\\build\\win64\\unrealeditor\\inc\\capturetheflag\\uht\\slowgranadeability.generated.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

@@ -77,6 +77,36 @@ void FOnHealthChangedSignature_DelegateWrapper(const FMulticastScriptDelegate& O
 }
 // ********** End Delegate FOnHealthChangedSignature ***********************************************
 
+// ********** Begin Class ACaptureCharacter Function Die *******************************************
+struct Z_Construct_UFunction_ACaptureCharacter_Die_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "Category", "Health" },
+		{ "ModuleRelativePath", "Public/CaptureCharacter.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ACaptureCharacter_Die_Statics::FuncParams = { { (UObject*(*)())Z_Construct_UClass_ACaptureCharacter, nullptr, "Die", nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ACaptureCharacter_Die_Statics::Function_MetaDataParams), Z_Construct_UFunction_ACaptureCharacter_Die_Statics::Function_MetaDataParams)},  };
+UFunction* Z_Construct_UFunction_ACaptureCharacter_Die()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ACaptureCharacter_Die_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(ACaptureCharacter::execDie)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->Die();
+	P_NATIVE_END;
+}
+// ********** End Class ACaptureCharacter Function Die *********************************************
+
 // ********** Begin Class ACaptureCharacter Function GetAbilitySystemComponent *********************
 struct Z_Construct_UFunction_ACaptureCharacter_GetAbilitySystemComponent_Statics
 {
@@ -256,6 +286,123 @@ DEFINE_FUNCTION(ACaptureCharacter::execHasFlag)
 	P_NATIVE_END;
 }
 // ********** End Class ACaptureCharacter Function HasFlag *****************************************
+
+// ********** Begin Class ACaptureCharacter Function IsDead ****************************************
+struct Z_Construct_UFunction_ACaptureCharacter_IsDead_Statics
+{
+	struct CaptureCharacter_eventIsDead_Parms
+	{
+		bool ReturnValue;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "Category", "Character" },
+		{ "ModuleRelativePath", "Public/CaptureCharacter.h" },
+	};
+#endif // WITH_METADATA
+	static void NewProp_ReturnValue_SetBit(void* Obj);
+	static const UECodeGen_Private::FBoolPropertyParams NewProp_ReturnValue;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+void Z_Construct_UFunction_ACaptureCharacter_IsDead_Statics::NewProp_ReturnValue_SetBit(void* Obj)
+{
+	((CaptureCharacter_eventIsDead_Parms*)Obj)->ReturnValue = 1;
+}
+const UECodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_ACaptureCharacter_IsDead_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(CaptureCharacter_eventIsDead_Parms), &Z_Construct_UFunction_ACaptureCharacter_IsDead_Statics::NewProp_ReturnValue_SetBit, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ACaptureCharacter_IsDead_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ACaptureCharacter_IsDead_Statics::NewProp_ReturnValue,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_ACaptureCharacter_IsDead_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ACaptureCharacter_IsDead_Statics::FuncParams = { { (UObject*(*)())Z_Construct_UClass_ACaptureCharacter, nullptr, "IsDead", Z_Construct_UFunction_ACaptureCharacter_IsDead_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_ACaptureCharacter_IsDead_Statics::PropPointers), sizeof(Z_Construct_UFunction_ACaptureCharacter_IsDead_Statics::CaptureCharacter_eventIsDead_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ACaptureCharacter_IsDead_Statics::Function_MetaDataParams), Z_Construct_UFunction_ACaptureCharacter_IsDead_Statics::Function_MetaDataParams)},  };
+static_assert(sizeof(Z_Construct_UFunction_ACaptureCharacter_IsDead_Statics::CaptureCharacter_eventIsDead_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_ACaptureCharacter_IsDead()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ACaptureCharacter_IsDead_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(ACaptureCharacter::execIsDead)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	*(bool*)Z_Param__Result=P_THIS->IsDead();
+	P_NATIVE_END;
+}
+// ********** End Class ACaptureCharacter Function IsDead ******************************************
+
+// ********** Begin Class ACaptureCharacter Function Multicast_Die *********************************
+static FName NAME_ACaptureCharacter_Multicast_Die = FName(TEXT("Multicast_Die"));
+void ACaptureCharacter::Multicast_Die()
+{
+	UFunction* Func = FindFunctionChecked(NAME_ACaptureCharacter_Multicast_Die);
+	ProcessEvent(Func,NULL);
+}
+struct Z_Construct_UFunction_ACaptureCharacter_Multicast_Die_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/CaptureCharacter.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ACaptureCharacter_Multicast_Die_Statics::FuncParams = { { (UObject*(*)())Z_Construct_UClass_ACaptureCharacter, nullptr, "Multicast_Die", nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00024CC0, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ACaptureCharacter_Multicast_Die_Statics::Function_MetaDataParams), Z_Construct_UFunction_ACaptureCharacter_Multicast_Die_Statics::Function_MetaDataParams)},  };
+UFunction* Z_Construct_UFunction_ACaptureCharacter_Multicast_Die()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ACaptureCharacter_Multicast_Die_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(ACaptureCharacter::execMulticast_Die)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->Multicast_Die_Implementation();
+	P_NATIVE_END;
+}
+// ********** End Class ACaptureCharacter Function Multicast_Die ***********************************
+
+// ********** Begin Class ACaptureCharacter Function Multicast_Respawn *****************************
+static FName NAME_ACaptureCharacter_Multicast_Respawn = FName(TEXT("Multicast_Respawn"));
+void ACaptureCharacter::Multicast_Respawn()
+{
+	UFunction* Func = FindFunctionChecked(NAME_ACaptureCharacter_Multicast_Respawn);
+	ProcessEvent(Func,NULL);
+}
+struct Z_Construct_UFunction_ACaptureCharacter_Multicast_Respawn_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/CaptureCharacter.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ACaptureCharacter_Multicast_Respawn_Statics::FuncParams = { { (UObject*(*)())Z_Construct_UClass_ACaptureCharacter, nullptr, "Multicast_Respawn", nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00024CC0, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ACaptureCharacter_Multicast_Respawn_Statics::Function_MetaDataParams), Z_Construct_UFunction_ACaptureCharacter_Multicast_Respawn_Statics::Function_MetaDataParams)},  };
+UFunction* Z_Construct_UFunction_ACaptureCharacter_Multicast_Respawn()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ACaptureCharacter_Multicast_Respawn_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(ACaptureCharacter::execMulticast_Respawn)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->Multicast_Respawn_Implementation();
+	P_NATIVE_END;
+}
+// ********** End Class ACaptureCharacter Function Multicast_Respawn *******************************
 
 // ********** Begin Class ACaptureCharacter Function OnRep_HasFlag *********************************
 struct Z_Construct_UFunction_ACaptureCharacter_OnRep_HasFlag_Statics
@@ -624,10 +771,14 @@ void ACaptureCharacter::StaticRegisterNativesACaptureCharacter()
 {
 	UClass* Class = ACaptureCharacter::StaticClass();
 	static const FNameNativePtrPair Funcs[] = {
+		{ "Die", &ACaptureCharacter::execDie },
 		{ "GetAbilitySystemComponent", &ACaptureCharacter::execGetAbilitySystemComponent },
 		{ "GetReplicatedControlRotation", &ACaptureCharacter::execGetReplicatedControlRotation },
 		{ "HandleHealthChanged", &ACaptureCharacter::execHandleHealthChanged },
 		{ "HasFlag", &ACaptureCharacter::execHasFlag },
+		{ "IsDead", &ACaptureCharacter::execIsDead },
+		{ "Multicast_Die", &ACaptureCharacter::execMulticast_Die },
+		{ "Multicast_Respawn", &ACaptureCharacter::execMulticast_Respawn },
 		{ "OnRep_HasFlag", &ACaptureCharacter::execOnRep_HasFlag },
 		{ "Server_DropFlag", &ACaptureCharacter::execServer_DropFlag },
 		{ "Server_ThrowGranade", &ACaptureCharacter::execServer_ThrowGranade },
@@ -745,10 +896,14 @@ struct Z_Construct_UClass_ACaptureCharacter_Statics
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
+		{ &Z_Construct_UFunction_ACaptureCharacter_Die, "Die" }, // 571745978
 		{ &Z_Construct_UFunction_ACaptureCharacter_GetAbilitySystemComponent, "GetAbilitySystemComponent" }, // 2427631840
 		{ &Z_Construct_UFunction_ACaptureCharacter_GetReplicatedControlRotation, "GetReplicatedControlRotation" }, // 978726557
 		{ &Z_Construct_UFunction_ACaptureCharacter_HandleHealthChanged, "HandleHealthChanged" }, // 2242990968
 		{ &Z_Construct_UFunction_ACaptureCharacter_HasFlag, "HasFlag" }, // 407710074
+		{ &Z_Construct_UFunction_ACaptureCharacter_IsDead, "IsDead" }, // 2121842215
+		{ &Z_Construct_UFunction_ACaptureCharacter_Multicast_Die, "Multicast_Die" }, // 1352523924
+		{ &Z_Construct_UFunction_ACaptureCharacter_Multicast_Respawn, "Multicast_Respawn" }, // 3406918752
 		{ &Z_Construct_UFunction_ACaptureCharacter_OnRep_HasFlag, "OnRep_HasFlag" }, // 2032714823
 		{ &Z_Construct_UFunction_ACaptureCharacter_Server_DropFlag, "Server_DropFlag" }, // 987774577
 		{ &Z_Construct_UFunction_ACaptureCharacter_Server_ThrowGranade, "Server_ThrowGranade" }, // 1572412633
@@ -841,10 +996,10 @@ ACaptureCharacter::~ACaptureCharacter() {}
 struct Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h__Script_CaptureTheFlag_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ACaptureCharacter, ACaptureCharacter::StaticClass, TEXT("ACaptureCharacter"), &Z_Registration_Info_UClass_ACaptureCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ACaptureCharacter), 988874116U) },
+		{ Z_Construct_UClass_ACaptureCharacter, ACaptureCharacter::StaticClass, TEXT("ACaptureCharacter"), &Z_Registration_Info_UClass_ACaptureCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ACaptureCharacter), 2132600093U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h__Script_CaptureTheFlag_1916174482(TEXT("/Script/CaptureTheFlag"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h__Script_CaptureTheFlag_282422290(TEXT("/Script/CaptureTheFlag"),
 	Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h__Script_CaptureTheFlag_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_CaptureCharacter_h__Script_CaptureTheFlag_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

@@ -39,6 +39,15 @@ public:
 	UFUNCTION()
 	void HandleHealthChanged(float NewHealth, float MaxHealth);
 
+	UFUNCTION(BlueprintCallable, Category = "Health")
+	void Die();
+
+	UFUNCTION(NetMulticast, Reliable)
+	void Multicast_Die();
+
+	UFUNCTION(NetMulticast, Reliable)
+	void Multicast_Respawn();
+
 protected:
 	virtual void BeginPlay() override;
 
@@ -64,10 +73,15 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Code|Input")
 	UInputAction* ThrowGrenadeAction;
 
+	void Respawn();
+
 
 public:	
 
 	virtual void Tick(float DeltaTime) override;
+
+	UFUNCTION(BlueprintCallable, Category = "Character")
+	bool IsDead() const { return bIsDead; }
 
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
@@ -127,6 +141,10 @@ protected:
 
 
 private:
+
+	FTimerHandle RespawnTimerHandle;
+
+	bool bIsDead;
 
 	void ApplyTeamMaterialWithRetry();
 	

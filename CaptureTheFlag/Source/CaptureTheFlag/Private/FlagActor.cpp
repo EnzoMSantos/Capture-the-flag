@@ -114,9 +114,23 @@ void AFlagActor::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor
 
 	if (ACaptureCharacter* Character = Cast<ACaptureCharacter>(OtherActor))
 	{
-		if (!Character->HasFlag())
+		if (!Character->IsDead() && Character->GetCapsuleComponent()->GetCollisionEnabled() != ECollisionEnabled::NoCollision)
 		{
-			AttachToCharacter(Character);
+			if (!Character->HasFlag())
+			{
+				AttachToCharacter(Character);
+				UE_LOG(LogTemp, Warning, TEXT("Flag attached to living character"));
+			}
+			else
+			{
+				UE_LOG(LogTemp, Warning, TEXT("Character already has flag"));
+			}
+		}
+		else
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Character cannot pick up flag - Dead: %d, Collision: %d"),
+				Character->IsDead(),
+				(int32)Character->GetCapsuleComponent()->GetCollisionEnabled());
 		}
 	}
 }

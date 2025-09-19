@@ -5,6 +5,8 @@
 #include "Blueprint/UserWidget.h"
 #include "CaptureCharacter.h"
 #include "CaptureGameState.h"
+#include "CaptureGameMode.h"
+#include "CaptureGameState.h"
 #include "BaseAttributeSet.h"
 
 void ACapturePlayerController::BeginPlay()
@@ -12,6 +14,24 @@ void ACapturePlayerController::BeginPlay()
 	Super::BeginPlay();
 
 	GetWorld()->GetTimerManager().SetTimer(InitializeTimerHandle, this, &ACapturePlayerController::DelayedInitialize, 0.5f, false);
+}
+
+void ACapturePlayerController::OnPossess(APawn* InPawn)
+{
+	Super::OnPossess(InPawn);
+
+	UE_LOG(LogTemp, Warning, TEXT("OnPossess called with pawn: %s"), *GetNameSafe(InPawn));
+
+	if (InPawn)
+	{
+		FTimerHandle TimerHandle;
+		GetWorld()->GetTimerManager().SetTimer(TimerHandle, [this]()
+			{
+				SetupHealthBinding();
+				SetupScoreBinding();
+				UE_LOG(LogTemp, Warning, TEXT("Bindings reconfigured after possess"));
+			}, 0.3f, false);
+	}
 }
 
 void ACapturePlayerController::UpdateScore_Implementation(int32 NewRedScore, int32 NewBlueScore)
@@ -105,5 +125,20 @@ void ACapturePlayerController::SetupScoreBinding()
 	else
 	{
 		UE_LOG(LogTemp, Error, TEXT("GameState not found for score binding"));
+	}
+}
+
+void ACapturePlayerController::RequestSpawn_Implementation()
+{
+	UE_LOG(LogTemp, Warning, TEXT("RequestSpawn called"));
+
+	if (ACaptureGameMode* GM = GetWorld()->GetAuthGameMode<ACaptureGameMode>())
+	{
+		GM->RestartPlayer(this);
+		UE_LOG(LogTemp, Warning, TEXT("Player restarted by GameMode"));
+	}
+	else
+	{
+		UE_LOG(LogTemp, Error, TEXT("CaptureGameMode not found!"));
 	}
 }
