@@ -4,7 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "GameplayEffect.h"
 #include "GranadeProjectile.generated.h"
+
 
 UCLASS()
 class CAPTURETHEFLAG_API AGranadeProjectile : public AActor
@@ -20,6 +22,9 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	class UProjectileMovementComponent* ProjectileMovement;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Damage")
+	TSubclassOf<UGameplayEffect> DamageEffectClass;
+
 	UPROPERTY(EditDefaultsOnly, Category = "Grenade")
 	float FuseTime = 3.0f;
 
@@ -29,13 +34,24 @@ public:
 	UFUNCTION(NetMulticast, Reliable)
 	void Multicast_Explode();
 
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Grenade")
+	UParticleSystem* ExplosionEffect;
+	
+	float ExplosionRadius = 500.f;
+	float ExplosionDamage = 50.f;
+
 protected:
+
 	virtual void BeginPlay() override;
 
+
 	UFUNCTION()
-	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
+	void OnProjectileHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 
 	virtual void Explode();
+
+	void ApplyDamageToActors();
 
 	FTimerHandle FuseTimerHandle;
 

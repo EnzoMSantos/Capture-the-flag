@@ -34,29 +34,57 @@ void AGranadeProjectile::Throw(const FVector& Force)
 
 void AGranadeProjectile::Multicast_Explode_Implementation()
 {
-	//Efeitos visuais, sonoros e UGameplayStatics::
-	// SpawnEmitterAtLocation(GetWorld(), ExplosionEffect, GetActorLocation());
-	
+	if (ExplosionEffect)
+	{
+		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ExplosionEffect, GetActorLocation());
+	}
+	DrawDebugSphere(GetWorld(), GetActorLocation(), ExplosionRadius, 12, FColor::Red, false, 2.0f);
 }
 
 void AGranadeProjectile::BeginPlay()
 {
 	Super::BeginPlay();
 
-	MeshComponent->OnComponentHit.AddDynamic(this, &AGranadeProjectile::OnHit);
-	GetWorld()->GetTimerManager().SetTimer(FuseTimerHandle, 
-		this, &AGranadeProjectile::Explode, FuseTime, false);
-	
+	MeshComponent->OnComponentHit.AddDynamic(this, &AGranadeProjectile::OnProjectileHit);
 }
 
-void AGranadeProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
+void AGranadeProjectile::OnProjectileHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
+	Explode();
 }
 
 void AGranadeProjectile::Explode()
 {
+	ApplyDamageToActors();
+
 	Multicast_Explode();
 	Destroy();
+}
+
+void AGranadeProjectile::ApplyDamageToActors()
+{
+	if (!HasAuthority()) return;
+
+	TArray<AActor*> OverlappingActors;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AActor::StaticClass(), OverlappingActors);
+
+	for (AActor* Actor : OverlappingActors)
+	{
+		float Distance = FVector::Distance(GetActorLocation(), Actor->GetActorLocation());
+		if (Distance <= ExplosionRadius)
+		{
+			float DamageMultiplier = 1.0f - (Distance / ExplosionRadius);
+			float FinalDamage = ExplosionDamage * DamageMultiplier;
+
+			UGameplayStatics::ApplyDamage(
+				Actor,
+				FinalDamage,
+				GetInstigatorController(),
+				this,
+				UDamageType::StaticClass()
+			);
+		}
+	}
 }
 
 

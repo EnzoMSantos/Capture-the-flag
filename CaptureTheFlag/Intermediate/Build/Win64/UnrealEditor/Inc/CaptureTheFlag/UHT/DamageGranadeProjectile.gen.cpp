@@ -15,8 +15,6 @@ void EmptyLinkFunctionForGeneratedCodeDamageGranadeProjectile() {}
 CAPTURETHEFLAG_API UClass* Z_Construct_UClass_ADamageGranadeProjectile();
 CAPTURETHEFLAG_API UClass* Z_Construct_UClass_ADamageGranadeProjectile_NoRegister();
 CAPTURETHEFLAG_API UClass* Z_Construct_UClass_AGranadeProjectile();
-COREUOBJECT_API UClass* Z_Construct_UClass_UClass();
-GAMEPLAYABILITIES_API UClass* Z_Construct_UClass_UGameplayEffect_NoRegister();
 UPackage* Z_Construct_UPackage__Script_CaptureTheFlag();
 // ********** End Cross Module References **********************************************************
 
@@ -71,14 +69,9 @@ struct Z_Construct_UClass_ADamageGranadeProjectile_Statics
 		{ "Category", "Damage" },
 		{ "ModuleRelativePath", "Public/DamageGranadeProjectile.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_DamageEffectClass_MetaData[] = {
-		{ "Category", "Damage" },
-		{ "ModuleRelativePath", "Public/DamageGranadeProjectile.h" },
-	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_ExplosionDamage;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_ExplosionRadius;
-	static const UECodeGen_Private::FClassPropertyParams NewProp_DamageEffectClass;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -88,11 +81,9 @@ struct Z_Construct_UClass_ADamageGranadeProjectile_Statics
 };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ADamageGranadeProjectile_Statics::NewProp_ExplosionDamage = { "ExplosionDamage", nullptr, (EPropertyFlags)0x0010000000010001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ADamageGranadeProjectile, ExplosionDamage), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ExplosionDamage_MetaData), NewProp_ExplosionDamage_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ADamageGranadeProjectile_Statics::NewProp_ExplosionRadius = { "ExplosionRadius", nullptr, (EPropertyFlags)0x0010000000010001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ADamageGranadeProjectile, ExplosionRadius), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ExplosionRadius_MetaData), NewProp_ExplosionRadius_MetaData) };
-const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_ADamageGranadeProjectile_Statics::NewProp_DamageEffectClass = { "DamageEffectClass", nullptr, (EPropertyFlags)0x0014000000010001, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ADamageGranadeProjectile, DamageEffectClass), Z_Construct_UClass_UClass, Z_Construct_UClass_UGameplayEffect_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_DamageEffectClass_MetaData), NewProp_DamageEffectClass_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ADamageGranadeProjectile_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ADamageGranadeProjectile_Statics::NewProp_ExplosionDamage,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ADamageGranadeProjectile_Statics::NewProp_ExplosionRadius,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ADamageGranadeProjectile_Statics::NewProp_DamageEffectClass,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_ADamageGranadeProjectile_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_ADamageGranadeProjectile_Statics::DependentSingletons[])() = {
@@ -131,10 +122,10 @@ ADamageGranadeProjectile::~ADamageGranadeProjectile() {}
 struct Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_DamageGranadeProjectile_h__Script_CaptureTheFlag_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ADamageGranadeProjectile, ADamageGranadeProjectile::StaticClass, TEXT("ADamageGranadeProjectile"), &Z_Registration_Info_UClass_ADamageGranadeProjectile, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ADamageGranadeProjectile), 635785492U) },
+		{ Z_Construct_UClass_ADamageGranadeProjectile, ADamageGranadeProjectile::StaticClass, TEXT("ADamageGranadeProjectile"), &Z_Registration_Info_UClass_ADamageGranadeProjectile, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ADamageGranadeProjectile), 825411546U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_DamageGranadeProjectile_h__Script_CaptureTheFlag_953943602(TEXT("/Script/CaptureTheFlag"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_DamageGranadeProjectile_h__Script_CaptureTheFlag_2739730778(TEXT("/Script/CaptureTheFlag"),
 	Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_DamageGranadeProjectile_h__Script_CaptureTheFlag_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_DamageGranadeProjectile_h__Script_CaptureTheFlag_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

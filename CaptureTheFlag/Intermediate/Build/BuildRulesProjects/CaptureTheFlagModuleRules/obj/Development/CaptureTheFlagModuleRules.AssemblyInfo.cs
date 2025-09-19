@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CaptureTheFlagModuleRules")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Development")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8b5d63a87c6772e806f0f1f7f8990284dca362d1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+19e2e6df16a30a392ad83e3863623a694842b231")]
 [assembly: System.Reflection.AssemblyProductAttribute("CaptureTheFlagModuleRules")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CaptureTheFlagModuleRules")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

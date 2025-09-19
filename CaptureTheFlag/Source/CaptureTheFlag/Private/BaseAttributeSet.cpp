@@ -36,6 +36,14 @@ void UBaseAttributeSet::PreAttributeChange(const FGameplayAttribute& Attribute, 
 	{
 		NewValue = FMath::Max(NewValue, 0.0f);
 	}
+
+	if (Attribute == GetHealthAttribute())
+	{
+		float OldValue = GetHealth();
+		NewValue = FMath::Clamp(NewValue, 0.0f, GetMaxHealth());
+
+		UE_LOG(LogTemp, Warning, TEXT("Health changing: %.1f -> %.1f"), OldValue, NewValue);
+	}
 }
 
 void UBaseAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const

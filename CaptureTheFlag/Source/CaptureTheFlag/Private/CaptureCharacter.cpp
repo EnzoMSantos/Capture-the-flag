@@ -73,7 +73,6 @@ ACaptureCharacter::ACaptureCharacter()
 void ACaptureCharacter::HandleHealthChanged(float NewHealth, float MaxHealth)
 {
 	OnHealthChanged.Broadcast(NewHealth, MaxHealth);
-
 }
 
 void ACaptureCharacter::BeginPlay()

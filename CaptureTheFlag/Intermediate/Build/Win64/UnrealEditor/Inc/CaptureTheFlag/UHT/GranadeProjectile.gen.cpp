@@ -15,13 +15,16 @@ void EmptyLinkFunctionForGeneratedCodeGranadeProjectile() {}
 // ********** Begin Cross Module References ********************************************************
 CAPTURETHEFLAG_API UClass* Z_Construct_UClass_AGranadeProjectile();
 CAPTURETHEFLAG_API UClass* Z_Construct_UClass_AGranadeProjectile_NoRegister();
+COREUOBJECT_API UClass* Z_Construct_UClass_UClass();
 COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
 ENGINE_API UClass* Z_Construct_UClass_AActor();
 ENGINE_API UClass* Z_Construct_UClass_AActor_NoRegister();
+ENGINE_API UClass* Z_Construct_UClass_UParticleSystem_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_UPrimitiveComponent_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_UProjectileMovementComponent_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
 ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FHitResult();
+GAMEPLAYABILITIES_API UClass* Z_Construct_UClass_UGameplayEffect_NoRegister();
 UPackage* Z_Construct_UPackage__Script_CaptureTheFlag();
 // ********** End Cross Module References **********************************************************
 
@@ -60,12 +63,12 @@ DEFINE_FUNCTION(AGranadeProjectile::execMulticast_Explode)
 }
 // ********** End Class AGranadeProjectile Function Multicast_Explode ******************************
 
-// ********** Begin Class AGranadeProjectile Function OnHit ****************************************
-struct Z_Construct_UFunction_AGranadeProjectile_OnHit_Statics
+// ********** Begin Class AGranadeProjectile Function OnProjectileHit ******************************
+struct Z_Construct_UFunction_AGranadeProjectile_OnProjectileHit_Statics
 {
-	struct GranadeProjectile_eventOnHit_Parms
+	struct GranadeProjectile_eventOnProjectileHit_Parms
 	{
-		UPrimitiveComponent* HitComp;
+		UPrimitiveComponent* HitComponent;
 		AActor* OtherActor;
 		UPrimitiveComponent* OtherComp;
 		FVector NormalImpulse;
@@ -75,7 +78,7 @@ struct Z_Construct_UFunction_AGranadeProjectile_OnHit_Statics
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
 		{ "ModuleRelativePath", "Public/GranadeProjectile.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_HitComp_MetaData[] = {
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_HitComponent_MetaData[] = {
 		{ "EditInline", "true" },
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_OtherComp_MetaData[] = {
@@ -85,7 +88,7 @@ struct Z_Construct_UFunction_AGranadeProjectile_OnHit_Statics
 		{ "NativeConst", "" },
 	};
 #endif // WITH_METADATA
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_HitComp;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_HitComponent;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_OtherActor;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_OtherComp;
 	static const UECodeGen_Private::FStructPropertyParams NewProp_NormalImpulse;
@@ -93,43 +96,43 @@ struct Z_Construct_UFunction_AGranadeProjectile_OnHit_Statics
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_AGranadeProjectile_OnHit_Statics::NewProp_HitComp = { "HitComp", nullptr, (EPropertyFlags)0x0010000000080080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(GranadeProjectile_eventOnHit_Parms, HitComp), Z_Construct_UClass_UPrimitiveComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_HitComp_MetaData), NewProp_HitComp_MetaData) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_AGranadeProjectile_OnHit_Statics::NewProp_OtherActor = { "OtherActor", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(GranadeProjectile_eventOnHit_Parms, OtherActor), Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_AGranadeProjectile_OnHit_Statics::NewProp_OtherComp = { "OtherComp", nullptr, (EPropertyFlags)0x0010000000080080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(GranadeProjectile_eventOnHit_Parms, OtherComp), Z_Construct_UClass_UPrimitiveComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OtherComp_MetaData), NewProp_OtherComp_MetaData) };
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_AGranadeProjectile_OnHit_Statics::NewProp_NormalImpulse = { "NormalImpulse", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(GranadeProjectile_eventOnHit_Parms, NormalImpulse), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_AGranadeProjectile_OnHit_Statics::NewProp_Hit = { "Hit", nullptr, (EPropertyFlags)0x0010008008000182, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(GranadeProjectile_eventOnHit_Parms, Hit), Z_Construct_UScriptStruct_FHitResult, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Hit_MetaData), NewProp_Hit_MetaData) }; // 267591329
-const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AGranadeProjectile_OnHit_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AGranadeProjectile_OnHit_Statics::NewProp_HitComp,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AGranadeProjectile_OnHit_Statics::NewProp_OtherActor,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AGranadeProjectile_OnHit_Statics::NewProp_OtherComp,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AGranadeProjectile_OnHit_Statics::NewProp_NormalImpulse,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AGranadeProjectile_OnHit_Statics::NewProp_Hit,
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_AGranadeProjectile_OnProjectileHit_Statics::NewProp_HitComponent = { "HitComponent", nullptr, (EPropertyFlags)0x0010000000080080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(GranadeProjectile_eventOnProjectileHit_Parms, HitComponent), Z_Construct_UClass_UPrimitiveComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_HitComponent_MetaData), NewProp_HitComponent_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_AGranadeProjectile_OnProjectileHit_Statics::NewProp_OtherActor = { "OtherActor", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(GranadeProjectile_eventOnProjectileHit_Parms, OtherActor), Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_AGranadeProjectile_OnProjectileHit_Statics::NewProp_OtherComp = { "OtherComp", nullptr, (EPropertyFlags)0x0010000000080080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(GranadeProjectile_eventOnProjectileHit_Parms, OtherComp), Z_Construct_UClass_UPrimitiveComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OtherComp_MetaData), NewProp_OtherComp_MetaData) };
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_AGranadeProjectile_OnProjectileHit_Statics::NewProp_NormalImpulse = { "NormalImpulse", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(GranadeProjectile_eventOnProjectileHit_Parms, NormalImpulse), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_AGranadeProjectile_OnProjectileHit_Statics::NewProp_Hit = { "Hit", nullptr, (EPropertyFlags)0x0010008008000182, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(GranadeProjectile_eventOnProjectileHit_Parms, Hit), Z_Construct_UScriptStruct_FHitResult, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Hit_MetaData), NewProp_Hit_MetaData) }; // 267591329
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AGranadeProjectile_OnProjectileHit_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AGranadeProjectile_OnProjectileHit_Statics::NewProp_HitComponent,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AGranadeProjectile_OnProjectileHit_Statics::NewProp_OtherActor,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AGranadeProjectile_OnProjectileHit_Statics::NewProp_OtherComp,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AGranadeProjectile_OnProjectileHit_Statics::NewProp_NormalImpulse,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AGranadeProjectile_OnProjectileHit_Statics::NewProp_Hit,
 };
-static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_AGranadeProjectile_OnHit_Statics::PropPointers) < 2048);
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AGranadeProjectile_OnHit_Statics::FuncParams = { { (UObject*(*)())Z_Construct_UClass_AGranadeProjectile, nullptr, "OnHit", Z_Construct_UFunction_AGranadeProjectile_OnHit_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AGranadeProjectile_OnHit_Statics::PropPointers), sizeof(Z_Construct_UFunction_AGranadeProjectile_OnHit_Statics::GranadeProjectile_eventOnHit_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00C80401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AGranadeProjectile_OnHit_Statics::Function_MetaDataParams), Z_Construct_UFunction_AGranadeProjectile_OnHit_Statics::Function_MetaDataParams)},  };
-static_assert(sizeof(Z_Construct_UFunction_AGranadeProjectile_OnHit_Statics::GranadeProjectile_eventOnHit_Parms) < MAX_uint16);
-UFunction* Z_Construct_UFunction_AGranadeProjectile_OnHit()
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_AGranadeProjectile_OnProjectileHit_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AGranadeProjectile_OnProjectileHit_Statics::FuncParams = { { (UObject*(*)())Z_Construct_UClass_AGranadeProjectile, nullptr, "OnProjectileHit", Z_Construct_UFunction_AGranadeProjectile_OnProjectileHit_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AGranadeProjectile_OnProjectileHit_Statics::PropPointers), sizeof(Z_Construct_UFunction_AGranadeProjectile_OnProjectileHit_Statics::GranadeProjectile_eventOnProjectileHit_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00C80401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AGranadeProjectile_OnProjectileHit_Statics::Function_MetaDataParams), Z_Construct_UFunction_AGranadeProjectile_OnProjectileHit_Statics::Function_MetaDataParams)},  };
+static_assert(sizeof(Z_Construct_UFunction_AGranadeProjectile_OnProjectileHit_Statics::GranadeProjectile_eventOnProjectileHit_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_AGranadeProjectile_OnProjectileHit()
 {
 	static UFunction* ReturnFunction = nullptr;
 	if (!ReturnFunction)
 	{
-		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AGranadeProjectile_OnHit_Statics::FuncParams);
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AGranadeProjectile_OnProjectileHit_Statics::FuncParams);
 	}
 	return ReturnFunction;
 }
-DEFINE_FUNCTION(AGranadeProjectile::execOnHit)
+DEFINE_FUNCTION(AGranadeProjectile::execOnProjectileHit)
 {
-	P_GET_OBJECT(UPrimitiveComponent,Z_Param_HitComp);
+	P_GET_OBJECT(UPrimitiveComponent,Z_Param_HitComponent);
 	P_GET_OBJECT(AActor,Z_Param_OtherActor);
 	P_GET_OBJECT(UPrimitiveComponent,Z_Param_OtherComp);
 	P_GET_STRUCT(FVector,Z_Param_NormalImpulse);
 	P_GET_STRUCT_REF(FHitResult,Z_Param_Out_Hit);
 	P_FINISH;
 	P_NATIVE_BEGIN;
-	P_THIS->OnHit(Z_Param_HitComp,Z_Param_OtherActor,Z_Param_OtherComp,Z_Param_NormalImpulse,Z_Param_Out_Hit);
+	P_THIS->OnProjectileHit(Z_Param_HitComponent,Z_Param_OtherActor,Z_Param_OtherComp,Z_Param_NormalImpulse,Z_Param_Out_Hit);
 	P_NATIVE_END;
 }
-// ********** End Class AGranadeProjectile Function OnHit ******************************************
+// ********** End Class AGranadeProjectile Function OnProjectileHit ********************************
 
 // ********** Begin Class AGranadeProjectile Function Throw ****************************************
 struct Z_Construct_UFunction_AGranadeProjectile_Throw_Statics
@@ -182,7 +185,7 @@ void AGranadeProjectile::StaticRegisterNativesAGranadeProjectile()
 	UClass* Class = AGranadeProjectile::StaticClass();
 	static const FNameNativePtrPair Funcs[] = {
 		{ "Multicast_Explode", &AGranadeProjectile::execMulticast_Explode },
-		{ "OnHit", &AGranadeProjectile::execOnHit },
+		{ "OnProjectileHit", &AGranadeProjectile::execOnProjectileHit },
 		{ "Throw", &AGranadeProjectile::execThrow },
 	};
 	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
@@ -233,19 +236,29 @@ struct Z_Construct_UClass_AGranadeProjectile_Statics
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/GranadeProjectile.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_DamageEffectClass_MetaData[] = {
+		{ "Category", "Damage" },
+		{ "ModuleRelativePath", "Public/GranadeProjectile.h" },
+	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_FuseTime_MetaData[] = {
+		{ "Category", "Grenade" },
+		{ "ModuleRelativePath", "Public/GranadeProjectile.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_ExplosionEffect_MetaData[] = {
 		{ "Category", "Grenade" },
 		{ "ModuleRelativePath", "Public/GranadeProjectile.h" },
 	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_MeshComponent;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_ProjectileMovement;
+	static const UECodeGen_Private::FClassPropertyParams NewProp_DamageEffectClass;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_FuseTime;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_ExplosionEffect;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
 		{ &Z_Construct_UFunction_AGranadeProjectile_Multicast_Explode, "Multicast_Explode" }, // 786663170
-		{ &Z_Construct_UFunction_AGranadeProjectile_OnHit, "OnHit" }, // 2298214733
+		{ &Z_Construct_UFunction_AGranadeProjectile_OnProjectileHit, "OnProjectileHit" }, // 335350649
 		{ &Z_Construct_UFunction_AGranadeProjectile_Throw, "Throw" }, // 2609211843
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
@@ -256,11 +269,15 @@ struct Z_Construct_UClass_AGranadeProjectile_Statics
 };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AGranadeProjectile_Statics::NewProp_MeshComponent = { "MeshComponent", nullptr, (EPropertyFlags)0x00100000000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AGranadeProjectile, MeshComponent), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MeshComponent_MetaData), NewProp_MeshComponent_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AGranadeProjectile_Statics::NewProp_ProjectileMovement = { "ProjectileMovement", nullptr, (EPropertyFlags)0x00100000000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AGranadeProjectile, ProjectileMovement), Z_Construct_UClass_UProjectileMovementComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ProjectileMovement_MetaData), NewProp_ProjectileMovement_MetaData) };
+const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_AGranadeProjectile_Statics::NewProp_DamageEffectClass = { "DamageEffectClass", nullptr, (EPropertyFlags)0x0014000000010005, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AGranadeProjectile, DamageEffectClass), Z_Construct_UClass_UClass, Z_Construct_UClass_UGameplayEffect_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_DamageEffectClass_MetaData), NewProp_DamageEffectClass_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AGranadeProjectile_Statics::NewProp_FuseTime = { "FuseTime", nullptr, (EPropertyFlags)0x0010000000010001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AGranadeProjectile, FuseTime), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_FuseTime_MetaData), NewProp_FuseTime_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AGranadeProjectile_Statics::NewProp_ExplosionEffect = { "ExplosionEffect", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AGranadeProjectile, ExplosionEffect), Z_Construct_UClass_UParticleSystem_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ExplosionEffect_MetaData), NewProp_ExplosionEffect_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AGranadeProjectile_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGranadeProjectile_Statics::NewProp_MeshComponent,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGranadeProjectile_Statics::NewProp_ProjectileMovement,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGranadeProjectile_Statics::NewProp_DamageEffectClass,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGranadeProjectile_Statics::NewProp_FuseTime,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGranadeProjectile_Statics::NewProp_ExplosionEffect,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AGranadeProjectile_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_AGranadeProjectile_Statics::DependentSingletons[])() = {
@@ -299,10 +316,10 @@ AGranadeProjectile::~AGranadeProjectile() {}
 struct Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_GranadeProjectile_h__Script_CaptureTheFlag_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AGranadeProjectile, AGranadeProjectile::StaticClass, TEXT("AGranadeProjectile"), &Z_Registration_Info_UClass_AGranadeProjectile, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AGranadeProjectile), 2789742923U) },
+		{ Z_Construct_UClass_AGranadeProjectile, AGranadeProjectile::StaticClass, TEXT("AGranadeProjectile"), &Z_Registration_Info_UClass_AGranadeProjectile, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AGranadeProjectile), 3216098353U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_GranadeProjectile_h__Script_CaptureTheFlag_2142402464(TEXT("/Script/CaptureTheFlag"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_GranadeProjectile_h__Script_CaptureTheFlag_4142103514(TEXT("/Script/CaptureTheFlag"),
 	Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_GranadeProjectile_h__Script_CaptureTheFlag_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Git_Capture_the_flag_CaptureTheFlag_Source_CaptureTheFlag_Public_GranadeProjectile_h__Script_CaptureTheFlag_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

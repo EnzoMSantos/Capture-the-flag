@@ -27,8 +27,6 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category = "Damage")
 	float ExplosionRadius = 500.f;
 
-	UPROPERTY(EditDefaultsOnly, Category = "Damage")
-	TSubclassOf<UGameplayEffect> DamageEffectClass;
 
 protected:
 
