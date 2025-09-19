@@ -32,6 +32,7 @@
 			"HorrorGameMode.gen.cpp.obj",
 			"HorrorPlayerController.gen.cpp.obj",
 			"HorrorUI.gen.cpp.obj",
+			"SessionManager.gen.cpp.obj",
 			"ShooterAIController.gen.cpp.obj",
 			"ShooterBulletCounterUI.gen.cpp.obj",
 			"ShooterCharacter.gen.cpp.obj",
@@ -57,9 +58,11 @@
 			"CaptureTheFlagPlayerController.cpp.obj",
 			"BaseAttributeSet.cpp.obj",
 			"BaseGranadeAbility.cpp.obj",
+			"BaseHUDWidget.cpp.obj",
 			"BP_BaseZone.cpp.obj",
 			"CaptureAbilitySet.cpp.obj",
 			"CaptureCharacter.cpp.obj",
+			"CaptureGameMode.cpp.obj",
 			"CaptureGameState.cpp.obj",
 			"CapturePlayerController.cpp.obj",
 			"CapturePlayerState.cpp.obj",
@@ -89,8 +92,7 @@
 			"ShooterProjectile.cpp.obj",
 			"ShooterWeapon.cpp.obj",
 			"ShooterWeaponHolder.cpp.obj",
-			"BaseHUDWidget.cpp.obj",
-			"CaptureGameMode.cpp.obj"
+			"SessionManager.cpp.obj"
 		]
 	}
 }

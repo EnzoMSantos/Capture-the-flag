@@ -328,6 +328,9 @@
     <ClCompile Include="..\..\Source\CaptureTheFlag\Private\HealGranadeAbility.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <ClCompile Include="..\..\Source\CaptureTheFlag\Private\SessionManager.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
     <ClCompile Include="..\..\Source\CaptureTheFlag\Private\SlowGranadeAbility.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
@@ -350,6 +353,7 @@
     <ClInclude Include="..\..\Source\CaptureTheFlag\Public\GranadeInventoryComponent.h"/>
     <ClInclude Include="..\..\Source\CaptureTheFlag\Public\GranadeProjectile.h"/>
     <ClInclude Include="..\..\Source\CaptureTheFlag\Public\HealGranadeAbility.h"/>
+    <ClInclude Include="..\..\Source\CaptureTheFlag\Public\SessionManager.h"/>
     <ClInclude Include="..\..\Source\CaptureTheFlag\Public\SlowGranadeAbility.h"/>
     <ClInclude Include="..\..\Source\CaptureTheFlag\Public\SlowGranadeProjectile.h"/>
     <ClCompile Include="..\..\Source\CaptureTheFlag\Public\UDamageGranadeAbility.cpp">

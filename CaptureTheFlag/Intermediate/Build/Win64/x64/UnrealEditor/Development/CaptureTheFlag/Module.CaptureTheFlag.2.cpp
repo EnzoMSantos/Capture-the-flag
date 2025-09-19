@@ -5,6 +5,7 @@
 #include "D:/Git/Capture-the-flag/CaptureTheFlag/Intermediate/Build/Win64/UnrealEditor/Inc/CaptureTheFlag/UHT/HorrorGameMode.gen.cpp"
 #include "D:/Git/Capture-the-flag/CaptureTheFlag/Intermediate/Build/Win64/UnrealEditor/Inc/CaptureTheFlag/UHT/HorrorPlayerController.gen.cpp"
 #include "D:/Git/Capture-the-flag/CaptureTheFlag/Intermediate/Build/Win64/UnrealEditor/Inc/CaptureTheFlag/UHT/HorrorUI.gen.cpp"
+#include "D:/Git/Capture-the-flag/CaptureTheFlag/Intermediate/Build/Win64/UnrealEditor/Inc/CaptureTheFlag/UHT/SessionManager.gen.cpp"
 #include "D:/Git/Capture-the-flag/CaptureTheFlag/Intermediate/Build/Win64/UnrealEditor/Inc/CaptureTheFlag/UHT/ShooterAIController.gen.cpp"
 #include "D:/Git/Capture-the-flag/CaptureTheFlag/Intermediate/Build/Win64/UnrealEditor/Inc/CaptureTheFlag/UHT/ShooterBulletCounterUI.gen.cpp"
 #include "D:/Git/Capture-the-flag/CaptureTheFlag/Intermediate/Build/Win64/UnrealEditor/Inc/CaptureTheFlag/UHT/ShooterCharacter.gen.cpp"

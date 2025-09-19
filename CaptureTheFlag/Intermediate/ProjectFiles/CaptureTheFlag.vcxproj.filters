@@ -120,6 +120,9 @@
     <ClCompile Include="..\..\Source\CaptureTheFlag\Private\HealGranadeAbility.cpp">
       <Filter>Source\CaptureTheFlag\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\CaptureTheFlag\Private\SessionManager.cpp">
+      <Filter>Source\CaptureTheFlag\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\CaptureTheFlag\Private\SlowGranadeAbility.cpp">
       <Filter>Source\CaptureTheFlag\Private</Filter>
     </ClCompile>
@@ -175,6 +178,9 @@
       <Filter>Source\CaptureTheFlag\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\CaptureTheFlag\Public\HealGranadeAbility.h">
+      <Filter>Source\CaptureTheFlag\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\CaptureTheFlag\Public\SessionManager.h">
       <Filter>Source\CaptureTheFlag\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\CaptureTheFlag\Public\SlowGranadeAbility.h">
